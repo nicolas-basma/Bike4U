@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@200&display=swap');
+
 footer {
   display: flex;
   justify-content: center;
+  font-family: 'Sofia Sans Condensed', sans-serif;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  width: 100%;
 }

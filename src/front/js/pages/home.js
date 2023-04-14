@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import Button from "../component/button.jsx";
+import Button from "../component/Button.jsx";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
