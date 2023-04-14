@@ -29,11 +29,19 @@ const ModalForm = () => {
                 autoFocus
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Label>Your name</Form.Label>
+              <Form.Control type="text" placeholder="name" autoFocus />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+              <Form.Label>City</Form.Label>
+              <Form.Control type="text" placeholder="city" autoFocus />
+            </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Mesagge</Form.Label>
+              <Form.Label>Tell us your doubts</Form.Label>
               <Form.Control as="textarea" rows={3} />
             </Form.Group>
           </Form>
