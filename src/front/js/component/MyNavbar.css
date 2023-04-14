@@ -1,4 +1,24 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  background-color: black;
+  box-shadow: 0px 0px 25px #222;
+}
+.logo {
+  color: white;
+  font-family: "Racing Sans One", cursive;
+  font-size: 40px;
+  -webkit-box-reflect: below -40px -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(transparent),
+      to(rgba(255, 255, 255, 0.5))
+    );
+  margin-bottom: 10px;
+}
+.button {
+  color: white;
+  font-family: "Racing Sans One", cursive;
+}
+.button:hover {
+  font-size: 25px;
 }

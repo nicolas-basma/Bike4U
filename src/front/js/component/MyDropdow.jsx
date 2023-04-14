@@ -6,11 +6,10 @@ import menu4 from "react-useanimations/lib/menu4";
 const MyDropdown = () => {
   return (
     <>
-      <Dropdown>
-        <Dropdown.Toggle variant="dark" id="dropdown-basic">
+      <Dropdown align={"end"}>
+        <Dropdown.Toggle variant="dark" id="dropdown-menu-align-end">
           <UseAnimations animation={menu4} strokeColor="white" />
         </Dropdown.Toggle>
-
         <Dropdown.Menu>
           <Dropdown.Item href="#/action-1">Login</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Galery</Dropdown.Item>
