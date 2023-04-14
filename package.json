@@ -79,7 +79,7 @@
 		"react-bootstrap": "^2.7.3",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
-		"react-router-dom": "^6.3.0",
+		"react-router-dom": "^6.10.0",
 		"react-useanimations": "^2.10.0"
 	}
 }
