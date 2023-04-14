@@ -16,18 +16,18 @@ const MyFooter = () => {
   //console.log(store);
 
   return (
-    <footer className="footer mt-auto py-3 text-center">
-          <div>
-            
-          </div>
-          <p>bike4u</p>
-          <p>Do not hesitate to contact us at:</p>
-          <p>contact.bike4u@gmail.com</p>
-          <UseAnimations animation={twitter} size={60} />
-          <UseAnimations animation={facebook} size={60} />
-          <UseAnimations animation={instagram} size={60} />
-          <UseAnimations animation={mail} size={60} />
-
+    <footer className="footer mt-auto py-1 text-center d-block bg-dark text-white">
+      <div className="mb-2">
+        <p className="m-0">bike4u</p>
+        <p className="m-0">Do not hesitate to contact us at:</p>
+        <p className="m-0">contact.bike4u@gmail.com</p>
+      </div>
+      <div className="d-flex justify-content-center">
+        <UseAnimations animation={twitter} size={60} strokeColor={"white"} />
+        <UseAnimations animation={facebook} size={60} strokeColor={"white"} />
+        <UseAnimations animation={instagram} size={60} strokeColor={"white"} />
+        <UseAnimations animation={mail} size={60} strokeColor={"white"} />
+      </div>
     </footer>
   );
 };
