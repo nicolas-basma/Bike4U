@@ -9,6 +9,7 @@ import injectContext from "./store/appContext";
 import MyFooter from "./component/MyFooter.jsx";
 import MyNavbar from "./component/MyNavbar.jsx";
 import ModalForm from "./component/ModalForm.jsx";
+import AboutUs from "./pages/AboutUs.js";
 
 //create your first component
 const Layout = () => {
@@ -23,7 +24,7 @@ const Layout = () => {
         <ModalForm />
         <Routes>
           <Route element={<Home />} path="/" />
-          <Route element={<Demo />} path="/demo" />
+          <Route element={<AboutUs />} path="/aboutus" />
           <Route element={<Single />} path="/single/:theid" />
           <Route element={<h1>Not found!</h1>} />
         </Routes>
