@@ -21,7 +21,7 @@ export const MyNavbar = () => {
             <Nav.Link href="#home" className="button">
               FAVORITOS
             </Nav.Link>
-            <Nav.Link href="#features" className="button">
+            <Nav.Link className="button">
               <Link to="aboutus">CONTACTO</Link>
             </Nav.Link>
             <Nav.Link href="#pricing" className="button">

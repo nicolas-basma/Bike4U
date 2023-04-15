@@ -5,7 +5,7 @@ import useStore from "../store/AppContext.jsx";
 import "../../styles/home.css";
 
 import Button from "../component/Button.jsx";
-import ModalForm from "../component/ModalForm.jsx";
+import MyCarousel from "../component/MyCarousel.jsx";
 
 const Home = () => {
   const { store, actions } = useStore();
@@ -23,7 +23,6 @@ const Home = () => {
       <div className="text-center mt-5">
         <img src={logo} width={50} />
         <Button onClick={handleNavigator} label={"Personaliza tu Bicicleta"} />
-        <ModalForm />
       </div>
 
       <div>
