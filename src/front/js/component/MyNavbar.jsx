@@ -3,10 +3,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import useStore from "../store/AppContext.jsx";
 
 import "./MyNavbar.css";
 
 export const MyNavbar = () => {
+  const { store, action } = useStore();
+  const { handleShow } = action;
   return (
     <>
       <Navbar variant="dark">

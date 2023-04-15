@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useStore from "../store/AppContext.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -6,17 +7,12 @@ import Modal from "react-bootstrap/Modal";
 import "/workspace/FinalProject/src/front/js/component/ModalForm.css";
 
 const ModalForm = () => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const { store, action } = useStore();
+  const { logo, show } = store;
+  const { setShow, handleClose } = action;
 
   return (
     <>
-      <Button className="contactButton" onClick={handleShow}>
-        CONTÁCTANOS
-      </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Contact Form</Modal.Title>
@@ -52,8 +48,8 @@ const ModalForm = () => {
           <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="success" onClick={handleClose}>
-            Send message
+          <Button variant="ligth" onClick={handleClose}>
+            <img src={logo} width={40} />
           </Button>
         </Modal.Footer>
       </Modal>
