@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
+import "/workspace/FinalProject/src/front/js/component/ModalForm.css";
+
 const ModalForm = () => {
   const [show, setShow] = useState(false);
 
@@ -11,8 +13,8 @@ const ModalForm = () => {
 
   return (
     <>
-      <Button variant="dark" onClick={handleShow}>
-        Contact Us
+      <Button className="contactButton" onClick={handleShow}>
+        CONTÁCTANOS
       </Button>
 
       <Modal show={show} onHide={handleClose}>

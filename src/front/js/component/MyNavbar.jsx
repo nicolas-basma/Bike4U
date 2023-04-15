@@ -19,7 +19,7 @@ export const MyNavbar = () => {
               FAVORITOS
             </Nav.Link>
             <Nav.Link href="#features" className="button">
-            <Link to="aboutus">CONTACTO</Link>
+              <Link to="aboutus">CONTACTO</Link>
             </Nav.Link>
             <Nav.Link href="#pricing" className="button">
               LOGIN

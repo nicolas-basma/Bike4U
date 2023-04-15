@@ -1,8 +1,12 @@
-import React from "react";
-
+import React, { useState } from "react";
+import ModalForm from "../component/ModalForm.jsx";
 import "/workspace/FinalProject/src/front/js/pages/AboutUs.css";
 
 const AboutUs = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div className="container">
       <div className="about">
@@ -31,8 +35,10 @@ const AboutUs = () => {
           porta eget.
         </p>
       </div>
-      <div className="contact">
-        <h1>Contáctanos</h1>
+      <div>
+        <h1>
+          <ModalForm />
+        </h1>
       </div>
     </div>
   );

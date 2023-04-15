@@ -10,6 +10,7 @@ import MyFooter from "./component/MyFooter.jsx";
 import MyNavbar from "./component/MyNavbar.jsx";
 import ModalForm from "./component/ModalForm.jsx";
 import AboutUs from "./pages/AboutUs.js";
+import MyCarousel from "./component/MyCarousel.jsx";
 
 //create your first component
 const Layout = () => {
@@ -21,7 +22,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <MyNavbar />
-        <ModalForm />
+
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<AboutUs />} path="/aboutus" />
