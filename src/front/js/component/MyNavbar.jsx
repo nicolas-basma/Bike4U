@@ -10,12 +10,14 @@ import "./MyNavbar.css";
 export const MyNavbar = () => {
   const { store, action } = useStore();
   const { handleShow } = action;
+  const {logo}=store
   return (
     <>
       <Navbar variant="dark">
         <Container>
-          <Navbar.Brand href="#home" className="logo">
-            <Link to="/">bike4u</Link>
+          <Navbar.Brand href="#home" >
+          <Link to="/" className="logo"><img className="logo" src={logo}/></Link>
+          <Link to="/" className="branding">bike4U</Link>
           </Navbar.Brand>
           <Nav className="">
             <Nav.Link href="#home" className="button">
