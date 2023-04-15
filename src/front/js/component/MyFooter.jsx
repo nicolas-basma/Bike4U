@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
 import "./MyFooter.css";
-import { Context } from "../store/appContext";
 
 import UseAnimations from "react-useanimations";
 import twitter from "react-useanimations/lib/twitter";
