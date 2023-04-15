@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@200&display=swap");
+
+.container {
+  text-align: center;
+}
+.about {
+  background-color: black;
+  color: white;
+  width: 75%;
+  padding: 20px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px #222;
+  margin: 0px auto;
+}
+.about h1 {
+  font-family: "Racing Sans One", cursive;
+  align-items: center;
+}
+.about p {
+  font-family: "Sofia Sans Condensed", sans-serif;
+}
+.contact {
+  background-color: black;
+  color: white;
+  font-family: "Racing Sans One", cursive;
+  width: 50%;
+  padding: 20px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px #222;
+  margin: 40px auto;
+}
+.contact:hover {
+  cursor: pointer;
+  border: 2px solid white;
+}

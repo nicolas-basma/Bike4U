@@ -15,10 +15,36 @@
     );
   margin-bottom: 10px;
 }
+.logo:hover {
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 3s ease-in-out infinite alternate;
+  -moz-animation: glow 3s ease-in-out infinite alternate;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #70656b, 0 0 20px #6f5f67,
+      0 0 25px #d2c5cc, 0 0 30px #3a3437, 0 0 35px #ffffff;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 15px #51484c, 0 0 20px #c3babe,
+      0 0 25px #686165, 0 0 30px #8f858a, 0 0 35px #7b7075, 0 0 40px #867a80;
+  }
+}
+
 .button {
   color: white;
   font-family: "Racing Sans One", cursive;
 }
 .button:hover {
   font-size: 25px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: white;
 }

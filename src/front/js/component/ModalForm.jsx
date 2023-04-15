@@ -3,7 +3,8 @@ import useStore from "../store/AppContext.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import "./ModalForm.css";
+
+import "/workspace/FinalProject/src/front/js/component/ModalForm.css";
 
 const ModalForm = () => {
   const { store, action } = useStore();

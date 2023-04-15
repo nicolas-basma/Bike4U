@@ -19,11 +19,17 @@ const Home = () => {
   };
 
   return (
-    <div className="text-center mt-5">
-      <img src={logo} width={50} />
-      <Button onClick={handleNavigator} label={"Personaliza tu Bicicleta"} />
-      <ModalForm />
-    </div>
+    <>
+      <div className="text-center mt-5">
+        <img src={logo} width={50} />
+        <Button onClick={handleNavigator} label={"Personaliza tu Bicicleta"} />
+        <ModalForm />
+      </div>
+
+      <div>
+        <MyCarousel />
+      </div>
+    </>
   );
 };
 
