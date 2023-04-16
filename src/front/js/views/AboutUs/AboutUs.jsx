@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import ModalForm from "../component/ModalForm.jsx";
-import "/workspace/FinalProject/src/front/js/pages/AboutUs.css";
+import ModalForm from "../../component/ModalForm/ModalForm.jsx";
+import useStore from "../../store/AppContext.jsx";
+import { Button } from "react-bootstrap";
+import "./AboutUs.css";
 
 const AboutUs = () => {
-  const [show, setShow] = useState(false);
+  const { action } = useStore();
+  const { handleShow } = action;
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   return (
     <div className="container">
       <div className="about">
@@ -37,6 +38,7 @@ const AboutUs = () => {
       </div>
       <div>
         <h1>
+          <Button onClick={handleShow}>Contact us</Button>
           <ModalForm />
         </h1>
       </div>
