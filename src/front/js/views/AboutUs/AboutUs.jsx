@@ -38,7 +38,9 @@ const AboutUs = () => {
       </div>
       <div>
         <h1>
-          <Button onClick={handleShow}>Contact us</Button>
+          <Button className="contactButton" onClick={handleShow}>
+            Contact us
+          </Button>
           <ModalForm />
         </h1>
       </div>

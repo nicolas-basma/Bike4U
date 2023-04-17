@@ -10,17 +10,23 @@ import "./MyNavbar.css";
 export const MyNavbar = () => {
   const { store, action } = useStore();
   const { handleShow } = action;
+  const { logo } = store;
   return (
     <>
       <Navbar variant="dark">
         <Container>
           <Navbar.Brand className="logo">
-            <Link to="/">bike4u</Link>
+            <img className="logo" src={logo} />
+            <Link to="/" className="branding">
+              bike4u
+            </Link>
           </Navbar.Brand>
           <Nav className="">
             <Nav.Item className="button">FAVORITOS</Nav.Item>
             <Nav.Item className="button">
-              <Link to="aboutus">CONTACTO</Link>
+              <Link className="button" to="aboutus">
+                CONTACTO
+              </Link>
             </Nav.Item>
             <Nav.Item className="button">LOGIN</Nav.Item>
           </Nav>
