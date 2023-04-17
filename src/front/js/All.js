@@ -7,8 +7,8 @@ const All = () => {
   return (
     <>
       <MyNavbar />
-      <MyFooter />
       <Outlet />
+      <MyFooter />
     </>
   );
 };
