@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 
-import "/workspace/FinalProject/src/front/js/component/MyCarousel.css";
+import "./MyCarousel.css";
 
 const MyCarousel = () => {
   return (
