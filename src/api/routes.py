@@ -20,6 +20,8 @@ def handle_hello():
     return jsonify(response_body), 200
 
 
+#SingUp route to create a user
+
 @api.route("/singup", methods=["POST"])
 def handle_singup():
     request_body = request.json
@@ -35,6 +37,7 @@ def handle_singup():
     db.session.commit()
     return new_user.serialize()
 
+#Login route to valid the user
 
 @api.route('/login', methods=['POST'])
 def handle_login():
@@ -47,3 +50,31 @@ def handle_login():
 
     login_token = create_access_token(identity=user_info)
     return jsonify({"login_token": login_token, "Name": user_info["name"]})
+
+#AllUSers to GET all users of the db
+
+@api.route('/allusers', methods=['GET'])
+def handle_all_users():
+    all_user = User.query.all()
+    print(all_user)
+    list_of_users = []
+    for user in all_user:
+        list_of_users.append(user.serialize())
+    return jsonify(list_of_users)
+
+
+#delete user by ID
+@api.route('/deleteuser/<int:id>', methods=['DELETE'])
+def handle_delete_user(id):
+    user_to_delete = User.query.get_or_404(id)
+    db.session.delete(user_to_delete)
+    db.session.commit()
+    return jsonify(user_to_delete.serialize())
+
+
+#edit user
+@api.route('/edit/<int:id>', methods=['PUT'])
+def handle_edit_user(id):
+    user_to_edit = User.query.get_or_404(id)
+    print(user_to_edit)
+    return 'ok'
