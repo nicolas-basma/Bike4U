@@ -16,3 +16,9 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+@api.route("/singup", methods=['POST'])
+def handle_singup():
+    response_body = request.json
+    return response_body
