@@ -19,31 +19,16 @@ export const AppContext = ({ children }) => {
       return { ...prev, [key]: value };
     });
   };
-  // const handleEmailContact = (event) => setEmailContact(event.target.value);
-  // const handleCityContact = (event) => setCityContact(event.target.value);
-  // const handleMensagge = (event) => setMensaggeContact(event.target.value);
-
   const store = {
     show,
-    // contactMail,
     logo,
-    // nameContact,
-    // emailContact,
-    // cityContact,
-    // mensaggeContact,
     contact,
   };
   const action = {
     setShow,
     handleClose,
     handleShow,
-    // setCityContact,
-    // setEmailContact,
-    // setNameContact,
     handleContact,
-    // handleCityContact,
-    // handleEmailContact,
-    // handleMensagge
     setContact,
   };
   return (

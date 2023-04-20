@@ -8,22 +8,8 @@ import "./ModalForm.css";
 
 const ModalForm = () => {
   const { store, action } = useStore();
-  const {
-    show,
-    // nameContact,
-    // emailContact,
-    // cityContact,
-    // mensaggeContact,
-    contact,
-  } = store;
-  const {
-    handleClose,
-    handleContact,
-    // handleEmailContact,
-    // handleCityContact,
-    // handleMensagge,
-    setShow,
-  } = action;
+  const { show, contact } = store;
+  const { handleClose, handleContact, setShow } = action;
 
   const handleLog = () => {
     console.log(contact);
