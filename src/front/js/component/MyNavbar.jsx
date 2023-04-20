@@ -10,24 +10,33 @@ import "./MyNavbar.css";
 export const MyNavbar = () => {
   const { store, action } = useStore();
   const { handleShow } = action;
-  const {logo}=store
+  const { logo } = store;
   return (
     <>
       <Navbar variant="dark">
         <Container>
-          <Navbar.Brand href="#home" >
-          <Link to="/" className="logo"><img className="logo" src={logo}/></Link>
-          <Link to="/" className="branding">bike4U</Link>
+          <Navbar.Brand href="#home" className="navbarBrand">
+            <Link to="/" className="logo">
+              <img className="logo" src={logo} />
+            </Link>
+            <Link to="/" className="branding">
+              bike4U
+            </Link>
           </Navbar.Brand>
-          <Nav className="">
-            <Nav.Link href="#home" className="button">
-              FAVORITOS
+          <Nav>
+            <Nav.Link className="button">
+              <Link to="customizeBike">PERSONALIZA TU BICI </Link>
             </Nav.Link>
+
+            <Nav.Link className="button">FAVORITOS</Nav.Link>
+
             <Nav.Link className="button">
               <Link to="aboutus">CONTACTO</Link>
             </Nav.Link>
-            <Nav.Link href="#pricing" className="button">
-              LOGIN
+            <Nav.Link>
+              <button className="buttonLogin">
+                <i class="fa-solid fa-user" id="loginButton"></i>
+              </button>
             </Nav.Link>
           </Nav>
         </Container>

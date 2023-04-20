@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ModalForm from "../component/ModalForm.jsx";
 //import "..views/AboutUs.css";
 import useStore from "../store/AppContext.jsx";
-import "/workspace/FinalProject/src/front/js/views/AboutUs.css"
+import "./AboutUs.css"
+
 
 const AboutUs = () => {
   const { store, action } = useStore();

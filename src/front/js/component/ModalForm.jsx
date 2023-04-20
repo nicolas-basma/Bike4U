@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-import "/workspace/FinalProject/src/front/js/component/ModalForm.css"
+import "./ModalForm.css"
 
 const ModalForm = () => {
   const [show, setShow] = useState(false);
@@ -14,7 +14,7 @@ const ModalForm = () => {
   return (
     <>
       <div className="buttonContact"  onClick={handleShow}>
-        Contact Us
+        Contáctanos
       </div>
 
       <Modal show={show} onHide={handleClose}>

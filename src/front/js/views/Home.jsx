@@ -22,7 +22,7 @@ const Home = () => {
     <>
       <div className="text-center mt-5">
         
-        <Button onClick={handleNavigator} label={"Personaliza tu Bicicleta"} />
+        <Button  label={"Personaliza tu Bicicleta"} />
       </div>
 
       <div>

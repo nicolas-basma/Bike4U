@@ -1,11 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
 
 footer {
   display: flex;
   justify-content: center;
-  font-family: 'Sofia Sans Condensed', sans-serif;
-  position:fixed;
-  left:0px;
-  bottom:0px;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
   width: 100%;
+  background-color: black;
+  color: white;
+}
+.contact {
+  display: flex;
+}
+.col-2 {
+  flex: 0 0 auto;
+  width: 16.66666667%;
+  padding: 0;
+  margin-left: 30px;
+  
+  
+}
+.company {
+  font-size: 20px;
+  font-family: "Notable", sans-serif;
+  line-height: 18px;
+  letter-spacing: 3px;
+  width: max-content;
+}
+
+.footer-logo {
+  width: 90px;
+}
+
+.copyright {
+  border-top: 1px solid white;
 }

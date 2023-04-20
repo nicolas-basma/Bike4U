@@ -1,19 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
+
 .navbar {
   background-color: black;
   box-shadow: 0px 0px 25px #222;
-  height:100px;
-  padding:0px
+  height: 100px;
+  padding: 0px;
 }
-.logo{
-  width:200px;
-  margin-top:30px;
- 
+.logo {
+  width: 120px;
+  margin-top: 0;
+  display: flex;
+  float: left;
+  margin-top: -10px;
+  margin-left: -50px;
 }
 .branding {
   color: white;
-  font-family: "Racing Sans One", cursive;
+  font-family: "Notable", sans-serif;
   font-size: 40px;
-
   margin-bottom: 10px;
 }
 .branding:hover {
@@ -26,8 +31,10 @@
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 5px rgb(255, 209, 2), 0 0 10px rgb(255, 209, 2), 0 0 15px rgb(255, 209, 2), 0 0 20px rgb(255, 209, 2),
-      0 0 25px rgb(255, 209, 2), 0 0 30px rgb(255, 209, 2), 0 0 35px rgb(255, 209, 2);
+    text-shadow: 0 0 5px rgb(255, 209, 2), 0 0 10px rgb(255, 209, 2),
+      0 0 15px rgb(255, 209, 2), 0 0 20px rgb(255, 209, 2),
+      0 0 25px rgb(255, 209, 2), 0 0 30px rgb(255, 209, 2),
+      0 0 35px rgb(255, 209, 2);
   }
   to {
     text-shadow: 0 0 10px #fff, 0 0 15px #51484c, 0 0 20px #c3babe,
@@ -38,14 +45,32 @@
 .button {
   color: white;
   font-family: "Racing Sans One", cursive;
+  width: auto;
 }
 .button:hover {
-  font-size: 25px;
+  background-color: rgb(66, 66, 61);
+  border-radius: 10px rgb(66, 66, 61);
 }
 a {
   text-decoration: none;
   color: white;
+  border-radius: 10px;
 }
 a:hover {
   color: white;
+}
+.buttonLogin {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  margin-left: 70px;
+  font-size: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.buttonLogin:hover {
+  color: rgb(0, 0, 0);
+
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  background-color: rgb(231, 216, 8);
 }
