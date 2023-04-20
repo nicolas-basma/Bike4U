@@ -1,6 +1,6 @@
 import React from "react";
 
-function Product() {
+function ProductView() {
   return (
     <div className="container">
       <h1>Esta es la pagina de productos</h1>
@@ -8,4 +8,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default ProductView;
