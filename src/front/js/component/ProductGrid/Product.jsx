@@ -8,7 +8,7 @@ function Product({ name, price, image, id }) {
     navigate(`/product/${id}`);
   };
   return (
-    <div className="col-12 col-md-4" onClick={handleNavigate}>
+    <div onClick={handleNavigate}>
       <img src={image} alt={name} />
       <h3>{name}</h3>
       <p>{price}</p>

@@ -1,12 +1,12 @@
 import React from "react";
-import Product from "./Product.jsx";
+import Products from "./Products.jsx";
 
-function ProductGrid({ products }) {
+function ProductGrid({ sections }) {
   return (
     <div className="container">
       <div className="row">
-        {products.map((product, index) => {
-          return <Product {...product} key={index} />;
+        {sections.map((section, index) => {
+          return <Products section={section} key={index} />;
         })}
       </div>
     </div>
