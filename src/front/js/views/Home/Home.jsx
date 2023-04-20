@@ -6,38 +6,7 @@ import Button from "../../component/Button.jsx";
 import ModalForm from "../../component/ModalForm/ModalForm.jsx";
 import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import ProductGrid from "../../component/ProductGrid/ProductGrid.jsx";
-
-const products = [
-  {
-    id: 1,
-    name: "Product Favoritos",
-    price: "$10",
-    image: "product1.jpg",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    price: "$20",
-    image: "product2.jpg",
-  },
-  { id: 3, name: "Product 3", price: "$30", image: "product3.jpg" },
-  // adicione mais produtos aqui
-];
-
-const sections = [
-  {
-    title: "Top Sellers",
-    products: products,
-  },
-  {
-    title: "Top Rated",
-    products: products,
-  },
-  {
-    title: "Just4you",
-    products: products,
-  },
-];
+import sections from "../../mocks/sections.js";
 
 const Home = () => {
   const { store, actions } = useStore();
