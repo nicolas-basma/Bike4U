@@ -3,6 +3,7 @@ import bcrypt
 
 db = SQLAlchemy()
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
@@ -13,12 +14,11 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.email}>'
 
-    def verify(self,password):
-        #hash_password = bcrypt.hashpw(password, self.password)
+    def verify(self, password):
+        hash_password = bcrypt.hashpw(password, self.password)
         print(type(password))
-        return #self.password == hash_password
-        
-        
+        return  self.password == hash_password
+
     def serialize(self):
         return {
             "id": self.id,
