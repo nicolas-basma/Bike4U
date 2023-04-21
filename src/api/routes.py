@@ -6,6 +6,7 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import bcrypt
+from .send_email import send_email
 
 api = Blueprint('api', __name__)
 
@@ -83,3 +84,14 @@ def handle_edit_user(id):
     user_to_edit.password = new_password
     db.session.commit()
     return jsonify(user_to_edit.serialize()), 200
+
+# ruta para enviar email desde el formulario de contact us
+
+
+@api.route('/send-email', methods=['POST'])
+def handle_send_message():
+    request_body = request.json
+    email = request_body['email']
+    message = request_body['message']
+    send_email(email, message)
+    return jsonify(request_body)

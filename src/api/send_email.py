@@ -1,11 +1,11 @@
 from smtplib import SMTP_SSL
 
 
-def send_email(message):
+def send_email(to, message):
 
     HOST = "smtp.gmail.com"
     FROM_EMAIL = "pruebabike4u@gmail.com"
-    TO_EMAIL = "pruebabike4u@gmail.com"
+    TO_EMAIL = to
     PASSWORD = "stpsuvdctqoyzrih"
     MESSAGE = message
 
@@ -16,6 +16,5 @@ def send_email(message):
     smtp.login(FROM_EMAIL, PASSWORD)
 
     smtp.sendmail(FROM_EMAIL, TO_EMAIL, MESSAGE)
-    print("ok")
 
     smtp.quit()
