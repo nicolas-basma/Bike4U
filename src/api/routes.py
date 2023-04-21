@@ -17,8 +17,9 @@ api = Blueprint('api', __name__)
 def handle_singup():
     # ruta para crear usuarios nuevos en la base de datos que retorna el usuario serializado
     request_body = request.json
+    # encriptamos la password
     coded_password = bcrypt.hashpw(request_body["password"].encode(
-        "utf-8"), bcrypt.gensalt())  # encriptando la password
+        "utf-8"), bcrypt.gensalt())
     new_user = User(
         name=request_body["name"],
         email=request_body["email"],
@@ -30,7 +31,7 @@ def handle_singup():
         db.session.commit()
     except:
         return jsonify({"msg": "el email ya esta registrado bobo"}), 403
-    return new_user.serialize(), 200
+    return jsonify({"msg": f"nuevo usuario creado: '{new_user.name}'"}), 200
 
 # POST login
 
