@@ -15,6 +15,7 @@ api = Blueprint('api', __name__)
 
 @api.route("/signup", methods=["POST"])
 def handle_singup():
+    # ruta para crear usuarios nuevos en la base de datos que retorna el usuario serializado
     request_body = request.json
     coded_password = bcrypt.hashpw(request_body["password"].encode(
         "utf-8"), bcrypt.gensalt())  # encriptando la password
@@ -33,6 +34,7 @@ def handle_singup():
 
 @api.route('/login', methods=['POST'])
 def handle_login():
+    # funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
     request_user = request.json
     user = User.query.filter_by(email=request_user["email"]).first_or_404()
     user_info = user.serialize()
@@ -48,6 +50,7 @@ def handle_login():
 
 @api.route('/allusers', methods=['GET'])
 def handle_all_users():
+    # funcion que devuelve todos los usuarios de mi base de datos
     all_user = User.query.all()
     list_of_users = []
     for user in all_user:
@@ -59,6 +62,7 @@ def handle_all_users():
 
 @api.route('/user/<int:id>', methods=['GET'])
 def handle_get_user(id):
+    # funcion que devuelve un usuario en particular mediante su ID
     user = User.query.get_or_404(id)
     return jsonify(user.serialize()), 200
 
@@ -66,6 +70,7 @@ def handle_get_user(id):
 # DELETE user by ID
 @api.route('/deleteuser/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
+    # funcion para borrar un usuario mediante su ID
     user_to_delete = User.query.get_or_404(id)
     db.session.delete(user_to_delete)
     db.session.commit()
@@ -75,6 +80,7 @@ def handle_delete_user(id):
 # PUT user
 @api.route('/edit/<int:id>', methods=['PUT'])
 def handle_edit_user(id):
+    # funcion para editar la informacion de un usuario en particular
     user_to_edit = User.query.get_or_404(id)
     request_body = request.json
     user_to_edit.name = request_body["name"]
@@ -85,11 +91,10 @@ def handle_edit_user(id):
     db.session.commit()
     return jsonify(user_to_edit.serialize()), 200
 
-# ruta para enviar email desde el formulario de contact us
-
 
 @api.route('/send-email', methods=['POST'])
 def handle_send_message():
+    # ruta para enviar email desde el formulario de contact us
     request_body = request.json
     email = request_body['email']
     message = request_body['message']
