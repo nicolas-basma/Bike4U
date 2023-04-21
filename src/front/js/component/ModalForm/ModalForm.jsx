@@ -11,7 +11,7 @@ const ModalForm = () => {
   const { store, action } = useStore();
   const { show } = store;
   const { handleClose, setShow } = action;
-  const { handleInput, formInput } = useForms();
+  const { formInput, myHandleInput } = useForms();
 
   const handleLog = () => {
     console.log(formInput);
@@ -32,7 +32,7 @@ const ModalForm = () => {
                 name="name"
                 placeholder="your name"
                 autoFocus
-                onChange={(e) => handleInput(e.target.value, "name")}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -41,7 +41,7 @@ const ModalForm = () => {
                 type="email"
                 name="email"
                 placeholder="name@example.com"
-                onChange={(e) => handleInput(e.target.value, "email")}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
@@ -50,7 +50,7 @@ const ModalForm = () => {
                 type="text"
                 name="city"
                 placeholder="city"
-                onChange={(e) => handleInput(e.target.value, "city")}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group
@@ -60,8 +60,9 @@ const ModalForm = () => {
               <Form.Label>Tell us your doubts</Form.Label>
               <Form.Control
                 as="textarea"
+                name="message"
                 rows={3}
-                onChange={(e) => handleInput(e.target.value, "message")}
+                onChange={myHandleInput}
               />
             </Form.Group>
           </Form>
