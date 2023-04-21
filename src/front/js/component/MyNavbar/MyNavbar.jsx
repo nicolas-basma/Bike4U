@@ -26,10 +26,10 @@ export const MyNavbar = () => {
           </Navbar.Brand>
           <Nav className="">
             <Link to="/customizebike">
-              <Nav.Item className="button">PERSONALIZA TU BICI</Nav.Item>
+              <Nav.Item className="btn button">PERSONALIZA TU BICI</Nav.Item>
             </Link>
-            <Nav.Item className="button">FAVORITOS</Nav.Item>
-            <Nav.Item className="button">
+            <Nav.Item className="btn button">FAVORITOS</Nav.Item>
+            <Nav.Item className="btn button">
               <Link className="button" to="aboutus">
                 CONTACTO
               </Link>
