@@ -16,12 +16,17 @@ export const MyNavbar = () => {
       <Navbar variant="dark">
         <Container>
           <Navbar.Brand className="logo">
-            <img src={logo} width={100} />
+            <Link to="/" className="branding">
+              <img src={logo} width={100} />
+            </Link>
             <Link to="/" className="branding">
               bike4u
             </Link>
           </Navbar.Brand>
           <Nav className="">
+            <Link to="/customizebike">
+              <Nav.Item className="button">PERSONALIZA TU BICI</Nav.Item>
+            </Link>
             <Nav.Item className="button">FAVORITOS</Nav.Item>
             <Nav.Item className="button">
               <Link className="button" to="aboutus">
