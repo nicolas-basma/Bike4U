@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import useStore from "../../store/AppContext.jsx";
 
 import "./MyNavbar.css";
+import MyUserLoginDropdown from "../MyUserDropdown/MyUserDropdown.jsx";
+import { Button } from "bootstrap";
 
 export const MyNavbar = () => {
   const { store, action } = useStore();
@@ -33,7 +35,7 @@ export const MyNavbar = () => {
                 CONTACTO
               </Link>
             </Nav.Item>
-            <Nav.Item className="button">LOGIN</Nav.Item>
+            <MyUserLoginDropdown />
           </Nav>
         </Container>
       </Navbar>
@@ -42,3 +44,5 @@ export const MyNavbar = () => {
 };
 
 export default MyNavbar;
+
+//<Nav.Item className="button dropdown-toggle" data-bs-toggle="myUserLoginDropdown" aria-expanded="false" data-bs-auto-close="outside">LOGIN</Nav.Item>
