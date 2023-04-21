@@ -5,7 +5,6 @@ import AboutUs from "../views/AboutUs.jsx";
 import All from "../app.js";
 import CustomizeBike from "../views/CustomizeBike.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,8 +22,6 @@ const router = createBrowserRouter([
         path: "/customizeBike",
         element: <CustomizeBike />,
       },
-    
-      
     ],
   },
 ]);
