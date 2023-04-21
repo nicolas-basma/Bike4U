@@ -64,7 +64,7 @@ a:hover {
   background-color: rgb(0, 0, 0);
   margin-left: 70px;
   font-size: 20px;
-  border: 1px solid white;
+  border: 3px solid white;
   border-radius: 10px;
 }
 .buttonLogin:hover {
@@ -72,5 +72,6 @@ a:hover {
 
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  background-color: rgb(231, 216, 8);
+  background-color: rgb(255, 200, 0);
+  border-color: rgb(255, 255, 255);
 }
