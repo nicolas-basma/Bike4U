@@ -30,6 +30,7 @@ const ModalForm = () => {
               <Form.Control
                 type="text"
                 name="name"
+                value={formInput[name]}
                 placeholder="your name"
                 autoFocus
                 onChange={myHandleInput}
@@ -40,6 +41,7 @@ const ModalForm = () => {
               <Form.Control
                 type="email"
                 name="email"
+                value={formInput[name]}
                 placeholder="name@example.com"
                 onChange={myHandleInput}
               />
@@ -49,6 +51,7 @@ const ModalForm = () => {
               <Form.Control
                 type="text"
                 name="city"
+                value={formInput[name]}
                 placeholder="city"
                 onChange={myHandleInput}
               />
@@ -61,6 +64,7 @@ const ModalForm = () => {
               <Form.Control
                 as="textarea"
                 name="message"
+                value={formInput[name]}
                 rows={3}
                 onChange={myHandleInput}
               />
