@@ -7,7 +7,6 @@ import useStore from "../../store/AppContext.jsx";
 
 import "./MyNavbar.css";
 import MyUserLoginDropdown from "../MyUserDropdown/MyUserDropdown.jsx";
-import { Button } from "bootstrap";
 
 export const MyNavbar = () => {
   const { store, action } = useStore();
