@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import ModalForm from "../component/ModalForm.jsx";
-//import "..views/AboutUs.css";
-import useStore from "../store/AppContext.jsx";
-import "./AboutUs.css"
-
+import ModalForm from "../../component/ModalForm/ModalForm.jsx";
+import useStore from "../../store/AppContext.jsx";
+import { Button } from "react-bootstrap";
+import "./AboutUs.css";
 
 const AboutUs = () => {
-  const { store, action } = useStore();
+  const { action } = useStore();
+  const { handleShow } = action;
 
   return (
     <div className="container">
@@ -37,7 +37,10 @@ const AboutUs = () => {
         </p>
       </div>
       <div>
-        <h1 className="contactButton">
+        <h1>
+          <button className="contactButton" onClick={handleShow}>
+            Contact us
+          </button>
           <ModalForm />
         </h1>
       </div>

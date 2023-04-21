@@ -1,24 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap");
-
 .navbar {
   background-color: black;
   box-shadow: 0px 0px 25px #222;
   height: 100px;
   padding: 0px;
 }
-.logo {
-  width: 120px;
-  margin-top: 0;
-  display: flex;
-  float: left;
-  margin-top: -10px;
-  margin-left: -50px;
-}
+
 .branding {
   color: white;
-  font-family: "Notable", sans-serif;
+  font-family: "Racing Sans One", cursive;
   font-size: 40px;
+
   margin-bottom: 10px;
 }
 .branding:hover {
@@ -45,20 +36,19 @@
 .button {
   color: white;
   font-family: "Racing Sans One", cursive;
-  width: auto;
+  margin-inline: 2px;
 }
 .button:hover {
-  background-color: rgb(66, 66, 61);
-  border-radius: 10px rgb(66, 66, 61);
+  font-size: 25px;
 }
 a {
   text-decoration: none;
   color: white;
-  border-radius: 10px;
 }
 a:hover {
   color: white;
 }
+<<<<<<< HEAD:src/front/js/component/MyNavbar.css
 .buttonLogin {
   color: rgb(255, 255, 255);
   background-color: rgb(0, 0, 0);
@@ -75,3 +65,5 @@ a:hover {
   background-color: rgb(255, 200, 0);
   border-color: rgb(255, 255, 255);
 }
+=======
+>>>>>>> 8772f826cf1a1e227f160294638a21d7a613c58e:src/front/js/component/MyNavbar/MyNavbar.css
