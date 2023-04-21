@@ -25,8 +25,11 @@ def handle_singup():
         password=coded_password,
         is_active=False
     )
-    db.session.add(new_user)
-    db.session.commit()
+    try:
+        db.session.add(new_user)
+        db.session.commit()
+    except:
+        return jsonify({"msg": "el email ya esta registrado bobo"}), 403
     return new_user.serialize(), 200
 
 # POST login
@@ -36,14 +39,19 @@ def handle_singup():
 def handle_login():
     # funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
     request_user = request.json
-    user = User.query.filter_by(email=request_user["email"]).first_or_404()
+    user = User.query.filter_by(email=request_user["email"]).first()
+    print(user)
+    if user == None:
+        return jsonify({"msg": "no existe el usuario boludo!!!"}), 404
     user_info = user.serialize()
 
     if not user.verify(request_user["password"].encode("utf-8")):
         return jsonify({"msg": "the password is incorrect!!! boludo!"}), 403
 
     login_token = create_access_token(identity=user_info)
+
     return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200
+
 
 # GET all users
 
