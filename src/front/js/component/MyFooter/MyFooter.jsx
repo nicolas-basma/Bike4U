@@ -1,5 +1,5 @@
 import React from "react";
-import useStore from "../store/AppContext.jsx";
+import useStore from "../../store/AppContext.jsx";
 
 import "./MyFooter.css";
 

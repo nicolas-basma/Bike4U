@@ -1,8 +1,8 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../views/Home.jsx";
-import AboutUs from "../views/AboutUs.jsx";
-import All from "../app.js";
+import Home from "../views/Home/Home.jsx";
+import AboutUs from "../views/AboutUs/AboutUs.jsx";
+import All from "../../js/All.js";
 import CustomizeBike from "../views/CustomizeBike.jsx";
 
 const router = createBrowserRouter([
