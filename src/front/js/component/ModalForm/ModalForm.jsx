@@ -3,16 +3,18 @@ import useStore from "../../store/AppContext.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import useForms from "../../store/useForms.jsx";
 
 import "./ModalForm.css";
 
 const ModalForm = () => {
   const { store, action } = useStore();
-  const { show, contact } = store;
-  const { handleClose, handleContact, setShow } = action;
+  const { show } = store;
+  const { handleClose, setShow } = action;
+  const { formInput, myHandleInput } = useForms();
 
   const handleLog = () => {
-    console.log(contact);
+    console.log(formInput);
     setShow(false);
   };
   return (
@@ -27,25 +29,28 @@ const ModalForm = () => {
               <Form.Label>Your name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="name"
+                name="name"
+                placeholder="your name"
                 autoFocus
-                onChange={(e) => handleContact(e.target.value, "name")}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Your Email address</Form.Label>
               <Form.Control
                 type="email"
+                name="email"
                 placeholder="name@example.com"
-                onChange={(e) => handleContact(e.target.value, "email")}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Label>City</Form.Label>
               <Form.Control
                 type="text"
+                name="city"
                 placeholder="city"
-                onChange={(e) => handleContact(e.target.value, "city")}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group
@@ -55,8 +60,9 @@ const ModalForm = () => {
               <Form.Label>Tell us your doubts</Form.Label>
               <Form.Control
                 as="textarea"
+                name="message"
                 rows={3}
-                onChange={(e) => handleContact(e.target.value, "message")}
+                onChange={myHandleInput}
               />
             </Form.Group>
           </Form>
