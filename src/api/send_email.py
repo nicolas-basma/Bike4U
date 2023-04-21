@@ -4,9 +4,9 @@ from smtplib import SMTP_SSL
 def send_email(to, message):
 
     HOST = "smtp.gmail.com"
-    FROM_EMAIL = "pruebabike4u@gmail.com"
+    FROM_EMAIL = "contact.bike4u@gmail.com"
     TO_EMAIL = to
-    PASSWORD = "stpsuvdctqoyzrih"
+    PASSWORD = "eqrgkjdmdohubnzh"
     MESSAGE = message
 
     smtp = SMTP_SSL(HOST)
