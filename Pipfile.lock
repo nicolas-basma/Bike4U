@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "43ed146b65b7463ad87710d1de103e4f93e7e1f89fcc458e52bd77ab16a6c7b9"
+            "sha256": "840d65675c6eeeaae35ec632add2a40d37ae382d5b713316f76c9bd7cc8759d8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -414,13 +414,21 @@
             "markers": "python_version >= '3.6'",
             "version": "==6.0"
         },
+        "secure-smtplib": {
+            "hashes": [
+                "sha256:3d4903f6612626ccd9b77ef05313cb3c3952a59a4d756cda2377b272fabad8b9",
+                "sha256:645ea0a341f306fa3307c8fe1169765c417ff363db9946fa69f3669a9b718069"
+            ],
+            "index": "pypi",
+            "version": "==0.1.1"
+        },
         "setuptools": {
             "hashes": [
-                "sha256:257de92a9d50a60b8e22abfcbb771571fde0dbf3ec234463212027a4eeecbe9a",
-                "sha256:e728ca814a823bf7bf60162daf9db95b93d532948c4c0bea762ce62f60189078"
+                "sha256:6f0839fbdb7e3cfef1fc38d7954f5c1c26bf4eebb155a55c9bf8faf997b9fb67",
+                "sha256:bb16732e8eb928922eabaa022f881ae2b7cdcfaf9993ef1f5e841a96d32b8e0c"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==67.6.1"
+            "version": "==67.7.1"
         },
         "six": {
             "hashes": [
