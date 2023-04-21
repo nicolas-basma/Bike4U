@@ -9,9 +9,10 @@ import bcrypt
 
 api = Blueprint('api', __name__)
 
-#POST crear usuario
+# POST crear usuario
 
-@api.route("/singup", methods=["POST"])
+
+@api.route("/signup", methods=["POST"])
 def handle_singup():
     request_body = request.json
     coded_password = bcrypt.hashpw(request_body["password"].encode(
@@ -26,7 +27,8 @@ def handle_singup():
     db.session.commit()
     return new_user.serialize(), 200
 
-#POST login 
+# POST login
+
 
 @api.route('/login', methods=['POST'])
 def handle_login():
@@ -40,7 +42,8 @@ def handle_login():
     login_token = create_access_token(identity=user_info)
     return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200
 
-#GET all users
+# GET all users
+
 
 @api.route('/allusers', methods=['GET'])
 def handle_all_users():
@@ -50,14 +53,16 @@ def handle_all_users():
         list_of_users.append(user.serialize())
     return jsonify(list_of_users), 200
 
-#GET user by ID
+# GET user by ID
+
+
 @api.route('/user/<int:id>', methods=['GET'])
 def handle_get_user(id):
     user = User.query.get_or_404(id)
     return jsonify(user.serialize()), 200
 
 
-#DELETE user by ID
+# DELETE user by ID
 @api.route('/deleteuser/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
     user_to_delete = User.query.get_or_404(id)
@@ -66,7 +71,7 @@ def handle_delete_user(id):
     return jsonify(user_to_delete.serialize()), 200
 
 
-#PUT user
+# PUT user
 @api.route('/edit/<int:id>', methods=['PUT'])
 def handle_edit_user(id):
     user_to_edit = User.query.get_or_404(id)
