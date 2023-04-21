@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import useStore from "../../store/AppContext.jsx";
 
 import "./MyNavbar.css";
-import MyUserLoginDropdown from "../MyUserDropdown/MyUserDropdown.jsx";
+import MyUserLoginDropdown from "../MyUserLoginDropdown/MyUserLoginDropdown.jsx";
 
 export const MyNavbar = () => {
   const { store, action } = useStore();
@@ -29,11 +29,11 @@ export const MyNavbar = () => {
               <Nav.Item className="btn button">PERSONALIZA TU BICI</Nav.Item>
             </Link>
             <Nav.Item className="btn button">FAVORITOS</Nav.Item>
-            <Nav.Item className="btn button">
-              <Link className="button" to="aboutus">
+            <Link className="button" to="/aboutus">
+              <Nav.Item className="btn button">
                 CONTACTO
-              </Link>
-            </Nav.Item>
+              </Nav.Item>
+            </Link>
             <MyUserLoginDropdown />
           </Nav>
         </Container>
