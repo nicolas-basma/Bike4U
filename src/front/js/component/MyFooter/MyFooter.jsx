@@ -1,6 +1,7 @@
 import React from "react";
 import useStore from "../../store/AppContext.jsx";
 import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
 
 import "./MyFooter.css";
 
@@ -21,36 +22,41 @@ const MyFooter = () => {
     <footer className="footer mt-auto py-1 text-center d-block">
       <div className=" container-fluid">
         <div className="row">
-          <div className="col-2">
+          <div className="col-3">
             <div className="company">
               <strong>BIKE4U</strong>
               <br></br>
               <img className="footer-logo" src={logo} />
             </div>
           </div>
-          <div className="col-2">
-            <p>dsdsds</p>
-            <p>dsdsds</p>
-            <p>dsdsds</p>
+          <div className="col-3">
+            <Link to="/aboutus">
+              <p>About Us</p>
+            </Link>
+            <Link to="/faqs">
+              <p>Frequent Questions</p>
+            </Link>
+            <p></p>
           </div>
-          <div className="col-2">
+          <div className="col-3">
             <p>
-              <FormattedMessage id="footerLegalAdvisory"></FormattedMessage>
+              <Link to="/legalpolicy">
+                <FormattedMessage id="footerLegalAdvisory"></FormattedMessage>
+              </Link>
             </p>
             <p>
-              <FormattedMessage id="footerPrivacyPolicy"></FormattedMessage>
+              <Link to="/legalpolicy">
+                <FormattedMessage id="footerPrivacyPolicy"></FormattedMessage>
+              </Link>
             </p>
             <p>
-              <FormattedMessage id="footerCookiesPolicy"></FormattedMessage>
+              <Link to="/legalpolicy">
+                <FormattedMessage id="footerCookiesPolicy"></FormattedMessage>
+              </Link>
             </p>
-          </div>
-          <div className="col-2">
-            <p>dsdsds</p>
-            <p>dsdsds</p>
-            <p>dsdsds</p>
           </div>
 
-          <div className="col-2">
+          <div className="col-3">
             <div className="contact">
               <a href="https://twitter.com/" target="_blank">
                 {" "}
