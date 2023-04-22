@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import useForms from "../../store/useForms.jsx";
 import useStore from "../../store/AppContext.jsx";
 
@@ -15,7 +17,7 @@ const MyUserLoginDropdown = () => {
         className="btn button mb-2"
         data-bs-toggle="dropdown"
         aria-expanded="false"
-        data-bs-auto-close="outside"
+        data-bs-auto-close="inside"
       >
         LOGIN
       </button>
@@ -75,12 +77,13 @@ const MyUserLoginDropdown = () => {
           </button>
         </form>
         <div className="dropdown-divider"></div>
-        <a className="dropdown-item" href="#">
-          New around here? Sign up!
-        </a>
-        <a className="dropdown-item" href="#">
-          Forgot password?
-        </a>
+        <Link className="btn dropdown-item" to="/SignUp">
+            New around here? Sign up!
+        </Link>
+        <Link className="btn dropdown-item" to="/PasswordRecovery">
+            Forgot password?
+        </Link>
+
       </div>
     </div>
   );

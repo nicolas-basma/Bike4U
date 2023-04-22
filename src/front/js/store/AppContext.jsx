@@ -14,7 +14,7 @@ export const AppContext = ({ children }) => {
   const handleLogin = ()=>{
 
     //Function required to handle the login in the userLoginDropdown.
-    //if loging is ok, clear formInputs
+    //if loging is ok, clear formInputs. Rerender views. Termany operators?
     //if loging is nok, clear only password.
 
   }
