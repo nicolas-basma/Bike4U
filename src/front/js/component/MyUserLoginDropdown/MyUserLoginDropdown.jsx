@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 import useForms from "../../store/useForms.jsx";
 import useStore from "../../store/AppContext.jsx";
 
 const MyUserLoginDropdown = () => {
-
   const { action } = useStore();
-  const {handleLogin} = action;
+  const { handleLogin } = action;
   const { formInput, myHandleInput } = useForms();
 
   return (
@@ -19,7 +19,7 @@ const MyUserLoginDropdown = () => {
         aria-expanded="false"
         data-bs-auto-close="inside"
       >
-        LOGIN
+        <FormattedMessage id="userLoginDropdownMainButton"></FormattedMessage>
       </button>
       <div className="dropdown-menu dropdown-menu-end">
         <form className="px-4 py-3">
@@ -28,7 +28,7 @@ const MyUserLoginDropdown = () => {
               htmlFor="MyUserLoginDropdown-input__email"
               className="form-label"
             >
-              Email address
+              <FormattedMessage id="userLoginDropdownEmail"></FormattedMessage>
             </label>
             <input
               type="email"
@@ -45,13 +45,15 @@ const MyUserLoginDropdown = () => {
               htmlFor="MyUserLoginDropdown-input__password"
               className="form-label"
             >
-              Password
+              <FormattedMessage id="userLoginDropdownPassword"></FormattedMessage>
             </label>
             <input
               type="password"
               className="form-control"
               id="MyUserLoginDropdown-input__password"
-              placeholder="Password"
+              placeholder={
+                <FormattedMessage id="userLoginDropdownPassword"></FormattedMessage>
+              }
               name="MyUserLoginDropdown-input__password"
               value={formInput["name"]}
               onChange={myHandleInput}
@@ -68,22 +70,25 @@ const MyUserLoginDropdown = () => {
                 onChange={myHandleInput}
               ></input>
               <label className="form-check-label" htmlFor="dropdownCheck">
-                Remember me
+                <FormattedMessage id="userLoginDropdownRemember"></FormattedMessage>
               </label>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary" onClick={handleLogin}>
-            Sign in
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleLogin}
+          >
+            <FormattedMessage id="buttonSignIn"></FormattedMessage>
           </button>
         </form>
         <div className="dropdown-divider"></div>
         <Link className="btn dropdown-item" to="/SignUp">
-            New around here? Sign up!
+          <FormattedMessage id="userLoginDropdownNewUser"></FormattedMessage>
         </Link>
         <Link className="btn dropdown-item" to="/PasswordRecovery">
-            Forgot password?
+          <FormattedMessage id="userLoginDropdownForgotPassword"></FormattedMessage>
         </Link>
-
       </div>
     </div>
   );

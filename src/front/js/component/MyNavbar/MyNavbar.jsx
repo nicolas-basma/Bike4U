@@ -3,6 +3,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+
 import useStore from "../../store/AppContext.jsx";
 
 import "./MyNavbar.css";
@@ -12,6 +14,7 @@ export const MyNavbar = () => {
   const { store, action } = useStore();
   const { handleShow } = action;
   const { logo } = store;
+
   return (
     <>
       <Navbar variant="dark">
@@ -26,12 +29,17 @@ export const MyNavbar = () => {
           </Navbar.Brand>
           <Nav className="">
             <Link to="/customizebike">
-              <Nav.Item className="btn button">PERSONALIZA TU BICI</Nav.Item>
+              <Nav.Item className="btn button">
+                <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
+                
+              </Nav.Item>
             </Link>
-            <Nav.Item className="btn button">FAVORITOS</Nav.Item>
+            <Nav.Item className="btn button">
+            <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
+            </Nav.Item>
             <Link className="button" to="/aboutus">
               <Nav.Item className="btn button">
-                CONTACTO
+              <FormattedMessage id="myNavbarButtomContact"></FormattedMessage>
               </Nav.Item>
             </Link>
             <MyUserLoginDropdown />
@@ -43,5 +51,3 @@ export const MyNavbar = () => {
 };
 
 export default MyNavbar;
-
-//<Nav.Item className="button dropdown-toggle" data-bs-toggle="myUserLoginDropdown" aria-expanded="false" data-bs-auto-close="outside">LOGIN</Nav.Item>

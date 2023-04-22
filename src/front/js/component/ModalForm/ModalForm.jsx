@@ -1,9 +1,11 @@
 import React from "react";
-import useStore from "../../store/AppContext.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+
+import useStore from "../../store/AppContext.jsx";
 import useForms from "../../store/useForms.jsx";
+import { FormattedMessage } from "react-intl";
 
 import "./ModalForm.css";
 
@@ -21,23 +23,23 @@ const ModalForm = () => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Contact Form</Modal.Title>
+          <Modal.Title><FormattedMessage id="contactModalTittle"></FormattedMessage></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-              <Form.Label>Your name</Form.Label>
+              <Form.Label><FormattedMessage id="contactModalName"></FormattedMessage></Form.Label>
               <Form.Control
                 type="text"
                 name="name"
                 value={formInput[name]}
-                placeholder="your name"
+                placeholder={<FormattedMessage id="contactModalName"></FormattedMessage>}
                 autoFocus
                 onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Your Email address</Form.Label>
+              <Form.Label><FormattedMessage id="contactModalEmail"></FormattedMessage></Form.Label>
               <Form.Control
                 type="email"
                 name="email"
@@ -47,12 +49,12 @@ const ModalForm = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-              <Form.Label>City</Form.Label>
+              <Form.Label><FormattedMessage id="contactModalCity"></FormattedMessage></Form.Label>
               <Form.Control
                 type="text"
                 name="city"
                 value={formInput[name]}
-                placeholder="city"
+                placeholder={<FormattedMessage id="contactModalCity"></FormattedMessage>}
                 onChange={myHandleInput}
               />
             </Form.Group>
@@ -60,7 +62,7 @@ const ModalForm = () => {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Tell us your doubts</Form.Label>
+              <Form.Label><FormattedMessage id="contactModalTextHeader"></FormattedMessage></Form.Label>
               <Form.Control
                 as="textarea"
                 name="message"
@@ -73,10 +75,10 @@ const ModalForm = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
-            Cancel
+              <FormattedMessage id="buttonCancel"></FormattedMessage>
           </Button>
           <Button variant="success" onClick={handleLog}>
-            Send Mensagge
+              <FormattedMessage id="buttonSendMessage"></FormattedMessage>
           </Button>
         </Modal.Footer>
       </Modal>

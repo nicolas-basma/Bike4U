@@ -75,10 +75,11 @@
 	"dependencies": {
 		"bootstrap": "^5.2.3",
 		"prop-types": "^15.6.1",
-		"react": "^16.8.4",
+		"react": "^16.14.0",
 		"react-bootstrap": "^2.7.4",
 		"react-dom": "^16.8.4",
 		"react-dropdown": "^1.11.0",
+		"react-intl": "^6.4.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.10.0",
 		"react-useanimations": "^2.10.0"

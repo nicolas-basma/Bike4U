@@ -1,5 +1,6 @@
 import React from "react";
 import useStore from "../../store/AppContext.jsx";
+import { FormattedMessage } from "react-intl";
 
 import "./MyFooter.css";
 
@@ -33,9 +34,15 @@ const MyFooter = () => {
             <p>dsdsds</p>
           </div>
           <div className="col-2">
-            <p>dsdsds</p>
-            <p>dsdsds</p>
-            <p>dsdsds</p>
+            <p>
+              <FormattedMessage id="footerLegalAdvisory"></FormattedMessage>
+            </p>
+            <p>
+              <FormattedMessage id="footerPrivacyPolicy"></FormattedMessage>
+            </p>
+            <p>
+              <FormattedMessage id="footerCookiesPolicy"></FormattedMessage>
+            </p>
           </div>
           <div className="col-2">
             <p>dsdsds</p>
@@ -72,14 +79,18 @@ const MyFooter = () => {
             </div>
             <div>
               <p>
-                <strong>CONTÁCTANOS POR NUESTRAS REDES SOCIALES</strong>
+                <strong>
+                  <FormattedMessage id="footerContactBySocials"></FormattedMessage>
+                </strong>
               </p>
             </div>
           </div>
         </div>
 
-        <div className="copyright" row>
-          <div col-12>Copyright ® todos los derechos reservados 2023 </div>
+        <div className="copyright row">
+          <div className="col-12">
+            <FormattedMessage id="footerCopyright"></FormattedMessage>
+          </div>
         </div>
       </div>
     </footer>
