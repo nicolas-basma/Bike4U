@@ -7,8 +7,12 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import bcrypt
 from .send_email import send_email
+import os
 
 api = Blueprint('api', __name__)
+
+BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL', 'BIKE4U_EMAIL')
+MESSAGE = os.environ.get('MESSAGE', 'MESSAGE')
 
 # POST crear usuario
 
@@ -31,7 +35,7 @@ def handle_singup():
         db.session.commit()
     except:
         return jsonify({"msg": "el email ya esta registrado bobo"}), 403
-    return jsonify({"msg": f"nuevo usuario creado: '{new_user.name}'"}), 200
+    return jsonify({"msg": f"Usuario creado: '{new_user.name}'"}), 200
 
 # POST login
 
@@ -41,7 +45,6 @@ def handle_login():
     # funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
     request_user = request.json
     user = User.query.filter_by(email=request_user["email"]).first()
-    print(user)
     if user == None:
         return jsonify({"msg": "no existe el usuario boludo!!!"}), 404
     user_info = user.serialize()
@@ -62,6 +65,8 @@ def handle_all_users():
     # funcion que devuelve todos los usuarios de mi base de datos
     all_user = User.query.all()
     list_of_users = []
+    if all_user == None:
+        return jsonify({"msg": "no hay usuarios en la base de datos"}), 404
     for user in all_user:
         list_of_users.append(user.serialize())
     return jsonify(list_of_users), 200
@@ -72,7 +77,9 @@ def handle_all_users():
 @api.route('/user/<int:id>', methods=['GET'])
 def handle_get_user(id):
     # funcion que devuelve un usuario en particular mediante su ID
-    user = User.query.get_or_404(id)
+    user = User.query.filter_by(id=id).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
     return jsonify(user.serialize()), 200
 
 
@@ -80,22 +87,25 @@ def handle_get_user(id):
 @api.route('/deleteuser/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
     # funcion para borrar un usuario mediante su ID
-    user_to_delete = User.query.get_or_404(id)
+    user_to_delete = User.query.filter_by(id=id).first()
+    if user_to_delete == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
     db.session.delete(user_to_delete)
     db.session.commit()
     return jsonify(user_to_delete.serialize()), 200
 
 
 # PUT user
-@api.route('/edit/<int:id>', methods=['PUT'])
+@api.route('/user/<int:id>/edit', methods=['PUT'])
 def handle_edit_user(id):
-    # funcion para editar la informacion de un usuario en particular
-    user_to_edit = User.query.get_or_404(id)
+    #funcion para editar la informacion de un usuario en particular
+    user_to_edit = User.query.filter_by(id=id).first()
+    if user_to_edit == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
     request_body = request.json
     user_to_edit.name = request_body["name"]
     user_to_edit.email = request_body["email"]
-    new_password = bcrypt.hashpw(request_body["password"].encode(
-        "utf-8"), bcrypt.gensalt())
+    new_password = bcrypt.hashpw(request_body["password"].encode("utf-8"), bcrypt.gensalt())
     user_to_edit.password = new_password
     db.session.commit()
     return jsonify(user_to_edit.serialize()), 200
@@ -107,5 +117,6 @@ def handle_send_message():
     request_body = request.json
     email = request_body['email']
     message = request_body['message']
-    send_email(email, message)
+    send_email(BIKE4U_EMAIL, message) # mensaje del usuario
+    send_email(email, MESSAGE) # mensaje de confirmacion por parte de bike4u
     return jsonify(request_body)
