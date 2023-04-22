@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useStore from "../../store/AppContext.jsx";
 
 import "./MyNavbar.css";
+import MyUserLoginDropdown from "../MyUserLoginDropdown/MyUserLoginDropdown.jsx";
 
 export const MyNavbar = () => {
   const { store, action } = useStore();
@@ -25,15 +26,15 @@ export const MyNavbar = () => {
           </Navbar.Brand>
           <Nav className="">
             <Link to="/customizebike">
-              <Nav.Item className="button">PERSONALIZA TU BICI</Nav.Item>
+              <Nav.Item className="btn button">PERSONALIZA TU BICI</Nav.Item>
             </Link>
-            <Nav.Item className="button">FAVORITOS</Nav.Item>
-            <Nav.Item className="button">
-              <Link className="button" to="aboutus">
+            <Nav.Item className="btn button">FAVORITOS</Nav.Item>
+            <Link className="button" to="/aboutus">
+              <Nav.Item className="btn button">
                 CONTACTO
-              </Link>
-            </Nav.Item>
-            <Nav.Item className="button">LOGIN</Nav.Item>
+              </Nav.Item>
+            </Link>
+            <MyUserLoginDropdown />
           </Nav>
         </Container>
       </Navbar>
@@ -42,3 +43,5 @@ export const MyNavbar = () => {
 };
 
 export default MyNavbar;
+
+//<Nav.Item className="button dropdown-toggle" data-bs-toggle="myUserLoginDropdown" aria-expanded="false" data-bs-auto-close="outside">LOGIN</Nav.Item>

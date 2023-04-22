@@ -3,7 +3,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../views/Home/Home.jsx";
 import AboutUs from "../views/AboutUs/AboutUs.jsx";
 import All from "../../js/All.js";
-import CustomizeBike from "../views/CustomizeBike.jsx";
+import CustomizeBike from "../views/CustomizeBike/CustomizeBike.jsx";
+import SignUp from "../views/SignUp/SignUp.jsx";
+import PasswordRecovery from "../views/PasswordRecovery/PasswordRecovery.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "/customizeBike",
         element: <CustomizeBike />,
+      },
+      {
+        path: "/SignUp",
+        element: <SignUp />,
+      },
+      {
+        path: "/PasswordRecovery",
+        element: <PasswordRecovery />,
       },
     ],
   },
