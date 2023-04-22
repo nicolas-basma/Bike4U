@@ -15,9 +15,9 @@ class User(db.Model):
         return f'<User {self.email}>'
 
     def verify(self, password):
+        # comprobar si la contraseña es correcta
         hash_password = bcrypt.hashpw(password, self.password)
-        print(type(password))
-        return  self.password == hash_password
+        return self.password == hash_password
 
     def serialize(self):
         return {
