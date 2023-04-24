@@ -8,6 +8,7 @@ import SignUp from "../views/SignUp/SignUp.jsx";
 import PasswordRecovery from "../views/PasswordRecovery/PasswordRecovery.jsx";
 import Faqs from "../views/FAQS/Faqs.jsx";
 import LegalPolicy from "../views/LegalPolicy/LegalPolicy.jsx";
+import ProductView from "../views/ProductView/ProductView.jsx";
 
 const router = createBrowserRouter([
   {

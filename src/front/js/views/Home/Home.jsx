@@ -6,6 +6,8 @@ import useStore from "../../store/AppContext.jsx";
 import Button from "../../component/Button/Button.jsx";
 import ModalForm from "../../component/ModalForm/ModalForm.jsx";
 import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
+import ProductGrid from "../../component/ProductGrid/ProductGrid.jsx";
+import sections from "../../mocks/sections.js";
 
 const Home = () => {
   const { store, action } = useStore();
@@ -32,6 +34,7 @@ const Home = () => {
 
       <div>
         <MyCarousel />
+        <ProductGrid sections={sections} />
       </div>
     </>
   );
