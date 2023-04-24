@@ -3,16 +3,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-import useStore from "../../store/AppContext.jsx";
-import useForms from "../../store/useForms.jsx";
 import { FormattedMessage } from "react-intl";
 
+import useStore from "../../store/AppContext.jsx";
 import "./ModalForm.css";
 
 const ModalForm = () => {
   const { store, action } = useStore();
   const { show } = store;
-  const { handleClose, setShow } = action;
+  const { handleClose, setShow, useForms } = action;
   const { formInput, myHandleInput } = useForms();
 
   const handleLog = () => {

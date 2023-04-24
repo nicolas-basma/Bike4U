@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-import useForms from "../../store/useForms.jsx";
 import useStore from "../../store/AppContext.jsx";
 
 const MyUserLoginDropdown = () => {
   const { action } = useStore();
-  const { handleLogin } = action;
+  const { handleLogin, useForms } = action;
   const { formInput, myHandleInput } = useForms();
 
   return (
