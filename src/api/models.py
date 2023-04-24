@@ -5,9 +5,9 @@ db = SQLAlchemy()
 
 
 favorites_parts = db.Table('favorites_parts',
-                           db.Column('user_id', db.Integer, db.ForeignKey(
-                               'user.id'), primary_key=True),
-                           db.Column('parts_id', db.Integer, db.ForeignKey('parts.id'), primary_key=True))
+                           db.Column('user_id',
+                                     db.Integer,
+                                     db.ForeignKey('user.id'), primary_key=True), db.Column('parts_id', db.Integer, db.ForeignKey('parts.id'), primary_key=True))
 
 
 class User(db.Model):

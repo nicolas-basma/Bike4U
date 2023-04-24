@@ -11,8 +11,8 @@ import os
 
 api = Blueprint('api', __name__)
 
-BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL', 'BIKE4U_EMAIL')
-MESSAGE = os.environ.get('MESSAGE', 'MESSAGE')
+BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL')
+MESSAGE_FROM_BIKE4U = os.environ.get('MESSAGE_FROM_BIKE4U')
 
 # POST crear usuario
 
@@ -98,14 +98,15 @@ def handle_delete_user(id):
 # PUT user
 @api.route('/user/<int:id>/edit', methods=['PUT'])
 def handle_edit_user(id):
-    #funcion para editar la informacion de un usuario en particular
+    # funcion para editar la informacion de un usuario en particular
     user_to_edit = User.query.filter_by(id=id).first()
     if user_to_edit == None:
         return jsonify({"msg": "El usuario no existe"}), 404
     request_body = request.json
     user_to_edit.name = request_body["name"]
     user_to_edit.email = request_body["email"]
-    new_password = bcrypt.hashpw(request_body["password"].encode("utf-8"), bcrypt.gensalt())
+    new_password = bcrypt.hashpw(
+        request_body["password"].encode("utf-8"), bcrypt.gensalt())
     user_to_edit.password = new_password
     db.session.commit()
     return jsonify(user_to_edit.serialize()), 200
@@ -117,6 +118,7 @@ def handle_send_message():
     request_body = request.json
     email = request_body['email']
     message = request_body['message']
-    send_email(BIKE4U_EMAIL, message) # mensaje del usuario
-    send_email(email, MESSAGE) # mensaje de confirmacion por parte de bike4u
+    send_email(BIKE4U_EMAIL, message)  # mensaje del usuario
+    # mensaje de confirmacion por parte de bike4u
+    send_email(email, MESSAGE_FROM_BIKE4U)
     return jsonify(request_body)
