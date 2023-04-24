@@ -1,44 +1,48 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { envParameters } from "./env";
 
+import clearFormInput from "../utils/clearFormInput.js";
+import allMessages from "../../../lang/messages.js";
+
 const Context = createContext();
 
 export const AppContext = ({ children }) => {
-  const [show, setShow] = useState(false);
+  //env
   const { logo, contactMail } = envParameters;
-  const [nameContact, setNameContact] = useState("");
-  const [emailContact, setEmailContact] = useState("");
-  const [cityContact, setCityContact] = useState("");
-  const [mensaggeContact, setMensaggeContact] = useState("");
-
+  
+  //useStates
+  const [show, setShow] = useState(false);
+  const [lang, setLang] = useState("en");
+  
+  //Handles
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleNameContact = (event) => setNameContact(event.target.value);
-  const handleEmailContact = (event) => setEmailContact(event.target.value);
-  const handleCityContact = (event) => setCityContact(event.target.value);
-  const handleMensagge = (event) => setMensaggeContact(event.target.value);
+  
+  const handleLogin = ()=>{
 
+    //Function required to handle the login in the userLoginDropdown.
+    //if loging is ok, clear formInputs. Rerender views. Termany operators?
+    //if loging is nok, clear only password.
+
+  }
+  
+  //Flux
   const store = {
     show,
-    contactMail,
+    lang,
+    allMessages,
     logo,
-    nameContact,
-    emailContact,
-    cityContact,
-    mensaggeContact,
+    contactMail,
   };
   const action = {
     setShow,
+    setLang,
     handleClose,
     handleShow,
-    setCityContact,
-    setEmailContact,
-    setNameContact,
-    handleNameContact,
-    handleCityContact,
-    handleEmailContact,
-    handleMensagge,
+    handleLogin,
+    clearFormInput
   };
+
   return (
     <>
       <Context.Provider value={{ store, action }}>{children}</Context.Provider>

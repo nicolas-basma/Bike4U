@@ -1,87 +1,84 @@
 import React from "react";
-import useStore from "../../store/AppContext.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+
+import useStore from "../../store/AppContext.jsx";
+import useForms from "../../store/useForms.jsx";
+import { FormattedMessage } from "react-intl";
 
 import "./ModalForm.css";
 
 const ModalForm = () => {
   const { store, action } = useStore();
-  const {
-    logo,
-    show,
-    nameContact,
-    emailContact,
-    cityContact,
-    mensaggeContact,
-  } = store;
-  const {
-    handleClose,
-    handleNameContact,
-    handleEmailContact,
-    handleCityContact,
-    handleMensagge,
-    setShow,
-  } = action;
+  const { show } = store;
+  const { handleClose, setShow } = action;
+  const { formInput, myHandleInput } = useForms();
 
   const handleLog = () => {
-    console.log(`email`, emailContact);
-    console.log(`name`, nameContact);
-    console.log(`city`, cityContact);
-    console.log(`mensaje`, mensaggeContact);
+    console.log(formInput);
     setShow(false);
   };
   return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Contact Form</Modal.Title>
+          <Modal.Title><FormattedMessage id="contactModalTittle"></FormattedMessage></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Your Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-                onChange={handleEmailContact}
-              />
-            </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-              <Form.Label>Your name</Form.Label>
+              <Form.Label><FormattedMessage id="contactModalName"></FormattedMessage></Form.Label>
               <Form.Control
                 type="text"
-                placeholder="name"
+                name="name"
+                value={formInput[name]}
+                placeholder={<FormattedMessage id="contactModalName"></FormattedMessage>}
                 autoFocus
-                onChange={handleNameContact}
+                onChange={myHandleInput}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label><FormattedMessage id="contactModalEmail"></FormattedMessage></Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={formInput[name]}
+                placeholder="name@example.com"
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-              <Form.Label>City</Form.Label>
+              <Form.Label><FormattedMessage id="contactModalCity"></FormattedMessage></Form.Label>
               <Form.Control
                 type="text"
-                placeholder="city"
-                autoFocus
-                onChange={handleCityContact}
+                name="city"
+                value={formInput[name]}
+                placeholder={<FormattedMessage id="contactModalCity"></FormattedMessage>}
+                onChange={myHandleInput}
               />
             </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Tell us your doubts</Form.Label>
-              <Form.Control as="textarea" rows={3} onChange={handleMensagge} />
+              <Form.Label><FormattedMessage id="contactModalTextHeader"></FormattedMessage></Form.Label>
+              <Form.Control
+                as="textarea"
+                name="message"
+                value={formInput[name]}
+                rows={3}
+                onChange={myHandleInput}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
-            Cancel
+              <FormattedMessage id="buttonCancel"></FormattedMessage>
           </Button>
-          <Button variant="ligth" onClick={handleLog}>
-            <img src={logo} width={40} />
+          <Button variant="success" onClick={handleLog}>
+              <FormattedMessage id="buttonSendMessage"></FormattedMessage>
           </Button>
         </Modal.Footer>
       </Modal>
