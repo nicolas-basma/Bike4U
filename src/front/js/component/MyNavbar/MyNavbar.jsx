@@ -10,12 +10,12 @@ import useStore from "../../store/AppContext.jsx";
 
 import "./MyNavbar.css";
 import MyUserLoginDropdown from "../MyUserLoginDropdown/MyUserLoginDropdown.jsx";
+import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
   const { handleShow, setLang } = action;
   const { logo, lang } = store;
-  //let capitalLang = String.toString(lang).toUpperCase();
 
   const handleSelect = (eventKey) => setLang(eventKey);
 
@@ -25,7 +25,6 @@ const MyNavbar = () => {
         collapseOnSelect
         expand="lg"
         variant="dark"
-        onSelect={handleSelect}
       >
         <Container fluid="md">
           <Navbar.Brand className="logo">
@@ -59,11 +58,8 @@ const MyNavbar = () => {
               <MyUserLoginDropdown />
             </Nav>
           </Navbar.Collapse>
-
-          <NavDropdown title={lang} id="nav-lang-dropdown" className="btn button text-white" >
-            <NavDropdown.Item eventKey="es"><FormattedMessage id="myNavbarButtomLangEsp"></FormattedMessage></NavDropdown.Item>
-            <NavDropdown.Item eventKey="en"><FormattedMessage id="myNavbarButtomLangEng"></FormattedMessage></NavDropdown.Item>
-          </NavDropdown>
+          <MyLanguageDropdown />
+          
         </Container>
       </Navbar>
     </>

@@ -1,52 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
 import useStore from "../../store/AppContext.jsx";
+import MyFlag from "./MyFlag.jsx";
 
-const MyLanguageDropdown = ({handle}) => {
+import "./MyLanguageDropdown.css";
+
+const MyLanguageDropdown = () => {
   const { store, action } = useStore();
-  const {lang } = store;
-  const { handleLogin, useForms } = action;
-  const { formInput, myHandleInput } = useForms();
+  const { lang, flagEEUU, flagEspana } = store;
+  const {setLang} = action;
+
+  const handleLanguageChange = (e)=>{
+    setLang(e.target.name);
+  }
+
+  let capitalLang = lang.toUpperCase();
 
   return (
-    <div className="dropdown">
+    <div className="dropdown nav-item">
       <button
         type="button"
-        className="btn button mb-2"
+        className="btn button mb-2 nav-link dropdown-toggle"
         data-bs-toggle="dropdown"
         aria-expanded="false"
         data-bs-auto-close="inside"
       >
-        {lang}
+        {capitalLang}
       </button>
-      <div className="dropdown-menu dropdown-menu-end">
 
-          <div className="mb-3">
-            <label
-              htmlFor="MyUserLoginDropdown-input__email"
-              className="form-label"
-            >
-              <FormattedMessage id="myNavbarButtomLangEsp"></FormattedMessage>
-            </label>
+      <ul className="dropdown-menu dropdown-menu-end  ">
+        <li className="d-flex d-inline justify-content-center">
+        <button type="submit" id="esp-button" className="btn other-button" name="es" onClick={handleLanguageChange}>
+          <FormattedMessage id="myNavbarButtomLangEsp"></FormattedMessage> 
+        </button><label htmlFor="esp-button">< MyFlag flag={flagEspana}/></label>
+        </li>
+        <li className="d-flex d-inline justify-content-center">
+        <button type="submit" id="eng-button" className="btn other-button" name="en" onClick={handleLanguageChange}>
+          <FormattedMessage id="myNavbarButtomLangEng"></FormattedMessage>  
+        </button><label htmlFor="eng-button">< MyFlag flag={flagEEUU}/></label>
+        </li>
+      </ul>
 
-            <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handle}
-          >
-            <FormattedMessage id="myNavbarButtomLangEsp"></FormattedMessage>
-          </button>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handle}
-          >
-            <FormattedMessage id="myNavbarButtomLangEng"></FormattedMessage>
-          </button>
-        </div>
-      </div>  
+      
+      
     </div>
   );
 };
