@@ -5,16 +5,19 @@ import clearFormInput from "../utils/clearFormInput.js";
 import useForms from "../utils/useForms.jsx";
 
 import allMessages from "../../../lang/messages.js";
+//import { lenguaje } from "../layout.js";
 
 const Context = createContext();
 
 export const AppContext = ({ children }) => {
   //env
-  const { logo, contactMail } = envParameters;
+  const { logo, contactMail, flagEEUU, flagEspana } = envParameters;
 
   //useStates
   const [show, setShow] = useState(false);
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState("es");
+  // let lang = lenguaje.lang;
+  // const setLang = lenguaje.setLang;
 
   //Handles
   const handleClose = () => setShow(false);
@@ -33,6 +36,8 @@ export const AppContext = ({ children }) => {
     allMessages,
     logo,
     contactMail,
+    flagEEUU,
+    flagEspana,
   };
   const action = {
     setShow,

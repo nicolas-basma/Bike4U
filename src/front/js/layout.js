@@ -4,18 +4,23 @@ import { IntlProvider } from "react-intl";
 
 import router from "./routes/router.jsx";
 import MyNavbar from "./component/MyNavbar/MyNavbar.jsx";
-import { AppContext } from "./store/AppContext.jsx";
-//import useStore from "./store/AppContext.jsx";
+import useStore,{ AppContext } from "./store/AppContext.jsx";
+import { useState } from "react";
+
 import MyFooter from "./component/MyFooter/MyFooter.jsx";
 import All from "./All.js";
 import allMessages from "../../lang/messages.js";
+//import exports from "webpack";
+//export const lenguaje = {};
 
 const Layout = () => {
 
-  //const {store} = useStore();
-  //const {lang} = store;
+  // const {store} = useStore();
+  // const {lang} = store;
+  // console.log(store);
 
-  const lang = "es";
+ const [lang, setLang] = useState("es");
+ //lenguaje = {lang, setLang};
 
   return (
     <div>
