@@ -1,6 +1,6 @@
 import React from "react";
 
-import "/workspace/FinalProject/src/front/js/views/FAQS/Faqs.css";
+import "./Faqs.css";
 
 const Faqs = () => {
   return (
