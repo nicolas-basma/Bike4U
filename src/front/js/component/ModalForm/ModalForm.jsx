@@ -2,7 +2,6 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-
 import useStore from "../../store/AppContext.jsx";
 import useForms from "../../store/useForms.jsx";
 import { FormattedMessage } from "react-intl";
@@ -16,16 +15,16 @@ const ModalForm = () => {
   const { formInput, myHandleInput } = useForms();
 
   const handleLog = () => {
-    console.log(formInput);
     setShow(false);
   };
 
   //funcion para enviar el mail
+  const url = document.location.hostname;
 
   const handleSendMessage = () => {
     const email = formInput["email"];
     const message = formInput["message"];
-    fetch("http://127.0.0.1:5432/api/send-email", {
+    fetch(`http://${url}:3001/api/send-email`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -83,9 +82,7 @@ const ModalForm = () => {
                 type="text"
                 name="city"
                 value={formInput[name]}
-                placeholder={
-                  <FormattedMessage id="contactModalCity"></FormattedMessage>
-                }
+                placeholder="city"
                 onChange={myHandleInput}
               />
             </Form.Group>

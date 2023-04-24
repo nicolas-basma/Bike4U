@@ -116,7 +116,12 @@ def handle_edit_user(id):
 def handle_send_message():
     # ruta para enviar email desde el formulario de contact us
     request_body = request.json
-    email = request_body['email']
+    print(request_body['email'])
+    if request_body["email"]:
+        return jsonify({"msg": "email is missing"}), 400
+    email = request_body["email"]
+    if request_body['message'] is None:
+        return jsonify({"msg": "message is missing"}), 400
     message = request_body['message']
     send_email(BIKE4U_EMAIL, message)  # mensaje del usuario
     # mensaje de confirmacion por parte de bike4u
