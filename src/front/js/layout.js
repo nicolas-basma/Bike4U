@@ -15,7 +15,7 @@ const Layout = () => {
   //const {store} = useStore();
   //const {lang} = store;
 
-  const lang = "en";
+  const lang = "es";
 
   return (
     <div>

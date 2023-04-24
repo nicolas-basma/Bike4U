@@ -43,6 +43,18 @@ const router = createBrowserRouter([
         path: "/legalpolicy",
         element: <LegalPolicy />,
       },
+      {
+        path: "/product/:id",
+        element: <ProductView />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductView />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductView />,
+      }
     ],
   },
 ]);

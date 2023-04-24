@@ -5,11 +5,11 @@ import "/workspace/FinalProject/src/front/js/views/LegalPolicy/LegalPolicy.css";
 const LegalPolicy = () => {
   return (
     <>
-      <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
+      <div className="accordion accordion-flush" id="accordionFlushExample">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
             <button
-              class="accordion-button collapsed"
+              className="accordion-button collapsed"
               id="accordionButtonCollapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -22,20 +22,20 @@ const LegalPolicy = () => {
           </h2>
           <div
             id="flush-collapseOne"
-            class="accordion-collapse collapse"
+            className="accordion-collapse collapse"
             data-bs-parent="#accordionFlushExample"
           >
-            <div class="accordion-body">
+            <div className="accordion-body">
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               first item's accordion body.
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
             <button
-              class="accordion-button collapsed"
+              className="accordion-button collapsed"
               id="accordionButtonCollapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -48,10 +48,10 @@ const LegalPolicy = () => {
           </h2>
           <div
             id="flush-collapseTwo"
-            class="accordion-collapse collapse"
+            className="accordion-collapse collapse"
             data-bs-parent="#accordionFlushExample"
           >
-            <div class="accordion-body">
+            <div className="accordion-body">
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               second item's accordion body. Let's imagine this being filled with
@@ -59,10 +59,10 @@ const LegalPolicy = () => {
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
             <button
-              class="accordion-button collapsed"
+              className="accordion-button collapsed"
               id="accordionButtonCollapsed"
               type="button"
               data-bs-toggle="collapse"
@@ -75,10 +75,10 @@ const LegalPolicy = () => {
           </h2>
           <div
             id="flush-collapseThree"
-            class="accordion-collapse collapse"
+            className="accordion-collapse collapse"
             data-bs-parent="#accordionFlushExample"
           >
-            <div class="accordion-body">
+            <div className="accordion-body">
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
               third item's accordion body. Nothing more exciting happening here
