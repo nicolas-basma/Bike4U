@@ -2,13 +2,13 @@ from smtplib import SMTP_SSL
 import os
 
 
-def send_email(to, message):
+def send_email(to, message, name):
 
     HOST = "smtp.gmail.com"
     FROM_EMAIL = os.environ.get('BIKE4U_EMAIL', 'BIKE4U_EMAIL')
     TO_EMAIL = to
     PASSWORD = os.environ.get('BIKE4U_PASSWORD', 'BIKE4U_PASSWORD')
-    MESSAGE = message
+    MESSAGE = message + " " + name + " " + to
 
     smtp = SMTP_SSL(HOST)
 

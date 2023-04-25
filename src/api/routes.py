@@ -13,6 +13,7 @@ api = Blueprint('api', __name__)
 
 BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL')
 MESSAGE_FROM_BIKE4U = os.environ.get('MESSAGE_FROM_BIKE4U')
+BIKE4U_NAME = os.environ.get('BIKE4U_NAME')
 
 # POST crear usuario
 
@@ -118,7 +119,8 @@ def handle_send_message():
     request_body = request.json
     email = request_body['email']
     message = request_body['message']
-    send_email(BIKE4U_EMAIL, message)  # mensaje del usuario
+    name = request_body['name']
+    send_email(BIKE4U_EMAIL, message, name)  # mensaje del usuario
     # mensaje de confirmacion por parte de bike4u
-    send_email(email, MESSAGE_FROM_BIKE4U)
+    send_email(email, MESSAGE_FROM_BIKE4U, BIKE4U_NAME)
     return jsonify(request_body)
