@@ -1,6 +1,6 @@
 import React from "react";
 
-import "/workspace/FinalProject/src/front/js/views/LegalPolicy/LegalPolicy.css";
+import "./LegalPolicy.css";
 
 const LegalPolicy = () => {
   return (
