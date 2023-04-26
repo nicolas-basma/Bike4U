@@ -1,3 +1,6 @@
+import flagEspana from "../front/js/img/flagEspana.png";
+//import flagEEUU from "../img/flagEEUU.png";
+
 const allMessages = {
   es: {
     homeButtonBikeConfig: "¡Configura tu bicicleta!",
@@ -48,6 +51,8 @@ const allMessages = {
         fermentum dapibus nibh. Aliquam rhoncus mi nibh, ut rhoncus tellus
         porta eget.`,
     buttonContact: "Contáctanos",
+    myNavbarButtomLangEsp: `ES`,
+    myNavbarButtomLangEng: `EN`,
   },
   en: {
     homeButtonBikeConfig: "Configure your bike!",
@@ -98,6 +103,8 @@ const allMessages = {
         fermentum dapibus nibh. Aliquam rhoncus mi nibh, ut rhoncus tellus
         porta eget.`,
     buttonContact: "Contact us",
+    myNavbarButtomLangEsp : `ES`,
+    myNavbarButtomLangEng : `EN`,
   },
 };
 

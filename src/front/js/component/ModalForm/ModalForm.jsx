@@ -2,17 +2,18 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { useIntl } from "react-intl";
 
-import useStore from "../../store/AppContext.jsx";
-import useForms from "../../store/useForms.jsx";
 import { FormattedMessage } from "react-intl";
 
+import useStore from "../../store/AppContext.jsx";
 import "./ModalForm.css";
 
 const ModalForm = () => {
+  const intl = useIntl();
   const { store, action } = useStore();
   const { show } = store;
-  const { handleClose, setShow } = action;
+  const { handleClose, setShow, useForms } = action;
   const { formInput, myHandleInput } = useForms();
   const url = process.env.REACT_APP_API_SEND_EMAIL;
 
@@ -67,7 +68,9 @@ const ModalForm = () => {
                 type="text"
                 name="name"
                 value={formInput[name]}
-                placeholder="name"
+                placeholder={intl.formatMessage({
+                  id: "contactModalName",
+                })}
                 autoFocus
                 onChange={myHandleInput}
               />
