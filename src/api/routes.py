@@ -13,8 +13,9 @@ api = Blueprint('api', __name__)
 
 BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL')
 MESSAGE_FROM_BIKE4U = os.environ.get('MESSAGE_FROM_BIKE4U')
+BIKE4U_NAME = os.environ.get('BIKE4U_NAME')
 
-# POST crear usuario
+# POST crear usuari
 
 
 @api.route("/signup", methods=["POST"])
@@ -41,16 +42,16 @@ def handle_singup():
 
 
 @api.route('/login', methods=['POST'])
+# funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
 def handle_login():
-    # funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
     request_user = request.json
     user = User.query.filter_by(email=request_user["email"]).first()
     if user == None:
-        return jsonify({"msg": "no existe el usuario boludo!!!"}), 404
+        return jsonify({"msg": "error en las credenciales"}), 403
     user_info = user.serialize()
 
     if not user.verify(request_user["password"].encode("utf-8")):
-        return jsonify({"msg": "the password is incorrect!!! boludo!"}), 403
+        return jsonify({"msg": "error en las credenciales!"}), 403
 
     login_token = create_access_token(identity=user_info)
 
@@ -118,7 +119,8 @@ def handle_send_message():
     request_body = request.json
     email = request_body['email']
     message = request_body['message']
-    send_email(BIKE4U_EMAIL, message)  # mensaje del usuario
+    name = request_body['name']
+    send_email(BIKE4U_EMAIL, message, name)  # mensaje del usuario
     # mensaje de confirmacion por parte de bike4u
-    send_email(email, MESSAGE_FROM_BIKE4U)
+    send_email(email, MESSAGE_FROM_BIKE4U, BIKE4U_NAME)
     return jsonify(request_body)

@@ -45,7 +45,7 @@ class Parts(db.Model):
     part = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f'<Parts {self.name}>'
+        return f'<Parts {self.model}>'
 
     def serialize(self):
         return {

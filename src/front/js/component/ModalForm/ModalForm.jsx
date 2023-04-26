@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { useIntl } from "react-intl";
 
 import { FormattedMessage } from "react-intl";
 
@@ -9,34 +10,46 @@ import useStore from "../../store/AppContext.jsx";
 import "./ModalForm.css";
 
 const ModalForm = () => {
+  const intl = useIntl();
   const { store, action } = useStore();
   const { show } = store;
   const { handleClose, setShow, useForms } = action;
   const { formInput, myHandleInput } = useForms();
+  const url = process.env.REACT_APP_API_SEND_EMAIL;
 
-  const handleLog = () => {
-    console.log(formInput);
-    setShow(false);
+  //FUNCION PARA VALIDAR EL EMAIL
+  const validateEmail = (email) => {
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return validEmail.test(email);
   };
 
-  //funcion para enviar el mail
-
+  //FUNCION PARA ENVIAR EL EMAIL A NUESTRO CORREO ELECTRONICO Y ENVIAR UNA RESPUESTA AL USUARIO
   const handleSendMessage = () => {
-    const email = formInput["email"];
-    const message = formInput["message"];
-    fetch("http://127.0.0.1:5432/api/send-email", {
+    const { email, message, name } = formInput;
+
+    if (!validateEmail(email)) {
+      alert("Por favor ingrese un email valido");
+      return;
+    }
+    if (email === undefined || message === undefined || name === undefined) {
+      alert("Por favor rellene todos los campos");
+      return; // si los campos no estan definidos, no se envia el email
+    } else if (email === "" || message === "" || name === "") {
+      alert("Por favor rellene todos los campos");
+      return; // si los campos estan vacios, no se envia el email
+    }
+    fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, message }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, message, name }),
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .then((response) => {
+        response.json();
+        console.log("Mensaje enviado");
+      })
+      .catch((error) => console.log(error));
     setShow(false);
   };
-
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -55,9 +68,9 @@ const ModalForm = () => {
                 type="text"
                 name="name"
                 value={formInput[name]}
-                placeholder={
-                  <FormattedMessage id="contactModalName"></FormattedMessage>
-                }
+                placeholder={intl.formatMessage({
+                  id: "contactModalName",
+                })}
                 autoFocus
                 onChange={myHandleInput}
               />
@@ -71,20 +84,6 @@ const ModalForm = () => {
                 name="email"
                 value={formInput[name]}
                 placeholder="name@example.com"
-                onChange={myHandleInput}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-              <Form.Label>
-                <FormattedMessage id="contactModalCity"></FormattedMessage>
-              </Form.Label>
-              <Form.Control
-                type="text"
-                name="city"
-                value={formInput[name]}
-                placeholder={
-                  <FormattedMessage id="contactModalCity"></FormattedMessage>
-                }
                 onChange={myHandleInput}
               />
             </Form.Group>
