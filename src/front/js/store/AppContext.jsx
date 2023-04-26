@@ -5,6 +5,7 @@ import clearFormInput from "../utils/clearFormInput.js";
 import useForms from "../utils/useForms.jsx";
 
 import allMessages from "../../../lang/messages.js";
+import { IntlProvider } from "react-intl";
 //import { lenguaje } from "../layout.js";
 
 const Context = createContext();
@@ -51,7 +52,15 @@ export const AppContext = ({ children }) => {
 
   return (
     <>
-      <Context.Provider value={{ store, action }}>{children}</Context.Provider>
+      <Context.Provider value={{ store, action }}>
+        <IntlProvider
+          locale={lang}
+          defaultLocale="es"
+          messages={allMessages[lang]}
+        >
+          {children}
+        </IntlProvider>
+      </Context.Provider>
     </>
   );
 };
