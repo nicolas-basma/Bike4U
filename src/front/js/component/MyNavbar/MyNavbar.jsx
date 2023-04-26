@@ -35,10 +35,9 @@ const MyNavbar = () => {
               bike4u
             </Link>
           </Navbar.Brand>
-
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-            <Nav >
+            <Nav className="bg-black rounded">
               <Link to="/customizebike">
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
@@ -50,15 +49,22 @@ const MyNavbar = () => {
                 </Nav.Item>
               </Link>
 
-              <Link className="button" to="/aboutus">
+              <Link to="/aboutus">
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomContact"></FormattedMessage>
                 </Nav.Item>
               </Link>
+              
               <MyUserLoginDropdown />
             </Nav>
           </Navbar.Collapse>
-          <MyLanguageDropdown />
+          
+          <div className="myDiv d-flex d-inline">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          
+            <MyLanguageDropdown />
+          </div>
+          
           
         </Container>
       </Navbar>
