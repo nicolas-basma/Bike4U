@@ -22,6 +22,8 @@ typing-extensions = "*"
 flask-jwt-extended = "*"
 bcrypt = "*"
 secure-smtplib = "*"
+requests = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.10"
