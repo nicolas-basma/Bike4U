@@ -1,21 +1,24 @@
 .carousel {
   background-color: rgb(0, 0, 0);
-  height: 300px;
+  height: 500px;
   width: 1000px;
   margin-top: 25px;
   box-shadow: 0px 0px 25px #222;
   border-radius: 10px;
   max-width: 100%;
 }
-.imageContainer {
-}
+
 .image {
-  height: 250px;
+  height: 480px;
   width: auto;
   padding: 1rem;
   max-width: 100%;
+  margin-top: auto;
 }
-
+.image:hover{
+  height: 500px;
+  width: 600px;
+}
 .carousel-indicators [data-bs-target]:hover {
   -webkit-box-reflect: below -40px -webkit-gradient(
       linear,
@@ -25,3 +28,4 @@
       to(rgba(255, 255, 255, 0.5))
     );
 }
+
