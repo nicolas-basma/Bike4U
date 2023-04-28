@@ -1,9 +1,9 @@
 import requests
-from bs4 import BeautifulSoup
+import json
+# from bs4 import BeautifulSoup
 
-url = "https://www.vizi-o.es/wp-json/wp/v2/product/"
-body = requests.get(url)
-soup = BeautifulSoup(body.text, "html.parser")
-# data = body.text
-
-print(soup.find("p"))
+url = "https://bpartcomponents.com/wp-json/wp/v2/product/18083"
+response = requests.get(url)
+response.encoding = 'utf-8-sig'
+data = json.loads(response.text)
+print(data['guid']['rendered'])
