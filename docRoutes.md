@@ -1,104 +1,57 @@
-Aquí tienes la documentación en formato markdown:
+# API de Bike4U
 
-### Endpoint `/signup`
+Este módulo maneja el inicio del servidor API, la carga de la base de datos y la adición de los puntos finales.
 
-Este endpoint permite crear un nuevo usuario en la base de datos. Recibe un cuerpo de solicitud JSON que contiene el nombre, correo electrónico y contraseña del usuario. El endpoint encripta la contraseña y crea un nuevo objeto `User` en la base de datos con la información proporcionada. Luego devuelve el usuario serializado en formato JSON.
+## Endpoints
 
-```http
-POST /signup HTTP/1.1
-Content-Type: application/json
+### POST /signup
 
-{
-    "nombre": "Juan Perez",
-    "correo_electronico": "juanperez@example.com",
-    "contraseña": "123456"
-}
+- Descripción: Crea un nuevo usuario en la base de datos y devuelve el usuario serializado.
+- Parámetros: JSON en el cuerpo de la solicitud con los siguientes campos:
+  - name (str)
+  - email (str)
+  - password (str)
+
+### POST /login
+
+- Descripción: Permite que el usuario inicie sesión en la página web (si está registrado); de lo contrario, devuelve un error 403.
+- Parámetros: JSON en el cuerpo de la solicitud con los siguientes campos:
+  - email (str)
+  - password (str)
+
+### GET /allusers
+
+- Descripción: Devuelve todos los usuarios en la base de datos.
+
+### GET /user/:id
+
+- Descripción: Devuelve un usuario específico mediante su ID.
+- Parámetros: ID del usuario (int) en la ruta de la URL.
+
+### DELETE /deleteuser/:id
+
+- Descripción: Elimina un usuario mediante su ID.
+- Parámetros: ID del usuario (int) en la ruta de la URL.
+
+### PUT /user/:id/edit
+
+- Descripción: Edita la información de un usuario específico.
+- Parámetros:
+  - ID del usuario (int) en la ruta de la URL.
+  - JSON en el cuerpo de la solicitud con los siguientes campos:
+    - name (str)
+    - email (str)
+    - password (str)
+
+### POST /send-email
+
+- Descripción: Envía un correo electrónico desde el formulario de contacto.
+- Parámetros: JSON en el cuerpo de la solicitud con los siguientes campos:
+  - email (str)
+  - message (str)
+  - name (str)
+
 ```
 
-#### Parámetros
-
-| Parámetro          | Tipo   | Descripción                                 |
-| ------------------ | ------ | ------------------------------------------- |
-| nombre             | string | Nombre completo del usuario                 |
-| correo_electronico | string | Dirección de correo electrónico del usuario |
-| contraseña         | string | Contraseña del usuario                      |
-
-#### Respuesta
-
-El endpoint devuelve el usuario creado en formato JSON.
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "id": 1,
-    "nombre": "Juan Perez",
-    "correo_electronico": "juanperez@example.com"
-}
-```
-
-### Endpoint `/login`
-
-Este endpoint permite que los usuarios inicien sesión en la aplicación. Recibe un cuerpo de solicitud JSON que contiene el correo electrónico y la contraseña del usuario. El endpoint verifica que el usuario existe en la base de datos y que la contraseña proporcionada coincide con la contraseña encriptada almacenada en la base de datos. Si la autenticación es exitosa, se devuelve un token de acceso JWT y el nombre del usuario en formato JSON.
-
-```http
-POST /login HTTP/1.1
-Content-Type: application/json
-
-{
-    "correo_electronico": "juanperez@example.com",
-    "contraseña": "123456"
-}
-```
-
-#### Parámetros
-
-| Parámetro          | Tipo   | Descripción                                 |
-| ------------------ | ------ | ------------------------------------------- |
-| correo_electronico | string | Dirección de correo electrónico del usuario |
-| contraseña         | string | Contraseña del usuario                      |
-
-#### Respuesta
-
-El endpoint devuelve un token de acceso JWT y el nombre del usuario en formato JSON.
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "nombre": "Juan Perez",
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6Ikp1YW4gUGVyZXoiLCJpYXQiOjE1MTYyMzkwMjJ9.Ts9sKzVGsDTbcWZ0vQZ7JgAePXePusS5KjQa1S9l1J4"
-}
-```
-
-### Endpoint `/allusers`
-
-Este endpoint devuelve una lista de todos los usuarios registrados en la base de datos en formato JSON.
-
-```http
-GET /allusers HTTP/1.1
-```
-
-#### Respuesta
-
-El endpoint devuelve una lista de usuarios en formato JSON.
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-[
-    {
-        "id": 1,
-        "nombre": "Juan Perez",
-        "correo_electronico": "juanperez@example.com"
-    },
-    {
-        "id": 2,
-        "nombre": "Maria Garcia",
-        "correo_electronico": "mariagarcia@example.com"
-    }
-]
+Esta documentación describe los diferentes puntos finales en el módulo API de Bike4U y los parámetros necesarios para cada uno de ellos.
 ```

@@ -8,6 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .send_email import send_email
 import os
+from api.geting_api import add_part
 
 api = Blueprint('api', __name__)
 
@@ -117,10 +118,21 @@ def handle_edit_user(id):
 def handle_send_message():
     # ruta para enviar email desde el formulario de contact us
     request_body = request.json
-    email = request_body['email']
+    print(request_body['email'])
+    if request_body["email"]:
+        return jsonify({"msg": "email is missing"}), 400
+    email = request_body["email"]
+    if request_body['message'] is None:
+        return jsonify({"msg": "message is missing"}), 400
     message = request_body['message']
     name = request_body['name']
     send_email(BIKE4U_EMAIL, message, name)  # mensaje del usuario
     # mensaje de confirmacion por parte de bike4u
     send_email(email, MESSAGE_FROM_BIKE4U, BIKE4U_NAME)
     return jsonify(request_body)
+
+
+@api.route('/test', methods=['GET'])
+def handle_test():
+    response = add_part()
+    return jsonify(response)
