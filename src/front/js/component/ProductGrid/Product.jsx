@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "/workspaces/FinalProject/src/front/js/component/ProductGrid/Product.css"
+import "./Product.css"
 
 function Product({ name, price, image, id }) {
   const navigate = useNavigate();

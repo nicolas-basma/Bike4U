@@ -14,10 +14,8 @@ import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, setLang } = action;
-  const { logo, lang } = store;
-
-  const handleSelect = (eventKey) => setLang(eventKey);
+  const { handleShow } = action;
+  const { logo } = store;
 
   return (
     <>
@@ -36,8 +34,12 @@ const MyNavbar = () => {
             </Link>
           </Navbar.Brand>
           
+          <div className="myDiv d-flex d-inline">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          </div>
+
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-            <Nav className="bg-black rounded">
+            <Nav className="bg-black rounded onTop">
               <Link to="/customizebike">
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
@@ -48,22 +50,19 @@ const MyNavbar = () => {
                   <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
                 </Nav.Item>
               </Link>
-
               <Link to="/aboutus">
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomContact"></FormattedMessage>
                 </Nav.Item>
               </Link>
-              
+                          
               <MyUserLoginDropdown />
+              <MyLanguageDropdown />
+
             </Nav>
           </Navbar.Collapse>
           
-          <div className="myDiv d-flex d-inline">
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          
-            <MyLanguageDropdown />
-          </div>
+         
           
           
         </Container>
