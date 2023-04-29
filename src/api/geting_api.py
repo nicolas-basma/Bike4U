@@ -3,7 +3,7 @@ import json
 from api.models import db, Parts
 
 
-def add_part():
+def get_part():
     url = "https://bpartcomponents.com/wp-json/wp/v2/product/"
     response = requests.get(url)
     response.encoding = 'utf-8-sig'
