@@ -8,7 +8,6 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-# from api.geting_api import add_part
 from api.utils.add_part import add_part
 from api.data_parts import parts
 
@@ -133,11 +132,10 @@ def handle_send_message():
     # mensaje de confirmacion por parte de bike4u
     message_bike_4u = full_message(SUBJECT, MESSAGE_FROM_BIKE4U)
     send_email(email, message_bike_4u)
-    return jsonify(request_body)
+    return jsonify(request_body), 200
 
 
 @api.route('/test', methods=['GET'])
 def handle_test():
     response = add_part(parts)
-    # print(response)
     return response
