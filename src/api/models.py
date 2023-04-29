@@ -13,7 +13,10 @@ favorites_parts = db.Table('favorites_parts',
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    lastname = db.Column(db.String, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    size = db.Column(db.String, nullable=False)
+    weight = db.Column(db.String, nullable=False)
     password = db.Column(db.String, unique=False, nullable=False)
     favorites = db.relationship(
         'Parts', backref="users", secondary=favorites_parts)
@@ -31,6 +34,9 @@ class User(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "lastname": self.lastname,
+            "size": self.size,
+            "weight": self.weight,
             "email": self.email,
             "favorites": [f'{parts}' for parts in self.favorites],
         }
@@ -38,11 +44,10 @@ class User(db.Model):
 
 class Parts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    model = db.Column(db.String, unique=True, nullable=False)
-    marca = db.Column(db.String, nullable=False)
+    model = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
-    category = db.Column(db.String, nullable=False)
-    part = db.Column(db.String, nullable=False)
+    link = db.Column(db.String, nullable=False)
+    size = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return f'<Parts {self.model}>'
@@ -51,8 +56,7 @@ class Parts(db.Model):
         return {
             "id": self.id,
             "model": self.model,
-            "marca": self.marca,
+            "size": self.size,
             "description": self.description,
-            "category": self.category,
-            "part": self.part,
+            "link": self.link
         }
