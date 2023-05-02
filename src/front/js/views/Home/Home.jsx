@@ -32,7 +32,7 @@ const Home = () => {
         <ModalForm />
       </div>
 
-      <div>
+      <div className="container">
         <MyCarousel />
         <ProductGrid sections={sections} />
       </div>
