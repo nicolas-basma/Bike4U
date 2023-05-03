@@ -4,7 +4,7 @@ import "./MyCarousel.css";
 
 const MyCarousel = () => {
   return (
-    <Carousel fade className="container">
+    <Carousel fade className="container zindex">
       <Carousel.Item className="imageContainer">
         <img 
           className="image"

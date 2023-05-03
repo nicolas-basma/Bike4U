@@ -53,3 +53,19 @@ a {
 a:hover {
   color: white;
 }
+.onTop {
+  z-index: 4;
+}
+
+.navbar-box {
+  margin: 0 10px;
+  border: 7px solid transparent;
+  border-image: linear-gradient(to right, #43c6ac, #e5fe00) 1;
+}
+
+/* Hacemos que el borde desaparezca a partir del breakpoint 'lg' */
+@media (min-width: 992px) {
+  .navbar-box {
+    border: none;
+  }
+}

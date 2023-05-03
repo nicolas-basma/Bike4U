@@ -18,13 +18,13 @@ const MyLanguageDropdown = () => {
   let capitalLang = lang.toUpperCase();
 
   return (
-    <div className="dropdown nav-item">
+    <div className="dropdown nav-item onTop">
       <button
         type="button"
-        className="btn button mb-2 nav-link dropdown-toggle"
+        className="btn button dropdown-toggle"
         data-bs-toggle="dropdown"
         aria-expanded="false"
-        data-bs-auto-close="inside"
+        data-bs-auto-close="true"
       >
         {capitalLang}
       </button>

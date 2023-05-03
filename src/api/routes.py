@@ -3,18 +3,21 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
-from api.utils import generate_sitemap, APIException
+from api.utils.utils import generate_sitemap, APIException, full_message
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import bcrypt
-from .send_email import send_email
+from .utils.send_email import send_email
 import os
-from api.geting_api import add_part
+from api.geting_api import get_part
+from api.utils.add_part import add_part
+from api.data_parts import parts
 
 api = Blueprint('api', __name__)
 
 BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL')
 MESSAGE_FROM_BIKE4U = os.environ.get('MESSAGE_FROM_BIKE4U')
 BIKE4U_NAME = os.environ.get('BIKE4U_NAME')
+SUBJECT = os.environ.get('SUBJECT')
 
 # POST crear usuari
 
@@ -118,21 +121,28 @@ def handle_edit_user(id):
 def handle_send_message():
     # ruta para enviar email desde el formulario de contact us
     request_body = request.json
-    print(request_body['email'])
-    if request_body["email"]:
+    if not request_body["email"]:
         return jsonify({"msg": "email is missing"}), 400
     email = request_body["email"]
-    if request_body['message'] is None:
+    if not request_body['message']:
         return jsonify({"msg": "message is missing"}), 400
     message = request_body['message']
     name = request_body['name']
-    send_email(BIKE4U_EMAIL, message, name)  # mensaje del usuario
+    user_message = full_message(name, message)
+    send_email(BIKE4U_EMAIL, user_message)  # mensaje del usuario
     # mensaje de confirmacion por parte de bike4u
-    send_email(email, MESSAGE_FROM_BIKE4U, BIKE4U_NAME)
-    return jsonify(request_body)
+    message_bike_4u = full_message(SUBJECT, MESSAGE_FROM_BIKE4U)
+    send_email(email, message_bike_4u)
+    return jsonify(request_body), 200
 
 
 @api.route('/test', methods=['GET'])
 def handle_test():
-    response = add_part()
-    return jsonify(response)
+    response = add_part(parts)
+    return response
+
+
+@api.route('/get-parts', methods=['GET'])
+def handle_get_parts():
+    response = get_part()
+    return jsonify(response), 200
