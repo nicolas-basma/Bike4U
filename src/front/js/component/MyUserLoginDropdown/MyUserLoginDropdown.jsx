@@ -10,13 +10,13 @@ const MyUserLoginDropdown = () => {
   const { formInput, myHandleInput } = useForms();
 
   return (
-    <div className="dropdown">
+    <div className="dropdown onTop">
       <button
         type="button"
-        className="btn button mb-2"
+        className="btn button"
         data-bs-toggle="dropdown"
+        data-bs-auto-close="true"
         aria-expanded="false"
-        data-bs-auto-close="inside"
       >
         <FormattedMessage id="userLoginDropdownMainButton"></FormattedMessage>
       </button>
@@ -35,7 +35,7 @@ const MyUserLoginDropdown = () => {
               id="MyUserLoginDropdown-input__email"
               placeholder="email@example.com"
               name="MyUserLoginDropdown-input__email"
-              value={formInput["name"]}
+              value={formInput[name]}
               onChange={myHandleInput}
             ></input>
           </div>
@@ -54,7 +54,7 @@ const MyUserLoginDropdown = () => {
                 <FormattedMessage id="userLoginDropdownPassword"></FormattedMessage>
               }
               name="MyUserLoginDropdown-input__password"
-              value={formInput["name"]}
+              value={formInput[name]}
               onChange={myHandleInput}
             ></input>
           </div>
@@ -65,7 +65,7 @@ const MyUserLoginDropdown = () => {
                 className="form-check-input"
                 id="MyUserLoginDropdown-input__rememberMe"
                 name="MyUserLoginDropdown-input__rememberMe"
-                value={formInput["name"]}
+                value={formInput[name]}
                 onChange={myHandleInput}
               ></input>
               <label className="form-check-label" htmlFor="dropdownCheck">

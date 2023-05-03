@@ -1,8 +1,7 @@
-import React from "react";
+import React, {useRef} from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
@@ -14,10 +13,14 @@ import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, setLang } = action;
-  const { logo, lang } = store;
+  const { handleShow } = action;
+  const { logo } = store;
 
-  const handleSelect = (eventKey) => setLang(eventKey);
+  const navbarCollapseRef = useRef(null);
+
+  const handleLinkClick = () => {
+      navbarCollapseRef.current.classList.remove('show');
+    };
 
   return (
     <>
@@ -35,31 +38,33 @@ const MyNavbar = () => {
               bike4u
             </Link>
           </Navbar.Brand>
-
+          
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-            <Nav >
-              <Link to="/customizebike">
+
+          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient" ref={navbarCollapseRef}>
+            <Nav className="bg-black onTop me-auto">
+              <Link to="/customizebike" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
                 </Nav.Item>
               </Link>
-              <Link to="/favorites">
+              <Link to="/favorites" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
                 </Nav.Item>
               </Link>
-
-              <Link className="button" to="/aboutus">
+              <Link to="/aboutus" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomContact"></FormattedMessage>
                 </Nav.Item>
               </Link>
-              <MyUserLoginDropdown />
+
+              <MyUserLoginDropdown onClick={handleLinkClick}/>
+              <MyLanguageDropdown onClick={handleLinkClick} />
+
             </Nav>
           </Navbar.Collapse>
-          <MyLanguageDropdown />
-          
+
         </Container>
       </Navbar>
     </>
