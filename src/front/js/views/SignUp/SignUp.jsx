@@ -8,18 +8,22 @@ import "./SignUp.css";
 
 const SignUp = () => {
 const {store, action}=useStore();
-const {useForms, myHandleInput}=action;
-
-
- const {formInput}=useForms();
+const {useForms}=action;
+ const {formInput, myHandleInput}=useForms();
  const {name, lastname, email, password,confirmPassword, weight, height, bikeType}=formInput;
 
     const handleCreateUser=()=>{
-        const localURL="https://3001-nicob11-finalproject-sw35hjtvibt.ws-eu96b.gitpod.io/?vscodeBrowserReqId=1683142891195"
+        const body = {
+            name,
+            email,
+            password
+        }
+        console.log(body)
+        const localURL="https://3001-nicob11-finalproject-sw35hjtvibt.ws-eu96b.gitpod.io"
         fetch(localURL + "/api/signup",
         {method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: stringify({name, lastname, email, password,confirmPassword, weight, height, bikeType})})
+        body: stringify(body)})
         .then((res)=>console.log(res))
     }
     // 
