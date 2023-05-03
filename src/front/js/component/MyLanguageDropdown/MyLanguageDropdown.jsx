@@ -24,7 +24,7 @@ const MyLanguageDropdown = () => {
         className="btn button dropdown-toggle"
         data-bs-toggle="dropdown"
         aria-expanded="false"
-        data-bs-auto-close="inside"
+        data-bs-auto-close="true"
       >
         {capitalLang}
       </button>
