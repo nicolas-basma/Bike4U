@@ -1,8 +1,10 @@
 import React from "react";
 import useStore from "/workspace/FinalProject/src/front/js/store/AppContext.jsx";
+import { stringify } from 'json5';
 
 import "./SignUp.css";
-import { json } from "react-router-dom";
+
+
 
 const SignUp = () => {
 const {store, action}=useStore();
@@ -10,17 +12,21 @@ const {useForms, myHandleInput}=action;
 
 
  const {formInput}=useForms();
-    const login=()=>{
-        fetch("https://3001-nicob11-finalproject-2ly8el9c9db.ws-eu96.gitpod.io/?vscodeBrowserReqId=1682707474552/api/signup",
+ const {name, lastname, email, password,confirmPassword, weight, height, bikeType}=formInput;
+
+    const handleCreateUser=()=>{
+        const localURL="https://3001-nicob11-finalproject-sw35hjtvibt.ws-eu96b.gitpod.io/?vscodeBrowserReqId=1683142891195"
+        fetch(localURL + "/api/signup",
         {method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: json.strigify({nombre, apellidos, email, contraseña, altura, peso, tipo})})
+        body: stringify({name, lastname, email, password,confirmPassword, weight, height, bikeType})})
+        .then((res)=>console.log(res))
     }
-
-const prueba =(e)=>{
-    const{name, lastname, email, password,confirmPassword, weight, height, bikeType }=formInput;
-    console.log(e)
-}
+    // 
+// const prueba =(e)=>{
+//     const{name, lastname, email, password,confirmPassword, weight, height, bikeType }=formInput;
+//     console.log(e)
+// }
     
   return (
     <form>
@@ -31,7 +37,7 @@ const prueba =(e)=>{
         <div className="mb-3">
           <div className="row">
             <div className="col-6">
-              <label for="exampleInputName" className="form-label">
+              <label htmlFor="exampleInputName" className="form-label">
                 Nombre
               </label>
               <input
@@ -46,7 +52,7 @@ const prueba =(e)=>{
             </div>
 
             <div className="col-6">
-              <label for="exampleInputLastname" className="form-label">
+              <label htmlFor="exampleInputLastname" className="form-label">
                 Apellidos
               </label>
               <input
@@ -64,7 +70,7 @@ const prueba =(e)=>{
         <div className="mb-3">
           <div className="row" id="center">
             <div className="col-6">
-              <label for="exampleInputEmail" className="form-label">
+              <label htmlFor="exampleInputEmail" className="form-label">
                 Email
               </label>
               <input
@@ -81,7 +87,7 @@ const prueba =(e)=>{
         <div className="mb-3">
           <div className="row" id="center">
             <div className="col-6">
-              <label for="exampleInputPassword1" className="form-label">
+              <label htmlFor="exampleInputPassword1" className="form-label">
                 Contraseña
               </label>
               <input
@@ -99,7 +105,7 @@ const prueba =(e)=>{
         <div className="mb-3">
           <div className="row" id="center">
             <div className="col-6">
-              <label for="exampleInputPassword2" className="form-label">
+              <label htmlFor="exampleInputPassword2" className="form-label">
                 Confirme su contraseña
               </label>
               <input
@@ -119,7 +125,7 @@ const prueba =(e)=>{
         <div className="mb-3">
           <div className="row">
             <div className="col-6">
-              <label for="disabledSelect" class="form-label">
+              <label htmlFor="disabledSelect" className="form-label">
                 Seleccione su altura
               </label>
               <select  onChange={myHandleInput} name="height" className="form-select">
@@ -131,10 +137,10 @@ const prueba =(e)=>{
               </select>
             </div>
             <div className="col-6">
-              <label for="disabledSelect" class="form-label">
+              <label htmlFor="disabledSelect" className="form-label">
                 Seleccione su peso
               </label>
-              <select class="form-select" name="weight">
+              <select className="form-select" name="weight">
                 <option>30-40 kg</option>
                 <option>41-50 kg</option>
                 <option>51-60 kg</option>
@@ -161,7 +167,7 @@ const prueba =(e)=>{
             </div>
           </div>
         </div>
-        <button type="button" className="sendBtn" onClick={()=>console.log(e)}>
+        <button type="button" className="sendBtn" onClick={handleCreateUser}>
           Enviar
         </button>
         <div className="ddd">dssssssssss</div>
