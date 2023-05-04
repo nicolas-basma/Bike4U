@@ -82,3 +82,8 @@ __pycache__/
 # ignore project install files
 *.lock
 package-lock
+
+# a lo bruto
+src/instance
+./Pipfile.lock
+./migrations

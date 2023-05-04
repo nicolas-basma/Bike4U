@@ -10,23 +10,26 @@ import "./SignUp.css";
 const SignUp = () => {
 const {store, action}=useStore();
 const {useForms}=action;
- const {formInput, myHandleInput}=useForms();
- const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
+const {formInput, myHandleInput}=useForms();
+const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
+
+console.log(formInput);
 
     const handleCreateUser=()=>{
-      const size = height;  
       const body = {
             name,
             lastname,
             email,
             password,
-            weight : "muy gorda",
-            size : "negro del whatsap"
-        }
-        const myTempBody = JSON.stringify(body);
-        console.log(myTempBody);
-        //console.log(body)
-        const localURL="http://127.0.0.1:3001"
+            weight,
+            size : height,
+            bikeType
+      }
+      const myTempBody = JSON.stringify(body);
+      
+      const localURL="http://127.0.0.1:3001"
+      
+      if (password === confirmPassword) {
         fetch(localURL + "/api/signup",
         {method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -34,18 +37,15 @@ const {useForms}=action;
         .then((res)=>{
           if (res.status != 200) {
             throw new Error(`Error: ${res?.data?.msg}`);
-            console.log("Error en el servidor");
-            return;
           } 
           console.log(res);
         })
         .catch((err)=>console.log(err))
+      }
+      else {
+        alert("Las contraseñas no coinciden");
+      }
     }
-    // 
-// const prueba =(e)=>{
-//     const{name, lastname, email, password,confirmPassword, weight, height, bikeType }=formInput;
-//     console.log(e)
-// }
     
   return (
     <form>
@@ -148,6 +148,7 @@ const {useForms}=action;
                 Seleccione su altura
               </label>
               <select  onChange={myHandleInput} name="height" className="form-select">
+                <option >Elige tu altura</option>
                 <option value={"XS"}>150-160 cm</option>
                 <option value={"S"}>161-170 cm</option>
                 <option value={"M"}>171-180 cm</option>
@@ -159,7 +160,8 @@ const {useForms}=action;
               <label htmlFor="disabledSelect" className="form-label">
                 Seleccione su peso
               </label>
-              <select className="form-select" name="weight">
+              <select onChange={myHandleInput} className="form-select" name="weight">
+                <option>Elige tu peso</option>
                 <option>30-40 kg</option>
                 <option>41-50 kg</option>
                 <option>51-60 kg</option>
@@ -177,10 +179,12 @@ const {useForms}=action;
                 <label className="form-label" id="typeOfBike">
                   Tipo de bicicleta
                 </label>
-                <select className="form-select" name="bikeType">
+                <select onChange={myHandleInput} className="form-select" name="bikeType">
+                  <option>Elige tu tipo de bicicleta</option>
                   <option>Carretera</option>
                   <option>Montaña</option>
                   <option>BMX</option>
+                  <option>Urban</option>
                 </select>
               </div>
             </div>
@@ -189,11 +193,6 @@ const {useForms}=action;
         <button type="button" className="sendBtn" onClick={handleCreateUser}>
           Enviar
         </button>
-        <div className="ddd">dssssssssss</div>
-        <div className="ddd">dssssssssss</div>
-        <div className="ddd">dssssssssss</div>
-        <div className="ddd">dssssssssss</div>
-        <div className="ddd">dssssssssss</div>
       </div>
     </form>
   );

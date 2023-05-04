@@ -35,6 +35,7 @@ def handle_singup():
         email=request_body["email"],
         size=request_body["size"],
         weight=request_body["weight"],
+        bike_type=request_body["bikeType"],
         password=coded_password,
         is_active=False
     )
@@ -66,7 +67,6 @@ def handle_login():
 
 
 # GET all users
-
 
 @api.route('/allusers', methods=['GET'])
 def handle_all_users():
