@@ -24,11 +24,11 @@ export const AppContext = ({ children }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleLogin = () => {
-    //Function required to handle the login in the userLoginDropdown.
-    //if loging is ok, clear formInputs. Rerender views. Termany operators?
-    //if loging is nok, clear only password.
-  };
+  // const handleLogin = () => {
+  //   //Function required to handle the login in the userLoginDropdown.
+  //   //if loging is ok, clear formInputs. Rerender views. Termany operators?
+  //   //if loging is nok, clear only password.
+  // };
 
   //Flux
   const store = {
@@ -45,7 +45,7 @@ export const AppContext = ({ children }) => {
     setLang,
     handleClose,
     handleShow,
-    handleLogin,
+   // handleLogin,
     clearFormInput,
     useForms,
   };
