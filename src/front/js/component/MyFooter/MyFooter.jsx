@@ -19,7 +19,7 @@ const MyFooter = () => {
   const { store, action } = useStore();
   const { logo } = store;
   return (
-    <footer className="footer mt-auto py-1 text-center d-block">
+    <footer className="footer  py-1 text-center d-block">
       <div className=" container-fluid">
         <div className="row">
           <div className="col-3">

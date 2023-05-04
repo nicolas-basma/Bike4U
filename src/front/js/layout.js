@@ -8,7 +8,7 @@ const Layout = () => {
     <>
       <MyNavbar />
       <Outlet />
-      {/* <MyFooter /> */}
+      <MyFooter />
     </>
   );
 };
