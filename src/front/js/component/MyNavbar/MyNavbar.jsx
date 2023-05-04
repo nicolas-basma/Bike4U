@@ -42,7 +42,7 @@ const MyNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient" ref={navbarCollapseRef}>
-            <Nav className="bg-black onTop me-auto">
+            <Nav className="bg-black ">
               <Link to="/customizebike" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>

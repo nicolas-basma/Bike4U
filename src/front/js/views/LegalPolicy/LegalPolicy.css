@@ -1,6 +1,6 @@
 #accordionFlushExample {
   width: 75%;
-  margin: 30px auto;
+  margin: 100px auto;
   border: 2px solid black;
 }
 
@@ -14,4 +14,11 @@
 #accordionButtonCollapsed:hover {
   background-color: black;
   color: white;
+}
+.enlaceCookie{
+  color:blue
+}
+.enlaceCookie:hover{
+  color:blue;
+  text-decoration: underline;
 }
