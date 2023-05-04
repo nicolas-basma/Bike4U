@@ -2,7 +2,8 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.autopep8"
   },
-  "python.analysis.typeCheckingMode": "off"
+  "python.analysis.typeCheckingMode": "off",
+  "python.formatting.provider": "none"
 }
