@@ -1,7 +1,11 @@
 import React from "react";
 import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
+import useStore from "../../store/AppContext.jsx";
 
 function ProductView() {
+  const { store } = useStore();
+  const { carouselHomePhotos } = store;
+
   return (
     <div className="container">
       <div className="row">
@@ -38,7 +42,7 @@ function ProductView() {
       </div>
       <div className="row">
         <div className="col">
-          <MyCarousel />
+          <MyCarousel photos={carouselHomePhotos} />
         </div>
       </div>
     </div>

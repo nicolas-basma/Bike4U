@@ -8,6 +8,7 @@ import ModalForm from "../../component/ModalForm/ModalForm.jsx";
 import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import ProductGrid from "../../component/ProductGrid/ProductGrid.jsx";
 import sections from "../../mocks/sections.js";
+import carouselHomePhotos from "../../img/arrayPhotos.js";
 
 const Home = () => {
   const { store, action } = useStore();
@@ -33,7 +34,7 @@ const Home = () => {
       </div>
 
       <div className="container">
-        <MyCarousel />
+        <MyCarousel photos={carouselHomePhotos} />
         <ProductGrid sections={sections} />
       </div>
     </>
