@@ -14,10 +14,14 @@ const {useForms}=action;
  const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
 
     const handleCreateUser=()=>{
-        const body = {
+      const size = height;  
+      const body = {
             name,
+            lastname,
             email,
-            password
+            password,
+            weight : "muy gorda",
+            size : "negro del whatsap"
         }
         const myTempBody = JSON.stringify(body);
         console.log(myTempBody);
@@ -66,7 +70,7 @@ const {useForms}=action;
               />
             </div>
 
-            {/* <div className="col-6">
+            <div className="col-6">
               <label htmlFor="exampleInputLastname" className="form-label">
                 Apellidos
               </label>
@@ -79,7 +83,7 @@ const {useForms}=action;
                 onChange={myHandleInput}
                 name="lastname"
               />
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="mb-3">
@@ -117,7 +121,7 @@ const {useForms}=action;
             </div>
           </div>
         </div>
-        {/* <div className="mb-3">
+        <div className="mb-3">
           <div className="row" id="center">
             <div className="col-6">
               <label htmlFor="exampleInputPassword2" className="form-label">
@@ -134,7 +138,7 @@ const {useForms}=action;
             </div>
           </div>
         </div>
-        {/* <div className="signUpSecondTitle">
+         <div className="signUpSecondTitle">
           <h1>INTRODUZCA SUS CARACTERÍSTICAS</h1>
         </div>
         <div className="mb-3">
@@ -181,7 +185,7 @@ const {useForms}=action;
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
         <button type="button" className="sendBtn" onClick={handleCreateUser}>
           Enviar
         </button>
