@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.geting_api import get_part
+from api.geting_api import get_part, use_gpt3
 from api.utils.add_part import add_part
 from api.data_parts import parts
 
@@ -31,7 +31,10 @@ def handle_singup():
         "utf-8"), bcrypt.gensalt())
     new_user = User(
         name=request_body["name"],
+        lastname=request_body["lastname"],
         email=request_body["email"],
+        size=request_body["size"],
+        weight=request_body["weight"],
         password=coded_password,
         is_active=False
     )
@@ -142,7 +145,12 @@ def handle_test():
     return response
 
 
-@api.route('/get-parts', methods=['GET'])
+# @api.route('/get-parts', methods=['POST'])
+# def handle_get_parts():
+#     response = use_gpt3()
+#     return jsonify(response), 200
+
+@api.route('/get-parts', methods=['POST'])
 def handle_get_parts():
     response = get_part()
     return jsonify(response), 200
