@@ -6,9 +6,9 @@ const MyCarousel = ({ photos }) => {
   return (
     <Carousel fade className="container">
       {photos?.length
-        ? photos.map((element) => {
+        ? photos.map((element, index) => {
             return (
-              <Carousel.Item className="imageContainer">
+              <Carousel.Item className="imageContainer" key={index}>
                 <img className="image" src={element} alt="Third slide" />
               </Carousel.Item>
             );
