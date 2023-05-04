@@ -24,6 +24,7 @@ bcrypt = "*"
 secure-smtplib = "*"
 requests = "*"
 beautifulsoup4 = "*"
+colorama = "*"
 
 [requires]
 python_version = "3.10"

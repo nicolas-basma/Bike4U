@@ -1,6 +1,7 @@
 import React from "react";
-import useStore from "/workspace/FinalProject/src/front/js/store/AppContext.jsx";
 import { stringify } from 'json5';
+
+import useStore from "../../store/AppContext.jsx";
 
 import "./SignUp.css";
 
@@ -10,7 +11,7 @@ const SignUp = () => {
 const {store, action}=useStore();
 const {useForms}=action;
  const {formInput, myHandleInput}=useForms();
- const {name, lastname, email, password,confirmPassword, weight, height, bikeType}=formInput;
+ const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
 
     const handleCreateUser=()=>{
         const body = {
@@ -18,13 +19,23 @@ const {useForms}=action;
             email,
             password
         }
-        console.log(body)
-        const localURL="https://3001-nicob11-finalproject-sw35hjtvibt.ws-eu96b.gitpod.io"
+        const myTempBody = JSON.stringify(body);
+        console.log(myTempBody);
+        //console.log(body)
+        const localURL="http://127.0.0.1:3001"
         fetch(localURL + "/api/signup",
-        {method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: stringify(body)})
-        .then((res)=>console.log(res))
+        {method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: myTempBody})
+        .then((res)=>{
+          if (res.status != 200) {
+            throw new Error(`Error: ${res?.data?.msg}`);
+            console.log("Error en el servidor");
+            return;
+          } 
+          console.log(res);
+        })
+        .catch((err)=>console.log(err))
     }
     // 
 // const prueba =(e)=>{
@@ -55,7 +66,7 @@ const {useForms}=action;
               />
             </div>
 
-            <div className="col-6">
+            {/* <div className="col-6">
               <label htmlFor="exampleInputLastname" className="form-label">
                 Apellidos
               </label>
@@ -68,7 +79,7 @@ const {useForms}=action;
                 onChange={myHandleInput}
                 name="lastname"
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mb-3">
@@ -106,7 +117,7 @@ const {useForms}=action;
             </div>
           </div>
         </div>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <div className="row" id="center">
             <div className="col-6">
               <label htmlFor="exampleInputPassword2" className="form-label">
@@ -119,11 +130,11 @@ const {useForms}=action;
                 placeholder="Confirme su Contraseña"
                 name="confirmPassword"
                 onChange={myHandleInput}
-              />
+              /> 
             </div>
           </div>
         </div>
-        <div className="signUpSecondTitle">
+        {/* <div className="signUpSecondTitle">
           <h1>INTRODUZCA SUS CARACTERÍSTICAS</h1>
         </div>
         <div className="mb-3">
@@ -170,7 +181,7 @@ const {useForms}=action;
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <button type="button" className="sendBtn" onClick={handleCreateUser}>
           Enviar
         </button>
