@@ -17,6 +17,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     size = db.Column(db.String, nullable=False)
     weight = db.Column(db.String, nullable=False)
+    bike_type = db.Column(db.String, nullable=False)
     password = db.Column(db.String, unique=False, nullable=False)
     favorites = db.relationship(
         'Parts', backref="users", secondary=favorites_parts)
@@ -38,6 +39,7 @@ class User(db.Model):
             "size": self.size,
             "weight": self.weight,
             "email": self.email,
+            "bike type": self.bike_type,
             "favorites": [f'{parts}' for parts in self.favorites],
         }
 

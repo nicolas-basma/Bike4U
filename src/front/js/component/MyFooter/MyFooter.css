@@ -5,12 +5,15 @@ footer {
   display: flex;
   justify-content: center;
   font-family: "Sofia Sans Condensed", sans-serif;
-  position: fixed;
+  margin-top:70vh;
   left: 0px;
   bottom: 0px;
   width: 100%;
   background-color: black;
   color: white;
+  
+
+  
 }
 .contact {
   display: flex;
