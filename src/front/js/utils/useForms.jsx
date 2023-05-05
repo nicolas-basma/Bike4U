@@ -11,7 +11,7 @@ const useForms = (initialize = {}) => {
     setFormInput((prev) => {
       const newFormInput = { ...prev };
       newFormInput[key] = value;
-      //console.log(newFormInput);
+      console.log(newFormInput);
       return newFormInput;
     });
   };

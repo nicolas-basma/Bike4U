@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.geting_api import get_part
+from api.geting_api import get_part, use_gpt3
 from api.utils.add_part import add_part
 from api.data_parts import parts
 
@@ -31,7 +31,11 @@ def handle_singup():
         "utf-8"), bcrypt.gensalt())
     new_user = User(
         name=request_body["name"],
+        lastname=request_body["lastname"],
         email=request_body["email"],
+        size=request_body["size"],
+        weight=request_body["weight"],
+        bike_type=request_body["bikeType"],
         password=coded_password,
         is_active=False
     )
@@ -48,14 +52,15 @@ def handle_singup():
 @api.route('/login', methods=['POST'])
 # funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
 def handle_login():
+    error_message = "error en las credenciales"
     request_user = request.json
     user = User.query.filter_by(email=request_user["email"]).first()
     if user == None:
-        return jsonify({"msg": "error en las credenciales"}), 403
+        return jsonify({"msg": error_message}), 403
     user_info = user.serialize()
 
     if not user.verify(request_user["password"].encode("utf-8")):
-        return jsonify({"msg": "error en las credenciales!"}), 403
+        return jsonify({"msg": error_message}), 403
 
     login_token = create_access_token(identity=user_info)
 
@@ -63,7 +68,6 @@ def handle_login():
 
 
 # GET all users
-
 
 @api.route('/allusers', methods=['GET'])
 def handle_all_users():
@@ -142,7 +146,12 @@ def handle_test():
     return response
 
 
-@api.route('/get-parts', methods=['GET'])
+# @api.route('/get-parts', methods=['POST'])
+# def handle_get_parts():
+#     response = use_gpt3()
+#     return jsonify(response), 200
+
+@api.route('/get-parts', methods=['POST'])
 def handle_get_parts():
     response = get_part()
     return jsonify(response), 200

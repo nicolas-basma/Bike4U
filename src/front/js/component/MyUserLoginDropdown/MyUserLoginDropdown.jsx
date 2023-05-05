@@ -4,19 +4,54 @@ import { FormattedMessage } from "react-intl";
 
 import useStore from "../../store/AppContext.jsx";
 
-const MyUserLoginDropdown = () => {
+const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action } = useStore();
-  const { handleLogin, useForms } = action;
+  const { useForms } = action;
   const { formInput, myHandleInput } = useForms();
 
+  const handleLogin = (event) => {
+
+    event.preventDefault();
+
+    const { userEmail, password, rememberMe } = formInput;
+
+    const data = {
+      email : userEmail,
+      password,
+      rememberMe,
+    };     
+    console.log(data);
+
+    const localURL="http://127.0.0.1:3001"
+
+    fetch(localURL + "/api/login",
+    {method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)})
+    .then((res)=>{
+      const errorMessage = "Ha habido un error en el login"
+      if (res.status != 200) {
+        //alert(errorMessage);
+        throw new Error(`Error: ${res?.data?.msg}`);
+      }
+      return res.json()})
+    .then((data)=>{
+  
+      console.log(data);
+      localStorage.setItem("userSessionToken", JSON.stringify(data["login_token"]));
+      localStorage.setItem("loggedUser", JSON.stringify(data["Name"]));
+    })
+    .catch((err)=>console.log(err))
+  }
+
   return (
-    <div className="dropdown">
+    <div className="dropdown onTop">
       <button
         type="button"
-        className="btn button mb-2"
+        className="btn button"
         data-bs-toggle="dropdown"
+        data-bs-auto-close="true"
         aria-expanded="false"
-        data-bs-auto-close="inside"
       >
         <FormattedMessage id="userLoginDropdownMainButton"></FormattedMessage>
       </button>
@@ -34,8 +69,8 @@ const MyUserLoginDropdown = () => {
               className="form-control"
               id="MyUserLoginDropdown-input__email"
               placeholder="email@example.com"
-              name="MyUserLoginDropdown-input__email"
-              value={formInput["name"]}
+              name="userEmail"
+              value={formInput[name]}
               onChange={myHandleInput}
             ></input>
           </div>
@@ -50,11 +85,9 @@ const MyUserLoginDropdown = () => {
               type="password"
               className="form-control"
               id="MyUserLoginDropdown-input__password"
-              placeholder={
-                <FormattedMessage id="userLoginDropdownPassword"></FormattedMessage>
-              }
-              name="MyUserLoginDropdown-input__password"
-              value={formInput["name"]}
+              placeholder="Password"
+              name="password"
+              value={formInput[name]}
               onChange={myHandleInput}
             ></input>
           </div>
@@ -64,8 +97,8 @@ const MyUserLoginDropdown = () => {
                 type="checkbox"
                 className="form-check-input"
                 id="MyUserLoginDropdown-input__rememberMe"
-                name="MyUserLoginDropdown-input__rememberMe"
-                value={formInput["name"]}
+                name="rememberMe"
+                value={formInput[name]}
                 onChange={myHandleInput}
               ></input>
               <label className="form-check-label" htmlFor="dropdownCheck">
@@ -74,7 +107,6 @@ const MyUserLoginDropdown = () => {
             </div>
           </div>
           <button
-            type="submit"
             className="btn btn-primary"
             onClick={handleLogin}
           >
@@ -82,10 +114,10 @@ const MyUserLoginDropdown = () => {
           </button>
         </form>
         <div className="dropdown-divider"></div>
-        <Link className="btn dropdown-item" to="/SignUp">
+        <Link onClick={closeNavbar} className="btn dropdown-item" to="/SignUp">
           <FormattedMessage id="userLoginDropdownNewUser"></FormattedMessage>
         </Link>
-        <Link className="btn dropdown-item" to="/PasswordRecovery">
+        <Link onClick={closeNavbar} className="btn dropdown-item" to="/PasswordRecovery">
           <FormattedMessage id="userLoginDropdownForgotPassword"></FormattedMessage>
         </Link>
       </div>
