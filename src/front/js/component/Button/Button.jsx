@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
-function Button(props) {
+import "/workspace/FinalProject/src/front/js/component/Button/Button.css"
+
+const CustomizeBikeButton = () => {
+
+
   return (
-    <div className="d-grid gap-2 col-12 mx-auto">
-      <button
-        className="btn btn-primary"
-        onClick={props.onClick}
-        id="buttonCustomizeBike"
-      >
-        <Link to="{/customizeBike}">{props.label}</Link>
-      </button>
-    </div>
-  );
-}
 
-export default Button;
+    <Link to="/customizeBike">
+      <button className="customizeBikeBtn">
+      <FormattedMessage id="customizeBikeButton"></FormattedMessage>
+      </button>
+    </Link>
+
+
+  )
+}
+export default CustomizeBikeButton;
