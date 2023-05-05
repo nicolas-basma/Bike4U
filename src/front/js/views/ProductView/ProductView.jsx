@@ -2,6 +2,7 @@ import React from "react";
 import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import useStore from "../../store/AppContext.jsx";
 
+
 function ProductView() {
   const { store } = useStore();
   const { carouselHomePhotos } = store;
