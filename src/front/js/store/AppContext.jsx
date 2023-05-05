@@ -7,6 +7,7 @@ import useForms from "../utils/useForms.jsx";
 import allMessages from "../../../lang/messages.js";
 import { IntlProvider } from "react-intl";
 //import { lenguaje } from "../layout.js";
+import carouselHomePhotos from "../img/arrayPhotos.js";
 
 const Context = createContext();
 
@@ -39,6 +40,7 @@ export const AppContext = ({ children }) => {
     contactMail,
     flagEEUU,
     flagEspana,
+    carouselHomePhotos,
   };
   const action = {
     setShow,
