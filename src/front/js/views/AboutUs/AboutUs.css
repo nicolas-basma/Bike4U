@@ -32,6 +32,7 @@
   box-shadow: 0px 0px 25px #222;
   margin: 30px auto;
   font-family: "Racing Sans One", cursive;
+  border:5px solid black;
 }
 .contactButton:hover {
   cursor: pointer;
