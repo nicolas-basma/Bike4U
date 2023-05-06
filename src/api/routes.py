@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.geting_api import get_part, use_gpt3
+from api.geting_api import get_frame
 from api.utils.add_part import add_part
 from api.data_parts import parts
 
@@ -140,18 +140,14 @@ def handle_send_message():
     return jsonify(request_body), 200
 
 
-@api.route('/test', methods=['GET'])
-def handle_test():
-    response = add_part(parts)
+# @api.route('/test', methods=['GET'])
+# def handle_test():
+#     response = add_part(parts)
+#     return response
+
+
+
+@api.route('/get-parts/frame', methods=['POST'])
+def handle_get_frame():
+    response = get_frame()
     return response
-
-
-# @api.route('/get-parts', methods=['POST'])
-# def handle_get_parts():
-#     response = use_gpt3()
-#     return jsonify(response), 200
-
-@api.route('/get-parts', methods=['POST'])
-def handle_get_parts():
-    response = get_part()
-    return jsonify(response), 200
