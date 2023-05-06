@@ -62,3 +62,22 @@ class Parts(db.Model):
             "description": self.description,
             "link": self.link
         }
+    
+class Frame(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    brand = db.Column(db.String, nullable=False)
+    title = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
+    link = db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return f"<Bike(brand={self.brand}, title={self.title}, image={self.image}, link={self.link})>"
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "brand": self.brand,
+            "title": self.title,
+            "image": self.image,
+            "link": self.link
+        }
