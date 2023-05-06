@@ -7,7 +7,7 @@ db = SQLAlchemy()
 favorites_parts = db.Table('favorites_parts',
                            db.Column('user_id',
                                      db.Integer,
-                                     db.ForeignKey('user.id'), primary_key=True), db.Column('parts_id', db.Integer, db.ForeignKey('parts.id'), primary_key=True))
+                                     db.ForeignKey('user.id'), primary_key=True), db.Column('bike_part_id', db.Integer, db.ForeignKey('bike_part.id'), primary_key=True))
 
 
 class User(db.Model):
@@ -20,7 +20,7 @@ class User(db.Model):
     bike_type = db.Column(db.String, nullable=False)
     password = db.Column(db.String, unique=False, nullable=False)
     favorites = db.relationship(
-        'Parts', backref="users", secondary=favorites_parts)
+        'BikePart', backref="users", secondary=favorites_parts)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
@@ -40,44 +40,28 @@ class User(db.Model):
             "weight": self.weight,
             "email": self.email,
             "bike type": self.bike_type,
-            "favorites": [f'{parts}' for parts in self.favorites],
-        }
-
-
-class Parts(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    model = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
-    link = db.Column(db.String, nullable=False)
-    size = db.Column(db.String, nullable=False)
-
-    def __repr__(self):
-        return f'<Parts {self.model}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "model": self.model,
-            "size": self.size,
-            "description": self.description,
-            "link": self.link
+            "favorites": [f'{bike_part}' for bike_part in self.favorites],
         }
     
-class Frame(db.Model):
+class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    part = db.Column(db.String, nullable=False)
+    terrain = db.Column(db.String, nullable=False)
     brand = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     link = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f"<Bike(brand={self.brand}, title={self.title}, image={self.image}, link={self.link})>"
+        return f'<BikePart {self.part}>'
 
     def serialize(self):
         return {
             "id": self.id,
+            "part": self.part,
+            "terrain": self.terrain,
             "brand": self.brand,
             "title": self.title,
             "image": self.image,
-            "link": self.link
+            "link": self.link,
         }

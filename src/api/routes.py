@@ -8,9 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.geting_api import get_frame
-from api.utils.add_part import add_part
-from api.data_parts import parts
+from api.utils.updateparts import get_part
 
 api = Blueprint('api', __name__)
 
@@ -139,15 +137,24 @@ def handle_send_message():
     send_email(email, message_bike_4u)
     return jsonify(request_body), 200
 
-
-# @api.route('/test', methods=['GET'])
-# def handle_test():
-#     response = add_part(parts)
-#     return response
-
-
-
-@api.route('/get-parts/frame', methods=['POST'])
-def handle_get_frame():
-    response = get_frame()
+#FRAMES TYPES
+@api.route('/get-parts/frame-mtb', methods=['POST'])
+def handle_get_frame_mtb():
+    response = get_part("FRAME","MTB")
     return response
+
+@api.route('/get-parts/frame-road', methods=['POST'])
+def handle_get_frame_road():
+    response = get_part("FRAME","ROAD")
+    return response
+
+@api.route('/get-parts/frame-bmx', methods=['POST'])
+def handle_get_frame_bmx():
+    response = get_part("FRAME","BMX")
+    return response
+
+#WHEELS TYPES
+@api.route('/get-parts/wheels-mtb', methods=['POST'])
+def handle_get_wheels_mtb():
+    response = get_part("WHEELS","MTB")
+    return response    

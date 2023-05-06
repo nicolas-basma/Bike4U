@@ -1,6 +1,6 @@
 import requests
 import json
-from api.models import db, Frame
+from api.models import db, BikePart
 import openai
 import os
 from time import sleep
@@ -11,6 +11,62 @@ GPT = os.getenv("OPENAI_API_KEY")
 ORGANIZATION = os.getenv("ORGANIZATION")
 BIKESTER = os.getenv("BIKESTER")
 IMG_DEFAULT = os.getenv("IMG_DEFAULT")
+FRAME_MTB = os.getenv("FRAME_MTB")
+FRAME_ROAD = os.getenv("FRAME_ROAD")
+FRAME_BMX = os.getenv("FRAME_BMX")
+WHEELS_MTB = os.getenv("WHEELS_MTB")
+WHELLS_ROAD = os.getenv("WHELLS_ROAD")
+WHELLS_BMX = os.getenv("WHELLS_BMX")
+
+#funcion para indroducir los datos de los frames en la base de datos
+def get_part(part, terrain):
+    bike_parts_url = {
+        "FRAME": {
+            "MTB": FRAME_MTB,
+            "ROAD": FRAME_ROAD,
+            "BMX": FRAME_BMX
+        },
+        "WHEELS": {
+            "MTB": WHEELS_MTB,
+            "ROAD": WHELLS_ROAD,
+            "BMX": WHELLS_BMX
+        }
+    }
+    if part not in bike_parts_url or terrain not in bike_parts_url[part]:
+        return jsonify({"msg": "Frame type not found"}), 404
+
+    url = BIKESTER + bike_parts_url[part][terrain]
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    parts = soup.find_all('div', 'product-tile-inner')
+    for item in parts:
+        brand = item.find('div', class_='cyc-typo_subheader').text.strip()
+        title = item.find('div', class_='product-name').text.strip()
+        image = item.find('div', class_='product-image').find('img').get('data-src')
+        if image == None:
+            image = IMG_DEFAULT
+        href = item.find('a', class_='thumb-link')['href']
+        link = BIKESTER + href
+        new_part = BikePart(
+        part=part,
+        terrain=terrain,
+        brand=brand,
+        title=title,
+        image=image,
+        link=link
+        )
+        db.session.add(new_part)
+        db.session.commit()
+    return jsonify({"msg": "Frames added"}), 200
+
+
+
+
+
+
+
+
+
 
 
 # def use_gpt3(message):
@@ -47,24 +103,3 @@ IMG_DEFAULT = os.getenv("IMG_DEFAULT")
 #     #     diccionarios.append(part)
 #     #     sleep(1)
 #     return list_data
-def get_frame():
-    url = BIKESTER + '/piezas/cuadros-horquillas/cuadros/'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    frames = soup.find_all('div', 'product-tile-inner')
-    for frame in frames:
-        brand = frame.find('div', class_='cyc-typo_subheader').text.strip()
-        title = frame.find('div', class_='product-name').text.strip()
-        image = frame.find('div', class_='product-image').find('img').get('data-src')
-        if image == None:
-            image = IMG_DEFAULT
-        href = frame.find('a', class_='thumb-link')['href']
-        link = BIKESTER + href
-        new_frame = Frame(
-        brand=brand,
-        title=title,
-        image=image,
-        link=link)
-        db.session.add(new_frame)
-        db.session.commit()
-    return jsonify({"msg": "Frames added"}), 200
