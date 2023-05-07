@@ -137,29 +137,29 @@ def handle_send_message():
     send_email(email, message_bike_4u)
     return jsonify(request_body), 200
 
-#FRAMES TYPES
-@api.route('/get-parts/frame-mtb', methods=['POST'])
-def handle_get_frame_mtb():
-    response = get_part("FRAME","MTB", "L")
-    return response
 
-@api.route('/get-parts/frame-road', methods=['POST'])
-def handle_get_frame_road():
-    response = get_part("FRAME","ROAD", "L")
-    return response
+# @api.route('/get-parts', methods=['POST'])
+# def handle_get_parts():
+#     response = get_part("WHEELS","ROAD", "S")
+#     get_part("WHEELS","ROAD", "M")
+#     get_part("WHEELS","ROAD", "L")
+#     get_part("HANDLEBAR","ROAD", "S")
+#     get_part("HANDLEBAR","ROAD", "M")
+#     get_part("HANDLEBAR","ROAD", "L")
+#     get_part("SADDLE","ROAD", "S")
+#     get_part("SADDLE","ROAD", "M")
+#     get_part("SADDLE","ROAD", "L")
+#     get_part("FORKS","ROAD", "S")
+#     get_part("FORKS","ROAD", "M")
+#     get_part("FORKS","ROAD", "L")
+#     get_part("PEDALS_CHAIN","ROAD", "S")
+#     get_part("PEDALS_CHAIN","ROAD", "M")
+#     get_part("PEDALS_CHAIN","ROAD", "L")
+#     return response
 
-@api.route('/get-parts/frame-bmx', methods=['POST'])
-def handle_get_frame_bmx():
-    response = get_part("FRAME","BMX","M")
-    return response
+# @api.route("/full-bikes", methods=["POST"])
+# def handle_full_bike():
+#     response = get_bikes("ROAD")
 
-#WHEELS TYPES
-@api.route('/get-parts/wheels-mtb', methods=['POST'])
-def handle_get_wheels_mtb():
-    response = get_part("WHEELS","MTB","L")
-    return response
+#     return response
 
-@api.route("/full-bikes", methods=["POST"])
-def handle_full_bike():
-    response = get_bikes("MTB")  
-    return response
