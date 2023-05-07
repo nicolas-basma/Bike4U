@@ -47,7 +47,7 @@ class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     part = db.Column(db.String, nullable=False)
     terrain = db.Column(db.String, nullable=False)
-    brand = db.Column(db.String, nullable=False)
+    size = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     link = db.Column(db.String, nullable=False)
@@ -60,7 +60,7 @@ class BikePart(db.Model):
             "id": self.id,
             "part": self.part,
             "terrain": self.terrain,
-            "brand": self.brand,
+            "size": self.size,
             "title": self.title,
             "image": self.image,
             "link": self.link,
