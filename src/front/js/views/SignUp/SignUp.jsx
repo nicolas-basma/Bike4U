@@ -1,5 +1,4 @@
 import React from "react";
-import { stringify } from 'json5';
 
 import useStore from "../../store/AppContext.jsx";
 
@@ -9,8 +8,9 @@ import "./SignUp.css";
 
 const SignUp = () => {
 const {store, action}=useStore();
-const {useForms}=action;
+const {useForms, utils}=action;
 const {formInput, myHandleInput}=useForms();
+const {fetchSingup} = utils;
 const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
 
 console.log(formInput);
@@ -25,22 +25,9 @@ console.log(formInput);
             size : height,
             bikeType
       }
-      const myTempBody = JSON.stringify(body);
-      
-      const localURL="http://127.0.0.1:3001"
       
       if (password === confirmPassword) {
-        fetch(localURL + "/api/signup",
-        {method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: myTempBody})
-        .then((res)=>{
-          if (res.status != 200) {
-            throw new Error(`Error: ${res?.data?.msg}`);
-          } 
-          console.log(res);
-        })
-        .catch((err)=>console.log(err))
+        fetchSingup(body);
       }
       else {
         alert("Las contraseñas no coinciden");
@@ -69,7 +56,7 @@ console.log(formInput);
                 name="name"
               />
             </div>
-
+            <div className="d-none"></div>
             <div className="col-6">
               <label htmlFor="exampleInputLastname" className="form-label">
                 Apellidos

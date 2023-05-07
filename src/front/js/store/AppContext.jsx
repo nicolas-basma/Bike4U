@@ -8,6 +8,7 @@ import allMessages from "../../../lang/messages.js";
 import { IntlProvider } from "react-intl";
 //import { lenguaje } from "../layout.js";
 import carouselHomePhotos from "../img/arrayPhotos.js";
+import utils from "../utils";
 
 const Context = createContext();
 
@@ -47,9 +48,9 @@ export const AppContext = ({ children }) => {
     setLang,
     handleClose,
     handleShow,
-   // handleLogin,
     clearFormInput,
     useForms,
+    utils
   };
 
   return (

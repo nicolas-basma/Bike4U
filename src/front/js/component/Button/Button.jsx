@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-import "/workspace/FinalProject/src/front/js/component/Button/Button.css"
+import "./Button.css"
 
 const CustomizeBikeButton = () => {
 
