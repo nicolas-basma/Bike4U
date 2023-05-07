@@ -65,3 +65,22 @@ class BikePart(db.Model):
             "image": self.image,
             "link": self.link,
         }
+    
+class Bike(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
+    link = db.Column(db.String, nullable=False)
+    terrain = db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return f'<Bike {self.title}>'
+     
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "image": self.image,
+            "link": self.link,
+            "terrain": self.terrain,
+        }

@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.utils.updateparts import get_part
+from api.utils.updateparts import get_part, get_bikes
 
 api = Blueprint('api', __name__)
 
@@ -157,4 +157,9 @@ def handle_get_frame_bmx():
 @api.route('/get-parts/wheels-mtb', methods=['POST'])
 def handle_get_wheels_mtb():
     response = get_part("WHEELS","MTB","L")
-    return response    
+    return response
+
+@api.route("/full-bikes", methods=["POST"])
+def handle_full_bike():
+    response = get_bikes("MTB")  
+    return response
