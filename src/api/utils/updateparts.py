@@ -12,88 +12,84 @@ ORGANIZATION = os.getenv("ORGANIZATION")
 BIKES = os.getenv("BIKES")
 IMG_DEFAULT = os.getenv("IMG_DEFAULT")
 #MTB#
-FRAME_MTB_S = os.getenv("FRAME_MTB_S")
-FRAME_MTB_M = os.getenv("FRAME_MTB_M")
-FRAME_MTB_L = os.getenv("FRAME_MTB_L")
-WHEEL_MTB_S = os.getenv("WHEEL_MTB_S")
-WHEEL_MTB_M = os.getenv("WHEEL_MTB_M")
-WHEEL_MTB_L = os.getenv("WHEEL_MTB_L")
+FRAME_MTB = os.getenv("FRAME_MTB")
 #ROAD#
-FRAME_ROAD_S = os.getenv("FRAME_ROAD_S")
-FRAME_ROAD_M = os.getenv("FRAME_ROAD_M")
-FRAME_ROAD_L = os.getenv("FRAME_ROAD_L")
-WHEEL_ROAD_S = os.getenv("WHEEL_ROAD_S")
-WHEEL_ROAD_M = os.getenv("WHEEL_ROAD_M")
-WHEEL_ROAD_L = os.getenv("WHEEL_ROAD_L")
+FRAME_ROAD = os.getenv("FRAME_ROAD")
 #URBAN#
-FRAME_URBAN_S = os.getenv("FRAME_URBAN_S")
-FRAME_URBAN_M = os.getenv("FRAME_URBAN_M")
-FRAME_URBAN_L = os.getenv("FRAME_URBAN_L")
-WHEEL_URBAN_S = os.getenv("WHEEL_URBAN_S")
-WHEEL_URBAN_M = os.getenv("WHEEL_URBAN_M")
-WHEEL_URBAN_L = os.getenv("WHEEL_URBAN_L")
-
+FRAME_URBAN = os.getenv("FRAME_URBAN")
+#WHEELS#
+WHEEL_S = os.getenv("WHEEL_S")
+WHEEL_M = os.getenv("WHEEL_M")
+WHEEL_L = os.getenv("WHEEL_L")
 
 #funcion para indroducir los datos de los frames en la base de datos
 def get_part(part, terrain, size):
     bike_parts_url = {
         "FRAME": {
-            "MTB": {
-                "S": FRAME_MTB_S,
-                "M": FRAME_MTB_M,
-                "L": FRAME_MTB_L
+            "MTB":{
+                "S": FRAME_MTB,
+                "M": FRAME_MTB,
+                "L": FRAME_MTB
             },
-            "ROAD": {
-                "S": FRAME_ROAD_S,
-                "M": FRAME_ROAD_M,
-                "L": FRAME_ROAD_L
+            "ROAD":{
+                "S": FRAME_ROAD,
+                "M": FRAME_ROAD,
+                "L": FRAME_ROAD
             },
-            "URBAN": {
-                "S": FRAME_URBAN_S,
-                "M": FRAME_URBAN_M,
-                "L": FRAME_URBAN_L
+            "URBAN":{
+                "S": FRAME_URBAN,
+                "M": FRAME_URBAN,
+                "L": FRAME_URBAN
             }
         },
         "WHEELS": {
-            "MTB": {
-                "S": WHEEL_MTB_S,
-                "M": WHEEL_MTB_M,
-                "L": WHEEL_MTB_L
+            "MTB":{
+                "S": WHEEL_S,
+                "M": WHEEL_M,
+                "L": WHEEL_L
             },
-            "ROAD": {
-                "S": WHEEL_ROAD_S,
-                "M": WHEEL_ROAD_M,
-                "L": WHEEL_ROAD_L
+            "ROAD":{
+                "S": WHEEL_S,
+                "M": WHEEL_M,
+                "L": WHEEL_L
             },
-            "URBAN": {
-                "S": WHEEL_URBAN_S,
-                "M": WHEEL_URBAN_M,
-                "L": WHEEL_URBAN_L
+            "URBAN":{
+                "S": WHEEL_S,
+                "M": WHEEL_M,
+                "L": WHEEL_L
+            }
             }
         }
-    }
 
     if part not in bike_parts_url or terrain not in bike_parts_url[part] or size not in bike_parts_url[part][terrain]:
         return jsonify({"msg": "Frame type not found"}), 404
 
     url = BIKES + bike_parts_url[part][terrain][size]
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    parts = soup.find_all('div', 'product-item-extended')
-    for item in parts:
-        title = item.find('h3', class_='headline').text.strip()
-        image = item.find('div', class_='product-image').find('img').get('data-src')
-        if image == None:
-            image = IMG_DEFAULT
-        href = item.find('a', class_='product-item')['href']
-        link = "https://www.bike-components.de" + href
+    soup = BeautifulSoup(response.text, 'html.parser').find('div', class_='items')
+    parts = soup.find_all('a', 'item site-hover site-product-list-item-nojs')
+    all_url = []
+    for href in parts:
+        url = "https://www.bike-components.de" + href['href']
+        all_url.append(url)
+    for url in all_url:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser').find('article', class_='container module-product-detail js-site-init-functions site-module-margin-bottom')
+        parts = soup.find('div', class_='row')
+        imagen = parts.find("div", class_="image").find("img").get("src")
+        if imagen == None:
+            img = IMG_DEFAULT
+        else:
+            img = "https://www.bike-components.de" + imagen
+        title = parts.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
+        url = url
         new_part = BikePart(
-        part=part,
-        terrain=terrain,
-        size=size,
-        title=title,
-        image=image,
-        link=link
+            part=part,
+            terrain=terrain,
+            size=size,
+            title=title,
+            image=img,
+            link=url
         )
         db.session.add(new_part)
         db.session.commit()

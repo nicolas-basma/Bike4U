@@ -156,5 +156,5 @@ def handle_get_frame_bmx():
 #WHEELS TYPES
 @api.route('/get-parts/wheels-mtb', methods=['POST'])
 def handle_get_wheels_mtb():
-    response = get_part("WHEELS","MTB","S")
+    response = get_part("WHEELS","MTB","L")
     return response    
