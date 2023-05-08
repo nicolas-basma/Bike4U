@@ -10,6 +10,7 @@ import Faqs from "../views/FAQS/Faqs.jsx";
 import LegalPolicy from "../views/LegalPolicy/LegalPolicy.jsx";
 import ProductView from "../views/ProductView/ProductView.jsx";
 import FavoritesView from "../views/Favorites/FavoritesView.jsx";
+import EditUserData from "../views/EditUserData/EditUserData.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/SignUp",
         element: <SignUp />,
+      },
+      {
+        path: "/Profile",
+        element: <EditUserData />,
       },
       {
         path: "/PasswordRecovery",

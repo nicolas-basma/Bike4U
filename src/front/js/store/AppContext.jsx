@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { envParameters } from "./env";
+import { useJwt } from "react-jwt";
+import { isExpired, decodeToken } from "react-jwt";
 
 import clearFormInput from "../utils/clearFormInput.js";
 import useForms from "../utils/useForms.jsx";
@@ -19,18 +21,59 @@ export const AppContext = ({ children }) => {
   //useStates
   const [show, setShow] = useState(false);
   const [lang, setLang] = useState("es");
+  const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
+  const [userInfo, setUserInfo] = useState();
+
   // let lang = lenguaje.lang;
   // const setLang = lenguaje.setLang;
 
   //Handles
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleLogout = () => {
+    localStorage.removeItem("userSessionToken");
+    handleIsTokenValid();
+  }
 
-  // const handleLogin = () => {
-  //   //Function required to handle the login in the userLoginDropdown.
-  //   //if loging is ok, clear formInputs. Rerender views. Termany operators?
-  //   //if loging is nok, clear only password.
-  // };
+  const setUserAsLogged = () => setIsUserLogged(true);
+
+
+  const handleGetUserInfo = async () => {
+  
+    const token = localStorage.getItem("userSessionToken");
+    const info = await decodeToken(token);
+   // console.log(info.sub);
+    
+    const parsedUserInfo = info.sub;
+    setUserInfo(parsedUserInfo);
+
+  }
+
+  const handleIsTokenValid = () => {
+
+    const token = localStorage.getItem("userSessionToken");
+
+    if (token === null || isExpired(token)) {
+      setIsUserLogged(false)
+      localStorage.removeItem("userSessionToken");
+      localStorage.removeItem("loggedUser");
+      alert("Su sesión ha expirado");
+    } else {
+      handleGetUserInfo();
+      setUserAsLogged();
+    }
+
+  }
+
+  // App initialization
+  useEffect(() => {
+
+    handleIsTokenValid();
+
+  },[]);
+
+  // Elementos de Debug
+  useEffect(() => {console.log(userInfo)}, [userInfo]);	
 
   //Flux
   const store = {
@@ -42,6 +85,8 @@ export const AppContext = ({ children }) => {
     flagEEUU,
     flagEspana,
     carouselHomePhotos,
+    isUserLogged,
+    userInfo
   };
   const action = {
     setShow,
@@ -50,7 +95,13 @@ export const AppContext = ({ children }) => {
     handleShow,
     clearFormInput,
     useForms,
-    utils
+    utils,
+    handleLogout,
+    setUserAsLogged,
+    setUserInfo,
+    handleGetUserInfo,
+    handleIsTokenValid
+    
   };
 
   return (

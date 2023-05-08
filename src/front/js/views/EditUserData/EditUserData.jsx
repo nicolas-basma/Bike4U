@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/AppContext.jsx";
 
-import "./SignUp.css";
+import "./EditUserData.css";
 
 
 
-const SignUp = () => {
+const EditUserData = () => {
 const {store, action}=useStore();
+const {userInfo} = store;
 const {useForms, utils}=action;
 const {formInput, myHandleInput}=useForms();
 const {fetchSingup} = utils;
@@ -45,7 +46,7 @@ console.log(formInput);
     <form>
       <div className="wrapper">
         <div className="signUpFirstTitle">
-          <h1> INTRODUZCA SUS DATOS</h1>
+          <h1> DATOS PERSONALES </h1>
         </div>
         <div className="mb-3">
           <div className="row">
@@ -185,11 +186,11 @@ console.log(formInput);
           </div>
         </div>
         <button type="button" className="sendBtn" onClick={handleCreateUser}>
-          Enviar
+          Actualizar
         </button>
       </div>
     </form>
   );
 };
 
-export default SignUp;
+export default EditUserData;

@@ -6,11 +6,11 @@ import useStore from "../../store/AppContext.jsx";
 
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action } = useStore();
-  const { useForms, utils } = action;
+  const { useForms, utils, handleGetUserInfo, handleIsTokenValid } = action;
   const { formInput, myHandleInput } = useForms();
   const { fetchLogin } = utils;
 
-  const handleLogin = (event) => {
+  const handleLogin = async(event) => {
 
     event.preventDefault();
 
@@ -21,31 +21,11 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       password,
       rememberMe,
     };     
-    console.log(data);
-   
-    fetchLogin(data);
+      
+    await fetchLogin(data);
+    handleGetUserInfo();
+    handleIsTokenValid();
 
-    // const localURL="http://127.0.0.1:3001"
-
-    // fetch(localURL + "/api/login",
-    // {method: 'POST',
-    // headers: {'Content-Type': 'application/json'},
-    // body: JSON.stringify(data)})
-
-    // .then((res)=>{
-    //   const errorMessage = "Ha habido un error en el login"
-    //   if (res.status != 200) {
-    //     //alert(errorMessage);
-    //     throw new Error(`Error: ${res?.data?.msg}`);
-    //   }
-    //   return res.json()})
-    // .then((data)=>{
-  
-    //   console.log(data);
-    //   localStorage.setItem("userSessionToken", JSON.stringify(data["login_token"]));
-    //   localStorage.setItem("loggedUser", JSON.stringify(data["Name"]));
-    // })
-    // .catch((err)=>console.log(err))
   }
 
   return (

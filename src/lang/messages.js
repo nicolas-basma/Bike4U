@@ -141,7 +141,7 @@ const allMessages = {
     contactModalTextHeader: "Díganos sus dudas",
     buttonCancel: "Cancelar",
     buttonSendMessage: "Enviar mensaje",
-    userLoginDropdownMainButton: "LOGIN",
+    userLoginDropdownMainButton: "INICIAR SESIÓN",
     userLoginDropdownEmail: "Correo electrónico",
     userLoginDropdownPassword: "Contraseña",
     userLoginDropdownRemember: "Mantenerme conectado",
@@ -159,6 +159,7 @@ const allMessages = {
     buttonContact: "Contáctanos",
     myNavbarButtomLangEsp: `ES`,
     myNavbarButtomLangEng: `EN`,
+    myNavbarButtomLogout: `CERRAR SESIÓN`,
   },
 
 
@@ -306,6 +307,7 @@ const allMessages = {
     buttonContact: "Contact us",
     myNavbarButtomLangEsp: `ES`,
     myNavbarButtomLangEng: `EN`,
+    myNavbarButtomLogout: `LOG OUT`,
   },
 };
 

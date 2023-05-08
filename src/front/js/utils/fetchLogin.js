@@ -13,7 +13,7 @@ const fetchLogin = (data)=>{
         return res.json()})
       .then((data)=>{
     
-        console.log(data);
+        //console.log("fetchlogin", data);
         localStorage.setItem("userSessionToken", JSON.stringify(data["login_token"]));
         localStorage.setItem("loggedUser", JSON.stringify(data["Name"]));
       })

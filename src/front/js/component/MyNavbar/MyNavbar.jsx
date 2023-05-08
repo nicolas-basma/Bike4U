@@ -13,8 +13,8 @@ import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow } = action;
-  const { logo } = store;
+  const { handleShow, handleLogout } = action;
+  const { logo, isUserLogged, userInfo } = store;
 
   const navbarCollapseRef = useRef(null);
 
@@ -41,8 +41,16 @@ const MyNavbar = () => {
           
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient" ref={navbarCollapseRef}>
+         
+          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient rise" ref={navbarCollapseRef}>
             <Nav className="bg-black">
+              <Link to="/Profile" onClick={handleLinkClick}>
+                <Nav.Item className="btn button user-name">
+                  {isUserLogged
+                ? userInfo?.name.toUpperCase()
+                : null}
+                </Nav.Item>
+              </Link>
               <Link to="/customizebike" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
@@ -59,7 +67,13 @@ const MyNavbar = () => {
                 </Nav.Item>
               </Link>
 
-              <MyUserLoginDropdown closeNavbar={handleLinkClick} onClick={handleLinkClick}/>
+              {isUserLogged
+              ? <Link to="/" onClick={handleLogout}>
+                  <Nav.Item className="btn button">
+                    <FormattedMessage id="myNavbarButtomLogout"></FormattedMessage>
+                  </Nav.Item>
+                </Link> 
+              : <MyUserLoginDropdown closeNavbar={handleLinkClick} onClick={handleLinkClick}/>}
               <MyLanguageDropdown onClick={handleLinkClick} />
 
             </Nav>

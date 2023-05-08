@@ -69,3 +69,10 @@ a:hover {
     border: none;
   }
 }
+
+.rise {
+  z-index: 4;
+}
+.user-name {
+  color:rgb(255, 209, 2);
+}
