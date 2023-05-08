@@ -29,26 +29,25 @@
   font-family: "Racing Sans One", cursive;
   color: rgb(240, 185, 5);
 }
-.sendBtn {
-  background-color: rgb(240, 185, 5);
+.databtn {
   width: 50%;
   height: 50px;
   font-family: "Racing Sans One", cursive;
   font-size: 2rem;
   border: 1px solid black;
   border-radius: 10px;
-  margin-top: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
-.sendBtn:hover {
+.sendBtn{
+  background-color: rgb(240, 185, 5);
+}
+.deleteBtn{
+  background-color: rgba(240, 185, 5, 0.482);;
+}
+.databtn:hover {
   border: 1px solid rgb(240, 185, 5);
   border-radius: 10px;
   background-color: black;
   color: rgb(240, 185, 5);
-}
-#center {
-  justify-content: center;
-}
-
-#typeOfBike {
-  margin-top: 50px;
 }

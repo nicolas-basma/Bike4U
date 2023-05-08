@@ -34,6 +34,7 @@ export const AppContext = ({ children }) => {
     localStorage.removeItem("userSessionToken");
     localStorage.removeItem("loggedUser");
     setIsUserLogged(false);
+    setUserInfo(null);
 
     // handleIsTokenValid();
   }
@@ -44,9 +45,13 @@ export const AppContext = ({ children }) => {
   
     const token = localStorage.getItem("userSessionToken");
     //console.log(token);
-    const info = await decodeToken(token);
-    console.log(info.sub);
-    setUserInfo(info.sub);
+    if (token !== null) {
+      const info = await decodeToken(token);
+      //console.log(info.sub);
+      setUserInfo(info.sub);
+      return info.sub;
+    }
+
   }
 
   const handleIsTokenValid = () => {
@@ -66,12 +71,12 @@ export const AppContext = ({ children }) => {
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
       alert("Su sesión ha expirado");
+      //usenavigate
       return;
     }
 
     handleGetUserInfo();
     setUserAsLogged();
-    handleGetUserInfo()
     
   }
 
@@ -82,7 +87,7 @@ export const AppContext = ({ children }) => {
 
   },[]);
 
-  useEffect(() => {},[isUserLogged]);
+  useEffect(() => {},[isUserLogged]); //Refreshes navbar
 
   // Elementos de Debug
   useEffect(() => {console.log(userInfo)}, [userInfo]);	
