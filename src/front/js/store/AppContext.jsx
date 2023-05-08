@@ -51,17 +51,28 @@ export const AppContext = ({ children }) => {
 
   const handleIsTokenValid = () => {
 
-    // const token = localStorage.getItem("userSessionToken");
+    const token = localStorage.getItem("userSessionToken");
 
-    // if (token === null || isExpired(token)) {
-    //   setIsUserLogged(false)
-    //   localStorage.removeItem("userSessionToken");
-    //   localStorage.removeItem("loggedUser");
-    //   alert("Su sesión ha expirado");
-    // } else {
-    //   handleGetUserInfo();
-    //   setUserAsLogged();
-    // }
+    
+    if (token === null) {
+      setIsUserLogged(false)
+      // localStorage.removeItem("userSessionToken");
+      // localStorage.removeItem("loggedUser");
+      //alert("No tiene sesión iniciada");
+      return;
+    }
+    if (isExpired(token)) {
+      setIsUserLogged(false)
+      localStorage.removeItem("userSessionToken");
+      localStorage.removeItem("loggedUser");
+      alert("Su sesión ha expirado");
+      return;
+    }
+
+    handleGetUserInfo();
+    setUserAsLogged();
+    handleGetUserInfo()
+    
   }
 
   // App initialization

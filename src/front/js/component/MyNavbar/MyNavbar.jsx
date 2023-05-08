@@ -17,9 +17,15 @@ const MyNavbar = () => {
   const { logo, isUserLogged, userInfo } = store;
 
   const navbarCollapseRef = useRef(null);
+  const navbarTogglerRef = useRef(null);
 
   const handleLinkClick = () => {
-      navbarCollapseRef.current.classList.remove('show');
+      navbarTogglerRef.current.classList.add('collapsed');
+      navbarCollapseRef.current.classList.remove('show');  
+      // navbarCollapseRef.current.classList.remove('collapse','show');
+      // navbarCollapseRef.current.classList.add('collapsing');
+      // navbarCollapseRef.current.classList.remove('collapsing');
+      // navbarCollapseRef.current.classList.add('collapse');
     };
 
   const handleLogoutClick  = () => {
@@ -36,26 +42,26 @@ const MyNavbar = () => {
       >
         <Container fluid="md">
           <Navbar.Brand className="logo">
-            <Link to="/" className="branding">
+            <Link to="/" className="branding"  onClick={handleLinkClick}>
               <img src={logo} width={100} />
             </Link>
-            <Link to="/" className="branding">
+            <Link to="/" className="branding"  onClick={handleLinkClick}>
               bike4u
             </Link>
           </Navbar.Brand>
           
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" ref={navbarTogglerRef}/>
 
          
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient rise" ref={navbarCollapseRef}>
             <Nav className="bg-black">
-              <Link to="/Profile" onClick={handleLinkClick}>
-                <Nav.Item className="btn button user-name">
-                  {isUserLogged
-                ? userInfo?.name.toUpperCase()
+              {isUserLogged
+                ? <Link to="/Profile" onClick={handleLinkClick}>
+                    <Nav.Item className="btn button user-name">
+                      {userInfo?.name.toUpperCase()}
+                    </Nav.Item>
+                  </Link>          
                 : null}
-                </Nav.Item>
-              </Link>
               <Link to="/customizebike" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
