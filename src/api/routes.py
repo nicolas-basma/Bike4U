@@ -2,13 +2,13 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Bike, BikePart
 from api.utils.utils import generate_sitemap, APIException, full_message
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.utils.updateparts import get_part, get_bikes
+from api.utils.updateparts import get_part, get_bikes, load_from_json, bikes_json, parts_json
 
 api = Blueprint('api', __name__)
 
@@ -138,6 +138,44 @@ def handle_send_message():
     return jsonify(request_body), 200
 
 
+
+
+
+
+
+
+# @api.route('/json-data', methods=['POST'])
+# def handle_json_data():
+#     data = load_from_json(bikes_json)
+#     for bikes in data:
+#         bike = Bike(
+#             title=bikes["title"],
+#             image=bikes["image"],
+#             link=bikes["link"],
+#             terrain=bikes["terrain"]
+#         )
+#         db.session.add(bike)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
+
+# @api.route('/add-part', methods=['POST'])
+# def handle_add_part():
+#     data = load_from_json(parts_json)
+#     for parts in data:
+#         part = BikePart(
+#             part = parts["part"],
+#             terrain = parts["terrain"],
+#             size = parts["size"],
+#             title = parts["title"],
+#             image = parts["image"],
+#             link = parts["link"]
+#         )
+#         db.session.add(part)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
+
+
+
 # @api.route('/get-parts', methods=['POST'])
 # def handle_get_parts():
 #     response = get_part("WHEELS","ROAD", "S")
@@ -157,9 +195,4 @@ def handle_send_message():
 #     get_part("PEDALS_CHAIN","ROAD", "L")
 #     return response
 
-# @api.route("/full-bikes", methods=["POST"])
-# def handle_full_bike():
-#     response = get_bikes("ROAD")
-
-#     return response
 
