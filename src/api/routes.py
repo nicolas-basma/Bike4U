@@ -8,7 +8,8 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.utils.updateparts import get_part, get_bikes, load_from_json, bikes_json, parts_json
+from api.utils.updateparts import steal_part, get_bikes, load_from_json, bikes_json, parts_json
+from api.utils.get_element import get_bike, get_part
 
 api = Blueprint('api', __name__)
 
@@ -137,6 +138,23 @@ def handle_send_message():
     send_email(email, message_bike_4u)
     return jsonify(request_body), 200
 
+# ruta para obtener las bicicletas de diferentes tipos de terreno
+@api.route('/bikes', methods=['GET'])
+def handle_get_bikes():
+    body = request.json
+    terrain = body["terrain"]
+    bikes = get_bike(terrain)
+    return jsonify(bikes), 200
+# ruta para obtener las partes de bicicletas de diferentes tipos de terreno
+@api.route('/parts', methods=['GET'])
+def handle_get_parts():
+    body = request.json
+    terrain = body["terrain"]
+    part = body["part"]
+    size = body["size"]
+    parts = get_part(part, terrain, size)
+    return parts
+   
 
 
 

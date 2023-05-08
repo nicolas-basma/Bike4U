@@ -67,7 +67,7 @@ def save_to_json(data, archivo_json):
         json.dump(existing_data, outfile, indent=4, ensure_ascii=False)
 
 
-def get_part(part, terrain, size):
+def steal_part(part, terrain, size):
     bike_parts_url = {
         "FRAME": {
             "MTB":{
