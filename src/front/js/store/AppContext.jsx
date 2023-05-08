@@ -32,37 +32,36 @@ export const AppContext = ({ children }) => {
   const handleShow = () => setShow(true);
   const handleLogout = () => {
     localStorage.removeItem("userSessionToken");
-    handleIsTokenValid();
+    localStorage.removeItem("loggedUser");
+    setIsUserLogged(false);
+
+    // handleIsTokenValid();
   }
 
   const setUserAsLogged = () => setIsUserLogged(true);
 
-
   const handleGetUserInfo = async () => {
   
     const token = localStorage.getItem("userSessionToken");
+    //console.log(token);
     const info = await decodeToken(token);
-   // console.log(info.sub);
-    
-    const parsedUserInfo = info.sub;
-    setUserInfo(parsedUserInfo);
-
+    console.log(info.sub);
+    setUserInfo(info.sub);
   }
 
   const handleIsTokenValid = () => {
 
-    const token = localStorage.getItem("userSessionToken");
+    // const token = localStorage.getItem("userSessionToken");
 
-    if (token === null || isExpired(token)) {
-      setIsUserLogged(false)
-      localStorage.removeItem("userSessionToken");
-      localStorage.removeItem("loggedUser");
-      alert("Su sesión ha expirado");
-    } else {
-      handleGetUserInfo();
-      setUserAsLogged();
-    }
-
+    // if (token === null || isExpired(token)) {
+    //   setIsUserLogged(false)
+    //   localStorage.removeItem("userSessionToken");
+    //   localStorage.removeItem("loggedUser");
+    //   alert("Su sesión ha expirado");
+    // } else {
+    //   handleGetUserInfo();
+    //   setUserAsLogged();
+    // }
   }
 
   // App initialization
@@ -71,6 +70,8 @@ export const AppContext = ({ children }) => {
     handleIsTokenValid();
 
   },[]);
+
+  useEffect(() => {},[isUserLogged]);
 
   // Elementos de Debug
   useEffect(() => {console.log(userInfo)}, [userInfo]);	

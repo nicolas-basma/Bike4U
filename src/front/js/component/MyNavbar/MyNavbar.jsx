@@ -22,6 +22,11 @@ const MyNavbar = () => {
       navbarCollapseRef.current.classList.remove('show');
     };
 
+  const handleLogoutClick  = () => {
+    handleLinkClick();
+    handleLogout();
+  }
+
   return (
     <>
       <Navbar
@@ -68,7 +73,7 @@ const MyNavbar = () => {
               </Link>
 
               {isUserLogged
-              ? <Link to="/" onClick={handleLogout}>
+              ? <Link to="/" onClick={handleLogoutClick}>
                   <Nav.Item className="btn button">
                     <FormattedMessage id="myNavbarButtomLogout"></FormattedMessage>
                   </Nav.Item>
