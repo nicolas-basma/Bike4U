@@ -2,13 +2,14 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Bike, BikePart
 from api.utils.utils import generate_sitemap, APIException, full_message
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.utils.updateparts import get_part
+from api.utils.updateparts import steal_part, get_bikes, load_from_json, bikes_json, parts_json
+from api.utils.get_element import get_bike, get_part
 
 api = Blueprint('api', __name__)
 
@@ -137,24 +138,79 @@ def handle_send_message():
     send_email(email, message_bike_4u)
     return jsonify(request_body), 200
 
-#FRAMES TYPES
-@api.route('/get-parts/frame-mtb', methods=['POST'])
-def handle_get_frame_mtb():
-    response = get_part("FRAME","MTB", "L")
-    return response
+# ruta para obtener las bicicletas de diferentes tipos de terreno
+@api.route('/bikes', methods=['GET'])
+def handle_get_bikes():
+    body = request.json
+    terrain = body["terrain"]
+    bikes = get_bike(terrain)
+    return jsonify(bikes), 200
+# ruta para obtener las partes de bicicletas de diferentes tipos de terreno
+@api.route('/parts', methods=['GET'])
+def handle_get_parts():
+    body = request.json
+    terrain = body["terrain"]
+    part = body["part"]
+    size = body["size"]
+    parts = get_part(part, terrain, size)
+    return parts
+   
 
-@api.route('/get-parts/frame-road', methods=['POST'])
-def handle_get_frame_road():
-    response = get_part("FRAME","ROAD", "L")
-    return response
 
-@api.route('/get-parts/frame-bmx', methods=['POST'])
-def handle_get_frame_bmx():
-    response = get_part("FRAME","BMX","M")
-    return response
 
-#WHEELS TYPES
-@api.route('/get-parts/wheels-mtb', methods=['POST'])
-def handle_get_wheels_mtb():
-    response = get_part("WHEELS","MTB","L")
-    return response    
+
+
+
+
+# @api.route('/json-data', methods=['POST'])
+# def handle_json_data():
+#     data = load_from_json(bikes_json)
+#     for bikes in data:
+#         bike = Bike(
+#             title=bikes["title"],
+#             image=bikes["image"],
+#             link=bikes["link"],
+#             terrain=bikes["terrain"]
+#         )
+#         db.session.add(bike)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
+
+# @api.route('/add-part', methods=['POST'])
+# def handle_add_part():
+#     data = load_from_json(parts_json)
+#     for parts in data:
+#         part = BikePart(
+#             part = parts["part"],
+#             terrain = parts["terrain"],
+#             size = parts["size"],
+#             title = parts["title"],
+#             image = parts["image"],
+#             link = parts["link"]
+#         )
+#         db.session.add(part)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
+
+
+
+# @api.route('/get-parts', methods=['POST'])
+# def handle_get_parts():
+#     response = get_part("WHEELS","ROAD", "S")
+#     get_part("WHEELS","ROAD", "M")
+#     get_part("WHEELS","ROAD", "L")
+#     get_part("HANDLEBAR","ROAD", "S")
+#     get_part("HANDLEBAR","ROAD", "M")
+#     get_part("HANDLEBAR","ROAD", "L")
+#     get_part("SADDLE","ROAD", "S")
+#     get_part("SADDLE","ROAD", "M")
+#     get_part("SADDLE","ROAD", "L")
+#     get_part("FORKS","ROAD", "S")
+#     get_part("FORKS","ROAD", "M")
+#     get_part("FORKS","ROAD", "L")
+#     get_part("PEDALS_CHAIN","ROAD", "S")
+#     get_part("PEDALS_CHAIN","ROAD", "M")
+#     get_part("PEDALS_CHAIN","ROAD", "L")
+#     return response
+
+

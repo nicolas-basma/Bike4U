@@ -1,6 +1,6 @@
 import requests
 import json
-from api.models import db, BikePart
+from api.models import db, BikePart, Bike
 import openai
 import os
 from time import sleep
@@ -11,19 +11,63 @@ GPT = os.getenv("OPENAI_API_KEY")
 ORGANIZATION = os.getenv("ORGANIZATION")
 BIKES = os.getenv("BIKES")
 IMG_DEFAULT = os.getenv("IMG_DEFAULT")
+#BIKES#
+MTB = os.getenv("MTB")
+ROAD = os.getenv("ROAD")
+URBAN = os.getenv("URBAN")
+
 #MTB#
 FRAME_MTB = os.getenv("FRAME_MTB")
+HANDLEBAR_MTB = os.getenv("HANDLEBAR_MTB")
+PEDEDALS_CHAIN_MTB = os.getenv("PEDEDALS_CHAIN_MTB")
+SADDLE_MTB = os.getenv("SADDLE_MTB")
+FORKS_S = os.getenv("FORKS_S")
+FORKS_M = os.getenv("FORKS_M")
+FORKS_L = os.getenv("FORKS_L")
 #ROAD#
 FRAME_ROAD = os.getenv("FRAME_ROAD")
+HANDLEBAR_ROAD = os.getenv("HANDLEBAR_ROAD")
+PEDEDALS_CHAIN_ROAD = os.getenv("PEDEDALS_CHAIN_ROAD")
+RIGID_FORKS = os.getenv("RIGID_FORKS")
+SADDLE_ROAD = os.getenv("SADDLE_ROAD")
 #URBAN#
 FRAME_URBAN = os.getenv("FRAME_URBAN")
+HANDLEBAR_URBAN = os.getenv("HANDLEBAR_URBAN")
+PEDEDALS_CHAIN_URBAN = os.getenv("PEDEDALS_CHAIN_URBAN")
+SADDLE_URBAN = os.getenv("SADDLE_URBAN")
+RIGID_FORKS = os.getenv("RIGID_FORKS")
 #WHEELS#
 WHEEL_S = os.getenv("WHEEL_S")
 WHEEL_M = os.getenv("WHEEL_M")
 WHEEL_L = os.getenv("WHEEL_L")
 
-#funcion para indroducir los datos de los frames en la base de datos
-def get_part(part, terrain, size):
+parts_json = "src/api/utils/parts.json"
+bikes_json = "src/api/utils/bikes.json"
+
+all_parts = []
+all_bikes = []
+
+def load_from_json(archivo_json):
+    try:
+        with open(archivo_json, "r") as infile:
+            data = json.load(infile)
+    except FileNotFoundError:
+        data = []
+    except json.decoder.JSONDecodeError:
+        data = []
+    return data
+
+def save_to_json(data, archivo_json):
+    try:
+        existing_data = load_from_json(archivo_json)
+    except FileNotFoundError:
+            existing_data = []
+    existing_data.extend(data)
+    with open(archivo_json, "w") as outfile:
+        json.dump(existing_data, outfile, indent=4, ensure_ascii=False)
+
+
+def steal_part(part, terrain, size):
     bike_parts_url = {
         "FRAME": {
             "MTB":{
@@ -58,12 +102,79 @@ def get_part(part, terrain, size):
                 "M": WHEEL_M,
                 "L": WHEEL_L
             }
+            },
+        "HANDLEBAR": {
+            "MTB":{
+                "S": HANDLEBAR_MTB,
+                "M": HANDLEBAR_MTB,
+                "L": HANDLEBAR_MTB
+            },
+            "ROAD":{
+                "S": HANDLEBAR_ROAD,
+                "M": HANDLEBAR_ROAD,
+                "L": HANDLEBAR_ROAD
+            },
+            "URBAN":{
+                "S": HANDLEBAR_URBAN,
+                "M": HANDLEBAR_URBAN,
+                "L": HANDLEBAR_URBAN
             }
-        }
+            },
+        "PEDEDALS_CHAIN": {
+            "MTB":{
+                "S": PEDEDALS_CHAIN_MTB,
+                "M": PEDEDALS_CHAIN_MTB,
+                "L": PEDEDALS_CHAIN_MTB
+            },
+            "ROAD":{
+                "S": PEDEDALS_CHAIN_ROAD,
+                "M": PEDEDALS_CHAIN_ROAD,
+                "L": PEDEDALS_CHAIN_ROAD
+            },
+            "URBAN":{
+                "S": PEDEDALS_CHAIN_URBAN,
+                "M": PEDEDALS_CHAIN_URBAN,
+                "L": PEDEDALS_CHAIN_URBAN
+            }
+            },
+        "SADDLE": {
+            "MTB":{
+                "S": SADDLE_MTB,
+                "M": SADDLE_MTB,
+                "L": SADDLE_MTB
+            },
+            "ROAD":{
+                "S": SADDLE_ROAD,
+                "M": SADDLE_ROAD,
+                "L": SADDLE_ROAD
+            },
+            "URBAN":{
+                "S": SADDLE_URBAN,
+                "M": SADDLE_URBAN,
+                "L": SADDLE_URBAN
+            }
+            },
+        "FORKS": {
+            "MTB":{
+                "S": FORKS_S,
+                "M": FORKS_M,
+                "L": FORKS_L
+            },
+            "ROAD":{
+                "S": RIGID_FORKS,
+                "M": RIGID_FORKS,
+                "L": RIGID_FORKS
+            },
+            "URBAN":{
+                "S": RIGID_FORKS,
+                "M": RIGID_FORKS,
+                "L": RIGID_FORKS
+            }
+            },
 
+        }
     if part not in bike_parts_url or terrain not in bike_parts_url[part] or size not in bike_parts_url[part][terrain]:
         return jsonify({"msg": "Frame type not found"}), 404
-
     url = BIKES + bike_parts_url[part][terrain][size]
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser').find('div', class_='items')
@@ -83,18 +194,55 @@ def get_part(part, terrain, size):
             img = "https://www.bike-components.de" + imagen
         title = parts.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
         url = url
-        new_part = BikePart(
-            part=part,
-            terrain=terrain,
-            size=size,
-            title=title,
-            image=img,
-            link=url
-        )
-        db.session.add(new_part)
-        db.session.commit()
+        new_part = {
+            "part":part,
+            "terrain":terrain,
+            "size":size,
+            "title":title,
+            "image":img,
+            "link":url
+        }
+        all_parts.append(new_part)
+    save_to_json(all_parts, parts_json)
     return jsonify({"msg": "Frames added"}), 200
 
+
+def get_bikes(terrain):  
+    bikes = {
+        "MTB": MTB,
+        "ROAD": ROAD,
+        "URBAN": URBAN
+    }
+    if terrain not in bikes:
+        return jsonify({"msg": "Terrain not found"}), 404
+    url = bikes[terrain]
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser').find_all('a', class_='item site-hover site-product-list-item-nojs')
+    bikes = []
+    for bike in soup:
+        bike_url = "https://www.bike-components.de" + bike['href']
+        bikes.append(bike_url)
+    for bike in bikes:
+        response = requests.get(bike)
+        soup = BeautifulSoup(response.text, 'html.parser').find('article', class_='container module-product-detail js-site-init-functions site-module-margin-bottom')
+        bikes = soup.find('div', class_='row')
+        imagen = bikes.find("div", class_="image").find("img").get("src")
+        if imagen == None:
+            img = IMG_DEFAULT
+        else:
+            img = "https://www.bike-components.de" + imagen
+        title = bikes.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
+        url = url
+        terrain = terrain
+        new_bike = {
+            "title":title,
+            "image":img,
+            "link":url,
+            "terrain":terrain
+        }
+        all_bikes.append(new_bike)
+    save_to_json(all_bikes, bikes_json)
+    return all_bikes
 
 
 
