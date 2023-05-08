@@ -41,7 +41,32 @@ WHEEL_S = os.getenv("WHEEL_S")
 WHEEL_M = os.getenv("WHEEL_M")
 WHEEL_L = os.getenv("WHEEL_L")
 
-#funcion para indroducir los datos de los frames en la base de datos
+parts_json = "src/api/utils/parts.json"
+bikes_json = "src/api/utils/bikes.json"
+
+all_parts = []
+all_bikes = []
+
+def load_from_json(archivo_json):
+    try:
+        with open(archivo_json, "r") as infile:
+            data = json.load(infile)
+    except FileNotFoundError:
+        data = []
+    except json.decoder.JSONDecodeError:
+        data = []
+    return data
+
+def save_to_json(data, archivo_json):
+    try:
+        existing_data = load_from_json(archivo_json)
+    except FileNotFoundError:
+            existing_data = []
+    existing_data.extend(data)
+    with open(archivo_json, "w") as outfile:
+        json.dump(existing_data, outfile, indent=4, ensure_ascii=False)
+
+
 def get_part(part, terrain, size):
     bike_parts_url = {
         "FRAME": {
@@ -148,10 +173,8 @@ def get_part(part, terrain, size):
             },
 
         }
-
     if part not in bike_parts_url or terrain not in bike_parts_url[part] or size not in bike_parts_url[part][terrain]:
         return jsonify({"msg": "Frame type not found"}), 404
-
     url = BIKES + bike_parts_url[part][terrain][size]
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser').find('div', class_='items')
@@ -171,20 +194,20 @@ def get_part(part, terrain, size):
             img = "https://www.bike-components.de" + imagen
         title = parts.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
         url = url
-        new_part = BikePart(
-            part=part,
-            terrain=terrain,
-            size=size,
-            title=title,
-            image=img,
-            link=url
-        )
-        db.session.add(new_part)
-        db.session.commit()
+        new_part = {
+            "part":part,
+            "terrain":terrain,
+            "size":size,
+            "title":title,
+            "image":img,
+            "link":url
+        }
+        all_parts.append(new_part)
+    save_to_json(all_parts, parts_json)
     return jsonify({"msg": "Frames added"}), 200
 
 
-def get_bikes(terrain):
+def get_bikes(terrain):  
     bikes = {
         "MTB": MTB,
         "ROAD": ROAD,
@@ -199,7 +222,6 @@ def get_bikes(terrain):
     for bike in soup:
         bike_url = "https://www.bike-components.de" + bike['href']
         bikes.append(bike_url)
-
     for bike in bikes:
         response = requests.get(bike)
         soup = BeautifulSoup(response.text, 'html.parser').find('article', class_='container module-product-detail js-site-init-functions site-module-margin-bottom')
@@ -212,22 +234,15 @@ def get_bikes(terrain):
         title = bikes.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
         url = url
         terrain = terrain
-        new_bike = Bike(
-            title=title,
-            image=img,
-            link=url,
-            terrain=terrain
-        )
-        db.session.add(new_bike)
-        db.session.commit()
-    return jsonify({"msg": "Bikes added"}), 200
-   # print(bikes)
-    # bikes = []
-    # for bike in soup:
-    #     title = bike.find('div', class_='headline site-text-s').text.strip()
-    #     print(title)
-    #return jsonify({"url": url}), 200
-
+        new_bike = {
+            "title":title,
+            "image":img,
+            "link":url,
+            "terrain":terrain
+        }
+        all_bikes.append(new_bike)
+    save_to_json(all_bikes, bikes_json)
+    return all_bikes
 
 
 
