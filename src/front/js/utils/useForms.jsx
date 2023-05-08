@@ -16,7 +16,7 @@ const useForms = (initialize = {}) => {
     });
   };
 
-  return { formInput, handleInput, myHandleInput };
+  return { formInput, setFormInput, handleInput, myHandleInput };
 };
 
 export default useForms;

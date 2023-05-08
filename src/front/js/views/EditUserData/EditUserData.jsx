@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/AppContext.jsx";
@@ -11,35 +11,58 @@ const EditUserData = () => {
 const {store, action}=useStore();
 const {userInfo} = store;
 const {useForms, utils}=action;
-const {formInput, myHandleInput}=useForms();
-const {fetchSingup} = utils;
+const {formInput, myHandleInput, setFormInput}=useForms();
+const {fetchEditUser, fetchDeleteUser} = utils;
 const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
 
 const navigate = useNavigate();
 
+useEffect(()=>{
+
+  console.log(userInfo);
+  setFormInput({
+    name: userInfo?.name,
+    lastname: userInfo?.lastname,
+    email: userInfo?.email,
+    weight: userInfo?.weight,
+    height: userInfo?.height,
+    bikeType: userInfo?.bikeType
+  });
+
+},[]);
+
 console.log(formInput);
 
-    const handleCreateUser=async()=>{
+    const handleUpdateUser=async()=>{
       const body = {
             name,
             lastname,
             email,
-            password,
+            //password,
             weight,
             size : height,
             bikeType
       }
       
-      if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
+      // if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
       
-      const isUserCreated = await fetchSingup(body);
-      console.log(isUserCreated);
+      // const isUserCreated = await fetchSingup(body);
+      // console.log(isUserCreated);
       
-      if (!isUserCreated) return alert("Ha habido un problema con la creación del usuario")
+      // if (!isUserCreated) return alert("Ha habido un problema con la creación del usuario")
 
-      alert("Usuario creado correctamente, proceda a logearse");
+      // alert("Usuario creado correctamente, proceda a logearse");
       navigate("/");
         
+    }
+
+    const handleDeleteUser =  async()=>{
+      // const isUserDeleted = await fetchDeleteUser();
+      // console.log(isUserDeleted);
+      // if (!isUserDeleted) return alert("Ha habido un problema con la creación del usuario")
+
+      // alert("Usuario eliminado correctamente");
+      navigate("/");
     }
     
   return (
@@ -60,6 +83,7 @@ console.log(formInput);
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Introduzca su nombre"
+                value={formInput[name]}
                 onChange={myHandleInput}
                 name="name"
               />
@@ -75,6 +99,7 @@ console.log(formInput);
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Introduzca sus apellidos"
+                value={formInput[name]}
                 onChange={myHandleInput}
                 name="lastname"
               />
@@ -92,13 +117,14 @@ console.log(formInput);
                 className="form-control"
                 id="exampleInputEmail1"
                 placeholder="Ej. juan@perez.com"
+                value={formInput[name]}
                 name="email"
                 onChange={myHandleInput}
               />
             </div>
           </div>
         </div>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <div className="row" id="center">
             <div className="col-6">
               <label htmlFor="exampleInputPassword1" className="form-label">
@@ -132,7 +158,7 @@ console.log(formInput);
               /> 
             </div>
           </div>
-        </div>
+        </div> */}
          <div className="signUpSecondTitle">
           <h1>INTRODUZCA SUS CARACTERÍSTICAS</h1>
         </div>
@@ -185,7 +211,10 @@ console.log(formInput);
             </div>
           </div>
         </div>
-        <button type="button" className="sendBtn" onClick={handleCreateUser}>
+        <button type="button" className="sendBtn" onClick={handleDeleteUser}>
+          Eliminar cuenta
+        </button>
+        <button type="button" className="sendBtn" onClick={handleUpdateUser}>
           Actualizar
         </button>
       </div>
