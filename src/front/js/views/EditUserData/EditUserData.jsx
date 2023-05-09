@@ -23,8 +23,9 @@ const {formInput, myHandleInput, setFormInput}=useForms({
   bikeType: userInfo?.["bike type"]      
 });
 console.log(formInput);
+console.log(formInput.newPassword);
 
-const {fetchEditUser, fetchDeleteUser} = utils;
+const {fetchEditUser, fetchDeleteUser, fetchEditUserPassword} = utils;
 // const {name, lastname, email, weight, height, bikeType}=formInput;
 
 const navigate = useNavigate();
@@ -102,7 +103,22 @@ const handleUpdateUser=async()=>{
   alert("Información de usuario actualizada");
   navigate("/");
 }
+const handleChangePassword=async()=>{
+  //const password = prompt("Introduzca su nueva contraseña");
+  console.log(formInput.newPassword);
+  if (!formInput.newPassword) return;
 
+  const body = {
+    password : formInput.newPassword
+  }
+  const editedUser = fetchEditUserPassword(userInfo?.id, body);
+  
+  if (!editedUser) return alert("Ha habido un problema con el cambio de contraseña")
+
+  //alert(fetchEditUserPassword);
+  alert("Contraseña  actualizada");
+  navigate("/");
+}
 const handleDeleteUser =  async()=>{
   const response = confirm("Esta seguro que desea eliminar su cuenta?");
   console.log(response);
@@ -216,7 +232,7 @@ const handleDeleteUser =  async()=>{
 
         <div className="row mb-3">
           <div className="col-12">
-            <label className="formBikeSelect">
+            <label htmlFor="formBikeSelect" className="form-label">
               Tipo de bicicleta
             </label>
             <select id="formBikeSelect" onChange={myHandleInput} className="form-select" name="bikeType">
@@ -231,6 +247,29 @@ const handleDeleteUser =  async()=>{
 
         <button type="button" className="databtn sendBtn" onClick={handleUpdateUser}>
           Actualizar
+        </button>
+        <hr />
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="newPassword" className="form-label">
+              Nueva contraseña
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="newPassword"
+              aria-describedby="emailHelp"
+              placeholder="Introduzca su contraseña"
+              value={formInput[name]}
+              onChange={myHandleInput}
+              name="newPassword"
+            />
+          </div>
+        </div>
+
+        <button type="button" className="databtn deleteBtn" onClick={handleChangePassword}>
+          Modificar contraseña
         </button>
         <hr />
         <button type="button" className="databtn deleteBtn" onClick={handleDeleteUser}>
