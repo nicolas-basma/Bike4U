@@ -104,19 +104,20 @@ const handleUpdateUser=async()=>{
   navigate("/");
 }
 const handleChangePassword=async()=>{
-  //const password = prompt("Introduzca su nueva contraseña");
+
   console.log(formInput.newPassword);
-  if (!formInput.newPassword) return;
+  if (!formInput.newPassword) return alert("Debe indicar una contraseña");
+  if (formInput.newPassword !==formInput.newPasswordValidation) return alert("Debe indicar una contraseña");
 
   const body = {
     password : formInput.newPassword
   }
-  const editedUser = fetchEditUserPassword(userInfo?.id, body);
+  const editedUser = await fetchEditUserPassword(userInfo?.id, body);
   
   if (!editedUser) return alert("Ha habido un problema con el cambio de contraseña")
 
-  //alert(fetchEditUserPassword);
-  alert("Contraseña  actualizada");
+  alert(editedUser);
+
   navigate("/");
 }
 const handleDeleteUser =  async()=>{
@@ -251,7 +252,7 @@ const handleDeleteUser =  async()=>{
         <hr />
 
         <div className="row mb-3">
-          <div className="col-12">
+          <div className="col-6">
             <label htmlFor="newPassword" className="form-label">
               Nueva contraseña
             </label>
@@ -259,11 +260,28 @@ const handleDeleteUser =  async()=>{
               type="password"
               className="form-control"
               id="newPassword"
-              aria-describedby="emailHelp"
-              placeholder="Introduzca su contraseña"
+              aria-describedby="newPassword"
+              placeholder="Nueva contraseña"
               value={formInput[name]}
               onChange={myHandleInput}
               name="newPassword"
+            />
+          </div>
+        
+
+          <div className="col-6">
+            <label htmlFor="newPasswordValidation" className="form-label">
+              Verifique la contraseña
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="newPasswordValidation"
+              aria-describedby="newPasswordValidation"
+              placeholder="Valide su contraseña"
+              value={formInput[name]}
+              onChange={myHandleInput}
+              name="newPasswordValidation"
             />
           </div>
         </div>

@@ -11,8 +11,8 @@ const fetchEditUserPassword =(userID,data)=>{
       return res.json();
     })
     .then((data)=>{
-      console.log(JSON.stringify(data.msg));
-      return JSON.stringify(data.msg);
+      console.log(data.msg);
+      return data.msg;
     })
     .catch((err)=>{
       console.log(err)
