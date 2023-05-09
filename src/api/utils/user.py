@@ -30,12 +30,17 @@ def add_user(body):
 #funcion para loguearse en la pagina web
 def login(body):
     msj_error = "Usuario o contraseña incorrectos"
+    try:
+        body["email"]
+        body["password"]
+    except:
+        return jsonify({"msg": "todos los campos son obligatorios"}), 400
     user = User.query.filter_by(email=body["email"]).first()
     if user == None:
-        return jsonify({"msg": msj_error}), 403
+        return jsonify({"msg": msj_error}), 401
     user_info = user.serialize()
     if not user.verify(body["password"].encode("utf-8")):
-        return jsonify({"msg": msj_error}), 403
+        return jsonify({"msg": msj_error}), 401
     login_token = create_access_token(identity=user_info)
     return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200
     

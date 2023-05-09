@@ -25,13 +25,17 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
     closeNavbar();
 
     const loginProcess = await fetchLogin(data);
-    
-    if (loginProcess) {
+    //
+    if (loginProcess === true) {
       setUserAsLogged();
       handleGetUserInfo();
       //handleIsTokenValid();
+      return;
     }
 
+    alert(loginProcess);
+    return ;
+    
   }
 
   return (
