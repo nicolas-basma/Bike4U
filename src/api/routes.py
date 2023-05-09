@@ -14,34 +14,34 @@ api = Blueprint('api', __name__)
 def handle_singup():
     request_body = request.json
     user = add_user(request_body)
-    return user, 200
+    return user
 #login
 @api.route('/login', methods=['POST'])
 def handle_login():
     request_body = request.json
     user = login(request_body)
-    return user, 200
+    return user
 # GET all users
 @api.route('/all-users', methods=['GET'])
 def handle_all_users():
     user_list = get_all_users()
-    return user_list, 200
+    return user_list
 # GET user by ID
 @api.route('/user/<int:id>', methods=['GET'])
 def handle_get_user(id):
     user = get_user_by_id(id)
-    return user, 200
+    return user
 # DELETE user by ID
-@api.route('/deleteuser/<int:id>', methods=['DELETE'])
+@api.route('/delete-user/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
     deleted_user = delete_user(id)
-    return deleted_user, 200
+    return deleted_user
 # EDIT user
-@api.route('/user/<int:id>/edit', methods=['PUT'])
+@api.route('/edit-user/<int:id>', methods=['PUT'])
 def handle_edit_user(id):
     request_body = request.json
     edited_user = edit_user(id, request_body)
-    return edited_user, 200
+    return edited_user
    
 #send email
 @api.route('/send-email', methods=['POST'])

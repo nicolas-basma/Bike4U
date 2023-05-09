@@ -11,13 +11,17 @@ def get_bike(terrain):
 
 def get_bike_by_id(terrain, id):
     bike = Bike.query.filter_by(terrain=terrain, id=id).first()
+    if not bike:
+        return "Bike not found", 404
     return bike.serialize()
 
 
 #funcion para obtener partes de bicicletas de diferentes tipos de terreno y tamaños, recibe como parametros el tipo de parte, el tipo de terreno y el tamaño
-def get_part(part, terrain, size):
+def get_part(terrain, part, size):
     parts = []
     element = BikePart.query.filter_by(part=part, terrain=terrain, size=size).all()
+    if not element:
+        return "Part not found", 404
     for p in element:
         parts.append(p.serialize())
     return parts
