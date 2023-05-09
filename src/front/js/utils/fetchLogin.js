@@ -19,8 +19,7 @@ const fetchLogin = async (data)=>{
         return true
       })
       .catch((err)=>{
-        console.log(err)
-        return false;
+        return err;
       })
 }
 export default fetchLogin;
