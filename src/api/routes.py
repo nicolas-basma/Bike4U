@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identi
 import bcrypt
 from .utils.send_email import send_email
 import os
-from api.utils.updateparts import steal_part, get_bikes, load_from_json, bikes_json, parts_json
+from api.utils.updateparts import steal_parts, steal_bikes, load_from_json, bikes_json, parts_json
 from api.utils.get_element import get_bike, get_part
 
 api = Blueprint('api', __name__)
@@ -139,19 +139,16 @@ def handle_send_message():
     return jsonify(request_body), 200
 
 # ruta para obtener las bicicletas de diferentes tipos de terreno
-@api.route('/bikes', methods=['GET'])
-def handle_get_bikes():
-    body = request.json
-    terrain = body["terrain"]
+@api.route('/bikes/<string:terrain>', methods=['GET'])
+def handle_get_bikes(terrain):
     bikes = get_bike(terrain)
     return jsonify(bikes), 200
+
+
+
 # ruta para obtener las partes de bicicletas de diferentes tipos de terreno
-@api.route('/parts', methods=['GET'])
-def handle_get_parts():
-    body = request.json
-    terrain = body["terrain"]
-    part = body["part"]
-    size = body["size"]
+@api.route('/parts/<string:terrain>/<string:part>/<string:size>', methods=['GET'])
+def handle_get_parts(terrain, part, size):
     parts = get_part(part, terrain, size)
     return parts
    
@@ -159,6 +156,12 @@ def handle_get_parts():
 
 
 
+# @api.route('/steal-bikes', methods=['POST'])
+# def handle_steal_bikes():
+#     response = steal_bikes("urban")
+#     steal_bikes("mtb")
+#     steal_bikes("road")
+#     return jsonify(response), 200
 
 
 
@@ -175,6 +178,7 @@ def handle_get_parts():
 #         db.session.add(bike)
 #         db.session.commit()
 #     return jsonify({"msg": "json cargado"}), 200
+
 
 # @api.route('/add-part', methods=['POST'])
 # def handle_add_part():
@@ -194,23 +198,23 @@ def handle_get_parts():
 
 
 
-# @api.route('/get-parts', methods=['POST'])
-# def handle_get_parts():
-#     response = get_part("WHEELS","ROAD", "S")
-#     get_part("WHEELS","ROAD", "M")
-#     get_part("WHEELS","ROAD", "L")
-#     get_part("HANDLEBAR","ROAD", "S")
-#     get_part("HANDLEBAR","ROAD", "M")
-#     get_part("HANDLEBAR","ROAD", "L")
-#     get_part("SADDLE","ROAD", "S")
-#     get_part("SADDLE","ROAD", "M")
-#     get_part("SADDLE","ROAD", "L")
-#     get_part("FORKS","ROAD", "S")
-#     get_part("FORKS","ROAD", "M")
-#     get_part("FORKS","ROAD", "L")
-#     get_part("PEDALS_CHAIN","ROAD", "S")
-#     get_part("PEDALS_CHAIN","ROAD", "M")
-#     get_part("PEDALS_CHAIN","ROAD", "L")
+# @api.route('/steal-parts', methods=['POST'])
+# def handle_steal_parts():
+#     response = steal_parts("wheels","mtb", "s")
+#     steal_parts("wheels","mtb", "m")
+#     steal_parts("wheels","mtb", "l")
+#     steal_parts("handlebar","mtb", "s")
+#     steal_parts("handlebar","mtb", "m")
+#     steal_parts("handlebar","mtb", "l")
+#     steal_parts("saddle","mtb", "s")
+#     steal_parts("saddle","mtb", "m")
+#     steal_parts("saddle","mtb", "l")
+#     steal_parts("forks","mtb", "s")
+#     steal_parts("forks","mtb", "m")
+#     steal_parts("forks","mtb", "l")
+#     steal_parts("pedals_chain","mtb", "s")
+#     steal_parts("pedals_chain","mtb", "m")
+#     steal_parts("pedals_chain","mtb", "l")
 #     return response
 
 

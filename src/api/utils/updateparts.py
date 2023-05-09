@@ -44,8 +44,7 @@ WHEEL_L = os.getenv("WHEEL_L")
 parts_json = "src/api/utils/parts.json"
 bikes_json = "src/api/utils/bikes.json"
 
-all_parts = []
-all_bikes = []
+
 
 def load_from_json(archivo_json):
     try:
@@ -67,115 +66,119 @@ def save_to_json(data, archivo_json):
         json.dump(existing_data, outfile, indent=4, ensure_ascii=False)
 
 
-def steal_part(part, terrain, size):
+def steal_parts(part, terrain, size):
+    all_parts = []
     bike_parts_url = {
-        "FRAME": {
-            "MTB":{
-                "S": FRAME_MTB,
-                "M": FRAME_MTB,
-                "L": FRAME_MTB
+        "frame": {
+            "mtb":{
+                "s": FRAME_MTB,
+                "m": FRAME_MTB,
+                "l": FRAME_MTB
             },
-            "ROAD":{
-                "S": FRAME_ROAD,
-                "M": FRAME_ROAD,
-                "L": FRAME_ROAD
+            "road":{
+                "s": FRAME_ROAD,
+                "m": FRAME_ROAD,
+                "l": FRAME_ROAD
             },
-            "URBAN":{
-                "S": FRAME_URBAN,
-                "M": FRAME_URBAN,
-                "L": FRAME_URBAN
+            "urban":{
+                "s": FRAME_URBAN,
+                "m": FRAME_URBAN,
+                "l": FRAME_URBAN
             }
         },
-        "WHEELS": {
-            "MTB":{
-                "S": WHEEL_S,
-                "M": WHEEL_M,
-                "L": WHEEL_L
+        "wheels": {
+            "mtb":{
+                "s": WHEEL_S,
+                "m": WHEEL_M,
+                "l": WHEEL_L
             },
-            "ROAD":{
-                "S": WHEEL_S,
-                "M": WHEEL_M,
-                "L": WHEEL_L
+            "road":{
+                "s": WHEEL_S,
+                "m": WHEEL_M,
+                "l": WHEEL_L
             },
-            "URBAN":{
-                "S": WHEEL_S,
-                "M": WHEEL_M,
-                "L": WHEEL_L
+            "urban":{
+                "s": WHEEL_S,
+                "m": WHEEL_M,
+                "l": WHEEL_L
             }
             },
-        "HANDLEBAR": {
-            "MTB":{
-                "S": HANDLEBAR_MTB,
-                "M": HANDLEBAR_MTB,
-                "L": HANDLEBAR_MTB
+        "handlebar": {
+            "mtb":{
+                "s": HANDLEBAR_MTB,
+                "m": HANDLEBAR_MTB,
+                "l": HANDLEBAR_MTB
             },
-            "ROAD":{
-                "S": HANDLEBAR_ROAD,
-                "M": HANDLEBAR_ROAD,
-                "L": HANDLEBAR_ROAD
+            "road":{
+                "s": HANDLEBAR_ROAD,
+                "m": HANDLEBAR_ROAD,
+                "l": HANDLEBAR_ROAD
             },
-            "URBAN":{
-                "S": HANDLEBAR_URBAN,
-                "M": HANDLEBAR_URBAN,
-                "L": HANDLEBAR_URBAN
+            "urban":{
+                "s": HANDLEBAR_URBAN,
+                "m": HANDLEBAR_URBAN,
+                "l": HANDLEBAR_URBAN
             }
             },
-        "PEDEDALS_CHAIN": {
-            "MTB":{
-                "S": PEDEDALS_CHAIN_MTB,
-                "M": PEDEDALS_CHAIN_MTB,
-                "L": PEDEDALS_CHAIN_MTB
+        "pedals_chain": {
+            "mtb":{
+                "s": PEDEDALS_CHAIN_MTB,
+                "m": PEDEDALS_CHAIN_MTB,
+                "l": PEDEDALS_CHAIN_MTB
             },
-            "ROAD":{
-                "S": PEDEDALS_CHAIN_ROAD,
-                "M": PEDEDALS_CHAIN_ROAD,
-                "L": PEDEDALS_CHAIN_ROAD
+            "road":{
+                "s": PEDEDALS_CHAIN_ROAD,
+                "m": PEDEDALS_CHAIN_ROAD,
+                "l": PEDEDALS_CHAIN_ROAD
             },
-            "URBAN":{
-                "S": PEDEDALS_CHAIN_URBAN,
-                "M": PEDEDALS_CHAIN_URBAN,
-                "L": PEDEDALS_CHAIN_URBAN
+            "urban":{
+                "s": PEDEDALS_CHAIN_URBAN,
+                "m": PEDEDALS_CHAIN_URBAN,
+                "l": PEDEDALS_CHAIN_URBAN
             }
             },
-        "SADDLE": {
-            "MTB":{
-                "S": SADDLE_MTB,
-                "M": SADDLE_MTB,
-                "L": SADDLE_MTB
+        "saddle": {
+            "mtb":{
+                "s": SADDLE_MTB,
+                "m": SADDLE_MTB,
+                "l": SADDLE_MTB
             },
-            "ROAD":{
-                "S": SADDLE_ROAD,
-                "M": SADDLE_ROAD,
-                "L": SADDLE_ROAD
+            "road":{
+                "s": SADDLE_ROAD,
+                "m": SADDLE_ROAD,
+                "l": SADDLE_ROAD
             },
-            "URBAN":{
-                "S": SADDLE_URBAN,
-                "M": SADDLE_URBAN,
-                "L": SADDLE_URBAN
+            "urban":{
+                "s": SADDLE_URBAN,
+                "m": SADDLE_URBAN,
+                "l": SADDLE_URBAN
             }
             },
-        "FORKS": {
-            "MTB":{
-                "S": FORKS_S,
-                "M": FORKS_M,
-                "L": FORKS_L
+        "forks": {
+            "mtb":{
+                "s": FORKS_S,
+                "m": FORKS_M,
+                "l": FORKS_L
             },
-            "ROAD":{
-                "S": RIGID_FORKS,
-                "M": RIGID_FORKS,
-                "L": RIGID_FORKS
+            "road":{
+                "s": RIGID_FORKS,
+                "m": RIGID_FORKS,
+                "l": RIGID_FORKS
             },
-            "URBAN":{
-                "S": RIGID_FORKS,
-                "M": RIGID_FORKS,
-                "L": RIGID_FORKS
+            "urban":{
+                "s": RIGID_FORKS,
+                "m": RIGID_FORKS,
+                "l": RIGID_FORKS
             }
             },
 
         }
     if part not in bike_parts_url or terrain not in bike_parts_url[part] or size not in bike_parts_url[part][terrain]:
         return jsonify({"msg": "Frame type not found"}), 404
-    url = BIKES + bike_parts_url[part][terrain][size]
+    if bike_parts_url[part][terrain][size] == None:
+        url = BIKES
+    else:
+        url = BIKES + bike_parts_url[part][terrain][size]
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser').find('div', class_='items')
     parts = soup.find_all('a', 'item site-hover site-product-list-item-nojs')
@@ -194,6 +197,8 @@ def steal_part(part, terrain, size):
             img = "https://www.bike-components.de" + imagen
         title = parts.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
         url = url
+        terrain = terrain.lower()
+        size = size.lower()
         new_part = {
             "part":part,
             "terrain":terrain,
@@ -207,11 +212,12 @@ def steal_part(part, terrain, size):
     return jsonify({"msg": "Frames added"}), 200
 
 
-def get_bikes(terrain):  
+def steal_bikes(terrain):
+    all_bikes = [] 
     bikes = {
-        "MTB": MTB,
-        "ROAD": ROAD,
-        "URBAN": URBAN
+        "mtb": MTB,
+        "road": ROAD,
+        "urban": URBAN
     }
     if terrain not in bikes:
         return jsonify({"msg": "Terrain not found"}), 404
@@ -233,7 +239,7 @@ def get_bikes(terrain):
             img = "https://www.bike-components.de" + imagen
         title = bikes.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
         url = url
-        terrain = terrain
+        terrain = terrain.lower()
         new_bike = {
             "title":title,
             "image":img,
