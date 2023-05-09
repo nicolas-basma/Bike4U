@@ -2,149 +2,65 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Bike, BikePart
-from api.utils.utils import generate_sitemap, APIException, full_message
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
-import bcrypt
-from .utils.send_email import send_email
+from .utils.send_email import message_from_user, message_from_bike4u
 import os
-from api.utils.updateparts import steal_parts, steal_bikes, load_from_json, bikes_json, parts_json
-from api.utils.get_element import get_bike, get_part
+from api.utils.get_element import get_bike, get_part, get_bike_by_id
+from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user
 
 api = Blueprint('api', __name__)
 
-BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL')
-MESSAGE_FROM_BIKE4U = os.environ.get('MESSAGE_FROM_BIKE4U')
-BIKE4U_NAME = os.environ.get('BIKE4U_NAME')
-SUBJECT = os.environ.get('SUBJECT')
-
-# POST crear usuari
-
-
+#sign up
 @api.route("/signup", methods=["POST"])
 def handle_singup():
-    # ruta para crear usuarios nuevos en la base de datos que retorna el usuario serializado
     request_body = request.json
-    # encriptamos la password
-    coded_password = bcrypt.hashpw(request_body["password"].encode(
-        "utf-8"), bcrypt.gensalt())
-    new_user = User(
-        name=request_body["name"],
-        lastname=request_body["lastname"],
-        email=request_body["email"],
-        size=request_body["size"],
-        weight=request_body["weight"],
-        bike_type=request_body["bikeType"],
-        password=coded_password,
-        is_active=False
-    )
-    try:
-        db.session.add(new_user)
-        db.session.commit()
-    except:
-        return jsonify({"msg": "el email ya esta registrado bobo"}), 403
-    return jsonify({"msg": f"Usuario creado: '{new_user.name}'"}), 200
-
-# POST login
-
-
+    user = add_user(request_body)
+    return user
+#login
 @api.route('/login', methods=['POST'])
-# funcion para que el usuario pueda logearse en la pagina web(si esta registrado) sino enviara error 403
 def handle_login():
-    error_message = "error en las credenciales"
-    request_user = request.json
-    user = User.query.filter_by(email=request_user["email"]).first()
-    if user == None:
-        return jsonify({"msg": error_message}), 403
-    user_info = user.serialize()
-
-    if not user.verify(request_user["password"].encode("utf-8")):
-        return jsonify({"msg": error_message}), 403
-
-    login_token = create_access_token(identity=user_info)
-
-    return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200
-
-
+    request_body = request.json
+    user = login(request_body)
+    return user
 # GET all users
-
-@api.route('/allusers', methods=['GET'])
+@api.route('/all-users', methods=['GET'])
 def handle_all_users():
-    # funcion que devuelve todos los usuarios de mi base de datos
-    all_user = User.query.all()
-    list_of_users = []
-    if all_user == None:
-        return jsonify({"msg": "no hay usuarios en la base de datos"}), 404
-    for user in all_user:
-        list_of_users.append(user.serialize())
-    return jsonify(list_of_users), 200
-
+    user_list = get_all_users()
+    return user_list
 # GET user by ID
-
-
 @api.route('/user/<int:id>', methods=['GET'])
 def handle_get_user(id):
-    # funcion que devuelve un usuario en particular mediante su ID
-    user = User.query.filter_by(id=id).first()
-    if user == None:
-        return jsonify({"msg": "El usuario no existe"}), 404
-    return jsonify(user.serialize()), 200
-
-
+    user = get_user_by_id(id)
+    return user
 # DELETE user by ID
-@api.route('/deleteuser/<int:id>', methods=['DELETE'])
+@api.route('/delete-user/<int:id>', methods=['DELETE'])
 def handle_delete_user(id):
-    # funcion para borrar un usuario mediante su ID
-    user_to_delete = User.query.filter_by(id=id).first()
-    if user_to_delete == None:
-        return jsonify({"msg": "El usuario no existe"}), 404
-    db.session.delete(user_to_delete)
-    db.session.commit()
-    return jsonify(user_to_delete.serialize()), 200
-
-
-# PUT user
-@api.route('/user/<int:id>/edit', methods=['PUT'])
+    deleted_user = delete_user(id)
+    return deleted_user
+# EDIT user
+@api.route('/edit-user/<int:id>', methods=['PUT'])
 def handle_edit_user(id):
-    # funcion para editar la informacion de un usuario en particular
-    user_to_edit = User.query.filter_by(id=id).first()
-    if user_to_edit == None:
-        return jsonify({"msg": "El usuario no existe"}), 404
     request_body = request.json
-    user_to_edit.name = request_body["name"]
-    user_to_edit.email = request_body["email"]
-    new_password = bcrypt.hashpw(
-        request_body["password"].encode("utf-8"), bcrypt.gensalt())
-    user_to_edit.password = new_password
-    db.session.commit()
-    return jsonify(user_to_edit.serialize()), 200
-
-
+    edited_user = edit_user(id, request_body)
+    return edited_user
+   
+#send email
 @api.route('/send-email', methods=['POST'])
-def handle_send_message():
-    # ruta para enviar email desde el formulario de contact us
+def handle_send_email():
     request_body = request.json
-    if not request_body["email"]:
-        return jsonify({"msg": "email is missing"}), 400
-    email = request_body["email"]
-    if not request_body['message']:
-        return jsonify({"msg": "message is missing"}), 400
-    message = request_body['message']
-    name = request_body['name']
-    user_message = full_message(name, message)
-    send_email(BIKE4U_EMAIL, user_message)  # mensaje del usuario
-    # mensaje de confirmacion por parte de bike4u
-    message_bike_4u = full_message(SUBJECT, MESSAGE_FROM_BIKE4U)
-    send_email(email, message_bike_4u)
-    return jsonify(request_body), 200
-
+    message_from_user(request_body)
+    message_from_bike4u(request_body)
+    return jsonify({"msg": "message sent"}), 200
+    
 # ruta para obtener las bicicletas de diferentes tipos de terreno
 @api.route('/bikes/<string:terrain>', methods=['GET'])
 def handle_get_bikes(terrain):
     bikes = get_bike(terrain)
     return jsonify(bikes), 200
 
-
+@api.route('/bikes/<string:terrain>/<int:id>', methods=['GET'])
+def handle_get_bike_by_id(terrain, id):
+    bike = get_bike_by_id(terrain, id)
+    return jsonify(bike), 200
 
 # ruta para obtener las partes de bicicletas de diferentes tipos de terreno
 @api.route('/parts/<string:terrain>/<string:part>/<string:size>', methods=['GET'])
@@ -152,9 +68,6 @@ def handle_get_parts(terrain, part, size):
     parts = get_part(part, terrain, size)
     return parts
    
-
-
-
 
 # @api.route('/steal-bikes', methods=['POST'])
 # def handle_steal_bikes():

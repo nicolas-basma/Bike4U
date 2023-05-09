@@ -44,12 +44,4 @@ def generate_sitemap(app):
         <p>Remember to specify a real endpoint path like: </p>
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
 
-# funcion para fucionar mensaje de BIKE4U CON EL SUBJET
 
-
-def full_message(subjet, message):
-    return f"""\
-Subject: {subjet}
-
-
-{message}"""
