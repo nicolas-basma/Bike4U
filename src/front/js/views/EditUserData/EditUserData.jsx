@@ -86,12 +86,13 @@ const handleUpdateUser=async()=>{
         bikeType
   }
     
-  const isUserCreated = await fetchEditUser(userInfo?.id, body);
+  const editedUser = await fetchEditUser(userInfo?.id, body);
   
-  if (!isUserCreated) return alert("Ha habido un problema actualizando la información")
+  if (!editedUser) return alert("Ha habido un problema actualizando la información")
 
-  console.log(isUserCreated); // necesario comprobar las claves
-  setUserInfo(isUserCreated);
+  console.log(editedUser); // necesario comprobar las claves
+  setUserInfo(editedUser);
+  //Generar nuevo token de sesion para que tenga las propiedades adecuadas.
   alert("Información de usuario actualizada");
   navigate("/");
 }
@@ -114,7 +115,7 @@ const handleDeleteUser =  async()=>{
     
   return (
     <form>
-      <p>{userInfo?.id}</p>
+      {/* <p>{userInfo?.id}</p> */}
       <div className="wrapper">
         <div className="signUpFirstTitle">
           <h1> DATOS PERSONALES </h1>
