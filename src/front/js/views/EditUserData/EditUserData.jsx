@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/AppContext.jsx";
-
+import useForms from "../../utils/useForms.jsx";
 import "./EditUserData.css";
 
 
@@ -10,16 +10,30 @@ import "./EditUserData.css";
 const EditUserData = () => {
 const {store, action}=useStore();
 const {userInfo} = store;
-const {useForms, utils, handleGetUserInfo, handleLogout}=action;
-const {formInput, myHandleInput, setFormInput}=useForms();
+const {utils, handleGetUserInfo, handleLogout, setUserInfo}=action;
+
+
+const {formInput, myHandleInput, setFormInput}=useForms({
+  name: userInfo?.name,
+  lastname: userInfo?.lastname,
+  email: userInfo?.email,
+  weight: userInfo?.weight,
+  //height: userInfo?.height,
+  height : userInfo?.size,
+  bikeType: userInfo?.["bike type"]      
+});
+console.log(formInput);
+
 const {fetchEditUser, fetchDeleteUser} = utils;
-const {name, lastname, email, weight, height, bikeType}=formInput;
+// const {name, lastname, email, weight, height, bikeType}=formInput;
 
 const navigate = useNavigate();
 
-useEffect(()=>{
+console.log(userInfo);
 
-  // const localUserInfo = handleGetUserInfo();
+useEffect(()=>{
+{
+// const localUserInfo = handleGetUserInfo();
   // //console.log(localUserInfo);
   // localUserInfo.then((data)=>{
   //   console.log(data)
@@ -34,56 +48,69 @@ useEffect(()=>{
   //   console.log(formInput);
   // });
   
+} 
 console.log(userInfo);
-setFormInput({
-      name: userInfo?.name,
-      lastname: userInfo?.lastname,
-      email: userInfo?.email,
-      weight: userInfo?.weight,
-      height: userInfo?.height,
-      bikeType: userInfo?.bikeType      
-    });
-  console.log(formInput);
+// setFormInput({
+//       name: userInfo?.name,
+//       lastname: userInfo?.lastname,
+//       email: userInfo?.email,
+//       weight: userInfo?.weight,
+//       //height: userInfo?.height,
+//       height : userInfo?.size,
+//       bikeType: userInfo?.["bike type"]      
+//     });
+  //console.log(formInput);
 
+//const myUserInfo = handleGetUserInfo();
+// setFormInput({
+//       name: myUserInfo?.name,
+//       lastname: myUserInfo?.lastname,
+//       email: myUserInfo?.email,
+//       weight: myUserInfo?.weight,
+//       height: myUserInfo?.height,
+//       bikeType: myUserInfo?.bikeType      
+//     });
+// console.log(formInput);
 
-},[userInfo]);
+},[]);
 
 //console.log(formInput);
 
-    const handleUpdateUser=async()=>{
-      const body = {
-            name,
-            lastname,
-            email,
-            //password,
-            weight,
-            size : height,
-            bikeType
-      }
-      
-      // if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
-      
-      // const isUserCreated = await fetchSingup(body);
-      // console.log(isUserCreated);
-      
-      // if (!isUserCreated) return alert("Ha habido un problema con la creación del usuario")
+const handleUpdateUser=async()=>{
+  const body = {
+        name,
+        lastname,
+        email,
+        weight,
+        size,
+        bikeType
+  }
+    
+  const isUserCreated = await fetchEditUser(userInfo?.id, body);
+  
+  if (!isUserCreated) return alert("Ha habido un problema actualizando la información")
 
-      // alert("Usuario creado correctamente, proceda a logearse");
-      navigate("/");
-        
-    }
+  console.log(isUserCreated); // necesario comprobar las claves
+  setUserInfo(isUserCreated);
+  alert("Información de usuario actualizada");
+  navigate("/");
+}
 
-    const handleDeleteUser =  async()=>{
-      const response = confirm("Esta seguro que desea eliminar su cuenta?");
-      console.log(response);
-      const isUserDeleted = await fetchDeleteUser(userInfo?.id);
-      if (isUserDeleted) {
-        alert("Usuario eliminado correctamente");
-        handleLogout();
-        navigate("/");
-        return
-      }
-    }
+const handleDeleteUser =  async()=>{
+  const response = confirm("Esta seguro que desea eliminar su cuenta?");
+  console.log(response);
+  if (!response) return;
+  
+  const isUserDeleted = await fetchDeleteUser(userInfo?.id);
+  if (isUserDeleted) {
+    handleLogout();
+    alert("Usuario eliminado correctamente");
+    navigate("/");
+    return
+  }
+  alert("Ha habido un problema eliminando la cuenta");
+
+}
     
   return (
     <form>
@@ -95,13 +122,13 @@ setFormInput({
 
         <div className="row mb-3">
           <div className="col-12">
-            <label htmlFor="exampleInputName" className="form-label">
+            <label htmlFor="formName" className="form-label">
               Nombre
             </label>
             <input
               type="text"
               className="form-control"
-              id="exampleInputEmail1"
+              id="formName"
               aria-describedby="emailHelp"
               placeholder="Introduzca su nombre"
               value={formInput[name]}
@@ -113,13 +140,13 @@ setFormInput({
 
         <div className="row mb-3">
           <div className="col-12">
-            <label htmlFor="exampleInputLastname" className="form-label">
+            <label htmlFor="formLastName" className="form-label">
               Apellidos
             </label>
             <input
               type="text"
               className="form-control"
-              id="exampleInputEmail1"
+              id="formLastName"
               aria-describedby="emailHelp"
               placeholder="Introduzca sus apellidos"
               value={formInput[name]}
@@ -131,13 +158,13 @@ setFormInput({
 
         <div className="row mb-3">
           <div className="col-12">
-            <label htmlFor="exampleInputEmail" className="form-label">
+            <label htmlFor="formEmail" className="form-label">
               Email
             </label>
             <input
               type="email"
               className="form-control"
-              id="exampleInputEmail1"
+              id="formEmail"
               placeholder="Ej. juan@perez.com"
               value={formInput[name]}
               name="email"
@@ -148,10 +175,10 @@ setFormInput({
     
         <div className="row mb-3">
           <div className="col-12">
-            <label htmlFor="disabledSelect" className="form-label">
+            <label htmlFor="formSizeSelect" className="form-label">
               Altura
             </label>
-            <select  onChange={myHandleInput} name="height" className="form-select">
+            <select id="formSizeSelect" onChange={myHandleInput} name="height" className="form-select">
               <option >Elige tu altura</option>
               <option value={"XS"}>150-160 cm</option>
               <option value={"S"}>161-170 cm</option>
@@ -164,10 +191,10 @@ setFormInput({
 
         <div className="row mb-3">
           <div className="col-12">
-            <label htmlFor="disabledSelect" className="form-label">
+            <label htmlFor="formWeightSelect" className="form-label">
               Peso
             </label>
-            <select onChange={myHandleInput} className="form-select" name="weight">
+            <select id="formWeightSelect" onChange={myHandleInput} className="form-select" name="weight">
               <option>Elige tu peso</option>
               <option>30-40 kg</option>
               <option>41-50 kg</option>
@@ -183,10 +210,10 @@ setFormInput({
 
         <div className="row mb-3">
           <div className="col-12">
-            <label className="form-label">
+            <label className="formBikeSelect">
               Tipo de bicicleta
             </label>
-            <select onChange={myHandleInput} className="form-select" name="bikeType">
+            <select id="formBikeSelect" onChange={myHandleInput} className="form-select" name="bikeType">
               <option>Elige tu tipo de bicicleta</option>
               <option>Carretera</option>
               <option>Montaña</option>

@@ -12,6 +12,8 @@ import { IntlProvider } from "react-intl";
 import carouselHomePhotos from "../img/arrayPhotos.js";
 import utils from "../utils";
 
+import { useNavigate } from "react-router-dom";
+
 const Context = createContext();
 
 export const AppContext = ({ children }) => {
@@ -24,6 +26,7 @@ export const AppContext = ({ children }) => {
   const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
   const [userInfo, setUserInfo] = useState();
 
+  const navigate = useNavigate();
   // let lang = lenguaje.lang;
   // const setLang = lenguaje.setLang;
 
@@ -64,6 +67,7 @@ export const AppContext = ({ children }) => {
       // localStorage.removeItem("userSessionToken");
       // localStorage.removeItem("loggedUser");
       //alert("No tiene sesión iniciada");
+      navigate('/');
       return;
     }
     if (isExpired(token)) {
@@ -71,7 +75,7 @@ export const AppContext = ({ children }) => {
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
       alert("Su sesión ha expirado");
-      //usenavigate
+      navigate('/');
       return;
     }
 
