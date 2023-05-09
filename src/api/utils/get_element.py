@@ -9,8 +9,12 @@ def get_bike(terrain):
         bikes.append(b.serialize())
     return bikes
 
-#funcion para obtener partes de bicicletas de diferentes tipos de terreno y tamaños, recibe como parametros el tipo de parte, el tipo de terreno y el tamaño
+def get_bike_by_id(terrain, id):
+    bike = Bike.query.filter_by(terrain=terrain, id=id).first()
+    return bike.serialize()
 
+
+#funcion para obtener partes de bicicletas de diferentes tipos de terreno y tamaños, recibe como parametros el tipo de parte, el tipo de terreno y el tamaño
 def get_part(part, terrain, size):
     parts = []
     element = BikePart.query.filter_by(part=part, terrain=terrain, size=size).all()

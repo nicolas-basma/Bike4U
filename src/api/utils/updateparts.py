@@ -44,8 +44,6 @@ WHEEL_L = os.getenv("WHEEL_L")
 parts_json = "src/api/utils/parts.json"
 bikes_json = "src/api/utils/bikes.json"
 
-
-
 def load_from_json(archivo_json):
     try:
         with open(archivo_json, "r") as infile:
