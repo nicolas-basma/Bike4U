@@ -1,6 +1,6 @@
-const fetchEditUser =(userID,data)=>{
+const fetchEditUserPassword =(userID,data)=>{
     
-    return fetch(process.env.REACT_APP_API  + "/edit-user/" + userID,
+    return fetch(process.env.REACT_APP_API  + "/edit-user-password/" + userID,
     {method: 'PUT',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)})
@@ -12,9 +12,7 @@ const fetchEditUser =(userID,data)=>{
       return res.json();
     })
     .then((data)=>{
-      localStorage.setItem("userSessionToken", JSON.stringify(data["login_token"]));
-      localStorage.setItem("loggedUser", JSON.stringify(data["Name"]));
-      return data["User_info"];
+      return data["msg"];
     })
     .catch((err)=>{
       console.log(err)
@@ -22,4 +20,4 @@ const fetchEditUser =(userID,data)=>{
     })
 }
 
-export default fetchEditUser;
+export default fetchEditUserPassword;

@@ -31,67 +31,74 @@ const navigate = useNavigate();
 
 console.log(userInfo);
 
-useEffect(()=>{
-{
-// const localUserInfo = handleGetUserInfo();
-  // //console.log(localUserInfo);
-  // localUserInfo.then((data)=>{
-  //   console.log(data)
-  //   setFormInput({
-  //     name: data?.name,
-  //     lastname: data?.lastname,
-  //     email: data?.email,
-  //     weight: data?.weight,
-  //     height: data?.height,
-  //     bikeType: data?.bikeType      
-  //   });
-  //   console.log(formInput);
-  // });
+// useEffect(()=>{
+// {
+// // const localUserInfo = handleGetUserInfo();
+//   // //console.log(localUserInfo);
+//   // localUserInfo.then((data)=>{
+//   //   console.log(data)
+//   //   setFormInput({
+//   //     name: data?.name,
+//   //     lastname: data?.lastname,
+//   //     email: data?.email,
+//   //     weight: data?.weight,
+//   //     height: data?.height,
+//   //     bikeType: data?.bikeType      
+//   //   });
+//   //   console.log(formInput);
+//   // });
   
-} 
-console.log(userInfo);
-// setFormInput({
-//       name: userInfo?.name,
-//       lastname: userInfo?.lastname,
-//       email: userInfo?.email,
-//       weight: userInfo?.weight,
-//       //height: userInfo?.height,
-//       height : userInfo?.size,
-//       bikeType: userInfo?.["bike type"]      
-//     });
-  //console.log(formInput);
+// } 
+// console.log(userInfo);
+// // setFormInput({
+// //       name: userInfo?.name,
+// //       lastname: userInfo?.lastname,
+// //       email: userInfo?.email,
+// //       weight: userInfo?.weight,
+// //       //height: userInfo?.height,
+// //       height : userInfo?.size,
+// //       bikeType: userInfo?.["bike type"]      
+// //     });
+//   //console.log(formInput);
 
-//const myUserInfo = handleGetUserInfo();
-// setFormInput({
-//       name: myUserInfo?.name,
-//       lastname: myUserInfo?.lastname,
-//       email: myUserInfo?.email,
-//       weight: myUserInfo?.weight,
-//       height: myUserInfo?.height,
-//       bikeType: myUserInfo?.bikeType      
-//     });
-// console.log(formInput);
+// //const myUserInfo = handleGetUserInfo();
+// // setFormInput({
+// //       name: myUserInfo?.name,
+// //       lastname: myUserInfo?.lastname,
+// //       email: myUserInfo?.email,
+// //       weight: myUserInfo?.weight,
+// //       height: myUserInfo?.height,
+// //       bikeType: myUserInfo?.bikeType      
+// //     });
+// // console.log(formInput);
 
-},[]);
+// },[]);
 
 //console.log(formInput);
 
 const handleUpdateUser=async()=>{
+  // const body = {
+  //       name,
+  //       lastname,
+  //       email,
+  //       weight,
+  //       size,
+  //       bikeType
+  // }
   const body = {
-        name,
-        lastname,
-        email,
-        weight,
-        size,
-        bikeType
-  }
+        name: "Ruth", 
+        lastname: "Hernica", 
+        email: "lucalobe@gmail.com",
+        weight: "mucho",
+        size: "muy alto",
+        bikeType: "molonas"
+  } //Necesita todas las claves. No será un problema cuando populemos los inputs.
     
-  const isUserCreated = await fetchEditUser(userInfo?.id, body);
+  const editedUser = await fetchEditUser(userInfo?.id, body);
   
-  if (!isUserCreated) return alert("Ha habido un problema actualizando la información")
+  if (!editedUser) return alert("Ha habido un problema actualizando la información")
 
-  console.log(isUserCreated); // necesario comprobar las claves
-  setUserInfo(isUserCreated);
+  setUserInfo(editedUser);
   alert("Información de usuario actualizada");
   navigate("/");
 }
@@ -114,7 +121,6 @@ const handleDeleteUser =  async()=>{
     
   return (
     <form>
-      <p>{userInfo?.id}</p>
       <div className="wrapper">
         <div className="signUpFirstTitle">
           <h1> DATOS PERSONALES </h1>
