@@ -1,21 +1,27 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-const PartsCards = () => {
+
+
+
+
+const PartsCards =({ image, title, description, link }) => {
+
     return (
         <>
-        <div className="titleCards mt-5 text-center">
-         <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-        </div>
-            <div class="card mt-3 ms-5" style={{ width: "18rem" }}>
-                <img src="..." class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <h5 class="card-title">Parte X</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Saber más</a>
+         <div className="wrapperBikeCard">
+            <div className="card mt-3 ms-5" >
+                <img src={image} className="card-img-top" alt="..." />
+                <div className="card-body">
+                    <h5 className="card-title">{title}</h5>
+                    <p className="card-text">{description}</p>
+                    <Link to={link}>
+                        <button>SABER MAS</button>
+                    </Link>
                 </div>
             </div>
+    </div>
         </>
     )
 };

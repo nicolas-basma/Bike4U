@@ -6,8 +6,8 @@ from .utils.send_email import message_from_user, message_from_bike4u
 import os
 from api.utils.get_element import get_bike, get_part, get_bike_by_id
 from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password
-from api.utils.updateparts import steal_bikes, load_from_json, bikes_json
-from api.models import db, Bike
+from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json
+from api.models import db, Bike, BikePart
 api = Blueprint('api', __name__)
 
 #sign up
@@ -77,46 +77,46 @@ def handle_get_parts(terrain, part, size):
     return parts
    
 
-@api.route('/steal-bikes', methods=['POST'])
-def handle_steal_bikes():
-    response = steal_bikes("urban")
-    steal_bikes("mtb")
-    steal_bikes("road")
-    return jsonify(response), 200
+# @api.route('/steal-bikes', methods=['POST'])
+# def handle_steal_bikes():
+#     response = steal_bikes("urban")
+#     steal_bikes("mtb")
+#     steal_bikes("road")
+#     return jsonify(response), 200
 
 
 
-@api.route('/json-data', methods=['POST'])
-def handle_json_data():
-    data = load_from_json(bikes_json)
-    for bikes in data:
-        bike = Bike(
-            title=bikes["title"],
-            image=bikes["image"],
-            link=bikes["link"],
-            terrain=bikes["terrain"],
-            description=bikes["description"]
-        )
-        db.session.add(bike)
-        db.session.commit()
-    return jsonify({"msg": "json cargado"}), 200
-
-
-# @api.route('/add-part', methods=['POST'])
-# def handle_add_part():
-#     data = load_from_json(parts_json)
-#     for parts in data:
-#         part = BikePart(
-#             part = parts["part"],
-#             terrain = parts["terrain"],
-#             size = parts["size"],
-#             title = parts["title"],
-#             image = parts["image"],
-#             link = parts["link"]
+# @api.route('/json-data', methods=['POST'])
+# def handle_json_data():
+#     data = load_from_json(bikes_json)
+#     for bikes in data:
+#         bike = Bike(
+#             title=bikes["title"],
+#             image=bikes["image"],
+#             link=bikes["link"],
+#             terrain=bikes["terrain"],
+#             description=bikes["description"]
 #         )
-#         db.session.add(part)
+#         db.session.add(bike)
 #         db.session.commit()
 #     return jsonify({"msg": "json cargado"}), 200
+
+
+@api.route('/add-part', methods=['POST'])
+def handle_add_part():
+    data = load_from_json(parts_json)
+    for parts in data:
+        part = BikePart(
+            part = parts["part"],
+            terrain = parts["terrain"],
+            size = parts["size"],
+            title = parts["title"],
+            image = parts["image"],
+            link = parts["link"]
+        )
+        db.session.add(part)
+        db.session.commit()
+    return jsonify({"msg": "json cargado"}), 200
 
 
 
