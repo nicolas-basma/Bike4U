@@ -8,11 +8,11 @@ const fetchEditUserPassword =(userID,data)=>{
       if (res.status != 200) {
         throw new Error(`Error: ${res?.msg}`);
       } 
-      //console.log(res);
       return res.json();
     })
     .then((data)=>{
-      return data["msg"];
+      console.log(data.msg);
+      return data.msg;
     })
     .catch((err)=>{
       console.log(err)
