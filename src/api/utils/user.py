@@ -3,8 +3,8 @@ from flask import jsonify, request
 from api.models import db, User, Bike, BikePart
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
-
-
+import string
+import random
 
 #funcion para agregar usuarios nuevos
 def add_user(body):
@@ -60,6 +60,12 @@ def get_user_by_id(id):
     if user == None:
         return jsonify({"msg": "El usuario no existe"}), 404
     return jsonify(user.serialize()), 200
+
+def get_user_by_email(email):
+    user = User.query.filter_by(email=email).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
+    return user
 
 #funcion para borrar un usuario mediante su ID
 def delete_user(id):
