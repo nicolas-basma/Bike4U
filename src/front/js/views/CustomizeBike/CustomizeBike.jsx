@@ -1,26 +1,14 @@
 import React from "react";
 
+import BikesCards from "../../component/BikesCards/bikesCards.jsx";
+import PartsCards from "../../component/PartsCards/partsCards.jsx";
+
+
 const CustomizeBike =()=>{
     return(
         <>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-        <h1>personaliza tu bici</h1>
-
-           <h1>personaliza tu bici</h1>
+            <BikesCards />
+            <PartsCards />
         </>
     )
 };
