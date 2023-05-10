@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
+import string
+import random
 
 db = SQLAlchemy()
 
@@ -48,6 +50,19 @@ class User(db.Model):
             "bike type": self.bike_type,
             "favorites": [f'{bike_part}' for bike_part in self.favorites],
         }
+    def restore_password(self):
+        # Generate random password:
+        length_of_string = 8
+        my_random_pass=(''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(length_of_string)))
+        # Encrypt pass
+        new_password = bcrypt.hashpw(
+            my_random_pass.encode("utf-8"), bcrypt.gensalt())
+        # Assign pass to user
+        self.password = new_password
+        db.session.commit()
+
+        return my_random_pass
+
     
 class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)

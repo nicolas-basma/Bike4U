@@ -26,7 +26,7 @@ finally:
           
         
           For start the database again please run:
-            pipenv run db_init
+            pipenv run init
             pipenv run migrate
             pipenv run upgrade
             
