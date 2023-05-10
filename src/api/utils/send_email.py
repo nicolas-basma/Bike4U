@@ -51,4 +51,12 @@ def message_from_bike4u(body):
     send_email(email, message_bike_4u)
     return
 
-    
+def recover_pass_mail(body):
+    email = body["email"]
+    password = body["password"]
+    message = f"""Hello, 
+            This is your new password:  {password} 
+            Remember to login and change it for one of your choice."""
+    message_bike_4u = full_message(SUBJECT, message)
+    send_email(email, message_bike_4u)
+    return   
