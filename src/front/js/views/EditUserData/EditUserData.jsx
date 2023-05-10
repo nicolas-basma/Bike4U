@@ -8,80 +8,37 @@ import "./EditUserData.css";
 
 
 const EditUserData = () => {
-const {store, action}=useStore();
-const {userInfo} = store;
-const {utils, handleGetUserInfo, handleLogout, setUserInfo}=action;
+  const navigate = useNavigate();
+  const {store, action}=useStore();
+  const {userInfo} = store;
+  const {utils, handleGetUserInfo, handleLogout, setUserInfo}=action;
+  const {fetchEditUser, fetchDeleteUser, fetchEditUserPassword} = utils;
 
-
-const {formInput, myHandleInput, setFormInput}=useForms({
-  name: userInfo?.name,
-  lastname: userInfo?.lastname,
-  email: userInfo?.email,
-  weight: userInfo?.weight,
-  //height: userInfo?.height,
-  height : userInfo?.size,
-  bikeType: userInfo?.["bike type"]      
-});
-console.log(formInput);
-console.log(formInput.newPassword);
-
-const {fetchEditUser, fetchDeleteUser, fetchEditUserPassword} = utils;
-// const {name, lastname, email, weight, height, bikeType}=formInput;
-
-const navigate = useNavigate();
+  const {formInput, myHandleInput, setFormInput}=useForms({
+    name: userInfo?.name,
+    lastname: userInfo?.lastname,
+    email: userInfo?.email,
+    weight: userInfo?.weight,
+    //height: userInfo?.height,
+    height : userInfo?.size,
+    bikeType: userInfo?.["bike type"]      
+  });
+  console.log(formInput);
 
 console.log(userInfo);
 
-const myButtonColorBoolean = ()=>{
-  return (formInput?.newPassword === formInput?.newPasswordValidation) && formInput?.newPassword?.length
-}
-
-const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
-
 // useEffect(()=>{
-// {
-// // const localUserInfo = handleGetUserInfo();
-//   // //console.log(localUserInfo);
-//   // localUserInfo.then((data)=>{
-//   //   console.log(data)
-//   //   setFormInput({
-//   //     name: data?.name,
-//   //     lastname: data?.lastname,
-//   //     email: data?.email,
-//   //     weight: data?.weight,
-//   //     height: data?.height,
-//   //     bikeType: data?.bikeType      
-//   //   });
-//   //   console.log(formInput);
-//   // });
-  
-// } 
-// console.log(userInfo);
-// // setFormInput({
-// //       name: userInfo?.name,
-// //       lastname: userInfo?.lastname,
-// //       email: userInfo?.email,
-// //       weight: userInfo?.weight,
-// //       //height: userInfo?.height,
-// //       height : userInfo?.size,
-// //       bikeType: userInfo?.["bike type"]      
-// //     });
-//   //console.log(formInput);
 
-// //const myUserInfo = handleGetUserInfo();
-// // setFormInput({
-// //       name: myUserInfo?.name,
-// //       lastname: myUserInfo?.lastname,
-// //       email: myUserInfo?.email,
-// //       weight: myUserInfo?.weight,
-// //       height: myUserInfo?.height,
-// //       bikeType: myUserInfo?.bikeType      
-// //     });
-// // console.log(formInput);
+// setFormInput({
+//       name: userInfo?.name,
+//       lastname: userInfo?.lastname,
+//       email: userInfo?.email,
+//       weight: userInfo?.weight,
+//       height : userInfo?.size,
+//       bikeType: userInfo?.["bike type"]      
+//     });
 
-// },[]);
-
-//console.log(formInput);
+// },[userInfo]);
 
 const handleUpdateUser=async()=>{
   // const body = {
@@ -141,6 +98,10 @@ const handleDeleteUser =  async()=>{
   alert("Ha habido un problema eliminando la cuenta");
 
 }
+const myButtonColorBoolean = ()=>{
+  return (formInput?.newPassword === formInput?.newPasswordValidation) && formInput?.newPassword?.length
+}
+const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
     
   return (
     <form>
