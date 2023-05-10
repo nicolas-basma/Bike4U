@@ -6,7 +6,7 @@ import useStore from "../../store/AppContext.jsx";
 
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action } = useStore();
-  const { useForms, utils, handleGetUserInfo, handleIsTokenValid } = action;
+  const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid } = action;
   const { formInput, myHandleInput } = useForms();
   const { fetchLogin } = utils;
 
@@ -21,11 +21,21 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       password,
       rememberMe,
     };     
-      
-    await fetchLogin(data);
-    handleGetUserInfo();
-    handleIsTokenValid();
+    
+    closeNavbar();
 
+    const loginProcess = await fetchLogin(data);
+    //
+    if (loginProcess === true) {
+      setUserAsLogged();
+      handleGetUserInfo();
+      //handleIsTokenValid();
+      return;
+    }
+
+    alert(loginProcess);
+    return ;
+    
   }
 
   return (

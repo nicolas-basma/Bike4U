@@ -12,6 +12,8 @@ import { IntlProvider } from "react-intl";
 import carouselHomePhotos from "../img/arrayPhotos.js";
 import utils from "../utils";
 
+import { useNavigate } from "react-router-dom";
+
 const Context = createContext();
 
 export const AppContext = ({ children }) => {
@@ -24,6 +26,7 @@ export const AppContext = ({ children }) => {
   const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
   const [userInfo, setUserInfo] = useState();
 
+  const navigate = useNavigate();
   // let lang = lenguaje.lang;
   // const setLang = lenguaje.setLang;
 
@@ -32,20 +35,25 @@ export const AppContext = ({ children }) => {
   const handleShow = () => setShow(true);
   const handleLogout = () => {
     localStorage.removeItem("userSessionToken");
-    handleIsTokenValid();
+    localStorage.removeItem("loggedUser");
+    setIsUserLogged(false);
+    setUserInfo(null);
+
+    // handleIsTokenValid();
   }
 
   const setUserAsLogged = () => setIsUserLogged(true);
 
-
   const handleGetUserInfo = async () => {
   
     const token = localStorage.getItem("userSessionToken");
-    const info = await decodeToken(token);
-   // console.log(info.sub);
-    
-    const parsedUserInfo = info.sub;
-    setUserInfo(parsedUserInfo);
+    //console.log(token);
+    if (token !== null) {
+      const info = await decodeToken(token);
+      //console.log(info.sub);
+      setUserInfo(info.sub);
+      return info.sub;
+    }
 
   }
 
@@ -53,16 +61,27 @@ export const AppContext = ({ children }) => {
 
     const token = localStorage.getItem("userSessionToken");
 
-    if (token === null || isExpired(token)) {
+    
+    if (token === null) {
+      setIsUserLogged(false)
+      // localStorage.removeItem("userSessionToken");
+      // localStorage.removeItem("loggedUser");
+      //alert("No tiene sesión iniciada");
+      navigate('/');
+      return;
+    }
+    if (isExpired(token)) {
       setIsUserLogged(false)
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
       alert("Su sesión ha expirado");
-    } else {
-      handleGetUserInfo();
-      setUserAsLogged();
+      navigate('/');
+      return;
     }
 
+    handleGetUserInfo();
+    setUserAsLogged();
+    
   }
 
   // App initialization
@@ -71,6 +90,8 @@ export const AppContext = ({ children }) => {
     handleIsTokenValid();
 
   },[]);
+
+  useEffect(() => {},[isUserLogged]); //Refreshes navbar
 
   // Elementos de Debug
   useEffect(() => {console.log(userInfo)}, [userInfo]);	

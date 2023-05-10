@@ -13,8 +13,7 @@ const fetchGetUserInfo =(userID,userInfoSetter)=>{
     .then((data)=>{
     
         userInfoSetter(data);
-    //     localStorage.setItem("userSessionToken", JSON.stringify(data["login_token"]));
-    //     localStorage.setItem("loggedUser", JSON.stringify(data["Name"]));
+        
     })
       .catch((err)=>console.log(err))
 

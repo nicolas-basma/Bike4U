@@ -11,6 +11,7 @@ import LegalPolicy from "../views/LegalPolicy/LegalPolicy.jsx";
 import ProductView from "../views/ProductView/ProductView.jsx";
 import FavoritesView from "../views/Favorites/FavoritesView.jsx";
 import EditUserData from "../views/EditUserData/EditUserData.jsx";
+import ProtectedPath from "../component/ProtectedPath/ProtectedPath.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/favorites",
-        element: <FavoritesView />,
+        element: <ProtectedPath><FavoritesView /></ProtectedPath>,
       },
       {
         path: "/SignUp",
@@ -39,11 +40,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/Profile",
-        element: <EditUserData />,
+        element: <ProtectedPath><EditUserData /></ProtectedPath>,
       },
       {
         path: "/PasswordRecovery",
-        element: <PasswordRecovery />,
+        //element: <ProtectedPath><PasswordRecovery /></ProtectedPath>,
+        element: <PasswordRecovery />
       },
       {
         path: "/faqs",
