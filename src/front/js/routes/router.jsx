@@ -67,7 +67,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/PasswordRecovery",
-        //element: <ProtectedPath><PasswordRecovery /></ProtectedPath>,
         element: <PasswordRecovery />,
       },
       {
