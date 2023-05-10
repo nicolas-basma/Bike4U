@@ -72,6 +72,7 @@ class Bike(db.Model):
     image = db.Column(db.String, nullable=False)
     link = db.Column(db.String, nullable=False)
     terrain = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return f'<Bike {self.title}>'
@@ -83,4 +84,5 @@ class Bike(db.Model):
             "image": self.image,
             "link": self.link,
             "terrain": self.terrain,
+            "description": self.description,
         }
