@@ -43,7 +43,7 @@ console.log(bike)
             9-Velocidades R. Palanca de cambio: MicroShift Advent Trigger, 9
             velocidades R. Desviador: MicroShift Advent, 9-Velocidades Cable de
             cambio: Fairdale GEOMETRÍA X-Pequeña: 126 - 160 cm Pequeña: 158 -
-            170 cm Mediana: 170 - 180 cm Grande 180 - 186 cm X-Grande 186 cm +
+            170 cm Medianas: 170 - 180 cm Grande 180 - 186 cm X-Grande 186 cm +
           </div>
         </div>
       </div>
