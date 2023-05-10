@@ -228,7 +228,7 @@ def steal_bikes(terrain):
         bikes.append(bike_url)
     for bike in bikes:
         response = requests.get(bike)
-        soup = BeautifulSoup(response.text, 'html.parser').find('article', class_='container module-product-detail js-site-init-functions site-module-margin-bottom')
+        soup = BeautifulSoup(response.text, 'html.parser').find('div', id='wrapper')
         bikes = soup.find('div', class_='row')
         imagen = bikes.find("div", class_="image").find("img").get("src")
         if imagen == None:
@@ -236,17 +236,23 @@ def steal_bikes(terrain):
         else:
             img = "https://www.bike-components.de" + imagen
         title = bikes.find("li", class_="flex items-center grow md:w-full md:pt-4").find("h1").text.strip()
-        url = url
+        url = bike
         terrain = terrain.lower()
+        description = soup.find("div", class_="description").find("div", class_="site-text").find("h2")
+        if description == None:
+            description = "No description"
+        else:
+            description = description.text.strip()
         new_bike = {
             "title":title,
             "image":img,
             "link":url,
-            "terrain":terrain
+            "terrain":terrain,
+            "description":description
         }
         all_bikes.append(new_bike)
     save_to_json(all_bikes, bikes_json)
-    return all_bikes
+    return jsonify({"msg": "Bikes taked"}), 200
 
 
 
