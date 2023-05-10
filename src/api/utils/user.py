@@ -38,7 +38,7 @@ def login(body):
     user = User.query.filter_by(email=body["email"]).first()
     if user == None:
         return jsonify({"msg": msj_error}), 401
-    user_info = user.serialize()
+    user_info = user.serialize_token_info()
     if not user.verify(body["password"].encode("utf-8")):
         return jsonify({"msg": msj_error}), 401
     login_token = create_access_token(identity=user_info)
