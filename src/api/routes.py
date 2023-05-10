@@ -2,12 +2,13 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from .utils.send_email import message_from_user, message_from_bike4u
+from .utils.send_email import message_from_user, message_from_bike4u, recover_pass_mail
 import os
 from api.utils.get_element import get_bike, get_part, get_bike_by_id
-from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password
-from api.utils.updateparts import steal_bikes, load_from_json, bikes_json
-from api.models import db, Bike
+from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password, get_user_by_email
+from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json
+from api.models import db, Bike, BikePart
+
 api = Blueprint('api', __name__)
 
 #sign up
@@ -50,6 +51,22 @@ def handle_edit_user_password(id):
     request_body = request.json
     edited_user = edit_user_password(id, request_body)
     return edited_user
+# User password recovery:
+@api.route('/recover-user-password/<string:email>', methods=['GET'])
+def handle_recover_pass(email):
+    my_user = get_user_by_email(email)
+    print(my_user)
+    my_new_pass = my_user.restore_password()
+    
+    mail_body = {
+        
+        "email" : email,
+        "password" : my_new_pass, 
+    }
+
+    recover_pass_mail(mail_body)
+
+    return jsonify({"msg": "password recovered. Check email"}), 200
    
 #send email
 @api.route('/send-email', methods=['POST'])
@@ -84,8 +101,6 @@ def handle_steal_bikes():
     steal_bikes("road")
     return jsonify(response), 200
 
-
-
 @api.route('/json-data', methods=['POST'])
 def handle_json_data():
     data = load_from_json(bikes_json)
@@ -101,22 +116,21 @@ def handle_json_data():
         db.session.commit()
     return jsonify({"msg": "json cargado"}), 200
 
-
-# @api.route('/add-part', methods=['POST'])
-# def handle_add_part():
-#     data = load_from_json(parts_json)
-#     for parts in data:
-#         part = BikePart(
-#             part = parts["part"],
-#             terrain = parts["terrain"],
-#             size = parts["size"],
-#             title = parts["title"],
-#             image = parts["image"],
-#             link = parts["link"]
-#         )
-#         db.session.add(part)
-#         db.session.commit()
-#     return jsonify({"msg": "json cargado"}), 200
+@api.route('/add-part', methods=['POST'])
+def handle_add_part():
+    data = load_from_json(parts_json)
+    for parts in data:
+        part = BikePart(
+            part = parts["part"],
+            terrain = parts["terrain"],
+            size = parts["size"],
+            title = parts["title"],
+            image = parts["image"],
+            link = parts["link"]
+        )
+        db.session.add(part)
+        db.session.commit()
+    return jsonify({"msg": "json cargado"}), 200
 
 
 
