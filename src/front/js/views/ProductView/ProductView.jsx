@@ -16,9 +16,7 @@ function ProductView() {
     fetchGetBikeByTerrainAndByID(params.terrain, params.id, setBike)
   },[])
 console.log(bike)
-function handleClick() {
-  window.open(bike.link,  '_blank');
-}
+
   return (
     <div className="container">
       <div className="row">
@@ -27,9 +25,9 @@ function handleClick() {
         </div>
         <div className="col">
           <h1>{bike.title}</h1>
-          <Link to={bike.link}>
-          <Button className="btn btn-secondary" onClick={handleClick}>Conozca mas</Button>
-          </Link>
+          <a href={bike.link} target="_blank">
+          <Button className="btn btn-secondary" >Conozca mas</Button>
+          </a>
         </div>
       </div>
       <div className="row">
