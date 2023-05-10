@@ -4,6 +4,8 @@ import useStore from "../../store/AppContext.jsx";
 import { useParams } from "react-router-dom";
 import fetchGetBikeByTerrainAndByID from "../../utils/fetchGetBikeByTerrainAndByID.js";
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
+
 
 function ProductView() {
   const { store } = useStore();
@@ -14,6 +16,9 @@ function ProductView() {
     fetchGetBikeByTerrainAndByID(params.terrain, params.id, setBike)
   },[])
 console.log(bike)
+function handleClick() {
+  window.open(bike.link,  '_blank');
+}
   return (
     <div className="container">
       <div className="row">
@@ -23,7 +28,7 @@ console.log(bike)
         <div className="col">
           <h1>{bike.title}</h1>
           <Link to={bike.link}>
-            <button>Saber más</button>
+          <Button className="btn btn-secondary" onClick={handleClick}>Conozca mas</Button>
           </Link>
         </div>
       </div>
