@@ -9,6 +9,10 @@ favorites_parts = db.Table('favorites_parts',
                                      db.Integer,
                                      db.ForeignKey('user.id'), primary_key=True), db.Column('bike_part_id', db.Integer, db.ForeignKey('bike_part.id'), primary_key=True))
 
+favorites_bikes = db.Table('favorites_bikes',
+                            db.Column('user_id',
+                                        db.Integer,
+                                        db.ForeignKey('user.id'), primary_key=True), db.Column('bike_id', db.Integer, db.ForeignKey('bike.id'), primary_key=True))
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,8 +23,10 @@ class User(db.Model):
     weight = db.Column(db.String, nullable=False)
     bike_type = db.Column(db.String, nullable=False)
     password = db.Column(db.String, unique=False, nullable=False)
-    favorites = db.relationship(
+    favorites_parts = db.relationship(
         'BikePart', backref="users", secondary=favorites_parts)
+    favorites_bikes = db.relationship(
+        'Bike', backref="users", secondary=favorites_bikes)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):

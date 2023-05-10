@@ -25,3 +25,17 @@ def get_part(terrain, part, size):
     for p in element:
         parts.append(p.serialize())
     return parts
+
+def get_all_parts():
+    parts = []
+    element = BikePart.query.all()
+    for p in element:
+        parts.append(p.serialize())
+    return parts
+
+def get_all_bikes():
+    bikes = []
+    element = Bike.query.all()
+    for b in element:
+        bikes.append(b.serialize())
+    return bikes
