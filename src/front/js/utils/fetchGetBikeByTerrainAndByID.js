@@ -1,6 +1,6 @@
-const fetchGetBikeByTerrainAndByID =(terrain, ID)=>{
+const fetchGetBikeByTerrainAndByID =(terrain, ID, bikeSetter)=>{
 
-  return fetch(process.env.REACT_APP_API + "/bikes/"+terrain+"/"+ID,
+  return fetch(process.env.REACT_APP_API + "bikes/"+terrain+"/"+ID,
   {method: 'GET' })
   .then((res)=>{
       if (res.status != 200) {
@@ -10,8 +10,7 @@ const fetchGetBikeByTerrainAndByID =(terrain, ID)=>{
       return res.json()
   })
   .then((data)=>{
-  
-      return data;
+    bikeSetter(data);
       
   })
     .catch((err)=>console.log(err))
