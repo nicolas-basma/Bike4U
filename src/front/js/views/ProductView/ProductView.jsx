@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import useStore from "../../store/AppContext.jsx";
-
+import { useParams } from "react-router-dom";
+import fetchGetBikeByTerrainAndByID from "../../utils/fetchGetBikeByTerrainAndByID.js";
 
 function ProductView() {
   const { store } = useStore();
   const { carouselHomePhotos } = store;
-
+  const params = useParams()
+  const [bike, setBike] = useState({});
+  useEffect(()=>{
+    fetchGetBikeByTerrainAndByID(params.terrain, params.id, setBike)
+  },[])
+console.log(bike)
   return (
     <div className="container">
       <div className="row">
         <div className="col">
-          <img src="https://actionbmxshop.net/12489-large_default/bicicleta-fairdale-weekender-archer-2023.jpg" />
+          <img src={bike.image} />
         </div>
         <div className="col">
           <h1>BICICLETA FAIRDALE WEEKENDER ARCHER 2023 ROJO</h1>
