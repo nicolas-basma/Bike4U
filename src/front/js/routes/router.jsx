@@ -12,6 +12,7 @@ import ProductView from "../views/ProductView/ProductView.jsx";
 import FavoritesView from "../views/Favorites/FavoritesView.jsx";
 import EditUserData from "../views/EditUserData/EditUserData.jsx";
 import ProtectedPath from "../component/ProtectedPath/ProtectedPath.jsx";
+import { element } from "prop-types";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,26 @@ const router = createBrowserRouter([
         element: <CustomizeBike />,
       },
       {
+        path: "/product",
+        children: [
+          {
+            path: "/product/:terrain",
+            children: [
+              {
+                path: "/product/:terrain/:id",
+                element: <ProductView />,
+              },
+            ],
+          },
+        ],
+      },
+      {
         path: "/favorites",
-        element: <ProtectedPath><FavoritesView /></ProtectedPath>,
+        element: (
+          <ProtectedPath>
+            <FavoritesView />
+          </ProtectedPath>
+        ),
       },
       {
         path: "/SignUp",
@@ -40,12 +59,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/Profile",
-        element: <ProtectedPath><EditUserData /></ProtectedPath>,
+        element: (
+          <ProtectedPath>
+            <EditUserData />
+          </ProtectedPath>
+        ),
       },
       {
         path: "/PasswordRecovery",
         //element: <ProtectedPath><PasswordRecovery /></ProtectedPath>,
-        element: <PasswordRecovery />
+        element: <PasswordRecovery />,
       },
       {
         path: "/faqs",
@@ -54,18 +77,6 @@ const router = createBrowserRouter([
       {
         path: "/legalpolicy",
         element: <LegalPolicy />,
-      },
-      {
-        path: "/product/:id",
-        element: <ProductView />,
-      },
-      {
-        path: "/product/:id",
-        element: <ProductView />,
-      },
-      {
-        path: "/product/:id",
-        element: <ProductView />,
       },
     ],
   },
