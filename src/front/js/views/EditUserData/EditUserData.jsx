@@ -32,6 +32,12 @@ const navigate = useNavigate();
 
 console.log(userInfo);
 
+const myButtonColorBoolean = ()=>{
+  return (formInput?.newPassword === formInput?.newPasswordValidation) && formInput?.newPassword?.length
+}
+
+const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
+
 // useEffect(()=>{
 // {
 // // const localUserInfo = handleGetUserInfo();
@@ -286,7 +292,7 @@ const handleDeleteUser =  async()=>{
           </div>
         </div>
 
-        <button type="button" className="databtn deleteBtn" onClick={handleChangePassword}>
+        <button type="button" className={"databtn "+ buttonState} onClick={handleChangePassword}>
           Modificar contraseña
         </button>
         <hr />
@@ -299,39 +305,3 @@ const handleDeleteUser =  async()=>{
 };
 
 export default EditUserData;
-
- {/* <div className="mb-3">
-          <div className="row" id="center">
-            <div className="col-6">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                Contraseña
-              </label>
-              <input
-             
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Introduzca su contraseña"
-                name="password"
-                onChange={myHandleInput}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="mb-3">
-          <div className="row" id="center">
-            <div className="col-6">
-              <label htmlFor="exampleInputPassword2" className="form-label">
-                Confirme su contraseña
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Confirme su Contraseña"
-                name="confirmPassword"
-                onChange={myHandleInput}
-              /> 
-            </div>
-          </div>
-        </div> */}
