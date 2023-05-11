@@ -15,7 +15,7 @@ const SignUp = () => {
   const {useForms, utils}=action;
   const {formInput, myHandleInput}=useForms();
   const {fetchSingup} = utils;
-  const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
+  const {name, lastname, email, password, confirmPassword, weight, height, bike_type}=formInput;
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,7 +33,7 @@ const SignUp = () => {
             password,
             weight,
             size : height,
-            bikeType
+            bike_type
       }
       
       if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
@@ -202,7 +202,7 @@ const SignUp = () => {
             <label htmlFor="bikeSelect"  className="form-label">
               Tipo de bicicleta
             </label>
-            <select onChange={myHandleInput} className="form-select" name="bikeType" aria-describedby="typeOfBike" id="bikeSelect">
+            <select onChange={myHandleInput} className="form-select" name="bike_type" aria-describedby="typeOfBike" id="bikeSelect">
               <option>Elige tu tipo de bicicleta</option>
               <option>Carretera</option>
               <option>Montaña</option>

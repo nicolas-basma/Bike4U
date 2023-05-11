@@ -47,7 +47,7 @@ class User(db.Model):
             "size": self.size,
             "weight": self.weight,
             "email": self.email,
-            "bike type": self.bike_type,
+            "bike_type": self.bike_type,
             # "favorites": [f'{bike_part}' for bike_part in self.favorites],
             "favorites": {
                 "bikes": [bike.serialize() for bike in self.favorites_bikes],
@@ -73,7 +73,7 @@ class User(db.Model):
             "size": self.size,
             "weight": self.weight,
             "email": self.email,
-            "bike type": self.bike_type,           
+            "bike_type": self.bike_type,           
         }
     
     def restore_password(self):
