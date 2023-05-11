@@ -58,13 +58,15 @@ def handle_recover_pass(email):
     print(my_user)
     my_new_pass = my_user.restore_password()
     
-    mail_body = {
+    mail_info = {
         
+        "name" : my_user.name,
+        "lastname" : my_user.lastname,
         "email" : email,
         "password" : my_new_pass, 
     }
 
-    recover_pass_mail(mail_body)
+    recover_pass_mail(mail_info)
 
     return jsonify({"msg": "password recovered. Check email"}), 200
    

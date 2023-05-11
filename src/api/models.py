@@ -48,8 +48,24 @@ class User(db.Model):
             "weight": self.weight,
             "email": self.email,
             "bike type": self.bike_type,
-            "favorites": [f'{bike_part}' for bike_part in self.favorites],
+            # "favorites": [f'{bike_part}' for bike_part in self.favorites],
+            "favorites": {
+                "bikes": [bike.serialize() for bike in self.favorites_bikes],
+                "parts": [part.serialize() for part in self.favorites_parts]
+                }
         }
+    
+    def serialize_token_info(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "lastname": self.lastname,
+            "size": self.size,
+            "weight": self.weight,
+            "email": self.email,
+            "bike type": self.bike_type,           
+        }
+    
     def restore_password(self):
         # Generate random password:
         length_of_string = 8

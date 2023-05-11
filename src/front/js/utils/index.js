@@ -7,6 +7,7 @@ import fetchEditUserPassword from "./fetchEditUserPassword";
 import fetchGetAllBikesSpecificTerrain from "./fetchGetAllBikesSpecificTerrain";
 import fetchGetBikeByTerrainAndByID  from "./fetchGetBikeByTerrainAndByID";
 import fetchGetPartByTypeTerrainAndSize from "./fetchGetPartByTypeTerrainAndSize";
+import fetchRestorePassword from "./fetchRestorePassword";
 
 //import { stringify } from 'json5';
 
@@ -19,7 +20,8 @@ const utils ={
     fetchEditUserPassword,
     fetchGetAllBikesSpecificTerrain,
     fetchGetBikeByTerrainAndByID,
-    fetchGetPartByTypeTerrainAndSize
+    fetchGetPartByTypeTerrainAndSize,
+    fetchRestorePassword
 }
 
 export default utils;
