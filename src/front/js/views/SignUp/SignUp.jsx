@@ -56,7 +56,7 @@ const SignUp = () => {
         </div>
         <div className="mb-3">
           <div className="row">
-            <div className="col-6">
+            <div className="col-12">
               <label htmlFor="inputName" className="form-label">
                 Nombre
               </label>
@@ -71,7 +71,7 @@ const SignUp = () => {
               />
             </div>
             <div className="d-none"></div>
-            <div className="col-6">
+            <div className="col-12">
               <label htmlFor="inputLastname" className="form-label">
                 Apellidos
               </label>
@@ -89,7 +89,7 @@ const SignUp = () => {
         </div>
         <div className="mb-3">
           <div className="row" id="center">
-            <div className="col-6">
+            <div className="col-12">
               <label htmlFor="inputEmail" className="form-label">
                 Email
               </label>
@@ -165,7 +165,7 @@ const SignUp = () => {
           </div>
         <div className="mb-3">
           <div className="row">
-            <div className="col-6">
+            <div className="col-12">
               <label htmlFor="disabledSelect" className="form-label">
                 Seleccione su altura
               </label>
@@ -178,7 +178,7 @@ const SignUp = () => {
                 <option value={"XL"}>+ 190 cm</option>
               </select>
             </div>
-            <div className="col-6">
+            <div className="col-12">
               <label htmlFor="disabledSelect" className="form-label">
                 Seleccione su peso
               </label>
@@ -196,7 +196,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className="row" id="center">
-            <div className="col-6">
+            <div className="col-12">
               <div className="mb-3">
                 <label className="form-label" id="typeOfBike">
                   Tipo de bicicleta

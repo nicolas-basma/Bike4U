@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useStore from "../../store/AppContext.jsx";
@@ -13,6 +13,12 @@ const EditUserData = () => {
   const {userInfo} = store;
   const {utils, handleGetUserInfo, handleLogout, setUserInfo}=action;
   const {fetchEditUser, fetchDeleteUser, fetchEditUserPassword} = utils;
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleToggleShowPassword = () => {
+    setShowPassword(prev=>!prev);
+  }
 
   const {formInput, myHandleInput, setFormInput}=useForms({
     name: userInfo?.name,
@@ -219,37 +225,51 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         <hr />
 
         <div className="row mb-3">
-          <div className="col-6">
+          <div className="col-6 position-relative">
             <label htmlFor="newPassword" className="form-label">
               Nueva contraseña
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="form-control"
               id="newPassword"
               aria-describedby="newPassword"
               placeholder="Nueva contraseña"
+              name="newPassword"
               value={formInput[name]}
               onChange={myHandleInput}
-              name="newPassword"
             />
+            <button
+                className="btn position-absolute top-50 end-0 me-2"
+                type="button"
+                onClick={handleToggleShowPassword}
+                >
+                  <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+            </button>
           </div>
         
 
-          <div className="col-6">
+          <div className="col-6 position-relative">
             <label htmlFor="newPasswordValidation" className="form-label">
               Verifique la contraseña
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="form-control"
               id="newPasswordValidation"
               aria-describedby="newPasswordValidation"
               placeholder="Valide su contraseña"
+              name="newPasswordValidation"
               value={formInput[name]}
               onChange={myHandleInput}
-              name="newPasswordValidation"
             />
+            <button
+                className="btn position-absolute top-50 end-0 me-2"
+                type="button"
+                onClick={handleToggleShowPassword}
+                >
+                  <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+            </button>
           </div>
         </div>
 
