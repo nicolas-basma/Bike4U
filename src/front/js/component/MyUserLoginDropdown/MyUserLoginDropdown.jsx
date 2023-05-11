@@ -118,7 +118,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
             </div>
           </div>
           <button
-            className="btn sendBtn mx-auto dropdown-btn mt-1"
+            className="btn sendBtn w-100 mx-auto dropdown-btn mt-1"
             onClick={handleLogin}
           >
             <FormattedMessage id="buttonSignIn"></FormattedMessage>
