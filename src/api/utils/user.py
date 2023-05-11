@@ -111,7 +111,7 @@ def add_favorite_bike(user_id, bike_id):
     user = User.query.filter_by(id=user_id).first()
     if user == None:
         return jsonify({"msg": "El usuario no existe"}), 404
-    bike = Bike.query.filter_by(id=bike_id["bike_id"]).first()
+    bike = Bike.query.filter_by(id=bike_id).first()
     if bike == None:
         return jsonify({"msg": "La bici no existe"}), 404
     user.favorites_bikes.append(bike)
@@ -122,7 +122,7 @@ def delete_favorite_bike(user_id, bike_id):
     user = User.query.filter_by(id=user_id).first()
     if user == None:
         return jsonify({"msg": "El usuario no existe"}), 404
-    bike = Bike.query.filter_by(id=bike_id["bike_id"]).first()
+    bike = Bike.query.filter_by(id=bike_id).first()
     if bike == None:
         return jsonify({"msg": "La bici no existe"}), 404
     user.favorites_bikes.remove(bike)
@@ -134,7 +134,7 @@ def add_favorite_part(user_id, part_id):
     user = User.query.filter_by(id=user_id).first()
     if user == None:
         return jsonify({"msg": "El usuario no existe"}), 404
-    part = BikePart.query.filter_by(id=part_id["part_id"]).first()
+    part = BikePart.query.filter_by(id=part_id).first()
     if part == None:
         return jsonify({"msg": "La parte no existe"}), 404
     user.favorites_parts.append(part)
@@ -145,18 +145,18 @@ def delete_favorite_part(user_id, part_id):
     user = User.query.filter_by(id=user_id).first()
     if user == None:
         return jsonify({"msg": "El usuario no existe"}), 404
-    part = BikePart.query.filter_by(id=part_id["part_id"]).first()
+    part = BikePart.query.filter_by(id=part_id).first()
     if part == None:
         return jsonify({"msg": "La parte no existe"}), 404
     user.favorites_parts.remove(part)
     db.session.commit()
     return jsonify({"msg": "Part removed from favorites"}), 200
 
-#funcion para ver los favoritos de un usuario mediante su ID
+#funcion para obtener los favoritos de un usuario mediante su ID
 def get_user_favorites(user_id):
     user = User.query.filter_by(id=user_id).first()
     if user == None:
         return jsonify({"msg": "El usuario no existe"}), 404
-    user_favorites_parts = user.serialize()
-    return jsonify(user_favorites_parts), 200
-    
+    user_favorites = user.serialize_favorites()
+    return jsonify(user_favorites), 200
+

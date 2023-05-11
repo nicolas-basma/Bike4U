@@ -55,6 +55,16 @@ class User(db.Model):
                 }
         }
     
+    def serialize_favorites(self):
+        return {
+            "name": self.name,
+            "favorites": {
+                "bikes": [bike.serialize() for bike in self.favorites_bikes],
+                "parts": [part.serialize() for part in self.favorites_parts]
+                }
+        }
+            
+    
     def serialize_token_info(self):
         return {
             "id": self.id,

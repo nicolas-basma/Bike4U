@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from .utils.send_email import message_from_user, message_from_bike4u, recover_pass_mail
 import os
-from api.utils.get_element import get_bike, get_part, get_bike_by_id
+from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts
 from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password, get_user_by_email, add_favorite_bike, add_favorite_part, get_user_favorites, delete_favorite_bike, delete_favorite_part
 from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json
 from api.models import db, Bike, BikePart
@@ -105,6 +105,37 @@ def handle_get_parts(terrain, part, size):
     parts = get_part(part, terrain, size)
     return parts
    
+# ruta para agregar una bicicleta a favoritos
+@api.route('/user/<int:user_id>/add-favorite-bike/<int:bike_id>', methods=['POST'])
+def handle_add_favorite_bike(user_id, bike_id):
+    response = add_favorite_bike(user_id, bike_id)
+    return response
+#Ruta para agregar una parte a favoritos
+@api.route('/user/<int:user_id>/add-favorite-part/<int:part_id>', methods=['POST'])
+def handle_add_favorite_part(user_id, part_id):
+    response = add_favorite_part(user_id, part_id)
+    return response
+
+#ruta para obtener los favoritos de un usuario
+@api.route('/user/<int:user_id>/favorites', methods=['GET'])
+def handle_get_user_favorites(user_id):
+    response = get_user_favorites(user_id)
+    return response
+
+#ruta para eliminar una bicicleta de favoritos
+@api.route('/user/<int:user_id>/delete-favorite-bike/<int:bike_id>', methods=['DELETE'])
+def handle_delete_favorite_bike(user_id, bike_id):
+    response = delete_favorite_bike(user_id, bike_id)
+    return response
+
+#ruta para eliminar una parte de favoritos
+@api.route('/user/<int:user_id>/delete-favorite-part/<int:part_id>', methods=['DELETE'])
+def handle_delete_favorite_part(user_id, part_id):
+    response = delete_favorite_part(user_id, part_id)
+    return response
+
+
+
 
 # @api.route('/steal-bikes', methods=['POST'])
 # def handle_steal_bikes():
