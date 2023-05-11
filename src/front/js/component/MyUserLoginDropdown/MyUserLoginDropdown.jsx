@@ -52,7 +52,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
         type="button"
         className="btn button"
         data-bs-toggle="dropdown"
-        data-bs-auto-close="true"
+        data-bs-auto-close="outside"
         aria-expanded="false"
       >
         <FormattedMessage id="userLoginDropdownMainButton"></FormattedMessage>
