@@ -1,21 +1,29 @@
 .carousel {
   background-color: rgb(0, 0, 0);
-  height: 300px;
-  width: 1000px;
+  height: 500px;
+  width: 100%;
   margin-top: 25px;
-  box-shadow: 0px 0px 25px #222;
+  box-shadow: 0px 0px 25px #faf8f8;
   border-radius: 10px;
   max-width: 100%;
+  
 }
-.imageContainer {
-}
+
 .image {
-  height: 250px;
+  height: 480px;
   width: auto;
   padding: 1rem;
   max-width: 100%;
+  margin-top: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
+.image:hover {
+  height: 700px;
+  width: auto;
+}
 .carousel-indicators [data-bs-target]:hover {
   -webkit-box-reflect: below -40px -webkit-gradient(
       linear,
@@ -25,3 +33,9 @@
       to(rgba(255, 255, 255, 0.5))
     );
 }
+
+.imageContainer {
+  height: 480px;
+  overflow: hidden;
+}
+

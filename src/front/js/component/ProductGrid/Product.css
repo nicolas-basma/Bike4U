@@ -1,0 +1,8 @@
+.productImage {
+    width: 100px;
+    height: 100px;
+}
+
+.productImage:hover {
+    cursor:pointer
+}

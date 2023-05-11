@@ -37,6 +37,7 @@ Thumbs.db
 *.log
 *.sql
 *.sqlite
+*.db
 
 # ignore compiled files
 *.com
@@ -77,3 +78,12 @@ database.database
 database.db
 diagram.png
 __pycache__/
+
+# ignore project install files
+*.lock
+package-lock.json
+
+# a lo bruto
+src/instance
+./Pipfile.lock
+migrations

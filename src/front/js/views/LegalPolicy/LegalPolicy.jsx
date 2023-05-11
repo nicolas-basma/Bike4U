@@ -1,8 +1,11 @@
 import React from "react";
+import {useIntl, FormattedMessage} from "react-intl";
 
 import "./LegalPolicy.css";
 
 const LegalPolicy = () => {
+  const intl = useIntl();
+
   return (
     <>
       <div className="accordion accordion-flush" id="accordionFlushExample">
@@ -17,7 +20,8 @@ const LegalPolicy = () => {
               aria-expanded="false"
               aria-controls="flush-collapseOne"
             >
-              <strong>hola</strong>
+               <div dangerouslySetInnerHTML={{__html: intl.formatMessage({id:"legalAdvisoryTitle"})}}>
+              </div>
             </button>
           </h2>
           <div
@@ -26,9 +30,8 @@ const LegalPolicy = () => {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> class. This is the
-              first item's accordion body.
+              <div dangerouslySetInnerHTML={{__html: intl.formatMessage({id:"legalAdvisoryBody"})}}>
+              </div>
             </div>
           </div>
         </div>
@@ -43,7 +46,8 @@ const LegalPolicy = () => {
               aria-expanded="false"
               aria-controls="flush-collapseTwo"
             >
-              <strong>hola2</strong>
+                <div dangerouslySetInnerHTML={{__html: intl.formatMessage({id:"privacyPolyticsTitle"})}}>
+              </div>
             </button>
           </h2>
           <div
@@ -52,10 +56,8 @@ const LegalPolicy = () => {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> class. This is the
-              second item's accordion body. Let's imagine this being filled with
-              some actual content.
+            <div dangerouslySetInnerHTML={{__html: intl.formatMessage({id:"privacyPolyticsBody"})}}>
+              </div>
             </div>
           </div>
         </div>
@@ -70,7 +72,8 @@ const LegalPolicy = () => {
               aria-expanded="false"
               aria-controls="flush-collapseThree"
             >
-              <strong>hola3</strong>
+              <div dangerouslySetInnerHTML={{__html: intl.formatMessage({id:"cookiesPolicyTitle"})}}>
+              </div>
             </button>
           </h2>
           <div
@@ -79,12 +82,8 @@ const LegalPolicy = () => {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              Placeholder content for this accordion, which is intended to
-              demonstrate the <code>.accordion-flush</code> class. This is the
-              third item's accordion body. Nothing more exciting happening here
-              in terms of content, but just filling up the space to make it
-              look, at least at first glance, a bit more representative of how
-              this would look in a real-world application.
+            <div dangerouslySetInnerHTML={{__html: intl.formatMessage({id:"cookiesPolicyBody"})}}>
+              </div>
             </div>
           </div>
         </div>

@@ -1,0 +1,287 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import useStore from "../../store/AppContext.jsx";
+import useForms from "../../utils/useForms.jsx";
+import "./EditUserData.css";
+
+
+
+const EditUserData = () => {
+  const navigate = useNavigate();
+  const {store, action}=useStore();
+  const {userInfo} = store;
+  const {utils, handleGetUserInfo, handleLogout, setUserInfo}=action;
+  const {fetchEditUser, fetchDeleteUser, fetchEditUserPassword} = utils;
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleToggleShowPassword = () => {
+    setShowPassword(prev=>!prev);
+  }
+
+  const {formInput, myHandleInput, setFormInput}=useForms({
+    name: userInfo?.name,
+    lastname: userInfo?.lastname,
+    email: userInfo?.email,
+    weight: userInfo?.weight,
+    //height: userInfo?.height,
+    height : userInfo?.size,
+    bikeType: userInfo?.["bike type"]      
+  });
+  console.log(formInput);
+
+console.log(userInfo);
+
+// useEffect(()=>{
+
+// setFormInput({
+//       name: userInfo?.name,
+//       lastname: userInfo?.lastname,
+//       email: userInfo?.email,
+//       weight: userInfo?.weight,
+//       height : userInfo?.size,
+//       bikeType: userInfo?.["bike type"]      
+//     });
+
+// },[userInfo]);
+
+const handleUpdateUser=async()=>{
+  // const body = {
+  //       name,
+  //       lastname,
+  //       email,
+  //       weight,
+  //       size,
+  //       bikeType
+  // }
+  const body = {
+        name: "Ruth", 
+        lastname: "Hernica", 
+        email: "lucalobe@gmail.com",
+        weight: "mucho",
+        size: "muy alto",
+        bikeType: "molonas"
+  } //Necesita todas las claves. No será un problema cuando populemos los inputs.
+    
+  const editedUser = await fetchEditUser(userInfo?.id, body);
+  
+  if (!editedUser) return alert("Ha habido un problema actualizando la información")
+
+  setUserInfo(editedUser);
+  alert("Información de usuario actualizada");
+  navigate("/");
+}
+const handleChangePassword=async()=>{
+
+  console.log(formInput.newPassword);
+  if (!formInput.newPassword) return alert("Debe indicar una contraseña");
+  if (formInput.newPassword !==formInput.newPasswordValidation) return alert("Debe indicar una contraseña");
+
+  const body = {
+    password : formInput.newPassword
+  }
+  const editedUser = await fetchEditUserPassword(userInfo?.id, body);
+  
+  if (!editedUser) return alert("Ha habido un problema con el cambio de contraseña")
+
+  alert(editedUser);
+
+  navigate("/");
+}
+const handleDeleteUser =  async()=>{
+  const response = confirm("Esta seguro que desea eliminar su cuenta?");
+  console.log(response);
+  if (!response) return;
+  
+  const isUserDeleted = await fetchDeleteUser(userInfo?.id);
+  if (isUserDeleted) {
+    handleLogout();
+    alert("Usuario eliminado correctamente");
+    navigate("/");
+    return
+  }
+  alert("Ha habido un problema eliminando la cuenta");
+
+}
+const myButtonColorBoolean = ()=>{
+  return (formInput?.newPassword === formInput?.newPasswordValidation) && formInput?.newPassword?.length
+}
+const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
+    
+  return (
+    <form>
+      <div className="wrapper">
+        <div className="signUpFirstTitle">
+          <h1> DATOS PERSONALES </h1>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="formName" className="form-label">
+              Nombre
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="formName"
+              aria-describedby="emailHelp"
+              placeholder="Introduzca su nombre"
+              value={formInput[name]}
+              onChange={myHandleInput}
+              name="name"
+            />
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="formLastName" className="form-label">
+              Apellidos
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="formLastName"
+              aria-describedby="emailHelp"
+              placeholder="Introduzca sus apellidos"
+              value={formInput[name]}
+              onChange={myHandleInput}
+              name="lastname"
+            />
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="formEmail" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="formEmail"
+              placeholder="Ej. juan@perez.com"
+              value={formInput[name]}
+              name="email"
+              onChange={myHandleInput}
+            />
+          </div>
+        </div>
+    
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="formSizeSelect" className="form-label">
+              Altura
+            </label>
+            <select id="formSizeSelect" onChange={myHandleInput} name="height" className="form-select">
+              <option >Elige tu altura</option>
+              <option value={"xs"}>150-160 cm</option>
+              <option value={"s"}>161-170 cm</option>
+              <option value={"m"}>171-180 cm</option>
+              <option value={"l"}>181-190 cm</option>
+              <option value={"xl"}>+ 190 cm</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="formWeightSelect" className="form-label">
+              Peso
+            </label>
+            <select id="formWeightSelect" onChange={myHandleInput} className="form-select" name="weight">
+              <option>Elige tu peso</option>
+              <option>30-40 kg</option>
+              <option>41-50 kg</option>
+              <option>51-60 kg</option>
+              <option>61-70 kg</option>
+              <option>71-80 kg</option>
+              <option>81-90 kg</option>
+              <option>91-100 kg</option>
+              <option>+100 kg</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="formBikeSelect" className="form-label">
+              Tipo de bicicleta
+            </label>
+            <select id="formBikeSelect" onChange={myHandleInput} className="form-select" name="bikeType">
+              <option>Elige tu tipo de bicicleta</option>
+              <option value={"road"}>Carretera</option>
+              <option value={"mtb"}>Montaña</option>
+              <option value={"urban"}>Urban</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" className="databtn sendBtn" onClick={handleUpdateUser}>
+          Actualizar
+        </button>
+        <hr />
+
+        <div className="row mb-3">
+          <div className="col-6 position-relative">
+            <label htmlFor="newPassword" className="form-label">
+              Nueva contraseña
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              className="form-control"
+              id="newPassword"
+              aria-describedby="newPassword"
+              placeholder="Nueva contraseña"
+              name="newPassword"
+              value={formInput[name]}
+              onChange={myHandleInput}
+            />
+            <button
+                className="btn position-absolute top-50 end-0 me-2"
+                type="button"
+                onClick={handleToggleShowPassword}
+                >
+                  <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+            </button>
+          </div>
+        
+
+          <div className="col-6 position-relative">
+            <label htmlFor="newPasswordValidation" className="form-label">
+              Verifique la contraseña
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              className="form-control"
+              id="newPasswordValidation"
+              aria-describedby="newPasswordValidation"
+              placeholder="Valide su contraseña"
+              name="newPasswordValidation"
+              value={formInput[name]}
+              onChange={myHandleInput}
+            />
+            <button
+                className="btn position-absolute top-50 end-0 me-2"
+                type="button"
+                onClick={handleToggleShowPassword}
+                >
+                  <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="button" className={"databtn "+ buttonState} onClick={handleChangePassword}>
+          Modificar contraseña
+        </button>
+        <hr />
+        <button type="button" className="databtn deleteBtn" onClick={handleDeleteUser}>
+          Eliminar cuenta
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default EditUserData;
