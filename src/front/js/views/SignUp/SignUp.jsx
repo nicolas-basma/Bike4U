@@ -171,11 +171,11 @@ const SignUp = () => {
               </label>
               <select  onChange={myHandleInput} name="height" className="form-select" aria-describedby="selectSize">
                 <option >Elige tu altura</option>
-                <option value={"XS"}>150-160 cm</option>
-                <option value={"S"}>161-170 cm</option>
-                <option value={"M"}>171-180 cm</option>
-                <option value={"L"}>181-190 cm</option>
-                <option value={"XL"}>+ 190 cm</option>
+                <option value={"xs"}>150-160 cm</option>
+                <option value={"s"}>161-170 cm</option>
+                <option value={"m"}>171-180 cm</option>
+                <option value={"l"}>181-190 cm</option>
+                <option value={"xl"}>+ 190 cm</option>
               </select>
             </div>
             <div className="col-12">
@@ -203,10 +203,9 @@ const SignUp = () => {
                 </label>
                 <select onChange={myHandleInput} className="form-select" name="bikeType" aria-describedby="typeOfBike">
                   <option>Elige tu tipo de bicicleta</option>
-                  <option>Carretera</option>
-                  <option>Montaña</option>
-                  <option>BMX</option>
-                  <option>Urban</option>
+                  <option value={"road"}>Carretera</option>
+                  <option value={"mtb"}>Montaña</option>
+                  <option value={"urban"}>Urban</option>
                 </select>
               </div>
             </div>

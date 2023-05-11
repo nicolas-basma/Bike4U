@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+
+.part-img{
+    /* max-width: 200rem; */
+    width: 200px;
+    aspect-ratio: 1/1;
+    background-image: url("https://cdn.pixabay.com/photo/2013/07/13/13/46/bicycle-161524_1280.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+
+.customizeBikeBtn2{
+    margin:1rem;
+    height: 2rem;
+    width: 6rem;
+    border-radius: 10px;
+    background-color: black;
+    color:white;
+    font-family: "Racing Sans One", cursive;
+    font-size: 0.8rem;
+    border:3px solid black;
+   
+}
+
+.customizeBikeBtn2:hover{
+    cursor: pointer;
+    background-color: rgb(255, 209, 2);
+    color: rgb(0, 0, 0);
+    
+    box-shadow: 0px 0px 25px #222;
+}
