@@ -45,10 +45,10 @@
   background-color: black;
   color: rgb(240, 185, 5);
 }
-#center {
+.center {
   justify-content: center;
 }
 
-#typeOfBike {
+.typeOfBike {
   margin-top: 50px;
 }
