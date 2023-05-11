@@ -16,7 +16,7 @@ def add_user(body):
         email=body["email"],
         size=body["size"],
         weight=body["weight"],
-        bike_type=body["bikeType"],
+        bike_type=body["bike_type"],
         password=coded_password,
         is_active=False
     )
@@ -89,7 +89,7 @@ def edit_user(id, body):
     # user_to_edit.password = new_password
     user_to_edit.size = body["size"]
     user_to_edit.weight = body["weight"]
-    user_to_edit.bike_type = body["bikeType"]
+    user_to_edit.bike_type = body["bike_type"]
     db.session.commit()
     user_info = user_to_edit.serialize()
     login_token = create_access_token(identity=user_info)
