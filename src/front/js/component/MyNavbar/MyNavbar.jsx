@@ -16,16 +16,12 @@ const MyNavbar = () => {
   const { handleShow, handleLogout } = action;
   const { logo, isUserLogged, userInfo } = store;
 
-  const navbarCollapseRef = useRef(null);
   const navbarTogglerRef = useRef(null);
 
   const handleLinkClick = () => {
-      navbarTogglerRef.current.classList.add('collapsed');
-      navbarCollapseRef.current.classList.remove('show');  
-      // navbarCollapseRef.current.classList.remove('collapse','show');
-      // navbarCollapseRef.current.classList.add('collapsing');
-      // navbarCollapseRef.current.classList.remove('collapsing');
-      // navbarCollapseRef.current.classList.add('collapse');
+
+      navbarTogglerRef.current.click();
+
     };
 
   const handleLogoutClick  = () => {
@@ -53,7 +49,7 @@ const MyNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" ref={navbarTogglerRef}/>
 
          
-          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient rise" ref={navbarCollapseRef}>
+          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end navbar-box gradient rise">
             <Nav className="bg-black">
               {isUserLogged
                 ? <Link to="/Profile" onClick={handleLinkClick}>
