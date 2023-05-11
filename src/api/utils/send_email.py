@@ -2,19 +2,31 @@ from smtplib import SMTP_SSL
 import os
 from flask import jsonify
 
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 BIKE4U_EMAIL = os.environ.get('BIKE4U_EMAIL')
 MESSAGE_FROM_BIKE4U = os.environ.get('MESSAGE_FROM_BIKE4U')
 BIKE4U_NAME = os.environ.get('BIKE4U_NAME')
 SUBJECT = os.environ.get('SUBJECT')
 
-def send_email(to, message):
+def send_email(to, message, my_subject ):
 
     HOST = "smtp.gmail.com"
     FROM_EMAIL = os.environ.get('BIKE4U_EMAIL', 'BIKE4U_EMAIL')
     TO_EMAIL = to
     PASSWORD = os.environ.get('BIKE4U_PASSWORD', 'BIKE4U_PASSWORD')
-    MESSAGE = message
 
+    #Funciona
+    
+    msg = MIMEMultipart()
+    #msg['From'] = FROM_EMAIL
+    #msg['To'] = TO_EMAIL
+    msg['Subject'] = SUBJECT + ": " + my_subject
+    msg.attach(MIMEText(message, 'plain'))
+    
+    MESSAGE = msg.as_string()
+    
     smtp = SMTP_SSL(HOST)
 
     smtp.ehlo()
@@ -27,8 +39,9 @@ def send_email(to, message):
 
 
 def full_message(name, message):
+
     return f"""\
-        Subject: {name} sent you a message
+        {name} sent you a message:
         
         
         {message}"""
@@ -42,21 +55,31 @@ def message_from_user(body):
     message = body['message']
     name = body['name']
     user_message = full_message(name, message)
-    send_email(BIKE4U_EMAIL, user_message)
+    send_email(BIKE4U_EMAIL, user_message, "Contact")
     return 
 
 def message_from_bike4u(body):
     email = body["email"]
-    message_bike_4u = full_message(SUBJECT, MESSAGE_FROM_BIKE4U)
-    send_email(email, message_bike_4u)
+    user_name = body['name']
+    message = f""" Hola {user_name}, 
+
+        {MESSAGE_FROM_BIKE4U}"""
+    send_email(email, message, "Contact")
     return
 
 def recover_pass_mail(body):
+    name = body["name"]
+    #lastname = body["lastname"]
     email = body["email"]
     password = body["password"]
-    message = f"""Hello, 
+    message = f"""Hello {name}, 
+
             This is your new password:  {password} 
-            Remember to login and change it for one of your choice."""
-    message_bike_4u = full_message(SUBJECT, message)
-    send_email(email, message_bike_4u)
+            Remember to login and change it for one of your choice.
+            
+            Have a nice day!"""
+    SUBJECT = "Password recovery"
+
+    send_email(email, message, SUBJECT )
+
     return   
