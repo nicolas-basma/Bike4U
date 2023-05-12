@@ -74,3 +74,6 @@ You can find other templates and resources like this at the [school github page]
    https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api/add-part.
    los dos metodos son POST.
 4. volvemos a comentar todo.   
+
+## env.
+env tiene esta direccion como ruta https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api/.
