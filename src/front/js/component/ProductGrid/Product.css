@@ -1,8 +1,23 @@
 .productImage {
-    width: 100px;
+    width: auto;
     height: 100px;
+    text-align: center;    
+
+
 }
 
 .productImage:hover {
     cursor:pointer
+}
+
+h2 {
+    font-size: 50px;
+    font-family: "Notable", sans-serif;
+    text-transform: uppercase;
+    
+}
+
+h3 {
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Product from "./Product.jsx";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
+import "./Product.css"
 
 function Products({title, products}) {
   
