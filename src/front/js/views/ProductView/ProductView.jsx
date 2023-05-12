@@ -3,7 +3,7 @@ import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import useStore from "../../store/AppContext.jsx";
 import { useParams } from "react-router-dom";
 import fetchGetBikeByTerrainAndByID from "../../utils/fetchGetBikeByTerrainAndByID.js";
-import { Link } from "react-router-dom";
+
 import { Button } from 'react-bootstrap';
 
 
