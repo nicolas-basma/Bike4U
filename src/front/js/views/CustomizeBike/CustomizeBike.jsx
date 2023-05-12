@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import useStore from "../../store/AppContext.jsx";
 import { FormattedMessage } from "react-intl";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
-import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";
-import fetchGetUserBike from "../../utils/fetchGetUserBike.js";
+import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";;
 import { useParams } from "react-router-dom";
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
@@ -28,9 +27,10 @@ const CustomizeBike = () => {
   useEffect(() => {
     const info = async () => {
       
-      const arrayOfBikes = await fetchGetUserBike(
+      const arrayOfBikes = fetchGetBikes(
         userInfo.bike_type,
-        userInfo.size
+        setUserBike
+
         );
         setUserBike(arrayOfBikes);
         console.log(arrayOfBikes);
