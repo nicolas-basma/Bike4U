@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from .utils.send_email import message_from_user, message_from_bike4u, recover_pass_mail
 import os
-from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts, get_bikes_photos, get_bike_by_terrain_and_size
+from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts, get_bikes_photos
 from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password, get_user_by_email, add_favorite_bike, add_favorite_part, get_user_favorites, delete_favorite_bike, delete_favorite_part
 from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json, steal_parts
 from api.models import db, Bike, BikePart
@@ -105,10 +105,10 @@ def handle_get_bike_by_id(terrain, id):
     bike = get_bike_by_id(terrain, id)
     return jsonify(bike), 200
 
-api.route('/get-bike/<string:terrain>/<string:size>', methods=['GET'])
-def handle_get_bike(terrain, size):
-    bike = get_bike_by_terrain_and_size(terrain, size)
-    return bike
+# api.route('/get-bike/<string:terrain>/<string:size>', methods=['GET'])
+# def handle_get_bike(terrain, size):
+#     bike = get_bike_by_terrain_and_size(terrain, size)
+#     return bike
 
 # ruta para obtener las partes de bicicletas de diferentes tipos de terreno
 @api.route('/parts/<string:terrain>/<string:size>', methods=['GET'])
@@ -173,8 +173,8 @@ def handle_delete_favorite_part(user_id, part_id):
         db.session.commit()
     return jsonify({"msg": "json cargado"}), 200
 
-@api.route('/add-part', methods=['POST'])
-def handle_add_part():
+# @api.route('/add-part', methods=['POST'])
+# def handle_add_part():
     data = load_from_json(parts_json)
     for parts in data:
         part = BikePart(
@@ -240,29 +240,29 @@ def handle_add_part():
 #     steal_parts("forks","road", "m")
 #     steal_parts("forks","road", "l")
 #     return response
-@api.route('/steal-parts', methods=['POST'])
-def handle_steal_parts():
-    response = steal_parts("pedals_chain","mtb", "s")
-    steal_parts("pedals_chain","mtb", "m")
-    steal_parts("pedals_chain","mtb", "l")
-    steal_parts("pedals_chain","urban", "s")
-    steal_parts("pedals_chain","urban", "m")
-    steal_parts("pedals_chain","urban", "l")
-    steal_parts("pedals_chain","road", "s")
-    steal_parts("pedals_chain","road", "m")
-    steal_parts("pedals_chain","road", "l")
-    return response
 # @api.route('/steal-parts', methods=['POST'])
 # def handle_steal_parts():
-#     response = steal_parts("saddle","mtb", "s")
-#     steal_parts("saddle","mtb", "m")
-#     steal_parts("saddle","mtb", "l")
-#     steal_parts("saddle","urban", "s")
-#     steal_parts("saddle","urban", "m")
-#     steal_parts("saddle","urban", "l")
-#     steal_parts("saddle","road", "s")
-#     steal_parts("saddle","road", "m")
-#     steal_parts("saddle","road", "l")
+#     response = steal_parts("pedals_chain","mtb", "s")
+#     steal_parts("pedals_chain","mtb", "m")
+#     steal_parts("pedals_chain","mtb", "l")
+#     steal_parts("pedals_chain","urban", "s")
+#     steal_parts("pedals_chain","urban", "m")
+#     steal_parts("pedals_chain","urban", "l")
+#     steal_parts("pedals_chain","road", "s")
+#     steal_parts("pedals_chain","road", "m")
+#     steal_parts("pedals_chain","road", "l")
 #     return response
+@api.route('/steal-parts', methods=['POST'])
+def handle_steal_parts():
+    response = steal_parts("saddle","mtb", "s")
+    steal_parts("saddle","mtb", "m")
+    steal_parts("saddle","mtb", "l")
+    steal_parts("saddle","urban", "s")
+    steal_parts("saddle","urban", "m")
+    steal_parts("saddle","urban", "l")
+    steal_parts("saddle","road", "s")
+    steal_parts("saddle","road", "m")
+    steal_parts("saddle","road", "l")
+    return response
 
 

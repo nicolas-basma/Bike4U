@@ -197,7 +197,7 @@ const SignUp = () => {
                 <label className="form-label" id="typeOfBike">
                   Tipo de bicicleta
                 </label>
-                <select onChange={myHandleInput} className="form-select" name="bikeType" aria-describedby="typeOfBike">
+                <select onChange={myHandleInput} className="form-select" name="bike_type" aria-describedby="typeOfBike">
                   <option>Elige tu tipo de bicicleta</option>
                   <option value={"road"}>Carretera</option>
                   <option value={"mtb"}>Montaña</option>

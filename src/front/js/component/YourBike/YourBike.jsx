@@ -2,12 +2,14 @@ import React from "react";
 import YourParts from "./YourParts.jsx";
 import useParts from "../../utils/useParts.jsx";
 import YourPersonalBike from "./YourPersonalBike.jsx";
+import useBikes from "../../utils/useBikes.jsx";
 
 
 
 const YourBike = ({ list, bikes}) => {
     const {targetWheels, targetFrame, targetFork, targetHandlebar, targetPedals_chain, targetSaddle, handleBack, handleNext} = useParts(list)
     const {targetMtb, targetUrban, targetRoad, handleNextB, handleBackB} = useBikes(bikes)
+    console.log(bikes)
 
     return (
         <>
