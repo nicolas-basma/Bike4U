@@ -27,7 +27,7 @@ const CustomizeBike = () => {
   useEffect(() => {
     const info = async () => {
       
-      const arrayOfBikes = fetchGetBikes(
+      const arrayOfBikes = await fetchGetBikes(
         userInfo.bike_type,
         setUserBike
 
