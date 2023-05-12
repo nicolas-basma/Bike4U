@@ -47,13 +47,23 @@ class User(db.Model):
             "size": self.size,
             "weight": self.weight,
             "email": self.email,
-            "bike type": self.bike_type,
+            "bike_type": self.bike_type,
             # "favorites": [f'{bike_part}' for bike_part in self.favorites],
             "favorites": {
                 "bikes": [bike.serialize() for bike in self.favorites_bikes],
                 "parts": [part.serialize() for part in self.favorites_parts]
                 }
         }
+    
+    def serialize_favorites(self):
+        return {
+            "name": self.name,
+            "favorites": {
+                "bikes": [bike.serialize() for bike in self.favorites_bikes],
+                "parts": [part.serialize() for part in self.favorites_parts]
+                }
+        }
+            
     
     def serialize_token_info(self):
         return {
@@ -63,7 +73,7 @@ class User(db.Model):
             "size": self.size,
             "weight": self.weight,
             "email": self.email,
-            "bike type": self.bike_type,           
+            "bike_type": self.bike_type,           
         }
     
     def restore_password(self):

@@ -16,7 +16,6 @@ def get_bike_by_id(terrain, id):
         return "Bike not found", 404
     return bike.serialize()
 
-
 #funcion para obtener partes de bicicletas de diferentes tipos de terreno y tamaños, recibe como parametros el tipo de parte, el tipo de terreno y el tamaño
 def get_part(terrain, part, size):
     parts = []

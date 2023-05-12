@@ -16,7 +16,7 @@ def add_user(body):
         email=body["email"],
         size=body["size"],
         weight=body["weight"],
-        bike_type=body["bikeType"],
+        bike_type=body["bike_type"],
         password=coded_password,
         is_active=False
     )
@@ -89,7 +89,7 @@ def edit_user(id, body):
     # user_to_edit.password = new_password
     user_to_edit.size = body["size"]
     user_to_edit.weight = body["weight"]
-    user_to_edit.bike_type = body["bikeType"]
+    user_to_edit.bike_type = body["bike_type"]
     db.session.commit()
     user_info = user_to_edit.serialize()
     login_token = create_access_token(identity=user_info)
@@ -105,3 +105,58 @@ def edit_user_password(id, body):
     user_to_edit.password = new_password
     db.session.commit()
     return jsonify({"msg": "Password changed successfully"}), 200
+
+#funcion para agregar favoritos a un usuario mediante su ID
+def add_favorite_bike(user_id, bike_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
+    bike = Bike.query.filter_by(id=bike_id).first()
+    if bike == None:
+        return jsonify({"msg": "La bici no existe"}), 404
+    user.favorites_bikes.append(bike)
+    db.session.commit()
+    return jsonify({"msg": "Bike added to favorites"}), 200
+#funcion para eliminar favoritos a un usuario mediante su ID
+def delete_favorite_bike(user_id, bike_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
+    bike = Bike.query.filter_by(id=bike_id).first()
+    if bike == None:
+        return jsonify({"msg": "La bici no existe"}), 404
+    user.favorites_bikes.remove(bike)
+    db.session.commit()
+    return jsonify({"msg": "Bike removed from favorites"}), 200
+
+#funcion para agregar partes favoritas a un usuario mediante su ID
+def add_favorite_part(user_id, part_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
+    part = BikePart.query.filter_by(id=part_id).first()
+    if part == None:
+        return jsonify({"msg": "La parte no existe"}), 404
+    user.favorites_parts.append(part)
+    db.session.commit()
+    return jsonify({"msg": "Part added to favorites"}), 200
+#funcion para eliminar partes favoritas a un usuario mediante su ID
+def delete_favorite_part(user_id, part_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
+    part = BikePart.query.filter_by(id=part_id).first()
+    if part == None:
+        return jsonify({"msg": "La parte no existe"}), 404
+    user.favorites_parts.remove(part)
+    db.session.commit()
+    return jsonify({"msg": "Part removed from favorites"}), 200
+
+#funcion para obtener los favoritos de un usuario mediante su ID
+def get_user_favorites(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user == None:
+        return jsonify({"msg": "El usuario no existe"}), 404
+    user_favorites = user.serialize_favorites()
+    return jsonify(user_favorites), 200
+
