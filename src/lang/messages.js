@@ -122,9 +122,9 @@ const allMessages = {
   <h2>8. Contacto</h2>
   <p>Si tiene alguna pregunta o comentario sobre este Aviso Legal, puede ponerse en contacto con Bikes4U a través del formulario de contacto disponible en el Sitio Web o enviando un correo electrónico a [EMAIL DE CONTACTO].</p>
           </p>`,
-    customizeBikeButton: "Elije tu bicicleta ideal",
+    customizeBikeButton: "Descubre tu bicicleta ideal!!!",
     homeButtonBikeConfig: "¡Configura tu bicicleta!",
-    myNavbarButtomCustomizeBike: "TU BICICLETA IDEAL",
+    myNavbarButtomCustomizeBike: "DESCUBRE",
     myNavbarButtomFavourites: "FAVORITOS",
     myNavbarButtomContact: "SOBRE NOSOTROS",
     footerContactText: "No dudes en contactarnos en: ",
@@ -273,9 +273,9 @@ const allMessages = {
 <h2>8. Contact</h2>
 <p>If you have any questions or comments about this Legal Notice, you can contact Bikes4U through the contact form available on the Website or by sending an email to [CONTACT EMAIL].</p>
 </p>`,
-    customizeBikeButton: "Choose your ideal bike",
-    homeButtonBikeConfig: "Configure your bike!",
-    myNavbarButtomCustomizeBike: "YOUR IDEAL BICYCLE",
+    customizeBikeButton: "Discover your ideal bike",
+    homeButtonBikeConfig: "Configure your bike!!!",
+    myNavbarButtomCustomizeBike: "DISCOVER",
     myNavbarButtomFavourites: "FAVORITES",
     myNavbarButtomContact: "ABOUT US",
     footerContactText: "Do not hesitate to contact us at: ",

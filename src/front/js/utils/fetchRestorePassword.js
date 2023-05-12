@@ -1,6 +1,6 @@
 const fetchRestorePassword = (userEmail)=>{
 
-    return fetch(process.env.REACT_APP_API + "/recover-user-password/"+userEmail,
+    return fetch(process.env.REACT_APP_API + "recover-user-password/"+userEmail,
                         {method: 'GET' })
                 .then((res)=>{
                     if (res.status != 200) {
