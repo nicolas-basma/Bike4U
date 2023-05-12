@@ -6,7 +6,7 @@ from .utils.send_email import message_from_user, message_from_bike4u, recover_pa
 import os
 from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts, get_bikes_photos
 from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password, get_user_by_email, add_favorite_bike, add_favorite_part, get_user_favorites, delete_favorite_bike, delete_favorite_part
-from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json
+from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json, steal_parts
 from api.models import db, Bike, BikePart
 
 api = Blueprint('api', __name__)
@@ -106,9 +106,9 @@ def handle_get_bike_by_id(terrain, id):
     return jsonify(bike), 200
 
 # ruta para obtener las partes de bicicletas de diferentes tipos de terreno
-@api.route('/parts/<string:terrain>/<string:part>/<string:size>', methods=['GET'])
-def handle_get_parts(terrain, part, size):
-    parts = get_part(part, terrain, size)
+@api.route('/parts/<string:terrain>/<string:size>', methods=['GET'])
+def handle_get_parts(terrain, size):
+    parts = get_part(terrain, size)
     return parts
    
 # ruta para agregar una bicicleta a favoritos
@@ -188,21 +188,15 @@ def handle_delete_favorite_part(user_id, part_id):
 
 # @api.route('/steal-parts', methods=['POST'])
 # def handle_steal_parts():
-#     response = steal_parts("wheels","mtb", "s")
-#     steal_parts("wheels","mtb", "m")
-#     steal_parts("wheels","mtb", "l")
-#     steal_parts("handlebar","mtb", "s")
-#     steal_parts("handlebar","mtb", "m")
-#     steal_parts("handlebar","mtb", "l")
-#     steal_parts("saddle","mtb", "s")
-#     steal_parts("saddle","mtb", "m")
-#     steal_parts("saddle","mtb", "l")
-#     steal_parts("forks","mtb", "s")
-#     steal_parts("forks","mtb", "m")
-#     steal_parts("forks","mtb", "l")
-#     steal_parts("pedals_chain","mtb", "s")
-#     steal_parts("pedals_chain","mtb", "m")
-#     steal_parts("pedals_chain","mtb", "l")
+#     response = steal_parts("frame","mtb", "s")
+#     steal_parts("frame","mtb", "m")
+#     steal_parts("frame","mtb", "l")
+#     steal_parts("frame","urban", "s")
+#     steal_parts("frame","urban", "m")
+#     steal_parts("frame","urban", "l")
+#     steal_parts("frame","road", "s")
+#     steal_parts("frame","road", "m")
+#     steal_parts("frame","road", "l")
 #     return response
 
 

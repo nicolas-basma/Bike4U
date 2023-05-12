@@ -15,9 +15,7 @@ const BikesCards = ({ image, title, description, link }) => {
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{description}</p>
-                    <Link to={link}>
-                        <button>SABER MAS</button>
-                    </Link>
+                    <a href={link} target="_blank" rel="noopener noreferrer"><button className="customizeBikeBtn" >Learn More</button></a>
                 </div>
             </div>
             </div>

@@ -1,6 +1,6 @@
-const fetchGetPartByTypeTerrainAndSize =(terrain, part, size)=>{
+const fetchGetPartByTypeTerrainAndSize = async (terrain, size)=>{
 
-    return fetch(process.env.REACT_APP_API + "/parts/"+terrain+"/"+part+"/"+size,
+    return fetch(process.env.REACT_APP_API + "parts/"+terrain+"/"+size,
     {method: 'GET' })
     .then((res)=>{
         if (res.status != 200) {
