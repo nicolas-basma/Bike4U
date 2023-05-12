@@ -1,10 +1,16 @@
-.wrapperBikeCard{
+.wrapperBikeCard {
   max-width :18rem;
-
+  border: 1px;
+  height: auto;
+  width: 606px;
 }
 
-.card{
-    border:5px solid rgb(0, 0, 0);
-    
-
+.card {
+    border:2px solid rgb(0, 0, 0);
 }
+
+.bike-card {
+  max-height: 700px;
+  overflow: hidden;
+  
+  }

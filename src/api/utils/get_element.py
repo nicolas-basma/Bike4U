@@ -9,6 +9,14 @@ def get_bike(terrain):
         bikes.append(b.serialize())
     return bikes
 
+# def get_bike_by_terrain_and_size(terrain, size):
+#     bikes = []
+#     bike = Bike.query.filter_by(terrain=terrain, size=size).all()
+#     for b in bike:
+#         bikes.append(b.serialize())
+#         print(b.serialize())
+#     return bikes
+
 def get_bike_by_id(terrain, id):
     bike = Bike.query.filter_by(terrain=terrain, id=id).first()
     if not bike:
@@ -38,3 +46,10 @@ def get_all_bikes():
     for b in element:
         bikes.append(b.serialize())
     return bikes
+
+def get_bikes_photos():
+    photos = []
+    element = Bike.query.all()
+    for b in element:
+        photos.append(b.serialize()["image"])
+    return photos

@@ -15,7 +15,7 @@ const SignUp = () => {
   const {useForms, utils}=action;
   const {formInput, myHandleInput}=useForms();
   const {fetchSingup} = utils;
-  const {name, lastname, email, password, confirmPassword, weight, height, bikeType}=formInput;
+  const {name, lastname, email, password, confirmPassword, weight, height, bike_type}=formInput;
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,7 +33,7 @@ const SignUp = () => {
             password,
             weight,
             size : height,
-            bikeType
+            bike_type
       }
       
       if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
@@ -54,110 +54,106 @@ const SignUp = () => {
         <div className="signUpFirstTitle">
           <h1> INTRODUZCA SUS DATOS</h1>
         </div>
-        <div className="mb-3">
-          <div className="row">
-            <div className="col-12">
-              <label htmlFor="inputName" className="form-label">
-                Nombre
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="inputName"
-                aria-describedby="inputName"
-                placeholder="Introduzca su nombre"
-                onChange={myHandleInput}
-                name="name"
-              />
-            </div>
-            <div className="d-none"></div>
-            <div className="col-12">
-              <label htmlFor="inputLastname" className="form-label">
-                Apellidos
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="inputLastname"
-                aria-describedby="inputLastname"
-                placeholder="Introduzca sus apellidos"
-                onChange={myHandleInput}
-                name="lastname"
-              />
-            </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="inputName" className="form-label">
+              Nombre
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputName"
+              aria-describedby="inputName"
+              placeholder="Introduzca su nombre"
+              onChange={myHandleInput}
+              name="name"
+            />
           </div>
         </div>
-        <div className="mb-3">
-          <div className="row" id="center">
-            <div className="col-12">
-              <label htmlFor="inputEmail" className="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="inputEmail"
-                aria-describedby="inputEmail"
-                placeholder="Ej. juan@perez.com"
-                name="email"
-                onChange={myHandleInput}
-              />
-            </div>
+
+        <div className="row mb-3">
+          <div className="col-12">
+            <label htmlFor="inputLastname" className="form-label">
+              Apellidos
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="inputLastname"
+              aria-describedby="inputLastname"
+              placeholder="Introduzca sus apellidos"
+              onChange={myHandleInput}
+              name="lastname"
+            />
           </div>
         </div>
-        <div className="mb-3">
-          <div className="row" id="center">
-            <div className="col-6 position-relative">
-              <label htmlFor="inputPassword1" className="form-label">
-                Contraseña
-              </label>
-              <div>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  className="form-control"
-                  id="inputPassword1"
-                  aria-describedby="inputPassword1"
-                  placeholder="Introduzca su contraseña"
-                  name="password"
-                  onChange={myHandleInput}
-                />
-              
-                <button
+
+        <div className="row mb-3 center">
+          <div className="col-12">
+            <label htmlFor="inputEmail" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="inputEmail"
+              aria-describedby="inputEmail"
+              placeholder="Ej. juan@perez.com"
+              name="email"
+              onChange={myHandleInput}
+            />
+          </div>
+        </div>
+
+        <div className="row mb-3 center">
+          <div className="col-6 position-relative">
+            <label htmlFor="inputPassword1" className="form-label">
+              Contraseña
+            </label>
+            <div>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                id="inputPassword1"
+                aria-describedby="inputPassword1"
+                placeholder="Introduzca su contraseña"
+                name="password"
+                onChange={myHandleInput}
+              />
+            
+              <button
+              className="btn position-absolute top-50 end-0 me-2"
+              type="button"
+              onClick={handleToggleShowPassword}
+              >
+                <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+              </button>
+            </div>
+          </div>
+
+          <div className="col-6 position-relative">
+            <label htmlFor="inputPassword2" className="form-label">
+              Confirme su contraseña
+            </label>
+            <div>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                id="inputPassword2"
+                aria-describedby="inputPassword2"
+                placeholder="Confirme su Contraseña"
+                name="confirmPassword"
+                onChange={myHandleInput}
+              />
+              <button
                 className="btn position-absolute top-50 end-0 me-2"
                 type="button"
                 onClick={handleToggleShowPassword}
                 >
-                  <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mb-3">
-          <div className="row" id="center">
-            <div className="col-6 position-relative">
-              <label htmlFor="inputPassword2" className="form-label">
-                Confirme su contraseña
-              </label>
-              <div>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  className="form-control"
-                  id="inputPassword2"
-                  aria-describedby="inputPassword2"
-                  placeholder="Confirme su Contraseña"
-                  name="confirmPassword"
-                  onChange={myHandleInput}
-                />
-                <button
-                  className="btn position-absolute top-50 end-0 me-2"
-                  type="button"
-                  onClick={handleToggleShowPassword}
-                  >
-                  <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
-                </button>
-              </div> 
-            </div>
+                <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
+              </button>
+            </div> 
           </div>
         </div>
           <div className="signUpSecondTitle">
@@ -201,7 +197,7 @@ const SignUp = () => {
                 <label className="form-label" id="typeOfBike">
                   Tipo de bicicleta
                 </label>
-                <select onChange={myHandleInput} className="form-select" name="bikeType" aria-describedby="typeOfBike">
+                <select onChange={myHandleInput} className="form-select" name="bike_type" aria-describedby="typeOfBike">
                   <option>Elige tu tipo de bicicleta</option>
                   <option value={"road"}>Carretera</option>
                   <option value={"mtb"}>Montaña</option>
@@ -211,6 +207,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
+
         <button type="button" className="sendBtn" onClick={handleCreateUser} aria-describedby="regiserButton">
           Enviar
         </button>

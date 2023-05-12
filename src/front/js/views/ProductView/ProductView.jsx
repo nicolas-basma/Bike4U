@@ -3,7 +3,7 @@ import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import useStore from "../../store/AppContext.jsx";
 import { useParams } from "react-router-dom";
 import fetchGetBikeByTerrainAndByID from "../../utils/fetchGetBikeByTerrainAndByID.js";
-import { Link } from "react-router-dom";
+import "./ProductView.css"
 import { Button } from 'react-bootstrap';
 
 
@@ -26,7 +26,7 @@ console.log(bike)
         <div className="col">
           <h1>{bike.title}</h1>
           <a href={bike.link} target="_blank">
-          <Button className="btn btn-secondary" >Conozca mas</Button>
+          <Button className="btn btn-secondary patata" ><h5>Conozca mas !!!</h5></Button>
           </a>
         </div>
       </div>

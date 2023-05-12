@@ -5,13 +5,11 @@ import useStore from "../../store/AppContext.jsx";
 import useForms from "../../utils/useForms.jsx";
 import "./EditUserData.css";
 
-
-
 const EditUserData = () => {
   const navigate = useNavigate();
   const {store, action}=useStore();
   const {userInfo} = store;
-  const {utils, handleGetUserInfo, handleLogout, setUserInfo}=action;
+  const {utils, handleLogout, setUserInfo}=action;
   const {fetchEditUser, fetchDeleteUser, fetchEditUserPassword} = utils;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -25,44 +23,37 @@ const EditUserData = () => {
     lastname: userInfo?.lastname,
     email: userInfo?.email,
     weight: userInfo?.weight,
-    //height: userInfo?.height,
     height : userInfo?.size,
-    bikeType: userInfo?.["bike type"]      
+    bike_type: userInfo?.bike_type
   });
-  console.log(formInput);
 
-console.log(userInfo);
+  console.log(userInfo);
 
-// useEffect(()=>{
+useEffect(()=>{
+  console.log(1)
+  if (userInfo !== undefined) {
+    console.log(2)
+    setFormInput({
+      name: userInfo?.name,
+      lastname: userInfo?.lastname,
+      email: userInfo?.email,
+      weight: userInfo?.weight,
+      height : userInfo?.size,
+      bike_type: userInfo?.bike_type      
+    });
+  }
 
-// setFormInput({
-//       name: userInfo?.name,
-//       lastname: userInfo?.lastname,
-//       email: userInfo?.email,
-//       weight: userInfo?.weight,
-//       height : userInfo?.size,
-//       bikeType: userInfo?.["bike type"]      
-//     });
-
-// },[userInfo]);
+},[userInfo]);
 
 const handleUpdateUser=async()=>{
-  // const body = {
-  //       name,
-  //       lastname,
-  //       email,
-  //       weight,
-  //       size,
-  //       bikeType
-  // }
   const body = {
-        name: "Ruth", 
-        lastname: "Hernica", 
-        email: "lucalobe@gmail.com",
-        weight: "mucho",
-        size: "muy alto",
-        bikeType: "molonas"
-  } //Necesita todas las claves. No será un problema cuando populemos los inputs.
+        name : formInput.name,
+        lastname: formInput.lastname,
+        email: formInput.email,
+        weight: formInput.weight,
+        size: formInput.height,
+        bike_type: formInput.bike_type
+  }
     
   const editedUser = await fetchEditUser(userInfo?.id, body);
   
@@ -127,7 +118,7 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
               id="formName"
               aria-describedby="emailHelp"
               placeholder="Introduzca su nombre"
-              value={formInput[name]}
+              value={formInput["name"]}
               onChange={myHandleInput}
               name="name"
             />
@@ -145,9 +136,9 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
               id="formLastName"
               aria-describedby="emailHelp"
               placeholder="Introduzca sus apellidos"
-              value={formInput[name]}
-              onChange={myHandleInput}
               name="lastname"
+              value={formInput["lastname"]}
+              onChange={myHandleInput}             
             />
           </div>
         </div>
@@ -162,8 +153,8 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
               className="form-control"
               id="formEmail"
               placeholder="Ej. juan@perez.com"
-              value={formInput[name]}
               name="email"
+              value={formInput["email"]}
               onChange={myHandleInput}
             />
           </div>
@@ -174,7 +165,7 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
             <label htmlFor="formSizeSelect" className="form-label">
               Altura
             </label>
-            <select id="formSizeSelect" onChange={myHandleInput} name="height" className="form-select">
+            <select id="formSizeSelect" onChange={myHandleInput} name="height" className="form-select" value={formInput["height"]}>
               <option >Elige tu altura</option>
               <option value={"xs"}>150-160 cm</option>
               <option value={"s"}>161-170 cm</option>
@@ -190,7 +181,7 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
             <label htmlFor="formWeightSelect" className="form-label">
               Peso
             </label>
-            <select id="formWeightSelect" onChange={myHandleInput} className="form-select" name="weight">
+            <select id="formWeightSelect" onChange={myHandleInput} className="form-select" name="weight" value={formInput["weight"]}>
               <option>Elige tu peso</option>
               <option>30-40 kg</option>
               <option>41-50 kg</option>
@@ -206,10 +197,10 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
 
         <div className="row mb-3">
           <div className="col-12">
-            <label htmlFor="formBikeSelect" className="form-label">
+            <label htmlFor="formBikeSelect" className="form-label" >
               Tipo de bicicleta
             </label>
-            <select id="formBikeSelect" onChange={myHandleInput} className="form-select" name="bikeType">
+            <select id="formBikeSelect" onChange={myHandleInput} className="form-select" name="bike_type" value={formInput["bike_type"]}>
               <option>Elige tu tipo de bicicleta</option>
               <option value={"road"}>Carretera</option>
               <option value={"mtb"}>Montaña</option>
