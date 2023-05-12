@@ -1,4 +1,5 @@
 const fetchGetUserBike =(terrain, size , bikeSetter)=>{
+  console.log(terrain, size);
     fetch(process.env.REACT_APP_API + "get-bike/" + terrain + "/" + size,
     {method: 'GET' })
     .then((res)=>{

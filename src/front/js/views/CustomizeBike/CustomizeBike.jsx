@@ -26,13 +26,16 @@ const CustomizeBike = () => {
   }, []);
 
   useEffect(() => {
-    const infoBike = async () => {
+    const info = async () => {
+      
       const arrayOfBikes = await fetchGetUserBike(
         userInfo.bike_type,
         userInfo.size
         );
         setUserBike(arrayOfBikes);
-      const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
+        console.log(arrayOfBikes);
+      
+        const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
         userInfo.bike_type,
         userInfo.size
       );
@@ -40,7 +43,6 @@ const CustomizeBike = () => {
     };
     if (userInfo && userInfo.bike_type && userInfo.size) {
       info();
-      infoBike();
     }
   }, [userInfo]);
 
