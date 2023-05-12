@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from .utils.send_email import message_from_user, message_from_bike4u, recover_pass_mail
 import os
-from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts
+from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts, get_bikes_photos
 from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password, get_user_by_email, add_favorite_bike, add_favorite_part, get_user_favorites, delete_favorite_bike, delete_favorite_part
 from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json
 from api.models import db, Bike, BikePart
@@ -83,6 +83,12 @@ def handle_get_all_bikes():
     response = get_all_bikes()
     return jsonify(response), 200
 
+@api.route('/images', methods=['GET'])
+def handle_get_bikes_photos():
+    response = get_bikes_photos()
+    return jsonify(response), 200
+
+
 @api.route('/parts', methods=['GET'])
 def handle_get_all_parts():
     response = get_all_parts()
@@ -146,36 +152,36 @@ def handle_delete_favorite_part(user_id, part_id):
 
 
 
-@api.route('/json-data', methods=['POST'])
-def handle_json_data():
-    data = load_from_json(bikes_json)
-    for bikes in data:
-        bike = Bike(
-            title=bikes["title"],
-            image=bikes["image"],
-            link=bikes["link"],
-            terrain=bikes["terrain"],
-            description=bikes["description"]
-        )
-        db.session.add(bike)
-        db.session.commit()
-    return jsonify({"msg": "json cargado"}), 200
+# @api.route('/json-data', methods=['POST'])
+# def handle_json_data():
+#     data = load_from_json(bikes_json)
+#     for bikes in data:
+#         bike = Bike(
+#             title=bikes["title"],
+#             image=bikes["image"],
+#             link=bikes["link"],
+#             terrain=bikes["terrain"],
+#             description=bikes["description"]
+#         )
+#         db.session.add(bike)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
 
-@api.route('/add-part', methods=['POST'])
-def handle_add_part():
-    data = load_from_json(parts_json)
-    for parts in data:
-        part = BikePart(
-            part = parts["part"],
-            terrain = parts["terrain"],
-            size = parts["size"],
-            title = parts["title"],
-            image = parts["image"],
-            link = parts["link"]
-        )
-        db.session.add(part)
-        db.session.commit()
-    return jsonify({"msg": "json cargado"}), 200
+# @api.route('/add-part', methods=['POST'])
+# def handle_add_part():
+#     data = load_from_json(parts_json)
+#     for parts in data:
+#         part = BikePart(
+#             part = parts["part"],
+#             terrain = parts["terrain"],
+#             size = parts["size"],
+#             title = parts["title"],
+#             image = parts["image"],
+#             link = parts["link"]
+#         )
+#         db.session.add(part)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
 
 
 

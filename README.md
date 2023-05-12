@@ -66,7 +66,7 @@ This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://
 
 You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
 
-## Como importar los productos desde el api.
+## Como importar los productos desde la api.
 
 1. descomentamos la ruta del json, src/api/routes.py.
 2. /json-data y /add-part.
@@ -76,4 +76,4 @@ You can find other templates and resources like this at the [school github page]
 4. volvemos a comentar todo.   
 
 ## env.
-env tiene esta direccion como ruta https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api/.
+env tiene esta direccion como ruta https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api.

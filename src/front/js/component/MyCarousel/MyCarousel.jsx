@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Carousel } from "react-bootstrap";
 import "./MyCarousel.css";
+import fetchGetImages from "../../utils/fetchGetImages";
 
-const MyCarousel = ({ photos }) => {
+const MyCarousel = () => {
+  const [photos, setPhotos] = useState([]);
+  useEffect(() => {
+    fetchGetImages(setPhotos)
+  }, [
+
+  ]);
   return (
     <Carousel fade className="container">
       {photos?.length

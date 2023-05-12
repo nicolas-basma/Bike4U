@@ -39,3 +39,10 @@ def get_all_bikes():
     for b in element:
         bikes.append(b.serialize())
     return bikes
+
+def get_bikes_photos():
+    photos = []
+    element = Bike.query.all()
+    for b in element:
+        photos.append(b.serialize()["image"])
+    return photos
