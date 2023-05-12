@@ -9,7 +9,7 @@ const BikesCards = ({ image, title, description, link }) => {
 
     return (
         <>
-            <div className="wrapperBikeCard">
+            <div className="wrapperBikeCard bike-card">
             <div className="card mt-3 ms-5 ">
                 <img src={image} className="card-img-top" alt="..." />
                 <div className="card-body">
