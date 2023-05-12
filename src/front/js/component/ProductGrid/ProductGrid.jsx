@@ -13,7 +13,7 @@ function ProductGrid() {
   }, []);
   return (
     <div className="container">
-      <div className="row">
+      <div className="row product">
        <Products  title={"urban"} products={urbanBikes.slice(0,3)} />
        <Products  title={"mtb"} products={mtbBikes.slice(0,3)} />
        <Products  title={"road"} products={roadBikes.slice(0,3)} />
