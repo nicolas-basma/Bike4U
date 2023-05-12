@@ -1,6 +1,6 @@
 const fetchSingup = (data)=>{
 
-    return fetch(process.env.REACT_APP_API  + "/signup",
+    return fetch(process.env.REACT_APP_API  + "signup",
         {method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)})
