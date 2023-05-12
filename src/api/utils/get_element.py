@@ -7,7 +7,13 @@ def get_bike(terrain):
     bike = Bike.query.filter_by(terrain=terrain).all()
     for b in bike:
         bikes.append(b.serialize())
-    print(bikes)
+    return bikes
+
+def get_bike_by_terrain_and_size(terrain, size):
+    bikes = []
+    bike = Bike.query.filter_by(terrain=terrain, size=size).all()
+    for b in bike:
+        bikes.append(b.serialize())
     return bikes
 
 def get_bike_by_id(terrain, id):
