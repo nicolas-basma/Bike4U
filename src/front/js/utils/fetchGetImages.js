@@ -1,5 +1,5 @@
 const fetchGetImages =(imageSetter)=>{
-    fetch(process.env.REACT_APP_API + "/images",
+    fetch(process.env.REACT_APP_API + "images",
     {method: 'GET' })
     .then((res)=>{
         if (res.status != 200) {
