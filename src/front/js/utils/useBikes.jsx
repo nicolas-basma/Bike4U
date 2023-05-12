@@ -19,7 +19,7 @@ const useBikes = (items) => {
     }, [index.bike, bikes.bike])
 
     const handleNextB = (bike) => {
-        console.log(bike);
+        console.log(`bike`,bike);
         setIndex((prevState) => {
             return {
                 ...prevState,
