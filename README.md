@@ -65,3 +65,15 @@ This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter
 This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
 
 You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+
+## Como importar los productos desde la api.
+
+1. descomentamos la ruta del json, src/api/routes.py.
+2. /json-data y /add-part.
+3. https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api/json-data
+   https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api/add-part.
+   los dos metodos son POST.
+4. volvemos a comentar todo.   
+
+## env.
+env tiene esta direccion como ruta https://3001-nicob11-finalproject-wpse4wfcqky.ws-eu97.gitpod.io/api.
