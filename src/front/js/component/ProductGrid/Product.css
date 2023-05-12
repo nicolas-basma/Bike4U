@@ -1,8 +1,12 @@
 .productImage {
-    width: 100px;
+    width: auto;
     height: 100px;
+    text-align: center;
+    
+    
 }
 
 .productImage:hover {
     cursor:pointer
 }
+
