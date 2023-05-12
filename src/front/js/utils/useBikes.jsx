@@ -14,19 +14,12 @@ const useBikes = (items) => {
         urban : []
     });
 
-    const targetMtb = useMemo(() => {
-        return bikes.mtb[index.mtb]
-    }, [index.mtb, bikes.mtb])
-
-    const targetUrban = useMemo(() => {
-        return bikes.urban[index.urban]
-    }, [index.urban, bikes.urban])
-
-    const targetRoad = useMemo(() => {
-        return bikes.road[index.road]
-    }, [index.road, bikes.road])
+    const targetBikes = useMemo(() => {
+        return bikes.bike
+    }, [index.bike, bikes.bike])
 
     const handleNextB = (bike) => {
+        console.log(bike);
         setIndex((prevState) => {
             return {
                 ...prevState,
@@ -55,7 +48,7 @@ const useBikes = (items) => {
         : null
     }, [items])
 
-    return {targetMtb, targetUrban, targetRoad, handleNextB, handleBackB}
+    return {targetBikes, handleNextB, handleBackB}
 }
 
 export default useBikes;

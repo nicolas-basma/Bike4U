@@ -9,6 +9,7 @@ import YourBike from "../../component/YourBike/YourBike.jsx";
 import BikesCards from "../../component/BikesCards/bikesCards.jsx";
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
+import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";
 
 // image, title, description, link
 
@@ -27,13 +28,12 @@ const CustomizeBike = () => {
   useEffect(() => {
     const info = async () => {
       
-      const arrayOfBikes = await fetchGetBikes(
+      const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
         userInfo.bike_type,
         setUserBike
 
         );
         setUserBike(arrayOfBikes);
-        console.log(arrayOfBikes);
       
         const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
         userInfo.bike_type,
