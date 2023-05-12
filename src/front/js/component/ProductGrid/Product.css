@@ -1,9 +1,9 @@
 .productImage {
     width: auto;
     height: 100px;
-    text-align: center;
-    
-    
+    text-align: center;    
+
+
 }
 
 .productImage:hover {
@@ -11,8 +11,10 @@
 }
 
 h2 {
-    font-size: 60px;
-    font-family:'Times New Roman', Times, serif
+    font-size: 50px;
+    font-family: "Notable", sans-serif;
+    text-transform: uppercase;
+    
 }
 
 h3 {
