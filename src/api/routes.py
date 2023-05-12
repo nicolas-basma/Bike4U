@@ -159,7 +159,7 @@ def handle_delete_favorite_part(user_id, part_id):
 
 
 @api.route('/json-data', methods=['POST'])
- def handle_json_data():
+def handle_json_data():
     data = load_from_json(bikes_json)
     for bikes in data:
         bike = Bike(
