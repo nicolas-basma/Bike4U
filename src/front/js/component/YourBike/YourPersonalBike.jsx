@@ -3,7 +3,7 @@ import "./YourParts.css";
 
 
 
-const YourPersonalBike = ({image, link, title, next, back, bikes}) => {
+const YourPersonalBike = ({image, link, title, next, back}) => {
 
     return (
         <>
@@ -12,9 +12,9 @@ const YourPersonalBike = ({image, link, title, next, back, bikes}) => {
             <img src={image} aria-label={title} className="part-img"  />
         </div>
         <div className="btns">
-            <button className="customizeBikeBtn2" onClick={()=>back(bikes)}>Before</button>
+            <button className="customizeBikeBtn2" onClick={back}>Before</button>
             <a href={link} target="_blank" rel="noopener noreferrer"><button className="customizeBikeBtn2">Learn More</button></a>
-            <button className="customizeBikeBtn2"onClick={()=>next(bikes)}>Next</button>
+            <button className="customizeBikeBtn2"onClick={next}>Next</button>
         </div>
         </div>
         </>

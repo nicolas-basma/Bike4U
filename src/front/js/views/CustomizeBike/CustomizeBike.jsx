@@ -51,7 +51,7 @@ const CustomizeBike = () => {
   };
   return (
     <>
-      <YourBike list={listOfPart} bikes={userBike} />
+      <YourBike key={myrandom()} list={listOfPart} bikes={userBike} />
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>

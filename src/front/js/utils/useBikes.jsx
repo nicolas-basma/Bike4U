@@ -1,13 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 
 const useBikes = (items) => {
-
-    const [index, setIndex] = useState({
-        mtb: 0,
-        road: 0,
-        urban: 0
-    });
-
+    
+    const random = () => Math.floor(Math.random() * 20);
+    const [index, setIndex] = useState(random());
     const [bikes, setBikes] = useState({
         mtb : [],
         road : [],
@@ -15,40 +11,31 @@ const useBikes = (items) => {
     });
 
     const targetBikes = useMemo(() => {
-        return bikes.bike
-    }, [index.bike, bikes.bike])
+            return bikes[index % bikes.length] 
 
-    const handleNextB = (bike) => {
-        console.log(`bike`,bike);
+    }, [bikes, index])
+
+    const handleNextB = () => {
         setIndex((prevState) => {
-            return {
-                ...prevState,
-                [bike]: prevState[bike] + 1 % bikes[bike].length
-            }
+    
+            return prevState + 1
         })
     }
-    const handleBackB = (bike) => {
+    const handleBackB = () => {
         setIndex((prevState) => {
-            return {
-                ...prevState,
-                [bike]: prevState[bike] - 1 % bikes[bike].length
-            }
-        })
+            return prevState - 1
+            })
     }
-        
+    
 
 
     useEffect(() => {
         items ?
-        setBikes({
-            mtb: items.filter((element) => element.part === "mtb"),
-            urban: items.filter((element) => element.part === "urban"),
-            road: items.filter((element) => element.part === "road")
-        })
+        setBikes(items)
         : null
     }, [items])
 
-    return {targetBikes, handleNextB, handleBackB}
+    return {targetBikes, handleNextB, handleBackB, random}
 }
 
 export default useBikes;

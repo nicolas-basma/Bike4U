@@ -6,10 +6,11 @@ import useBikes from "../../utils/useBikes.jsx";
 
 
 
-const YourBike = ({ list, bikes}) => {
+const YourBike = ({list, bikes}) => {
     const {targetWheels, targetFrame, targetFork, targetHandlebar, targetPedals_chain, targetSaddle, handleBack, handleNext} = useParts(list)
-    const {targetBikes, handleNextB, handleBackB} = useBikes(bikes)
-    console.log(bikes);
+    const {targetBikes, handleNextB, handleBackB, random} = useBikes(bikes)
+    const indexRandom = random();
+
 
     return (
         <>
@@ -20,7 +21,7 @@ const YourBike = ({ list, bikes}) => {
                 <YourParts image={targetFrame?.image} link={targetFrame?.link} title={targetFrame?.title} part="frame" next={handleNext} back={handleBack}/>
                 </div>
                 <div className="row">
-                <YourPersonalBike  id ={targetBikes?.id} image={targetBikes?.image} link={targetBikes?.link} title={targetBikes?.title}  next={handleNextB} back={handleBackB}/> 
+                <YourPersonalBike image={targetBikes?.image} link={targetBikes?.link} title={targetBikes?.title}  next={handleNextB} back={handleBackB}/> 
                 </div>
                 <div className="row">
                 <YourParts image={targetSaddle?.image} link={targetSaddle?.link} title={targetSaddle?.title} part="saddle" next={handleNext} back={handleBack}/>
