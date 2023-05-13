@@ -16,13 +16,20 @@ const CustomizeBike = () => {
   const { store } = useStore();
   const params = useParams();
   const [bike, setBike] = useState({});
+  const [parts, setParts] = useState({});
   const { userInfo } = store;
   const [listOfPart, setListOfPart] = useState([]);
   const [userBike, setUserBike] = useState([]);
 
   useEffect(() => {
     fetchGetBikes("mtb", setBike);
+    fetchGetPartByTypeTerrainAndSize("road", "s")
+    .then((res)=>setParts(res))
+   
   }, []);
+  
+  
+  
 
   useEffect(() => {
     const info = async () => {
@@ -73,7 +80,21 @@ const CustomizeBike = () => {
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
       </div>
-      <PartsCards />
+      <div className="wrapperBikesCards">
+        {parts.length
+          ? parts.map((element) => {
+              return (
+                <PartsCards
+                  key={myrandom()}
+                  image={element.image}
+                  title={element.title}
+                  description={element.description}
+                  link={element.link}
+                />
+              );
+            })
+          : null}
+      </div>
     </>
   );
 };
