@@ -15,34 +15,39 @@ import "./CustomizeBike.css";
 const CustomizeBike = () => {
   const { store } = useStore();
   const params = useParams();
-  const [bike, setBike] = useState({});
+  const [bikeMtb, setBikeMtb] = useState({});
+  const [bikeUrban, setBikeUrban] = useState({});
+  const [bikeRoad, setBikeRoad] = useState({});
   const [parts, setParts] = useState({});
   const { userInfo } = store;
   const [listOfPart, setListOfPart] = useState([]);
   const [userBike, setUserBike] = useState([]);
 
   useEffect(() => {
-    fetchGetBikes("mtb", setBike);
+    fetchGetBikes("mtb", setBikeMtb)
+    fetchGetBikes("urban", setBikeUrban)
+    fetchGetBikes("road", setBikeRoad)
+
     fetchGetPartByTypeTerrainAndSize("road", "s")
-    .then((res)=>setParts(res))
-   
+      .then((res) => setParts(res))
+
   }, []);
-  
-  
-  
+
+
+
 
   useEffect(() => {
     const info = async () => {
-      
+
       const arrayOfBikes = fetchGetBikes(
         userInfo.bike_type,
         setUserBike
 
-        );
-        setUserBike(arrayOfBikes);
-        console.log(arrayOfBikes);
-      
-        const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
+      );
+      setUserBike(arrayOfBikes);
+      console.log(arrayOfBikes);
+
+      const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
         userInfo.bike_type,
         userInfo.size
       );
@@ -62,19 +67,56 @@ const CustomizeBike = () => {
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
+      <h1 className="BikeTerrainTitle">MTB Bikes</h1>
       <div className="wrapperBikesCards">
-        {bike.length
-          ? bike.map((element) => {
-              return (
-                <BikesCards
-                  key={myrandom()}
-                  image={element.image}
-                  title={element.title}
-                  description={element.description}
-                  link={element.link}
-                />
-              );
-            })
+        {bikeMtb.length
+          ? bikeMtb.map((element) => {
+            return (
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
+          : null}
+      </div>
+      <h1 className="BikeTerrainTitle">Urban Bikes</h1>
+      <div className="wrapperBikesCards">
+      <div className="mtbBikeTitle">
+        </div>
+        {bikeUrban.length
+          ? bikeUrban.map((element) => {
+            return (
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
+          : null}
+      </div>
+      <h1 className="BikeTerrainTitle">Road Bikes</h1>
+      <div className="wrapperBikesCards">
+      <div className="mtbBikeTitle">  
+        </div>
+        {bikeRoad.length
+          ? bikeRoad.map((element) => {
+            return (
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
           : null}
       </div>
       <div className="titleCards mt-5 text-center">
@@ -83,16 +125,16 @@ const CustomizeBike = () => {
       <div className="wrapperBikesCards">
         {parts.length
           ? parts.map((element) => {
-              return (
-                <PartsCards
-                  key={myrandom()}
-                  image={element.image}
-                  title={element.title}
-                  description={element.description}
-                  link={element.link}
-                />
-              );
-            })
+            return (
+              <PartsCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
           : null}
       </div>
     </>
@@ -100,3 +142,4 @@ const CustomizeBike = () => {
 };
 
 export default CustomizeBike;
+
