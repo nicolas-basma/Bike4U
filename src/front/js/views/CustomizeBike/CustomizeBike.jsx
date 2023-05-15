@@ -60,17 +60,18 @@ const CustomizeBike = () => {
   };
   return (
     <>
-      <YourBike key={myrandom()} list={listOfPart} bikes={userBike} />
+      <YourBike list={listOfPart} bikes={userBike} />
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
       <h1 className="BikeTerrainTitle">MTB Bikes</h1>
       <div className="wrapperBikesCards">
         {bikeMtb.length
-          ? bikeMtb.map((element) => {
+          ? bikeMtb.map((element, index) => {
             return (
               <BikesCards
-                key={myrandom()}
+                key={index}
+                id={index}
                 image={element.image}
                 title={element.title}
                 description={element.description}
@@ -85,10 +86,11 @@ const CustomizeBike = () => {
       <div className="mtbBikeTitle">
         </div>
         {bikeUrban.length
-          ? bikeUrban.map((element) => {
+          ? bikeUrban.map((element, index) => {
             return (
               <BikesCards
-                key={myrandom()}
+                key={index}
+                id={index}
                 image={element.image}
                 title={element.title}
                 description={element.description}
@@ -103,10 +105,11 @@ const CustomizeBike = () => {
       <div className="mtbBikeTitle">  
         </div>
         {bikeRoad.length
-          ? bikeRoad.map((element) => {
+          ? bikeRoad.map((element, index) => {
             return (
               <BikesCards
-                key={myrandom()}
+                key={index}
+                id={index}
                 image={element.image}
                 title={element.title}
                 description={element.description}
@@ -121,10 +124,11 @@ const CustomizeBike = () => {
       </div>
       <div className="wrapperBikesCards">
         {parts.length
-          ? parts.map((element) => {
+          ? parts.map((element, index) => {
             return (
               <PartsCards
-                key={myrandom()}
+                key={index}
+                id={index}
                 image={element.image}
                 title={element.title}
                 description={element.description}
