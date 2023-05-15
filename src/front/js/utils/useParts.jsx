@@ -23,27 +23,27 @@ const useParts = (items) => {
     });
 
     const targetWheels = useMemo(() => {
-        return parts.wheels[index.wheels]
+        return parts.wheels[index.wheels % parts.wheels.length]
     }, [index.wheels, parts.wheels])
 
     const targetFrame = useMemo(() => {
-        return parts.frame[index.frame]
+        return parts.frame[index.frame % parts.frame.length]
     }, [index.frame, parts.frame])
 
     const targetFork = useMemo(() => {
-        return parts.fork[index.fork]
+        return parts.fork[index.fork % parts.fork.length]
     }, [index.fork, parts.fork])
 
     const targetHandlebar = useMemo(() => {
-        return parts.handlebar[index.handlebar]
+        return parts.handlebar[index.handlebar % parts.handlebar.length]
     }, [index.handlebar, parts.handlebar])
 
     const targetPedals_chain = useMemo(() => {
-        return parts.pedals_chain[index.pedals_chain]
+        return parts.pedals_chain[index.pedals_chain % parts.pedals_chain.length]
     }, [index.pedals_chain, parts.pedals_chain])
 
     const targetSaddle = useMemo(() => {
-        return parts.saddle[index.saddle]
+        return parts.saddle[index.saddle % parts.saddle.length]
     }, [index.saddle, parts.saddle])
 
 
@@ -51,7 +51,7 @@ const useParts = (items) => {
         setIndex((prevState) => {
             return {
                 ...prevState,
-                [part]: prevState[part] + 1 % parts[part].length
+                [part]: prevState[part] + 1
             }
         })
     }
@@ -59,7 +59,7 @@ const useParts = (items) => {
         setIndex((prevState) => {
             return {
                 ...prevState,
-                [part]: prevState[part] - 1 % parts[part].length
+                [part]: prevState[part] - 1 
             }
         })
     }

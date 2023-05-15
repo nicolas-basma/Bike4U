@@ -1,6 +1,5 @@
-const fetchGetAllBikesSpecificTerrain = (terrain) =>{
-
-  return fetch(process.env.REACT_APP_API + "/bikes/"+terrain,
+const fetchGetAllBikesSpecificTerrain = async(terrain, bikeSetter)=>{
+  return fetch(process.env.REACT_APP_API + "bikes/"+terrain,
   {method: 'GET' })
   .then((res)=>{
       if (res.status != 200) {
@@ -11,6 +10,7 @@ const fetchGetAllBikesSpecificTerrain = (terrain) =>{
   })
   .then((data)=>{
   
+      // bikeSetter(data);
       return data;
       
   })

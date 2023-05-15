@@ -100,7 +100,7 @@ class BikePart(db.Model):
     link = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f'<BikePart {self.part}>'
+        return f'<BikePart {self.title}>'
 
     def serialize(self):
         return {
