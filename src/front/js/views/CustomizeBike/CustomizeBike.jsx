@@ -6,7 +6,7 @@ import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerr
 import { useParams } from "react-router-dom";
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
-import BikesCards from "../../component/BikesCards/bikesCards.jsx";
+import BikesCards from "../../component/BikesCards/BikesCards.jsx";
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
 import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";

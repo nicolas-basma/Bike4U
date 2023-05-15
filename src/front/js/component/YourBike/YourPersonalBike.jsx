@@ -26,7 +26,7 @@ const YourPersonalBike = ({image, link, title, next, back, id}) => {
         <>
         <div className="col" id={id}>
         <div className="card-part">
-            <img src={image} aria-label={title} className="your-bike"  />
+            <img src={image} aria-label={title} className="bike"  />
         </div>
         <div className="btns">
             <button className="customizeBikeBtn2" onClick={back}>Previus</button>

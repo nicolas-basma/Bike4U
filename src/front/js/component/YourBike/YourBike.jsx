@@ -3,6 +3,7 @@ import YourParts from "./YourParts.jsx";
 import useParts from "../../utils/useParts.jsx";
 import YourPersonalBike from "./YourPersonalBike.jsx";
 import useBikes from "../../utils/useBikes.jsx";
+import "./YourBike.css";
 
 
 
@@ -14,7 +15,10 @@ const YourBike = ({list, bikes}) => {
 
     return (
         <>
-            <div className="container">
+            <div className="container your-bike">
+                <div className="titleCards mt-3 mb-2 text-center">
+                <h1>Your bike</h1>
+      </div>
                 <div className="row">
                 <YourParts id={targetHandlebar?.id} image={targetHandlebar?.image} link={targetHandlebar?.link} title={targetHandlebar?.title} part="handlebar" next={handleNext} back={handleBack}/>
                 <YourParts id={targetFork?.id}  image={targetFork?.image} link={targetFork?.link} title={targetFork?.title} part="fork" next={handleNext} back={handleBack}/>
