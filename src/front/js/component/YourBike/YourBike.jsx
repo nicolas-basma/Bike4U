@@ -9,7 +9,7 @@ import "./YourBike.css";
 
 const YourBike = ({list, bikes}) => {
     const {targetWheels, targetFrame, targetFork, targetHandlebar, targetPedals_chain, targetSaddle, handleBack, handleNext} = useParts(list)
-    const {targetMtb, targetUrban, targetRoad, handleNextB, handleBackB} = useBikes(bikes)
+    const {targetMtb, targetUrban, targetRoad, handleNextB, handleBackB, targetBikes} = useBikes(bikes)
 
 
     return (
