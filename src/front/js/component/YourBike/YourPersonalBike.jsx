@@ -13,26 +13,26 @@ const YourPersonalBike = ({image, link, title, next, back, id}) => {
 
 
     const handleFavoriteBike = async (id) => {
-        addFavoriteBike(userInfo.id, id);
-        setFavorite(true);
         if (favorite) {
             deleteFavoriteBike(userInfo.id, id);
             setFavorite(false);
         }
+        addFavoriteBike(userInfo.id, id);
+        setFavorite(true);
     }
 
 
     return (
         <>
         <div className="col" id={id}>
-        <div className="img-part">
-            <img src={image} aria-label={title} className="part-img"  />
+        <div className="card-part">
+            <img src={image} aria-label={title} className="your-bike"  />
         </div>
         <div className="btns">
             <button className="customizeBikeBtn2" onClick={back}>Previus</button>
             <a href={link} target="_blank" rel="noopener noreferrer"><button className="customizeBikeBtn2">Learn More</button></a>
             <button className="customizeBikeBtn2"onClick={next}>Next</button>
-            <button className="customizeBikeBtn2" onClick={()=> handleFavoriteBike(id)}>Like</button>
+            <button className="customizeBikeBtn2" onClick={()=> handleFavoriteBike(id)}>Favorite</button>
         </div>
         </div>
         </>

@@ -24,22 +24,22 @@ const CustomizeBike = () => {
     fetchGetBikes("mtb", setBike);
   }, []);
 
-  useEffect(() => {
-    const info = async () => {
+  const info = async () => {
       
-      const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
-        userInfo.bike_type,
-        setUserBike
+    const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
+      userInfo.bike_type,
+      setUserBike
 
-        );
-        setUserBike(arrayOfBikes);
-      
-        const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
-        userInfo.bike_type,
-        userInfo.size
       );
-      setListOfPart(arrayOfParts);
-    };
+      setUserBike(arrayOfBikes);
+    
+      const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
+      userInfo.bike_type,
+      userInfo.size
+    );
+    setListOfPart(arrayOfParts);
+  };
+  useEffect(() => {
     if (userInfo && userInfo.bike_type && userInfo.size) {
       info();
     }
