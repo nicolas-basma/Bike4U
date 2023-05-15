@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 import useStore from "../../store/AppContext.jsx";
 
@@ -26,13 +27,13 @@ const PasswordRecovery =()=>{
          <form>
       <div className="wrapper">
         <div className="signUpFirstTitle">
-          <h1> RECUPERE SU CONTRASEÑA </h1>
+        <FormattedMessage id="recoverYourPasswordTitle"></FormattedMessage>
         </div>
 
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formName" className="form-label">
-              Nombre
+            <FormattedMessage id="recoverYourPassword"></FormattedMessage>
             </label>
             <input
               type="text"
@@ -50,7 +51,7 @@ const PasswordRecovery =()=>{
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formEmail" className="form-label">
-              Email
+            <FormattedMessage id="recoverYourPasswordEmail"></FormattedMessage>
             </label>
             <input
               type="email"
@@ -65,7 +66,7 @@ const PasswordRecovery =()=>{
         </div>
 
         <button type="button" className="databtn sendBtn" onClick={handleRecoverPassword}>
-          Recuperar la contraseña
+        <FormattedMessage id="recoverYourPasswordButon"></FormattedMessage>
         </button>
 
       </div>

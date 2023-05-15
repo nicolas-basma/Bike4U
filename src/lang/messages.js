@@ -161,7 +161,11 @@ const allMessages = {
     myNavbarButtomLangEng: `EN`,
     myNavbarButtomLogout: `CERRAR SESIÓN`,
     myBikesFavouriteView: " BICICLETAS",
-    myPartsFavouriteView: "PARTES DE BICICLETAS"
+    myPartsFavouriteView: "PARTES DE BICICLETAS",
+    recoverYourPasswordTitle: "RECUPERE SU CONTRASEÑA",
+    recoverYourPasswordName: "Nombre",
+    recoverYourPasswordEmail:"Email",
+    recoverYourPasswordButon:" Recupere su Contraseña"
   },
 
 
@@ -311,7 +315,11 @@ const allMessages = {
     myNavbarButtomLangEng: `EN`,
     myNavbarButtomLogout: `LOG OUT`,
     myBikesFavouriteView: "BICYCLES",
-    myPartsFavouriteView:"BICYCLE PARTS"
+    myPartsFavouriteView:"BICYCLE PARTS",
+    recoverYourPasswordTitle: "RECOVER YOUR PASSWORD",
+    recoverYourPasswordName: "Name",
+    recoverYourPasswordEmail:"Email",
+    recoverYourPasswordButon:"Recover your Password"
   },
 };
 
