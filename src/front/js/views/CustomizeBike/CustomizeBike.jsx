@@ -15,7 +15,6 @@ import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecifi
 
 const CustomizeBike = () => {
   const { store } = useStore();
-  const params = useParams();
   const [bike, setBike] = useState({});
   const { userInfo } = store;
   const [listOfPart, setListOfPart] = useState([]);

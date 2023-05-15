@@ -116,6 +116,8 @@ def handle_get_parts(terrain, size):
     parts = get_part(terrain, size)
     return parts
    
+
+   ##favoritos##
 # ruta para agregar una bicicleta a favoritos
 @api.route('/user/<int:user_id>/add-favorite-bike/<int:bike_id>', methods=['POST'])
 def handle_add_favorite_bike(user_id, bike_id):
