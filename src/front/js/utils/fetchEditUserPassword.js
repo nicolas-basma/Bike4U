@@ -1,6 +1,6 @@
 const fetchEditUserPassword =(userID,data)=>{
     
-    return fetch(process.env.REACT_APP_API  + "/edit-user-password/" + userID,
+    return fetch(process.env.REACT_APP_API  + "edit-user-password/" + userID,
     {method: 'PUT',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)})

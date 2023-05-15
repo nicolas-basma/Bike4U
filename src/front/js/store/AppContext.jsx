@@ -25,6 +25,7 @@ export const AppContext = ({ children }) => {
   const [lang, setLang] = useState("es");
   const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
   const [userInfo, setUserInfo] = useState();
+  const [favorite, setFavorite] = useState(false);
 
   const navigate = useNavigate();
   // let lang = lenguaje.lang;
@@ -106,7 +107,8 @@ export const AppContext = ({ children }) => {
     flagEspana,
     carouselHomePhotos,
     isUserLogged,
-    userInfo
+    userInfo,
+    favorite
   };
   const action = {
     setShow,
@@ -120,8 +122,8 @@ export const AppContext = ({ children }) => {
     setUserAsLogged,
     setUserInfo,
     handleGetUserInfo,
-    handleIsTokenValid
-    
+    handleIsTokenValid,
+    setFavorite
   };
 
   return (

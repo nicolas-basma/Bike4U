@@ -1,6 +1,6 @@
 const fetchGetUserInfo =(userID,userInfoSetter)=>{
 
-    fetch(process.env.REACT_APP_API + "/user"+userID,
+    fetch(process.env.REACT_APP_API + "user"+userID,
     {method: 'GET' })
     .then((res)=>{
         
