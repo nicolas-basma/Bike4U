@@ -2,6 +2,7 @@ import bcrypt
 from flask import jsonify, request
 from api.models import db, User, Bike, BikePart
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import datetime
 
 import string
 import random
@@ -44,7 +45,7 @@ def login(body):
         return jsonify({"msg": msj_error}), 401
     if body["rememberMe"] == True:
         print("no expire")
-        login_token = create_access_token(identity=user_info, expires_delta=False )
+        login_token = create_access_token(identity=user_info, expires_delta=datetime.timedelta(weeks=54) )
     else: 
         login_token = create_access_token(identity=user_info)
     return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200

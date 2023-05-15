@@ -38,8 +38,6 @@ export const AppContext = ({ children }) => {
     localStorage.removeItem("loggedUser");
     setIsUserLogged(false);
     setUserInfo(null);
-
-    // handleIsTokenValid();
   }
 
   const setUserAsLogged = () => setIsUserLogged(true);
@@ -47,11 +45,9 @@ export const AppContext = ({ children }) => {
   const handleGetUserInfo = async () => {
   
     const token = localStorage.getItem("userSessionToken");
-    //console.log(token);
+  
     if (token !== null) {
       const info = await decodeToken(token);
-      console.log(info); //info.exp
-      console.log(info.sub);
       setUserInfo(info.sub);
       return info.sub;
     }
@@ -71,16 +67,7 @@ export const AppContext = ({ children }) => {
       navigate('/');
       return;
     }
-    // if (!token.hasOwnProperty("exp")) {
-    //   //setIsUserLogged(false)
-    //   // localStorage.removeItem("userSessionToken");
-    //   // localStorage.removeItem("loggedUser");
-    //   milocal= await decodeToken(token)
-    //   console.log(token);
-    //   alert("token no tiene exp");
-    //   navigate('/');
-    //   return;
-    // }
+
     if (isExpired(token)) {
       setIsUserLogged(false)
       localStorage.removeItem("userSessionToken");
@@ -106,7 +93,7 @@ export const AppContext = ({ children }) => {
   useEffect(() => {},[isUserLogged]); //Refreshes navbar
 
   // Elementos de Debug
-  useEffect(() => {console.log(userInfo)}, [userInfo]);	
+ // useEffect(() => {console.log(userInfo)}, [userInfo]);	
 
   //Flux
   const store = {

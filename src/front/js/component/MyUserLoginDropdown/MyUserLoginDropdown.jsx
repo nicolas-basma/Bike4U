@@ -9,7 +9,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action } = useStore();
   const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid } = action;
   const { formInput, myHandleInput, handleInput } = useForms({
-    email : "",
+    userEmail : "",
     password : "",
     rememberMe: false,
   }     
