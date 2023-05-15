@@ -50,7 +50,8 @@ export const AppContext = ({ children }) => {
     //console.log(token);
     if (token !== null) {
       const info = await decodeToken(token);
-      //console.log(info.sub);
+      console.log(info); //info.exp
+      console.log(info.sub);
       setUserInfo(info.sub);
       return info.sub;
     }
@@ -70,11 +71,22 @@ export const AppContext = ({ children }) => {
       navigate('/');
       return;
     }
+    // if (!token.hasOwnProperty("exp")) {
+    //   //setIsUserLogged(false)
+    //   // localStorage.removeItem("userSessionToken");
+    //   // localStorage.removeItem("loggedUser");
+    //   milocal= await decodeToken(token)
+    //   console.log(token);
+    //   alert("token no tiene exp");
+    //   navigate('/');
+    //   return;
+    // }
     if (isExpired(token)) {
       setIsUserLogged(false)
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
       alert("Su sesión ha expirado");
+      console.log(token);
       navigate('/');
       return;
     }

@@ -33,6 +33,7 @@ def login(body):
     try:
         body["email"]
         body["password"]
+        body["rememberMe"]
     except:
         return jsonify({"msg": "todos los campos son obligatorios"}), 400
     user = User.query.filter_by(email=body["email"]).first()
@@ -41,7 +42,11 @@ def login(body):
     user_info = user.serialize_token_info()
     if not user.verify(body["password"].encode("utf-8")):
         return jsonify({"msg": msj_error}), 401
-    login_token = create_access_token(identity=user_info)
+    if body["rememberMe"] == True:
+        print("no expire")
+        login_token = create_access_token(identity=user_info, expires_delta=False )
+    else: 
+        login_token = create_access_token(identity=user_info)
     return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200
     
 #funcion para obtener todos los usuarios de la base de datos
