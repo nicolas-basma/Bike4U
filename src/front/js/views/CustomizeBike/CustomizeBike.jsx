@@ -6,41 +6,50 @@ import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerr
 import { useParams } from "react-router-dom";
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
-import BikesCards from "../../component/BikesCards/bikesCards.jsx";
+import BikesCards from "../../component/BikesCards/BikesCards.jsx";
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
+import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";
 
 // image, title, description, link
 
 const CustomizeBike = () => {
   const { store } = useStore();
   const params = useParams();
-  const [bike, setBike] = useState({});
+  const [bikeMtb, setBikeMtb] = useState({});
+  const [bikeUrban, setBikeUrban] = useState({});
+  const [bikeRoad, setBikeRoad] = useState({});
+  const [parts, setParts] = useState({});
   const { userInfo } = store;
   const [listOfPart, setListOfPart] = useState([]);
   const [userBike, setUserBike] = useState([]);
 
   useEffect(() => {
-    fetchGetBikes("mtb", setBike);
+    fetchGetBikes("mtb", setBikeMtb)
+    fetchGetBikes("urban", setBikeUrban)
+    fetchGetBikes("road", setBikeRoad)
+
+    fetchGetPartByTypeTerrainAndSize("road", "s")
+      .then((res) => setParts(res))
+
   }, []);
 
-  useEffect(() => {
-    const info = async () => {
+  const info = async () => {
       
-      const arrayOfBikes = fetchGetBikes(
-        userInfo.bike_type,
-        setUserBike
+    const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
+      userInfo.bike_type,
+      setUserBike
 
-        );
-        setUserBike(arrayOfBikes);
-        console.log(arrayOfBikes);
-      
-        const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
-        userInfo.bike_type,
-        userInfo.size
       );
-      setListOfPart(arrayOfParts);
-    };
+      setUserBike(arrayOfBikes);
+    
+      const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
+      userInfo.bike_type,
+      userInfo.size
+    );
+    setListOfPart(arrayOfParts);
+  };
+  useEffect(() => {
     if (userInfo && userInfo.bike_type && userInfo.size) {
       info();
     }
@@ -51,31 +60,83 @@ const CustomizeBike = () => {
   };
   return (
     <>
-      <YourBike list={listOfPart} bikes={userBike} />
+      <YourBike key={myrandom()} list={listOfPart} bikes={userBike} />
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
+      <h1 className="BikeTerrainTitle">MTB Bikes</h1>
       <div className="wrapperBikesCards">
-        {bike.length
-          ? bike.map((element) => {
-              return (
-                <BikesCards
-                  key={myrandom()}
-                  image={element.image}
-                  title={element.title}
-                  description={element.description}
-                  link={element.link}
-                />
-              );
-            })
+        {bikeMtb.length
+          ? bikeMtb.map((element) => {
+            return (
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
+          : null}
+      </div>
+      <h1 className="BikeTerrainTitle">Urban Bikes</h1>
+      <div className="wrapperBikesCards">
+      <div className="mtbBikeTitle">
+        </div>
+        {bikeUrban.length
+          ? bikeUrban.map((element) => {
+            return (
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
+          : null}
+      </div>
+      <h1 className="BikeTerrainTitle">Road Bikes</h1>
+      <div className="wrapperBikesCards">
+      <div className="mtbBikeTitle">  
+        </div>
+        {bikeRoad.length
+          ? bikeRoad.map((element) => {
+            return (
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
           : null}
       </div>
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
       </div>
-      <PartsCards />
+      <div className="wrapperBikesCards">
+        {parts.length
+          ? parts.map((element) => {
+            return (
+              <PartsCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+            );
+          })
+          : null}
+      </div>
     </>
   );
 };
 
 export default CustomizeBike;
+

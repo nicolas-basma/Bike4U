@@ -15,4 +15,16 @@
    display:flex;
    flex-direction: row;
    flex-wrap: wrap;
+   
+}
+
+.BikeTerrainTitle{
+    margin:0 auto;
+color: rgb(255, 209, 2);
+background-color: black;
+margin-top:20px;
+text-align: center;
+font-family: "Racing Sans One", cursive;
+font-size: 30px;
+width:75%
 }
