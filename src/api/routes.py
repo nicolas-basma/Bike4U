@@ -160,34 +160,34 @@ def handle_delete_favorite_part(user_id, part_id):
 
 # @api.route('/json-data', methods=['POST'])
 # def handle_json_data():
-    data = load_from_json(bikes_json)
-    for bikes in data:
-        bike = Bike(
-            title=bikes["title"],
-            image=bikes["image"],
-            link=bikes["link"],
-            terrain=bikes["terrain"],
-            description=bikes["description"]
-        )
-        db.session.add(bike)
-        db.session.commit()
-    return jsonify({"msg": "json cargado"}), 200
+    # data = load_from_json(bikes_json)
+    # for bikes in data:
+    #     bike = Bike(
+    #         title=bikes["title"],
+    #         image=bikes["image"],
+    #         link=bikes["link"],
+    #         terrain=bikes["terrain"],
+    #         description=bikes["description"]
+    #     )
+    #     db.session.add(bike)
+    #     db.session.commit()
+    # return jsonify({"msg": "json cargado"}), 200
 
-# @api.route('/add-part', methods=['POST'])
-# def handle_add_part():
-    data = load_from_json(parts_json)
-    for parts in data:
-        part = BikePart(
-            part = parts["part"],
-            terrain = parts["terrain"],
-            size = parts["size"],
-            title = parts["title"],
-            image = parts["image"],
-            link = parts["link"]
-        )
-        db.session.add(part)
-        db.session.commit()
-    return jsonify({"msg": "json cargado"}), 200
+# # @api.route('/add-part', methods=['POST'])
+# # def handle_add_part():
+#     data = load_from_json(parts_json)
+#     for parts in data:
+#         part = BikePart(
+#             part = parts["part"],
+#             terrain = parts["terrain"],
+#             size = parts["size"],
+#             title = parts["title"],
+#             image = parts["image"],
+#             link = parts["link"]
+#         )
+#         db.session.add(part)
+#         db.session.commit()
+#     return jsonify({"msg": "json cargado"}), 200
 
 
 

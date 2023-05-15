@@ -5,10 +5,12 @@ import fetchGetBikes from "../../utils/fetchGetBikes.js";
 import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";;
 import { useParams } from "react-router-dom";
 
+
 import YourBike from "../../component/YourBike/YourBike.jsx";
 import BikesCards from "../../component/BikesCards/bikesCards.jsx";
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
+import BackToTopButton from "../../component/BackToTopButton.jsx";
 
 // image, title, description, link
 
@@ -61,14 +63,31 @@ const CustomizeBike = () => {
   const myrandom = () => {
     return Math.floor(Math.random() * 10000);
   };
+
+  
+
   return (
     <>
       <YourBike list={listOfPart} bikes={userBike} />
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
-      <h1 className="BikeTerrainTitle">MTB Bikes</h1>
-      <div className="wrapperBikesCards">
+    
+      
+      <div class="row">
+  <div class="col-4">
+    <div id="list-example" class="list-group">
+      <a class="list-group-item list-group-item-action menuBikes" href="#list-item-1"><h1 className="BikeTerrainTitle">MTB Bikes</h1></a>
+      <a class="list-group-item list-group-item-action menuBikes" href="#list-item-2"><h1 className="BikeTerrainTitle">Road Bikes</h1></a>
+      <a class="list-group-item list-group-item-action menuBikes" href="#list-item-3"><h1 className="BikeTerrainTitle">Urban Bikes</h1></a>
+     
+
+    </div>
+  </div>
+  <div class="col-8">
+    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+      <h4 id="list-item-1">
+      <a class="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">MTB Bikes</h1></a><div className="wrapperBikesCards">
         {bikeMtb.length
           ? bikeMtb.map((element) => {
             return (
@@ -82,11 +101,33 @@ const CustomizeBike = () => {
             );
           })
           : null}
-      </div>
-      <h1 className="BikeTerrainTitle">Urban Bikes</h1>
-      <div className="wrapperBikesCards">
+      </div></h4>
+    
+      <h4 id="list-item-2"> <div className="wrapperBikesCards">
+      <div className="mtbBikeTitle">  
+        </div>
+        <a class="list-group-item list-group-item-action" href="#list-item-2"><h1 className="BikeTerrainMainTitle">Road Bikes</h1></a>
+        {bikeRoad.length
+          ? bikeRoad.map((element) => {
+            return (
+              <>
+              <BackToTopButton />
+              <BikesCards
+                key={myrandom()}
+                image={element.image}
+                title={element.title}
+                description={element.description}
+                link={element.link}
+              />
+              </>
+            );
+          })
+          : null}
+      </div></h4>
+      <h4 id="list-item-3"> <div className="wrapperBikesCards">
       <div className="mtbBikeTitle">
         </div>
+        <a class="list-group-item list-group-item-action" href="#list-item-2"><h1 className="BikeTerrainMainTitle">Urban Bikes</h1></a>
         {bikeUrban.length
           ? bikeUrban.map((element) => {
             return (
@@ -100,43 +141,12 @@ const CustomizeBike = () => {
             );
           })
           : null}
-      </div>
-      <h1 className="BikeTerrainTitle">Road Bikes</h1>
-      <div className="wrapperBikesCards">
-      <div className="mtbBikeTitle">  
-        </div>
-        {bikeRoad.length
-          ? bikeRoad.map((element) => {
-            return (
-              <BikesCards
-                key={myrandom()}
-                image={element.image}
-                title={element.title}
-                description={element.description}
-                link={element.link}
-              />
-            );
-          })
-          : null}
-      </div>
-      <div className="titleCards mt-5 text-center">
-        <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-      </div>
-      <div className="wrapperBikesCards">
-        {parts.length
-          ? parts.map((element) => {
-            return (
-              <PartsCards
-                key={myrandom()}
-                image={element.image}
-                title={element.title}
-                description={element.description}
-                link={element.link}
-              />
-            );
-          })
-          : null}
-      </div>
+      </div></h4>
+      
+    </div>
+  </div>
+</div>
+      
     </>
   );
 };
