@@ -27,7 +27,8 @@ def send_email(to, message, my_subject ):
     
     MESSAGE = msg.as_string()
     
-    smtp = SMTP_SSL(HOST)
+    smtp = SMTP_SSL(HOST, 465)
+    print(PASSWORD, FROM_EMAIL)
 
     smtp.ehlo()
 
