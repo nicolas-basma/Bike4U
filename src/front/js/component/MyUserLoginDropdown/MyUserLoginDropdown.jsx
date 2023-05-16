@@ -8,7 +8,12 @@ import useStore from "../../store/AppContext.jsx";
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action } = useStore();
   const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid } = action;
-  const { formInput, myHandleInput } = useForms();
+  const { formInput, myHandleInput, handleInput } = useForms({
+    userEmail : "",
+    password : "",
+    rememberMe: false,
+  }     
+  );
   const { fetchLogin } = utils;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -29,6 +34,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       rememberMe,
     };     
     
+    console.log(data);
     closeNavbar();
 
     const loginProcess = await fetchLogin(data);
@@ -44,6 +50,13 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
     return ;
     
   }
+
+  const handleCheckChange = (e) => {
+    handleInput(e.target.checked, e.target.name);
+    console.log(formInput);
+  };
+
+  //console.log(formInput);
 
   return (
     <div className="dropdown onTop
@@ -73,7 +86,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
               placeholder="email@example.com"
               aria-describedby="LoginDropdown-input__email"
               name="userEmail"
-              value={formInput[name]}
+              value={formInput?.["userEmail"]}
               onChange={myHandleInput}
             />
           </div>
@@ -91,7 +104,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
               placeholder="Password"
               aria-describedby="LoginDropdown-input__password"
               name="password"
-              value={formInput[name]}
+              value={formInput?.["password"]}
               onChange={myHandleInput}
             />
             <button
@@ -109,8 +122,8 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
                 className="form-check-input mx-3"
                 id="dropdownCheck"
                 name="rememberMe"
-                value={formInput[name]}
-                onChange={myHandleInput}
+                value={formInput?.["rememberMe"]}
+                onChange={handleCheckChange}
               />
               <label className="form-label" htmlFor="dropdownCheck">
                 <FormattedMessage id="userLoginDropdownRemember"></FormattedMessage>
