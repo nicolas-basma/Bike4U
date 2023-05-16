@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 import string
 import random
+from api.utils.utils import pass_to_string_for_Postgress
 
 db = SQLAlchemy()
 
@@ -36,8 +37,15 @@ class User(db.Model):
 
     def verify(self, password):
         # comprobar si la contraseña es correcta
-        hash_password = bcrypt.hashpw(password, self.password)
-        return self.password == hash_password
+        
+        # SQL Database
+        # hash_password = bcrypt.hashpw(password, self.password)
+        # return self.password == hash_password
+        
+        # Postgress Database
+        casted_to_byte_db_pass = bytes(self.password,'utf-8')
+        hash_password = bcrypt.hashpw(password, casted_to_byte_db_pass)
+        return casted_to_byte_db_pass == hash_password
 
     def serialize(self):
         return {
@@ -84,7 +92,10 @@ class User(db.Model):
         new_password = bcrypt.hashpw(
             my_random_pass.encode("utf-8"), bcrypt.gensalt())
         # Assign pass to user
-        self.password = new_password
+        # SQL Database
+        # self.password = new_password
+        # Postgress Database
+        self.password = pass_to_string_for_Postgress(new_password)
         db.session.commit()
 
         return my_random_pass

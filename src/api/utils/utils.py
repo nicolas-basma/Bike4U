@@ -45,3 +45,10 @@ def generate_sitemap(app):
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
 
 
+def pass_to_string_for_Postgress(my_pass):
+    my_pass=str(my_pass)
+    # Quitamos el "b'" del principio
+    cleaned_string = my_pass.replace("b'", "", 1)
+    # Quitamos el "'" del final
+    cleaned_string = cleaned_string[::-1].replace("'", "", 1)[::-1]
+    return cleaned_string
