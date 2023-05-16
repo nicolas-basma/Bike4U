@@ -165,7 +165,15 @@ const allMessages = {
     recoverYourPasswordTitle: "RECUPERE SU CONTRASEÑA",
     recoverYourPasswordName: "Nombre",
     recoverYourPasswordEmail:"Email",
-    recoverYourPasswordButon:" Recupere su Contraseña"
+    recoverYourPasswordButon:" Recupere su Contraseña",
+    MtbBikes: "Bicicleta de Montaña",
+    UrbanBikes: "Bicicletas Urbanas",
+    RoadBikes: "Bicicletas de Carretera",
+    goToTop: "Sube al menú",
+    Before: "Anterior",
+    LearnMore: "Saber más",
+    Next: "Siguiente",
+    GoBackToBikes: "Volver a Bicicletas"
   },
 
 
@@ -319,7 +327,15 @@ const allMessages = {
     recoverYourPasswordTitle: "RECOVER YOUR PASSWORD",
     recoverYourPasswordName: "Name",
     recoverYourPasswordEmail:"Email",
-    recoverYourPasswordButon:"Recover your Password"
+    recoverYourPasswordButon:"Recover your Password",
+    MtbBikes: "Mountain Bikes",
+    UrbanBikes: "Urban Bikes",
+    RoadBikes: "Road Bikes",
+    goToTop: "Go to menu",
+    Before: "Before",
+    LearnMore: "Learn More",
+    Next: "Next",
+    GoBackToBikes: "Go back to Bikes"
   },
 };
 
