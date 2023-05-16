@@ -4,6 +4,7 @@ import "./partsView.css"
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";
 import BackToTopButton from "../../component/BackToTopButton.jsx";
+import { Link } from "react-router-dom";
 
 
 
@@ -40,17 +41,24 @@ const PartsView = () => {
 
     return (
         <>
+        <BackToTopButton />
             <div className="titleCards mt-5 text-center">
+               
+                
                 <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
+           
             </div>
+            <Link to="/customizeBike">
+                <button className="backToBikes">Volver a Bicicletas</button>
+                </Link>
 
             <div className="partsTotal">
                 <div class="row">
                     <div class="col-4">
                         <div id="list-example" class="list-group">
-                            <a class="list-group-item list-group-item-action" href="#list-item-1">ROAD</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-2">URBAN</a>
-                            <a class="list-group-item list-group-item-action" href="#list-item-3">MTB</a>
+                            <a class="list-group-item list-group-item-action partsMainMenu" href="#list-item-1"><h1 className="partTerrainTitle">ROAD</h1></a>
+                            <a class="list-group-item list-group-item-action partsMainMenu" href="#list-item-2"><h1 className="partTerrainTitle">URBAN</h1></a>
+                            <a class="list-group-item list-group-item-action partsMainMenu" href="#list-item-3"><h1 className="partTerrainTitle">MTB</h1></a>
                         </div>
                     </div>
                     <div class="col-8">
@@ -60,8 +68,8 @@ const PartsView = () => {
                                     {road.length
                                         ? road.map((element) => {
                                             return (
-                                                <>
-                                                <BackToTopButton />
+                                                
+                                                
                                                 <PartsCards
                                                     key={myrandom()}
                                                     image={element.image}
@@ -69,7 +77,7 @@ const PartsView = () => {
                                                     description={element.description}
                                                     link={element.link}
                                                 />
-                                                </>
+                                                
                                             );
                                         })
                                         : null}
