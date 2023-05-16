@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import useStore from "../../store/AppContext.jsx";
 import { FormattedMessage } from "react-intl";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
-import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";;
+import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";
 import { useParams } from "react-router-dom";
-
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
@@ -12,7 +11,6 @@ import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
 import BackToTopButton from "../../component/BackToTopButton.jsx";
 import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";
-
 
 const CustomizeBike = () => {
   const { store } = useStore();
@@ -26,25 +24,21 @@ const CustomizeBike = () => {
   const [userBike, setUserBike] = useState([]);
 
   useEffect(() => {
-    fetchGetBikes("mtb", setBikeMtb)
-    fetchGetBikes("urban", setBikeUrban)
-    fetchGetBikes("road", setBikeRoad)
+    fetchGetBikes("mtb", setBikeMtb);
+    fetchGetBikes("urban", setBikeUrban);
+    fetchGetBikes("road", setBikeRoad);
 
-    fetchGetPartByTypeTerrainAndSize("road", "s")
-      .then((res) => setParts(res))
-
+    fetchGetPartByTypeTerrainAndSize("road", "s").then((res) => setParts(res));
   }, []);
 
   const info = async () => {
-      
     const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
       userInfo.bike_type,
       setUserBike
+    );
+    setUserBike(arrayOfBikes);
 
-      );
-      setUserBike(arrayOfBikes);
-    
-      const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
+    const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
       userInfo.bike_type,
       userInfo.size
     );
@@ -60,109 +54,142 @@ const CustomizeBike = () => {
     return Math.floor(Math.random() * 10000);
   };
 
-  
-
   return (
     <>
       <YourBike list={listOfPart} bikes={userBike} />
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
-    
-      
       <div class="row">
-  <div class="col-4">
-    <div id="list-example" class="list-group">
-      <a class="list-group-item list-group-item-action menuBikes" href="#list-item-1"><h1 className="BikeTerrainTitle">MTB Bikes</h1></a>
-      <a class="list-group-item list-group-item-action menuBikes" href="#list-item-2"><h1 className="BikeTerrainTitle">Road Bikes</h1></a>
-      <a class="list-group-item list-group-item-action menuBikes" href="#list-item-3"><h1 className="BikeTerrainTitle">Urban Bikes</h1></a>
-     
-
-    </div>
-  </div>
-  <div class="col-8">
-    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-      <h4 id="list-item-1">
-      <a class="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">MTB Bikes</h1></a><div className="wrapperBikesCards">
-        {bikeMtb.length
-          ? bikeMtb.map((element, index) => {
-            return (
-              <BikesCards
-                key={index}
-                id={index}
-                image={element.image}
-                title={element.title}
-                description={element.description}
-                link={element.link}
-              />
-            );
-          })
-          : null}
-      </div></h4>
-    
-      <h4 id="list-item-2"> <div className="wrapperBikesCards">
-      <div className="mtbBikeTitle">  
+        <div class="col-2">
+          <div id="list-example" class="list-group">
+            <a
+              class="list-group-item list-group-item-action menuBikes"
+              href="#list-item-1"
+            >
+              <h1 className="BikeTerrainTitle">MTB Bikes</h1>
+            </a>
+            <a
+              class="list-group-item list-group-item-action menuBikes"
+              href="#list-item-2"
+            >
+              <h1 className="BikeTerrainTitle">Road Bikes</h1>
+            </a>
+            <a
+              class="list-group-item list-group-item-action menuBikes"
+              href="#list-item-3"
+            >
+              <h1 className="BikeTerrainTitle">Urban Bikes</h1>
+            </a>
+          </div>
         </div>
-        <a class="list-group-item list-group-item-action" href="#list-item-2"><h1 className="BikeTerrainMainTitle">Road Bikes</h1></a>
-        {bikeRoad.length
-          ? bikeRoad.map((element, index) => {
-            return (
-              <>
-              <BackToTopButton />
-              <BikesCards
-                key={index}
-                id={index}
-                image={element.image}
-                title={element.title}
-                description={element.description}
-                link={element.link}
-              />
-              </>
-            );
-          })
-          : null}
-      </div></h4>
-      <h4 id="list-item-3"> <div className="wrapperBikesCards">
-      <div className="mtbBikeTitle">
+        <div class="col">
+          <div
+            data-bs-spy="scroll"
+            data-bs-target="#list-example"
+            data-bs-smooth-scroll="true"
+            class="scrollspy-example"
+            tabindex="0"
+          >
+            <h4 id="list-item-1">
+              <a
+                class="list-group-item list-group-item-action"
+                href="#list-item-1"
+              >
+                <h1 className="BikeTerrainMainTitle">MTB Bikes</h1>
+              </a>
+              <div className="wrapperBikesCards">
+                {bikeMtb.length
+                  ? bikeMtb.map((element, index) => {
+                      return (
+                        <BikesCards
+                          key={index}
+                          id={index}
+                          image={element.image}
+                          title={element.title}
+                          description={element.description}
+                          link={element.link}
+                        />
+                      );
+                    })
+                  : null}
+              </div>
+            </h4>
+            <h4 id="list-item-2">
+              <a
+                class="list-group-item list-group-item-action"
+                href="#list-item-2"
+              >
+                <h1 className="BikeTerrainMainTitle">Road Bikes</h1>
+              </a>
+              <div className="wrapperBikesCards">
+                {bikeRoad.length
+                  ? bikeRoad.map((element, index) => {
+                      return (
+                        <>
+                          <BackToTopButton />
+                          <BikesCards
+                            key={index}
+                            id={index}
+                            image={element.image}
+                            title={element.title}
+                            description={element.description}
+                            link={element.link}
+                          />
+                        </>
+                      );
+                    })
+                  : null}
+              </div>
+            </h4>
+            <h4 id="list-item-3">
+              <a
+                class="list-group-item list-group-item-action"
+                href="#list-item-2"
+              >
+                <h1 className="BikeTerrainMainTitle">Urban Bikes</h1>
+              </a>
+              <div className="wrapperBikesCards">
+                {bikeUrban.length
+                  ? bikeUrban.map((element, index) => {
+                      return (
+                        <BikesCards
+                          key={index}
+                          id={index}
+                          image={element.image}
+                          title={element.title}
+                          description={element.description}
+                          link={element.link}
+                        />
+                      );
+                    })
+                  : null}
+              </div>
+            </h4>
+            <div className="titleCards mt-5 text-center">
+              <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
+            </div>
+            <div className="wrapperBikesCards">
+              {parts.length
+                ? parts.map((element, index) => {
+                    return (
+                      <PartsCards
+                        key={index}
+                        id={index}
+                        image={element.image}
+                        title={element.title}
+                        description={element.description}
+                        link={element.link}
+                      />
+                    );
+                  })
+                : null}
+            </div>
+          </div>
         </div>
-        <a class="list-group-item list-group-item-action" href="#list-item-2"><h1 className="BikeTerrainMainTitle">Urban Bikes</h1></a>
-        {bikeUrban.length
-          ? bikeUrban.map((element, index) => {
-            return (
-              <BikesCards
-                key={index}
-                id={index}
-                image={element.image}
-                title={element.title}
-                description={element.description}
-                link={element.link}
-              />
-            );
-          })
-          : null}
-      </div>
-      <div className="titleCards mt-5 text-center">
-        <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-      </div>
-      <div className="wrapperBikesCards">
-        {parts.length
-          ? parts.map((element, index) => {
-            return (
-              <PartsCards
-                key={index}
-                id={index}
-                image={element.image}
-                title={element.title}
-                description={element.description}
-                link={element.link}
-              />
-            );
-          })
-          : null}
       </div>
     </>
   );
 };
 
 export default CustomizeBike;
-
