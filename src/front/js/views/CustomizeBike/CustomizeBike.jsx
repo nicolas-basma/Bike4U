@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import useStore from "../../store/AppContext.jsx";
 import { FormattedMessage } from "react-intl";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
-import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";;
+import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
@@ -14,7 +13,6 @@ import "./CustomizeBike.css";
 import BackToTopButton from "../../component/BackToTopButton.jsx";
 import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";
 
-// image, title, description, link
 
 const CustomizeBike = () => {
   const { store } = useStore();
@@ -29,25 +27,21 @@ const CustomizeBike = () => {
   const [userBike, setUserBike] = useState([]);
 
   useEffect(() => {
-    fetchGetBikes("mtb", setBikeMtb)
-    fetchGetBikes("urban", setBikeUrban)
-    fetchGetBikes("road", setBikeRoad)
+    fetchGetBikes("mtb", setBikeMtb);
+    fetchGetBikes("urban", setBikeUrban);
+    fetchGetBikes("road", setBikeRoad);
 
-    fetchGetPartByTypeTerrainAndSize("road", "s")
-      .then((res) => setParts(res))
-
+    fetchGetPartByTypeTerrainAndSize("road", "s").then((res) => setParts(res));
   }, []);
 
   const info = async () => {
-      
     const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
       userInfo.bike_type,
       setUserBike
+    );
+    setUserBike(arrayOfBikes);
 
-      );
-      setUserBike(arrayOfBikes);
-    
-      const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
+    const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
       userInfo.bike_type,
       userInfo.size
     );
@@ -66,23 +60,11 @@ const CustomizeBike = () => {
 
 
   return (
-    <>
+   <>
       <YourBike list={listOfPart} bikes={userBike} />
-
-      <div className="title-containers">
-        <div className="titleCards mt-5 text-center">
-          <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
-        </div>
-        <Link to="/partsView">
-        <div className="titleCards  mt-5 text-center">
-        
-            <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-       
-
-        </div>
-           </Link>
+      <div className="titleCards mt-5 text-center">
+        <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
-
 
 
       <div class="row">
@@ -100,10 +82,11 @@ const CustomizeBike = () => {
             <h4 id="list-item-1">
               <a class="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">MTB Bikes</h1></a><div className="wrapperBikesCards">
                 {bikeMtb.length
-                  ? bikeMtb.map((element) => {
+                  ? bikeMtb.map((element, index) => {
                     return (
                       <BikesCards
-                        key={myrandom()}
+                        key={index}
+                        id={index}
                         image={element.image}
                         title={element.title}
                         description={element.description}
@@ -119,12 +102,13 @@ const CustomizeBike = () => {
               </div>
               <a class="list-group-item list-group-item-action" href="#list-item-2"><h1 className="BikeTerrainMainTitle">Road Bikes</h1></a>
               {bikeRoad.length
-                ? bikeRoad.map((element) => {
+                ? bikeRoad.map((element, index) => {
                   return (
                     <>
                       <BackToTopButton />
                       <BikesCards
-                        key={myrandom()}
+                        key={index}
+                        id={index}
                         image={element.image}
                         title={element.title}
                         description={element.description}
@@ -140,10 +124,11 @@ const CustomizeBike = () => {
               </div>
               <a class="list-group-item list-group-item-action" href="#list-item-2"><h1 className="BikeTerrainMainTitle">Urban Bikes</h1></a>
               {bikeUrban.length
-                ? bikeUrban.map((element) => {
+                ? bikeUrban.map((element, index) => {
                   return (
                     <BikesCards
-                      key={myrandom()}
+                      key={index}
+                      id={index}
                       image={element.image}
                       title={element.title}
                       description={element.description}
@@ -152,18 +137,35 @@ const CustomizeBike = () => {
                   );
                 })
                 : null}
-            </div></h4>
-            <div className="titleCards mt-5 text-center">
-              <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-            </div>
-          </div>
-        </div>
-      </div>
-   
+                </div></h4>
+              
+           
+              <div className="titleCards mt-5 text-center">
+                <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
+              </div>
+              <div className="wrapperBikesCards">
+                {parts.length
+                  ? parts.map((element, index) => {
+                    return (
+                      <PartsCards
+                        key={index}
+                        id={index}
+                        image={element.image}
+                        title={element.title}
+                        description={element.description}
+                        link={element.link}
+                      />
+                    );
+                  })
+                  : null}
 
-    </>
-  );
+              </div></div> </div> </div>
+              </>
+              
+        
+        );
+      
+       
 };
 
-export default CustomizeBike;
-
+        export default CustomizeBike;
