@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { FormattedMessage } from "react-intl";
 
 const BackToTopButton = () => {
 
@@ -28,7 +29,7 @@ const BackToTopButton = () => {
             {backToTopButton && (
                 <button className="backToTopButton"
                 onClick={ScrollUp}
-                > Accede al Menu
+                ><FormattedMessage id="goToTop"></FormattedMessage>
                 </button>
             )}
 
