@@ -8,11 +8,11 @@ import { Link } from "react-router-dom";
 
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
-import BikesCards from "../../component/BikesCards/bikesCards.jsx";
+import BikesCards from "../../component/BikesCards/BikesCards.jsx";
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
 import BackToTopButton from "../../component/BackToTopButton.jsx";
-
+import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";
 
 // image, title, description, link
 
@@ -38,26 +38,22 @@ const CustomizeBike = () => {
 
   }, []);
 
-
-
-
-  useEffect(() => {
-    const info = async () => {
-
-      const arrayOfBikes = fetchGetBikes(
-        userInfo.bike_type,
-        setUserBike
+  const info = async () => {
+      
+    const arrayOfBikes = await fetchGetAllBikesSpecificTerrain(
+      userInfo.bike_type,
+      setUserBike
 
       );
       setUserBike(arrayOfBikes);
-      console.log(arrayOfBikes);
-
+    
       const arrayOfParts = await fetchGetPartByTypeTerrainAndSize(
-        userInfo.bike_type,
-        userInfo.size
-      );
-      setListOfPart(arrayOfParts);
-    };
+      userInfo.bike_type,
+      userInfo.size
+    );
+    setListOfPart(arrayOfParts);
+  };
+  useEffect(() => {
     if (userInfo && userInfo.bike_type && userInfo.size) {
       info();
     }
