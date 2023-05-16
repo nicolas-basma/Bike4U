@@ -28,7 +28,7 @@ const BackToTopButton = () => {
             {backToTopButton && (
                 <button className="backToTopButton"
                 onClick={ScrollUp}
-                > Accede al Menu
+                > Sube al Menu
                 </button>
             )}
 

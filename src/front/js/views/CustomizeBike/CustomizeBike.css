@@ -1,6 +1,6 @@
 
 .titleCards{
-    margin: 0 auto;
+    margin: 0;
     border-radius:10px;
     width:30%;
     font-family: "Racing Sans One", cursive;
@@ -9,6 +9,11 @@
     background-color: rgb(255, 209, 2);
     min-width: fit-content;
     padding-inline: 10px;
+    color:black
+}
+
+.titleCards a{
+    color:black
 }
 
 .wrapperBikesCards{
@@ -82,4 +87,10 @@ width:75%
     align-items: center;
     border:0px
  
+}
+
+.title-containers{
+    display:flex;
+    justify-content: space-between;
+    margin:30px
 }
