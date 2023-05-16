@@ -25,6 +25,7 @@ export const AppContext = ({ children }) => {
   const [lang, setLang] = useState("es");
   const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
   const [userInfo, setUserInfo] = useState();
+  const [favorite, setFavorite] = useState(false);
 
   const navigate = useNavigate();
   // let lang = lenguaje.lang;
@@ -38,8 +39,6 @@ export const AppContext = ({ children }) => {
     localStorage.removeItem("loggedUser");
     setIsUserLogged(false);
     setUserInfo(null);
-
-    // handleIsTokenValid();
   }
 
   const setUserAsLogged = () => setIsUserLogged(true);
@@ -47,10 +46,9 @@ export const AppContext = ({ children }) => {
   const handleGetUserInfo = async () => {
   
     const token = localStorage.getItem("userSessionToken");
-    //console.log(token);
+  
     if (token !== null) {
       const info = await decodeToken(token);
-      //console.log(info.sub);
       setUserInfo(info.sub);
       return info.sub;
     }
@@ -70,11 +68,13 @@ export const AppContext = ({ children }) => {
       navigate('/');
       return;
     }
+
     if (isExpired(token)) {
       setIsUserLogged(false)
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
       alert("Su sesión ha expirado");
+      console.log(token);
       navigate('/');
       return;
     }
@@ -94,7 +94,7 @@ export const AppContext = ({ children }) => {
   useEffect(() => {},[isUserLogged]); //Refreshes navbar
 
   // Elementos de Debug
-  useEffect(() => {console.log(userInfo)}, [userInfo]);	
+ // useEffect(() => {console.log(userInfo)}, [userInfo]);	
 
   //Flux
   const store = {
@@ -107,7 +107,8 @@ export const AppContext = ({ children }) => {
     flagEspana,
     carouselHomePhotos,
     isUserLogged,
-    userInfo
+    userInfo,
+    favorite
   };
   const action = {
     setShow,
@@ -121,8 +122,8 @@ export const AppContext = ({ children }) => {
     setUserAsLogged,
     setUserInfo,
     handleGetUserInfo,
-    handleIsTokenValid
-    
+    handleIsTokenValid,
+    setFavorite
   };
 
   return (
