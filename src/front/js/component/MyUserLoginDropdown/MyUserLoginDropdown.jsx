@@ -34,7 +34,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       rememberMe,
     };     
     
-    console.log(data);
+    //console.log(data);
     closeNavbar();
 
     const loginProcess = await fetchLogin(data);
@@ -53,7 +53,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
 
   const handleCheckChange = (e) => {
     handleInput(e.target.checked, e.target.name);
-    console.log(formInput);
+    //console.log(formInput);
   };
 
   //console.log(formInput);

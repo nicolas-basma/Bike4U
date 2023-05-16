@@ -15,7 +15,7 @@ function ProductView() {
   useEffect(()=>{
     fetchGetBikeByTerrainAndByID(params.terrain, params.id, setBike)
   },[])
-console.log(bike)
+//console.log(bike)
 
   return (
     <div className="container">

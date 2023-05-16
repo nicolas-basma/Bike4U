@@ -27,12 +27,12 @@ const EditUserData = () => {
     bike_type: userInfo?.bike_type
   });
 
-  console.log(userInfo);
+  //console.log(userInfo);
 
 useEffect(()=>{
-  console.log(1)
+
   if (userInfo !== undefined) {
-    console.log(2)
+
     setFormInput({
       name: userInfo?.name,
       lastname: userInfo?.lastname,
@@ -65,7 +65,7 @@ const handleUpdateUser=async()=>{
 }
 const handleChangePassword=async()=>{
 
-  console.log(formInput.newPassword);
+  //console.log(formInput.newPassword);
   if (!formInput.newPassword) return alert("Debe indicar una contraseña");
   if (formInput.newPassword !==formInput.newPasswordValidation) return alert("Debe indicar una contraseña");
 
@@ -82,7 +82,7 @@ const handleChangePassword=async()=>{
 }
 const handleDeleteUser =  async()=>{
   const response = confirm("Esta seguro que desea eliminar su cuenta?");
-  console.log(response);
+  //console.log(response);
   if (!response) return;
   
   const isUserDeleted = await fetchDeleteUser(userInfo?.id);

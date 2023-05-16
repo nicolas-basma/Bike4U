@@ -39,7 +39,7 @@ const SignUp = () => {
       if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
       
       const isUserCreated = await fetchSingup(body);
-      console.log(isUserCreated);
+      //console.log(isUserCreated);
       
       if (!isUserCreated) return alert("Ha habido un problema con la creación del usuario")
 
