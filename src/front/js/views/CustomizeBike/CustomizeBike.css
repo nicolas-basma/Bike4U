@@ -28,3 +28,58 @@ font-family: "Racing Sans One", cursive;
 font-size: 30px;
 width:75%
 }
+.menuBikes{
+    width:300px;
+    padding: 0;
+    background-color: black;
+    margin-left: 10px;
+    border-radius:10px;
+    margin-top:10px;
+    margin-left:50px
+    
+    
+}
+.menuBikes:hover{
+    padding: 0;
+    background-color: black;
+    margin-left: 10px;
+    border:2px solid  rgb(255, 209, 2);
+    margin-left:50px
+    
+}
+
+.BikeTerrainMainTitle{
+    width:300px;
+    padding: 0;
+    color:rgb(255, 209, 2);
+    background-color: black;
+    border-radius:10px;
+    margin-top:10px;
+    margin-left:50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.BikeTerrainMainTitle:hover{
+    padding: 0;
+    background-color: black;
+    
+    border:2px solid  rgb(255, 209, 2);
+    margin-left:50px
+    
+}
+
+.list-group-item {
+    margin-top:20px;
+    position: relative;
+    display: block;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    font-family: "Racing Sans One", cursive;
+    align-items: center;
+    border:0px
+ 
+}
