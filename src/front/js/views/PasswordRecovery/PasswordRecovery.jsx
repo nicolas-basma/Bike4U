@@ -16,7 +16,7 @@ const PasswordRecovery =()=>{
 
 
     const handleRecoverPassword = (()=>{
-        console.log(formInput["email"]);
+        
         fetchRestorePassword(formInput["email"]);
         alert("Revise su correo electrónico")
         navigate("/");
