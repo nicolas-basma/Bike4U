@@ -173,7 +173,8 @@ const allMessages = {
     Before: "Anterior",
     LearnMore: "Saber más",
     Next: "Siguiente",
-    GoBackToBikes: "Volver a Bicicletas"
+    GoBackToBikes: "Volver a Bicicletas",
+    favorito:"Favorito",
   },
 
 
@@ -181,6 +182,7 @@ const allMessages = {
 
 
   en: {
+    favorito: "Favorite",
     legalAdvisoryTitle: "<strong>Legal Advisory</strong>",
     privacyPolyticsTitle:"<strong>Privacy Policy</strong>",
     cookiesPolicyTitle:"<strong>Cookies Policy</strong>",

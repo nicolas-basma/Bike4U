@@ -23,12 +23,16 @@ const CustomizeBike = () => {
   const [listOfPart, setListOfPart] = useState([]);
   const [userBike, setUserBike] = useState([]);
 
-  useEffect(() => {
+  const getElements = async () => {
     fetchGetBikes("mtb", setBikeMtb);
     fetchGetBikes("urban", setBikeUrban);
     fetchGetBikes("road", setBikeRoad);
 
     fetchGetPartByTypeTerrainAndSize("road", "s").then((res) => setParts(res));
+  };
+
+  useEffect(() => {
+    getElements();
   }, []);
 
   const info = async () => {
@@ -50,50 +54,50 @@ const CustomizeBike = () => {
     }
   }, [userInfo]);
 
-  const myrandom = () => {
+  const myRandom = () => {
     return Math.floor(Math.random() * 10000);
   };
 
   return (
     <>
-      <YourBike list={listOfPart} bikes={userBike} />
+      <YourBike key={myRandom()} list={listOfPart} bikes={userBike} />
       <div className="titleCards mt-5 text-center">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
-      <div class="row">
-        <div class="col-2">
-          <div id="list-example" class="list-group">
+      <div className="row">
+        <div className="col-2">
+          <div id="list-example" className="list-group">
             <a
-              class="list-group-item list-group-item-action menuBikes"
+              className="list-group-item list-group-item-action menuBikes"
               href="#list-item-1"
             >
               <h1 className="BikeTerrainTitle">MTB Bikes</h1>
             </a>
             <a
-              class="list-group-item list-group-item-action menuBikes"
+              className="list-group-item list-group-item-action menuBikes"
               href="#list-item-2"
             >
               <h1 className="BikeTerrainTitle">Road Bikes</h1>
             </a>
             <a
-              class="list-group-item list-group-item-action menuBikes"
+              className="list-group-item list-group-item-action menuBikes"
               href="#list-item-3"
             >
               <h1 className="BikeTerrainTitle">Urban Bikes</h1>
             </a>
           </div>
         </div>
-        <div class="col">
+        <div className="col">
           <div
             data-bs-spy="scroll"
             data-bs-target="#list-example"
             data-bs-smooth-scroll="true"
-            class="scrollspy-example"
-            tabindex="0"
+            className="scrollspy-example"
+            tabIndex="0"
           >
             <h4 id="list-item-1">
               <a
-                class="list-group-item list-group-item-action"
+                className="list-group-item list-group-item-action"
                 href="#list-item-1"
               >
                 <h1 className="BikeTerrainMainTitle">MTB Bikes</h1>
@@ -104,7 +108,7 @@ const CustomizeBike = () => {
                       return (
                         <BikesCards
                           key={index}
-                          id={index}
+                          id={element.id}
                           image={element.image}
                           title={element.title}
                           description={element.description}
@@ -117,7 +121,7 @@ const CustomizeBike = () => {
             </h4>
             <h4 id="list-item-2">
               <a
-                class="list-group-item list-group-item-action"
+                className="list-group-item list-group-item-action"
                 href="#list-item-2"
               >
                 <h1 className="BikeTerrainMainTitle">Road Bikes</h1>
@@ -130,7 +134,7 @@ const CustomizeBike = () => {
                           <BackToTopButton />
                           <BikesCards
                             key={index}
-                            id={index}
+                            id={element.id}
                             image={element.image}
                             title={element.title}
                             description={element.description}
@@ -144,7 +148,7 @@ const CustomizeBike = () => {
             </h4>
             <h4 id="list-item-3">
               <a
-                class="list-group-item list-group-item-action"
+                className="list-group-item list-group-item-action"
                 href="#list-item-2"
               >
                 <h1 className="BikeTerrainMainTitle">Urban Bikes</h1>
@@ -155,7 +159,7 @@ const CustomizeBike = () => {
                       return (
                         <BikesCards
                           key={index}
-                          id={index}
+                          id={element.id}
                           image={element.image}
                           title={element.title}
                           description={element.description}
@@ -175,7 +179,7 @@ const CustomizeBike = () => {
                     return (
                       <PartsCards
                         key={index}
-                        id={index}
+                        id={element.id}
                         image={element.image}
                         title={element.title}
                         description={element.description}

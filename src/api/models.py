@@ -18,13 +18,13 @@ favorites_bikes = db.Table('favorites_bikes',
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    lastname = db.Column(db.String, nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    lastname = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    size = db.Column(db.String, nullable=False)
-    weight = db.Column(db.String, nullable=False)
-    bike_type = db.Column(db.String, nullable=False)
-    password = db.Column(db.String, unique=False, nullable=False)
+    size = db.Column(db.String(120), nullable=False)
+    weight = db.Column(db.String(120), nullable=False)
+    bike_type = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(120), unique=False, nullable=False)
     favorites_parts = db.relationship(
         'BikePart', backref="users", secondary=favorites_parts)
     favorites_bikes = db.relationship(
@@ -92,12 +92,12 @@ class User(db.Model):
     
 class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    part = db.Column(db.String, nullable=False)
-    terrain = db.Column(db.String, nullable=False)
-    size = db.Column(db.String, nullable=False)
-    title = db.Column(db.String, nullable=False)
-    image = db.Column(db.String, nullable=False)
-    link = db.Column(db.String, nullable=False)
+    part = db.Column(db.String(120), nullable=False)
+    terrain = db.Column(db.String(120), nullable=False)
+    size = db.Column(db.String(120), nullable=False)
+    title = db.Column(db.String(120), nullable=False)
+    image = db.Column(db.String(120), nullable=False)
+    link = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
         return f'<BikePart {self.title}>'
@@ -115,11 +115,11 @@ class BikePart(db.Model):
     
 class Bike(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    image = db.Column(db.String, nullable=False)
-    link = db.Column(db.String, nullable=False)
-    terrain = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
+    title = db.Column(db.String(120), nullable=False)
+    image = db.Column(db.String(120), nullable=False)
+    link = db.Column(db.String(120), nullable=False)
+    terrain = db.Column(db.String(120), nullable=False)
+    description = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
         return f'<Bike {self.title}>'
