@@ -1,53 +1,64 @@
-# Modelo de base de datos
+# Documentación de la Base de Datos
 
-Este modelo de base de datos contiene dos tablas principales: `User` y `Parts`, y una tabla de relación muchos a muchos llamada `favorites_parts`.
+## Tablas
 
-## Tabla favorites_parts
+### 1. favorites_parts
 
-Esta tabla almacena las relaciones entre los usuarios y sus partes favoritas.
+Es una tabla de relación entre usuarios y partes de bicicleta favoritas.
 
-| Campo    | Tipo de dato | Descripción                             |
-| -------- | ------------ | --------------------------------------- |
-| user_id  | Integer      | Clave externa que referencia a User.id  |
-| parts_id | Integer      | Clave externa que referencia a Parts.id |
+- `user_id`: Campo de tipo entero. Clave foránea que hace referencia a la id del usuario en la tabla `user`. Parte de la clave primaria.
+- `bike_part_id`: Campo de tipo entero. Clave foránea que hace referencia a la id de la parte de bicicleta en la tabla `bike_part`. Parte de la clave primaria.
 
-## Clase User
+### 2. favorites_bikes
 
-Esta clase representa a un usuario en la aplicación.
+Es una tabla de relación entre usuarios y bicicletas favoritas.
 
-| Campo     | Tipo de dato | Descripción                                                        |
-| --------- | ------------ | ------------------------------------------------------------------ |
-| id        | Integer      | Clave primaria                                                     |
-| name      | String       | Nombre del usuario                                                 |
-| lastname  | String       | Apellido del usuario                                               |
-| email     | String(120)  | Correo electrónico único del usuario                               |
-| size      | String       | Tamaño del usuario                                                 |
-| weight    | String       | Peso del usuario                                                   |
-| password  | String       | Contraseña del usuario (almacenada cifrada)                        |
-| favorites | relationship | Relación con la tabla Parts a través de la tabla `favorites_parts` |
-| is_active | Boolean      | Indica si el usuario está activo                                   |
+- `user_id`: Campo de tipo entero. Clave foránea que hace referencia a la id del usuario en la tabla `user`. Parte de la clave primaria.
+- `bike_id`: Campo de tipo entero. Clave foránea que hace referencia a la id de la bicicleta en la tabla `bike`. Parte de la clave primaria.
 
-### Métodos
+## Modelos
 
-- `verify(password)`: Comprueba si la contraseña proporcionada es correcta.
-- `serialize()`: Retorna un diccionario con la información del usuario.
+### 1. User
 
-## Clase Parts
+Representa a un usuario en el sistema.
 
-Esta clase representa las partes de la aplicación.
+#### Campos:
 
-| Campo       | Tipo de dato | Descripción                         |
-| ----------- | ------------ | ----------------------------------- |
-| id          | Integer      | Clave primaria                      |
-| model       | String       | Modelo de la parte                  |
-| description | String       | Descripción de la parte             |
-| link        | String       | Enlace para obtener más información |
-| size        | String       | Tamaño de la parte                  |
+- `id`: Campo de tipo entero. Clave primaria.
+- `name`: Campo de tipo String. No puede ser nulo.
+- `lastname`: Campo de tipo String. No puede ser nulo.
+- `email`: Campo de tipo String. Debe ser único y no puede ser nulo.
+- `size`: Campo de tipo String. No puede ser nulo.
+- `weight`: Campo de tipo String. No puede ser nulo.
+- `bike_type`: Campo de tipo String. No puede ser nulo.
+- `password`: Campo de tipo String. No puede ser nulo.
+- `is_active`: Campo de tipo Boolean. No puede ser nulo.
+- `favorites_parts`: Relación con el modelo `BikePart`. Referencia a las partes de bicicleta favoritas del usuario.
+- `favorites_bikes`: Relación con el modelo `Bike`. Referencia a las bicicletas favoritas del usuario.
 
-### Métodos
+### 2. BikePart
 
-- `serialize()`: Retorna un diccionario con la información de la parte.
+Representa una parte de bicicleta en el sistema.
 
-```
+#### Campos:
 
-```
+- `id`: Campo de tipo entero. Clave primaria.
+- `part`: Campo de tipo String. No puede ser nulo.
+- `terrain`: Campo de tipo String. No puede ser nulo.
+- `size`: Campo de tipo String. No puede ser nulo.
+- `title`: Campo de tipo String. No puede ser nulo.
+- `image`: Campo de tipo String. No puede ser nulo.
+- `link`: Campo de tipo String. No puede ser nulo.
+
+### 3. Bike
+
+Representa una bicicleta en el sistema.
+
+#### Campos:
+
+- `id`: Campo de tipo entero. Clave primaria.
+- `title`: Campo de tipo String. No puede ser nulo.
+- `image`: Campo de tipo String. No puede ser nulo.
+- `link`: Campo de tipo String. No puede ser nulo.
+- `terrain`: Campo de tipo String. No puede ser nulo.
+- `description`: Campo de tipo String. No puede ser nulo.

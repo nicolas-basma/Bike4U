@@ -1,57 +1,83 @@
-# API de Bike4U
+# Documentación de la API
 
-Este módulo maneja el inicio del servidor API, la carga de la base de datos y la adición de los puntos finales.
+## Rutas
 
-## Endpoints
+### 1. POST /signup
 
-### POST /signup
+Registra un nuevo usuario en el sistema.
 
-- Descripción: Crea un nuevo usuario en la base de datos y devuelve el usuario serializado.
-- Parámetros: JSON en el cuerpo de la solicitud con los siguientes campos:
-  - name (str)
-  - email (str)
-  - password (str)
+### 2. POST /login
 
-### POST /login
+Inicia sesión con un usuario existente.
 
-- Descripción: Permite que el usuario inicie sesión en la página web (si está registrado); de lo contrario, devuelve un error 403.
-- Parámetros: JSON en el cuerpo de la solicitud con los siguientes campos:
-  - email (str)
-  - password (str)
+### 3. GET /all-users
 
-### GET /allusers
+Obtiene una lista de todos los usuarios.
 
-- Descripción: Devuelve todos los usuarios en la base de datos.
+### 4. GET /user/<int:id>
 
-### GET /user/:id
+Obtiene la información de un usuario específico por ID.
 
-- Descripción: Devuelve un usuario específico mediante su ID.
-- Parámetros: ID del usuario (int) en la ruta de la URL.
+### 5. DELETE /delete-user/<int:id>
 
-### DELETE /deleteuser/:id
+Elimina un usuario específico por ID.
 
-- Descripción: Elimina un usuario mediante su ID.
-- Parámetros: ID del usuario (int) en la ruta de la URL.
+### 6. PUT /edit-user/<int:id>
 
-### PUT /user/:id/edit
+Edita la información de un usuario específico por ID.
 
-- Descripción: Edita la información de un usuario específico.
-- Parámetros:
-  - ID del usuario (int) en la ruta de la URL.
-  - JSON en el cuerpo de la solicitud con los siguientes campos:
-    - name (str)
-    - email (str)
-    - password (str)
+### 7. PUT /edit-user-password/<int:id>
 
-### POST /send-email
+Edita la contraseña de un usuario específico por ID. Esta ruta debe estar protegida.
 
-- Descripción: Envía un correo electrónico desde el formulario de contacto.
-- Parámetros: JSON en el cuerpo de la solicitud con los siguientes campos:
-  - email (str)
-  - message (str)
-  - name (str)
+### 8. GET /recover-user-password/<string:email>
 
-```
+Recupera la contraseña de un usuario a través de su correo electrónico. Envía un correo electrónico al usuario con la nueva contraseña.
 
-Esta documentación describe los diferentes puntos finales en el módulo API de Bike4U y los parámetros necesarios para cada uno de ellos.
-```
+### 9. POST /send-email
+
+Envía un correo electrónico desde el formulario de contacto.
+
+### 10. GET /bikes
+
+Obtiene una lista de todas las bicicletas.
+
+### 11. GET /images
+
+Obtiene las fotos de todas las bicicletas.
+
+### 12. GET /parts
+
+Obtiene una lista de todas las partes de las bicicletas.
+
+### 13. GET /bikes/<string:terrain>
+
+Obtiene las bicicletas de un tipo de terreno específico.
+
+### 14. GET /bikes/<string:terrain>/<int:id>
+
+Obtiene una bicicleta específica por ID y tipo de terreno.
+
+### 15. GET /parts/<string:terrain>/<string:size>
+
+Obtiene las partes de las bicicletas de un tamaño y tipo de terreno específicos.
+
+### 16. POST /user/<int:user_id>/add-favorite-bike/<int:bike_id>
+
+Agrega una bicicleta a los favoritos de un usuario específico.
+
+### 17. POST /user/<int:user_id>/add-favorite-part/<int:part_id>
+
+Agrega una parte de bicicleta a los favoritos de un usuario específico.
+
+### 18. GET /user/<int:user_id>/favorites
+
+Obtiene los favoritos de un usuario específico.
+
+### 19. DELETE /user/<int:user_id>/delete-favorite-bike/<int:bike_id>
+
+Elimina una bicicleta de los favoritos de un usuario específico.
+
+### 20. DELETE /user/<int:user_id>/delete-favorite-part/<int:part_id>
+
+Elimina una parte de bicicleta de los favoritos de un usuario específico.
