@@ -15,7 +15,7 @@ const ModalForm = () => {
   const { show } = store;
   const { handleClose, setShow, useForms } = action;
   const { formInput, myHandleInput } = useForms();
-  const url = process.env.REACT_APP_API + "/send-email";
+  const url = process.env.REACT_APP_API + "send-email";
 
   //FUNCION PARA VALIDAR EL EMAIL
   const validateEmail = (email) => {
