@@ -29,10 +29,9 @@ const YourPersonalBike = ({image, link, title, next, back, id}) => {
             <img src={image} aria-label={title} className="bike"  />
         </div>
         <div className="btns">
-            <button className="customizeBikeBtn2" onClick={back}>Previus</button>
-            <a href={link} target="_blank" rel="noopener noreferrer"><button className="customizeBikeBtn2">Learn More</button></a>
-            <button className="customizeBikeBtn2"onClick={next}>Next</button>
-            <button className="customizeBikeBtn2" onClick={()=> handleFavoriteBike(id)}>Favorite</button>
+            <button className="customizeBikeBtn2" onClick={()=>back(bike)}><FormattedMessage id="Before"></FormattedMessage></button>
+            <a href={link} target="_blank" rel="noopener noreferrer"><button className="LearnMore"><FormattedMessage id="Before"></FormattedMessage></button></a>
+            <button className="customizeBikeBtn2"onClick={()=>next(bike)}><FormattedMessage id="Next"></FormattedMessage></button>
         </div>
         </div>
         </>

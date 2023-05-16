@@ -1,6 +1,6 @@
 
 .titleCards{
-    margin: 0 auto;
+    margin: 0;
     border-radius:10px;
     width:30%;
     font-family: "Racing Sans One", cursive;
@@ -9,8 +9,13 @@
     background-color: rgb(255, 209, 2);
     min-width: fit-content;
     padding-inline: 10px;
+    color:black;
+    
 }
-
+.titleCards a{
+    color:black
+    
+}
 .wrapperBikesCards{
    display:flex;
    flex-direction: row;
@@ -18,58 +23,37 @@
    
 }
 
-.BikeTerrainTitle{
+
+.BikeTerrainMainTitle{
     margin:0 auto;
-color: rgb(255, 209, 2);
-background-color: black;
-margin-top:20px;
-text-align: center;
-font-family: "Racing Sans One", cursive;
-font-size: 30px;
-width:75%
+    color: rgb(255, 209, 2);
+    background-color: black;
+    margin-top:20px;
+    text-align: center;
+    font-family: "Racing Sans One", cursive;
+    font-size: 30px;
+    width:75%; 
+    
+}
+
+.BikeTerrainTitle{
+    background-color: black;
+    color: rgb(255, 209, 2);
+    text-align:center;
+    border-radius:10px
 }
 .menuBikes{
     width:300px;
-    padding: 0;
-    background-color: black;
-    margin-left: 10px;
-    border-radius:10px;
-    margin-top:10px;
-    margin-left:50px;
-    
-    
+    margin-left:10px;
+    border:3px solid
 }
 .menuBikes:hover{
-    padding: 0;
     background-color: black;
-    margin-left: 10px;
-    border:2px solid  rgb(255, 209, 2);
-    margin-left:50px
-    
+    color: rgb(255, 209, 2);
+    width: 60%;
+    border-radius:10px
 }
 
-.BikeTerrainMainTitle{
-    width:300px;
-    padding: 0;
-    color:rgb(255, 209, 2);
-    background-color: black;
-    border-radius:10px;
-    margin-top:10px;
-    margin-left:50px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-}
-
-.BikeTerrainMainTitle:hover{
-    padding: 0;
-    background-color: black;
-    
-    border:2px solid  rgb(255, 209, 2);
-    margin-left:50px
-    
-}
 
 .list-group-item {
     margin-top:20px;
@@ -82,4 +66,10 @@ width:75%
     align-items: center;
     border:0px
  
+}
+
+.title-containers{
+    display:flex;
+    justify-content: space-between;
+    margin:30px
 }

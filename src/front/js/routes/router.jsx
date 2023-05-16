@@ -12,6 +12,7 @@ import ProductView from "../views/ProductView/ProductView.jsx";
 import FavoritesView from "../views/Favorites/FavoritesView.jsx";
 import EditUserData from "../views/EditUserData/EditUserData.jsx";
 import ProtectedPath from "../component/ProtectedPath/ProtectedPath.jsx";
+import PartsView from "../views/partsView/PartsView.jsx";
 import { element } from "prop-types";
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/customizeBike",
         element: <CustomizeBike />,
+      },
+      {
+        path: "/partsView",
+        element: <PartsView />,
       },
       {
         path: "/product",
