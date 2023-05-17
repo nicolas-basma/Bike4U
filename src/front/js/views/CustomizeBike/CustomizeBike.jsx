@@ -28,7 +28,6 @@ const CustomizeBike = () => {
     fetchGetBikes("mtb", setBikeMtb);
     fetchGetBikes("urban", setBikeUrban);
     fetchGetBikes("road", setBikeRoad);
-
     fetchGetPartByTypeTerrainAndSize("road", "s").then((res) => setParts(res));
   };
 
@@ -91,6 +90,7 @@ const CustomizeBike = () => {
             <Link to="/partsView">
         <button className="backToBikes m-5">Go to parts</button>
         </Link>
+         <BackToTopButton />
           </div>
         </div>
         <div className="col">
@@ -113,7 +113,7 @@ const CustomizeBike = () => {
                   ? bikeMtb.map((element, index) => {
                       return (
                         <BikesCards
-                          key={index}
+                        key={element.id + element.title}
                           id={element.id}
                           image={element.image}
                           title={element.title}
@@ -136,17 +136,14 @@ const CustomizeBike = () => {
                 {bikeRoad.length
                   ? bikeRoad.map((element, index) => {
                       return (
-                        <>
-                          <BackToTopButton />
                           <BikesCards
-                            key={index}
+                            key={element.id + element.title}
                             id={element.id}
                             image={element.image}
                             title={element.title}
                             description={element.description}
                             link={element.link}
                           />
-                        </>
                       );
                     })
                   : null}
@@ -164,7 +161,7 @@ const CustomizeBike = () => {
                   ? bikeUrban.map((element, index) => {
                       return (
                         <BikesCards
-                          key={index}
+                          key={element.id + element.title}
                           id={element.id}
                           image={element.image}
                           title={element.title}
@@ -184,7 +181,7 @@ const CustomizeBike = () => {
                 ? parts.map((element, index) => {
                     return (
                       <PartsCards
-                        key={index}
+                      key={element.id + element.title}
                         id={element.id}
                         image={element.image}
                         title={element.title}
