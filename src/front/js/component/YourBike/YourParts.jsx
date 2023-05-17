@@ -26,7 +26,7 @@ const YourParts = ({ image, link, title, next, back, part, id }) => {
     return (
         <>
             <div className="col" >
-                <div className="img-part" id={id}>
+                <div className="img-part" key={id}>
                     <img src={image} aria-label={title} className="part-img" />
                     <div className="btns">
                         <button className="customizeBikeBtn2" onClick={() => back(part)}>  <FormattedMessage id="Before"></FormattedMessage></button>

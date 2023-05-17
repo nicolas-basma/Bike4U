@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
 import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import YourBike from "../../component/YourBike/YourBike.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
@@ -61,11 +62,13 @@ const CustomizeBike = () => {
   return (
     <>
       <YourBike key={myRandom()} list={listOfPart} bikes={userBike} />
-      <div className="titleCards mt-5 text-center">
+      <div className="d-flex justify-content-center">
+      <div className="titleCards mt-5 text-center p-3">
         <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
       </div>
+        </div>
       <div className="row">
-        <div className="col-2">
+        <div className="col-4">
           <div id="list-example" className="list-group">
             <a
               className="list-group-item list-group-item-action menuBikes"
@@ -85,6 +88,9 @@ const CustomizeBike = () => {
             >
               <h1 className="BikeTerrainTitle">Urban Bikes</h1>
             </a>
+            <Link to="/partsView">
+        <button className="backToBikes m-5">Go to parts</button>
+        </Link>
           </div>
         </div>
         <div className="col">

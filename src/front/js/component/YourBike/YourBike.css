@@ -4,4 +4,5 @@
     border-bottom: 7px outset rgba(153,126,1,0.74);
     border-left: 7px outset rgba(0,0,0,0.74);
     border-radius: 40px;
+    justify-content: center;
 }
