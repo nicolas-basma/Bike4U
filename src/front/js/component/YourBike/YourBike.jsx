@@ -26,7 +26,7 @@ const YourBike = ({list, bikes}) => {
                 <YourParts key={targetFrame?.id} id={targetFrame?.id}  image={targetFrame?.image} link={targetFrame?.link} title={targetFrame?.title} part="frame" next={handleNext} back={handleBack}/>
                 </div>
                 <div className="row">
-                <YourPersonalBike key={targetBikes?.id} id={targetBikes?.id} image={targetBikes?.image} link={targetBikes?.link} title={targetBikes?.title}  next={handleNextB} back={handleBackB}/> 
+                <YourPersonalBike key={targetBikes?.id} id={targetBikes?.id} image={targetBikes?.image} link={targetBikes?.link} title={targetBikes?.title}  next={handleNextB} back={handleBackB} bike={bikes}/> 
                 </div>
                 <div className="row">
                 <YourParts key={targetSaddle?.id} id={targetSaddle?.id}  image={targetSaddle?.image} link={targetSaddle?.link} title={targetSaddle?.title} part="saddle" next={handleNext} back={handleBack}/>

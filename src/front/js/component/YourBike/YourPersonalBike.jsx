@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 
 
 
-const YourPersonalBike = ({image, link, title, next, back, id}) => {
+const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
 
     const {store, action} = useStore();
     const {userInfo, favorite} = store;
