@@ -134,6 +134,8 @@ def delete_favorite_bike(user_id, bike_id):
     bike = Bike.query.filter_by(id=bike_id).first()
     if bike == None:
         return jsonify({"msg": "La bici no existe"}), 404
+    if not bike in user.favorites_bikes:
+        return jsonify({"msg": "La bici no esta en favoritos"}), 404
     user.favorites_bikes.remove(bike)
     db.session.commit()
     return jsonify({"msg": "Bike removed from favorites"}), 200

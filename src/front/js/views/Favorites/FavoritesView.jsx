@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../../store/AppContext.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
-import { getFavorites } from "../../utils/fetchFavorites.js";
+import { deleteFavoriteBike, deleteFavoritePart, getFavorites } from "../../utils/fetchFavorites.js";
 
 function FavoritesView() {
   const {store} = useStore();
@@ -20,7 +20,14 @@ function FavoritesView() {
     if (userInfo) {
       favoritos();
     }
-  }, [userInfo]);
+  }, [userInfo, bikes, parts]);
+
+  const handleDeleteFavBike = async (id) => {
+    deleteFavoriteBike(userInfo.id, id);
+  }
+  const handleDeleteFavPart = async (id) => {
+    deleteFavoritePart(userInfo.id, id);
+  }
 
   return (
     <>
@@ -29,7 +36,8 @@ function FavoritesView() {
     <div className="d-flex row">{
     bikes ? bikes.map((bike) => {
       return (
-            <div className="col-4" key={bike.id}>
+        <> 
+        <div className="col-4" key={bike.id + bike.title}>
               <BikesCards
                 id={bike.id}
                 image={bike.image}
@@ -37,7 +45,9 @@ function FavoritesView() {
                 description={bike.description}
                 link={bike.link}
               />
+            <button className="customizeBikeBtn2" onClick={()=>handleDeleteFavBike(bike.id)}>Quitar</button>
             </div>
+            </>
       );
     }) : <div className="container">
         <h1>No tienes favoritos</h1>
@@ -47,7 +57,7 @@ function FavoritesView() {
     <div className="d-flex row">{
       parts ? parts.map((part) => {
         return (
-              <div className="col-4" key={part.id}>
+              <div className="col-4" key={part.id + part.title}>
                 <BikesCards
                   id={part.id}
                   image={part.image}
@@ -55,6 +65,7 @@ function FavoritesView() {
                   description={part.description}
                   link={part.link}
                 />
+                <button className="customizeBikeBtn2" onClick={()=>handleDeleteFavPart(part.id)}>Quitar</button>
               </div>
         )
       }) : <div className="container">

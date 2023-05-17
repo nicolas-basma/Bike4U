@@ -14,10 +14,6 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
 
 
     const handleFavoriteBike = async (id) => {
-        if (favorite) {
-            deleteFavoriteBike(userInfo.id, id);
-            setFavorite(false);
-        }
         addFavoriteBike(userInfo.id, id);
         setFavorite(true);
     }
@@ -26,7 +22,7 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
     return (
         <>
         <div className="col" >
-        <div className="card-part" key={id}>
+        <div className="card-part" key={id + title}>
             <img src={image} aria-label={title} className="bike"  />
         </div>
         <div className="btns">
