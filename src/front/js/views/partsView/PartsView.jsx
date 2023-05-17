@@ -42,29 +42,27 @@ const PartsView = () => {
     return (
         <>
         <BackToTopButton />
+        <div className="row justify-content-center">
             <div className="titleCards mt-5 text-center">
-               
-                
                 <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-           
             </div>
-            <Link to="/customizeBike">
-                <button className="backToBikes"><FormattedMessage id="GoBackToBikes"></FormattedMessage></button>
-                </Link>
-
+            </div>
             <div className="partsTotal">
-                <div class="row">
-                    <div class="col-4">
-                        <div id="list-example" class="list-group">
-                            <a class="list-group-item list-group-item-action partsMainMenu" href="#list-item-1"><h1 className="partTerrainTitle">ROAD</h1></a>
-                            <a class="list-group-item list-group-item-action partsMainMenu" href="#list-item-2"><h1 className="partTerrainTitle">URBAN</h1></a>
-                            <a class="list-group-item list-group-item-action partsMainMenu" href="#list-item-3"><h1 className="partTerrainTitle">MTB</h1></a>
+                <div className="row">
+                    <div className="col-4">
+                        <div id="list-example" className="list-group">
+                            <a className="list-group-item list-group-item-action partsMainMenu" href="#list-item-1"><h1 className="partTerrainTitle">ROAD</h1></a>
+                            <a className="list-group-item list-group-item-action partsMainMenu" href="#list-item-2"><h1 className="partTerrainTitle">URBAN</h1></a>
+                            <a className="list-group-item list-group-item-action partsMainMenu" href="#list-item-3"><h1 className="partTerrainTitle">MTB</h1></a>
+                            <Link to="/customizeBike">
+                <button className="backToBikes m-5"><FormattedMessage id="GoBackToBikes"></FormattedMessage></button>
+                </Link>
                         </div>
                     </div>
-                    <div class="col-8">
-                        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                    <div className="col-8">
+                        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" className="scrollspy-example" tabindex="0">
                             <h4 id="list-item-1">
-                                <a class="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="RoadBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
+                                <a className="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="RoadBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
                                     {road.length
                                         ? road.map((element) => {
                                             return (
@@ -86,7 +84,7 @@ const PartsView = () => {
 
 
                             <h4 id="list-item-2">
-                                <a class="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="UrbanBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
+                                <a className="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="UrbanBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
                                     {urban.length
                                         ? urban.map((element) => {
                                             return (
@@ -107,7 +105,7 @@ const PartsView = () => {
                             </h4>
 
                             <h4 id="list-item-3">
-                                <a class="list-group-item list-group-item-action" href="#list-item-3"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="MtbBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
+                                <a className="list-group-item list-group-item-action" href="#list-item-3"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="MtbBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
                                     {mtb.length
                                         ? mtb.map((element) => {
                                             return (

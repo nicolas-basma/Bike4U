@@ -9,18 +9,15 @@
     background-color: rgb(255, 209, 2);
     min-width: fit-content;
     padding-inline: 10px;
-    color:black;
-    
+    color:black; 
 }
 .titleCards a{
-    color:black
-    
+    color:black   
 }
 .wrapperBikesCards{
    display:flex;
    flex-direction: row;
    flex-wrap: wrap;
-   
 }
 
 
@@ -32,8 +29,7 @@
     text-align: center;
     font-family: "Racing Sans One", cursive;
     font-size: 30px;
-    width:75%; 
-    
+    width:75%;
 }
 
 .BikeTerrainTitle{

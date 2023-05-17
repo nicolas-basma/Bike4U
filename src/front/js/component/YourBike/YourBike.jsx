@@ -15,9 +15,11 @@ const YourBike = ({list, bikes}) => {
     return (
         <>
             <div className="container your-bike">
-                <div className="titleCards mt-3 mb-2 text-center">
-                <h1>Your bike</h1>
-      </div>
+                <div className="row justify-content-center">
+                <div className="titleCards mt-3 mb-2 ">
+                    <h1>Your bike</h1>
+                </div>
+                </div>
                 <div className="row">
                 <YourParts key={targetHandlebar?.id} id={targetHandlebar?.id} image={targetHandlebar?.image} link={targetHandlebar?.link} title={targetHandlebar?.title} part="handlebar" next={handleNext} back={handleBack}/>
                 <YourParts key={targetFork?.id} id={targetFork?.id}  image={targetFork?.image} link={targetFork?.link} title={targetFork?.title} part="fork" next={handleNext} back={handleBack}/>

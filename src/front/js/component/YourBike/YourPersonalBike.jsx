@@ -26,7 +26,7 @@ const YourPersonalBike = ({image, link, title, next, back, id}) => {
     return (
         <>
         <div className="col" >
-        <div className="card-part" id={id}>
+        <div className="card-part" key={id}>
             <img src={image} aria-label={title} className="bike"  />
         </div>
         <div className="btns">
