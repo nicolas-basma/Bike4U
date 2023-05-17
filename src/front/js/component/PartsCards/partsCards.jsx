@@ -18,7 +18,7 @@ const PartsCards =({ image, title, description, link }) => {
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{description}</p>
                     <Link to={link}>
-                        <button>SABER MAS</button>
+                        <button className="customizeBikeBtn2">SABER MAS</button>
                     </Link>
                 </div>
             </div>

@@ -2,7 +2,10 @@ import bcrypt
 from flask import jsonify, request
 from api.models import db, User, Bike, BikePart
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from api.utils.utils import pass_to_string_for_Postgress
 
+
+import datetime
 import string
 import random
 
@@ -17,7 +20,10 @@ def add_user(body):
         size=body["size"],
         weight=body["weight"],
         bike_type=body["bike_type"],
-        password=coded_password,
+        # SQL Database
+        # password=coded_password,
+        # Postgress Database
+        password=pass_to_string_for_Postgress(coded_password),
         is_active=False
     )
     try:
@@ -25,7 +31,7 @@ def add_user(body):
         db.session.commit()
     except:
         return jsonify({"msg": "el email ya esta registrado bobo"}), 403
-    return jsonify(user.serialize()), 200
+    return jsonify(user.serialize_token_info()), 200
 
 #funcion para loguearse en la pagina web
 def login(body):
@@ -33,6 +39,7 @@ def login(body):
     try:
         body["email"]
         body["password"]
+        body["rememberMe"]
     except:
         return jsonify({"msg": "todos los campos son obligatorios"}), 400
     user = User.query.filter_by(email=body["email"]).first()
@@ -41,7 +48,11 @@ def login(body):
     user_info = user.serialize_token_info()
     if not user.verify(body["password"].encode("utf-8")):
         return jsonify({"msg": msj_error}), 401
-    login_token = create_access_token(identity=user_info)
+    if body["rememberMe"] == True:
+        print("no expire")
+        login_token = create_access_token(identity=user_info, expires_delta=datetime.timedelta(weeks=54) )
+    else: 
+        login_token = create_access_token(identity=user_info)
     return jsonify({"login_token": login_token, "Name": user_info["name"]}), 200
     
 #funcion para obtener todos los usuarios de la base de datos
@@ -84,9 +95,7 @@ def edit_user(id, body):
     user_to_edit.name = body["name"]
     user_to_edit.lastname = body["lastname"]
     user_to_edit.email = body["email"]
-    # new_password = bcrypt.hashpw(
-    #     body["password"].encode("utf-8"), bcrypt.gensalt())
-    # user_to_edit.password = new_password
+    # Password is edited independently
     user_to_edit.size = body["size"]
     user_to_edit.weight = body["weight"]
     user_to_edit.bike_type = body["bike_type"]

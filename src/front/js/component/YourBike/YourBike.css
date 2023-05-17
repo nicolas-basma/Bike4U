@@ -1,0 +1,8 @@
+.your-bike{
+    border-top: 7px outset rgba(156,128,1,0.74);
+    border-right: 7px outset rgba(255,209,2,0.74);
+    border-bottom: 7px outset rgba(153,126,1,0.74);
+    border-left: 7px outset rgba(0,0,0,0.74);
+    border-radius: 40px;
+    justify-content: center;
+}

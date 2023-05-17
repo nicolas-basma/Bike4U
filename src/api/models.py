@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 import string
 import random
+from api.utils.utils import pass_to_string_for_Postgress
 
 db = SQLAlchemy()
 
@@ -18,13 +19,13 @@ favorites_bikes = db.Table('favorites_bikes',
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    lastname = db.Column(db.String, nullable=False)
+    name = db.Column(db.String(120), nullable=False)
+    lastname = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    size = db.Column(db.String, nullable=False)
-    weight = db.Column(db.String, nullable=False)
-    bike_type = db.Column(db.String, nullable=False)
-    password = db.Column(db.String, unique=False, nullable=False)
+    size = db.Column(db.String(120), nullable=False)
+    weight = db.Column(db.String(120), nullable=False)
+    bike_type = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(120), unique=False, nullable=False)
     favorites_parts = db.relationship(
         'BikePart', backref="users", secondary=favorites_parts)
     favorites_bikes = db.relationship(
@@ -36,8 +37,15 @@ class User(db.Model):
 
     def verify(self, password):
         # comprobar si la contraseña es correcta
-        hash_password = bcrypt.hashpw(password, self.password)
-        return self.password == hash_password
+        
+        # SQL Database
+        # hash_password = bcrypt.hashpw(password, self.password)
+        # return self.password == hash_password
+        
+        # Postgress Database
+        casted_to_byte_db_pass = bytes(self.password,'utf-8')
+        hash_password = bcrypt.hashpw(password, casted_to_byte_db_pass)
+        return casted_to_byte_db_pass == hash_password
 
     def serialize(self):
         return {
@@ -84,7 +92,10 @@ class User(db.Model):
         new_password = bcrypt.hashpw(
             my_random_pass.encode("utf-8"), bcrypt.gensalt())
         # Assign pass to user
-        self.password = new_password
+        # SQL Database
+        # self.password = new_password
+        # Postgress Database
+        self.password = pass_to_string_for_Postgress(new_password)
         db.session.commit()
 
         return my_random_pass
@@ -92,15 +103,15 @@ class User(db.Model):
     
 class BikePart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    part = db.Column(db.String, nullable=False)
-    terrain = db.Column(db.String, nullable=False)
-    size = db.Column(db.String, nullable=False)
-    title = db.Column(db.String, nullable=False)
-    image = db.Column(db.String, nullable=False)
-    link = db.Column(db.String, nullable=False)
+    part = db.Column(db.String(120), nullable=False)
+    terrain = db.Column(db.String(120), nullable=False)
+    size = db.Column(db.String(120), nullable=False)
+    title = db.Column(db.String(120), nullable=False)
+    image = db.Column(db.String(120), nullable=False)
+    link = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
-        return f'<BikePart {self.part}>'
+        return f'<BikePart {self.title}>'
 
     def serialize(self):
         return {
@@ -115,11 +126,11 @@ class BikePart(db.Model):
     
 class Bike(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    image = db.Column(db.String, nullable=False)
-    link = db.Column(db.String, nullable=False)
-    terrain = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
+    title = db.Column(db.String(120), nullable=False)
+    image = db.Column(db.String(120), nullable=False)
+    link = db.Column(db.String(120), nullable=False)
+    terrain = db.Column(db.String(120), nullable=False)
+    description = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
         return f'<Bike {self.title}>'

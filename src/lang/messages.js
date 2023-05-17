@@ -161,7 +161,20 @@ const allMessages = {
     myNavbarButtomLangEng: `EN`,
     myNavbarButtomLogout: `CERRAR SESIÓN`,
     myBikesFavouriteView: " BICICLETAS",
-    myPartsFavouriteView: "PARTES DE BICICLETAS"
+    myPartsFavouriteView: "PARTES DE BICICLETAS",
+    recoverYourPasswordTitle: "RECUPERE SU CONTRASEÑA",
+    recoverYourPasswordName: "Nombre",
+    recoverYourPasswordEmail:"Email",
+    recoverYourPasswordButon:" Recupere su Contraseña",
+    MtbBikes: "Bicicleta de Montaña",
+    UrbanBikes: "Bicicletas Urbanas",
+    RoadBikes: "Bicicletas de Carretera",
+    goToTop: "Sube al menú",
+    Before: "Anterior",
+    LearnMore: "Saber más",
+    Next: "Siguiente",
+    GoBackToBikes: "Volver a Bicicletas",
+    favorito:"Favorito",
   },
 
 
@@ -169,6 +182,7 @@ const allMessages = {
 
 
   en: {
+    favorito: "Favorite",
     legalAdvisoryTitle: "<strong>Legal Advisory</strong>",
     privacyPolyticsTitle:"<strong>Privacy Policy</strong>",
     cookiesPolicyTitle:"<strong>Cookies Policy</strong>",
@@ -311,7 +325,19 @@ const allMessages = {
     myNavbarButtomLangEng: `EN`,
     myNavbarButtomLogout: `LOG OUT`,
     myBikesFavouriteView: "BICYCLES",
-    myPartsFavouriteView:"BICYCLE PARTS"
+    myPartsFavouriteView:"BICYCLE PARTS",
+    recoverYourPasswordTitle: "RECOVER YOUR PASSWORD",
+    recoverYourPasswordName: "Name",
+    recoverYourPasswordEmail:"Email",
+    recoverYourPasswordButon:"Recover your Password",
+    MtbBikes: "Mountain Bikes",
+    UrbanBikes: "Urban Bikes",
+    RoadBikes: "Road Bikes",
+    goToTop: "Go to menu",
+    Before: "Before",
+    LearnMore: "Learn More",
+    Next: "Next",
+    GoBackToBikes: "Go back to Bikes"
   },
 };
 

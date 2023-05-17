@@ -45,7 +45,7 @@ const ModalForm = () => {
     })
       .then((response) => {
         response.json();
-        console.log("Mensaje enviado");
+        //console.log("Mensaje enviado");
       })
       .catch((error) => console.log(error));
     setShow(false);

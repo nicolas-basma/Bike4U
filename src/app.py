@@ -15,6 +15,8 @@ from flask_jwt_extended import JWTManager
 
 # from models import Person
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
@@ -31,7 +33,7 @@ jwt = JWTManager(app)
 # if db_url is not None:
 #     app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
 # else:
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL##url render base de datos
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
