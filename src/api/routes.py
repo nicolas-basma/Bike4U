@@ -173,6 +173,7 @@ def handle_add_part():
             size = parts["size"],
             title = parts["title"],
             image = parts["image"],
+            description = parts["description"],
             link = parts["link"]
         )
         db.session.add(part)
