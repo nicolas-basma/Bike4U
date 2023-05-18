@@ -6,19 +6,27 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.description{
+  font-size: 20px;
+  font-style: italic;
+  text-decoration: none;
+}
+p.description{
+  text-decoration: none;
+}
   
 
 
-.card:hover {
+/* .card:hover {
 
   border: 2px solid rgb(253, 252, 252);
   padding: 10px;
     
-}
+} */
 
 
 .bike-card {
-  max-height: 749px;
-  overflow: hidden;
-  
+  height: 600px;
+  /* overflow: hidden; */
   }

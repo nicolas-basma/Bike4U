@@ -14,10 +14,6 @@ const YourParts = ({ image, link, title, next, back, part, id }) => {
 
 
     const handleFavoritePart = async (id) => {
-        if (favorite) {
-            deleteFavoritePart(userInfo.id, id);
-            setFavorite(false);
-        }
         addFavoritePart(userInfo.id, id);
         setFavorite(true);
     }
@@ -26,7 +22,7 @@ const YourParts = ({ image, link, title, next, back, part, id }) => {
     return (
         <>
             <div className="col" >
-                <div className="img-part" key={id}>
+                <div className="img-part" key={id + title}>
                     <img src={image} aria-label={title} className="part-img" />
                     <div className="btns">
                         <button className="customizeBikeBtn2" onClick={() => back(part)}>  <FormattedMessage id="Before"></FormattedMessage></button>

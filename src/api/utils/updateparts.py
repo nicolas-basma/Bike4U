@@ -197,12 +197,18 @@ def steal_parts(part, terrain, size):
         url = url
         terrain = terrain.lower()
         size = size.lower()
+        description = soup.find("div", class_="description").find("div", class_="site-text").find("h2")
+        if description == None:
+            description = "No description"
+        else:
+            description = description.text.strip()
         new_part = {
             "part":part,
             "terrain":terrain,
             "size":size,
             "title":title,
             "image":img,
+            "description":description,
             "link":url
         }
         all_parts.append(new_part)

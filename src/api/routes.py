@@ -147,11 +147,7 @@ def handle_delete_favorite_part(user_id, part_id):
     response = delete_favorite_part(user_id, part_id)
     return response
 
-
-
-
-
-
+#######################################################################################################################
 @api.route('/add-bike', methods=['POST'])
 def handle_json_data():
     data = load_from_json(bikes_json)
