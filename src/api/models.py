@@ -108,6 +108,7 @@ class BikePart(db.Model):
     size = db.Column(db.String(120), nullable=False)
     title = db.Column(db.String(120), nullable=False)
     image = db.Column(db.String(120), nullable=False)
+    description = db.Column(db.String(120), nullable=False)
     link = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
@@ -121,6 +122,7 @@ class BikePart(db.Model):
             "size": self.size,
             "title": self.title,
             "image": self.image,
+            "description": self.description,
             "link": self.link,
         }
     

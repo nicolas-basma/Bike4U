@@ -135,7 +135,7 @@ const CustomizeBike = () => {
               <div className="wrapperBikesCards">
                 {bikeRoad.length
                   ? bikeRoad.map((element, index) => {
-                      return (
+                    return (
                           <BikesCards
                             key={element.id + element.title}
                             id={element.id}
@@ -144,9 +144,9 @@ const CustomizeBike = () => {
                             description={element.description}
                             link={element.link}
                           />
-                      );
-                    })
-                  : null}
+                          );
+                        })
+                        : null}
               </div>
             </h4>
             <h4 id="list-item-3">
