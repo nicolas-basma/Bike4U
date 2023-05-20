@@ -23,6 +23,7 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
         <>
         <div className="col" >
         <div className="card-part" key={id + title}>
+            <h4>{title}</h4>
             <img src={image} aria-label={title} className="bike"  />
         </div>
         <div className="btns">

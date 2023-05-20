@@ -22,10 +22,12 @@ export const AppContext = ({ children }) => {
 
   //useStates
   const [show, setShow] = useState(false);
+  const [askInfo, setAskInfo] = useState(false);
   const [lang, setLang] = useState("es");
   const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
   const [userInfo, setUserInfo] = useState();
   const [favorite, setFavorite] = useState(false);
+  const [invited, setInvited] = useState(true);
 
   const navigate = useNavigate();
   // let lang = lenguaje.lang;
@@ -41,7 +43,10 @@ export const AppContext = ({ children }) => {
     setUserInfo(null);
   }
 
-  const setUserAsLogged = () => setIsUserLogged(true);
+  const setUserAsLogged = () => {
+    setAskInfo(false)
+    setIsUserLogged(true);
+  }
 
   const handleGetUserInfo = async () => {
   
@@ -108,7 +113,9 @@ export const AppContext = ({ children }) => {
     carouselHomePhotos,
     isUserLogged,
     userInfo,
-    favorite
+    favorite,
+    askInfo,
+    invited
   };
   const action = {
     setShow,
@@ -123,7 +130,9 @@ export const AppContext = ({ children }) => {
     setUserInfo,
     handleGetUserInfo,
     handleIsTokenValid,
-    setFavorite
+    setFavorite,
+    setAskInfo,
+    setInvited
   };
 
   return (

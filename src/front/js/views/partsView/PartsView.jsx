@@ -66,7 +66,7 @@ const PartsView = () => {
                                     {road.length
                                         ? road.map((element, index) => {
                                             return (
-                                                <React.Fragment key={element.id + '-' + element.title}>
+                                                <React.Fragment key={element.id + '-' + element.title + index}>
                                                 <PartsCards
                                                     key={element.id + '-' + element.title}
                                                     image={element.image}
@@ -90,7 +90,7 @@ const PartsView = () => {
                                             return (
                                                 <>
                                                 <BackToTopButton />
-                                                <React.Fragment key={element.id + '-' + element.title}>
+                                                <React.Fragment key={element.id + '-' + element.title + index}>
                                                 <PartsCards
                                                     key={element.id + '-' + element.title}
                                                     image={element.image}
@@ -111,7 +111,7 @@ const PartsView = () => {
                                     {mtb.length
                                         ? mtb.map((element, index) => {
                                             return ( 
-                                                <React.Fragment key={element.id + '-' + element.title}>
+                                                <React.Fragment key={element.id + '-' + element.title + index}>
                                                 <PartsCards
                                                     key={element.id + '-' + element.title}
                                                     image={element.image}

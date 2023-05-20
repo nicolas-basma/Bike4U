@@ -9,6 +9,7 @@ import MyCarousel from "../../component/MyCarousel/MyCarousel.jsx";
 import ProductGrid from "../../component/ProductGrid/ProductGrid.jsx";
 import sections from "../../mocks/sections.js";
 import carouselHomePhotos from "../../img/arrayPhotos.js";
+import InvitedModal from "../../component/InvitedModal/InvitedModal.jsx";
 
 const Home = () => {
   const { store, action } = useStore();
@@ -23,7 +24,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="text-center mt-5">
+      <div className="text-center m-5">
         <Button
           onClick={handleNavigator}
           label={
@@ -31,6 +32,7 @@ const Home = () => {
           }
         />
         <ModalForm />
+        <InvitedModal />
       </div>
 
       <div className="container">

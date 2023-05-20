@@ -13,7 +13,7 @@ import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, handleLogout } = action;
+  const { handleShow, handleLogout, setInvited } = action;
   const { logo, isUserLogged, userInfo } = store;
 
   const navbarTogglerRef = useRef(null);
@@ -25,6 +25,7 @@ const MyNavbar = () => {
     };
 
   const handleLogoutClick  = () => {
+    setInvited(true)
     handleLinkClick();
     handleLogout();
   }
