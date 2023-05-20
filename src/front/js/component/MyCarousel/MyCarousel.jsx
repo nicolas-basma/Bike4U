@@ -11,7 +11,7 @@ const MyCarousel = () => {
 
   ]);
   return (
-    <Carousel fade className="container">
+    <Carousel className="container" variant="dark">
       {photos?.length
         ? photos.map((element, index) => {
             return (
