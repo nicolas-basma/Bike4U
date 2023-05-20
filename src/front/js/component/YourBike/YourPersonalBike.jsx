@@ -15,7 +15,7 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
 
     const handleFavoriteBike = async (id) => {
         addFavoriteBike(userInfo.id, id);
-        setFavorite(true);
+        // setFavorite(true);
     }
 
 
@@ -23,6 +23,7 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
         <>
         <div className="col" >
         <div className="card-part" key={id + title}>
+            <h6>{title}</h6>
             <img src={image} aria-label={title} className="bike"  />
         </div>
         <div className="btns">

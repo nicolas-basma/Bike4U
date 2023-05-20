@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from .utils.send_email import message_from_user, message_from_bike4u, recover_pass_mail
 import os
-from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts, get_bikes_photos
+from api.utils.get_element import get_bike, get_part, get_bike_by_id, get_all_bikes, get_all_parts, get_bikes_photos, delete_parts_and_bikes
 from api.utils.user import add_user, login, get_all_users, get_user_by_id, delete_user, edit_user, edit_user_password, get_user_by_email, add_favorite_bike, add_favorite_part, get_user_favorites, delete_favorite_bike, delete_favorite_part
 from api.utils.updateparts import steal_bikes, load_from_json, bikes_json, parts_json, steal_parts
 from api.models import db, Bike, BikePart
@@ -147,6 +147,14 @@ def handle_delete_favorite_part(user_id, part_id):
     response = delete_favorite_part(user_id, part_id)
     return response
 
+
+@api.route('/delete-parts-and-bikes', methods=['DELETE'])
+def handle_delete_parts_and_bikes():
+    response = delete_parts_and_bikes()
+    return response
+
+
+
 #######################################################################################################################
 @api.route('/add-bike', methods=['POST'])
 def handle_json_data():
@@ -193,48 +201,48 @@ def handle_steal_frame():
     response = steal_parts("frame","mtb", "s")
     steal_parts("frame","mtb", "m")
     steal_parts("frame","mtb", "l")
-    steal_parts("frame","urban", "s")
-    steal_parts("frame","urban", "m")
-    steal_parts("frame","urban", "l")
-    steal_parts("frame","road", "s")
-    steal_parts("frame","road", "m")
-    steal_parts("frame","road", "l")
+    # steal_parts("frame","urban", "s")
+    # steal_parts("frame","urban", "m")
+    # steal_parts("frame","urban", "l")
+    # steal_parts("frame","road", "s")
+    # steal_parts("frame","road", "m")
+    # steal_parts("frame","road", "l")
     return 'ok' , 200
 @api.route('/steal-wheels', methods=['POST'])
 def handle_steal_wheels():
     response = steal_parts("wheels","mtb", "s")
     steal_parts("wheels","mtb", "m")
     steal_parts("wheels","mtb", "l")
-    steal_parts("wheels","urban", "s")
-    steal_parts("wheels","urban", "m")
-    steal_parts("wheels","urban", "l")
-    steal_parts("wheels","road", "s")
-    steal_parts("wheels","road", "m")
-    steal_parts("wheels","road", "l")
+    # steal_parts("wheels","urban", "s")
+    # steal_parts("wheels","urban", "m")
+    # steal_parts("wheels","urban", "l")
+    # steal_parts("wheels","road", "s")
+    # steal_parts("wheels","road", "m")
+    # steal_parts("wheels","road", "l")
     return response
 @api.route('/steal-handlebar', methods=['POST'])
 def handle_steal_handlebar():
     response = steal_parts("handlebar","mtb", "s")
     steal_parts("handlebar","mtb", "m")
     steal_parts("handlebar","mtb", "l")
-    steal_parts("handlebar","urban", "s")
-    steal_parts("handlebar","urban", "m")
-    steal_parts("handlebar","urban", "l")
-    steal_parts("handlebar","road", "s")
-    steal_parts("handlebar","road", "m")
-    steal_parts("handlebar","road", "l")
+    # steal_parts("handlebar","urban", "s")
+    # steal_parts("handlebar","urban", "m")
+    # steal_parts("handlebar","urban", "l")
+    # steal_parts("handlebar","road", "s")
+    # steal_parts("handlebar","road", "m")
+    # steal_parts("handlebar","road", "l")
     return response
 @api.route('/steal-forks', methods=['POST'])
 def handle_steal_forks():
     response = steal_parts("forks","mtb", "s")
     steal_parts("forks","mtb", "m")
     steal_parts("forks","mtb", "l")
-    steal_parts("forks","urban", "s")
-    steal_parts("forks","urban", "m")
-    steal_parts("forks","urban", "l")
-    steal_parts("forks","road", "s")
-    steal_parts("forks","road", "m")
-    steal_parts("forks","road", "l")
+    # steal_parts("forks","urban", "s")
+    # steal_parts("forks","urban", "m")
+    # steal_parts("forks","urban", "l")
+    # steal_parts("forks","road", "s")
+    # steal_parts("forks","road", "m")
+    # steal_parts("forks","road", "l")
     return response
 @api.route('/steal-pedals', methods=['POST'])
 def handle_steal_pedals():
@@ -253,12 +261,12 @@ def handle_steal_saddle():
     response = steal_parts("saddle","mtb", "s")
     steal_parts("saddle","mtb", "m")
     steal_parts("saddle","mtb", "l")
-    steal_parts("saddle","urban", "s")
-    steal_parts("saddle","urban", "m")
-    steal_parts("saddle","urban", "l")
-    steal_parts("saddle","road", "s")
-    steal_parts("saddle","road", "m")
-    steal_parts("saddle","road", "l")
+    # steal_parts("saddle","urban", "s")
+    # steal_parts("saddle","urban", "m")
+    # steal_parts("saddle","urban", "l")
+    # steal_parts("saddle","road", "s")
+    # steal_parts("saddle","road", "m")
+    # steal_parts("saddle","road", "l")
     return response
 
 

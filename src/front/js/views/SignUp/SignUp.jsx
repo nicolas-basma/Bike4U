@@ -167,11 +167,11 @@ const SignUp = () => {
               </label>
               <select  onChange={myHandleInput} name="height" className="form-select" aria-describedby="selectSize">
                 <option >Elige tu altura</option>
-                <option value={"xs"}>150-160 cm</option>
+                <option value={"s"}>150-160 cm</option>
                 <option value={"s"}>161-170 cm</option>
                 <option value={"m"}>171-180 cm</option>
                 <option value={"l"}>181-190 cm</option>
-                <option value={"xl"}>+ 190 cm</option>
+                <option value={"l"}>+ 190 cm</option>
               </select>
             </div>
             <div className="col-12">

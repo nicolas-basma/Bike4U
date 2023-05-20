@@ -7,29 +7,34 @@ import {
   getFavorites,
 } from "../../utils/fetchFavorites.js";
 
-function FavoritesView() {
-  const { store } = useStore();
+const  FavoritesView = () => {
+  const { store, action } = useStore();
   const { userInfo } = store;
-  const [userFavorites, setUserFavorites] = useState([]);
-  const { favorites } = userFavorites;
+  const [favUser, setFavUser] = useState({});
+  const [changeB, setChangeB] = useState(false);
+  const [changeP, setChangeP] = useState(false);
+  const { favorites } = favUser;
   const bikes = favorites ? favorites.bikes : null;
   const parts = favorites ? favorites.parts : null;
 
-  const favoritos = async () => {
-    const listFavorites = await getFavorites(userInfo.id);
-    setUserFavorites(listFavorites);
-  };
+
+
+const getFav = async () =>{
+   const list = await getFavorites(userInfo.id);
+    setFavUser(list);
+}
+
   useEffect(() => {
-    if (userInfo) {
-      favoritos();
-    }
-  }, [userInfo, bikes, parts]);
+    getFav();
+  }, [changeB, changeP])
 
   const handleDeleteFavBike = async (id) => {
     deleteFavoriteBike(userInfo.id, id);
+    setChangeB(!changeB)
   };
   const handleDeleteFavPart = async (id) => {
     deleteFavoritePart(userInfo.id, id);
+    setChangeP(!changeP)
   };
 
 

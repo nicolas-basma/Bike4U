@@ -1,4 +1,4 @@
-from api.models import BikePart, Bike
+from api.models import BikePart, Bike, db
 
 
 #funcion para obtener bicicleras de diferentes tipos de terreno y tamaños, recibe como parametros el tipo de terreno y el tamaño
@@ -53,3 +53,10 @@ def get_bikes_photos():
     for b in element:
         photos.append(b.serialize()["image"])
     return photos
+
+
+def delete_parts_and_bikes():
+    BikePart.query.delete()
+    # Bike.query.delete()
+    db.session.commit()
+    return "All parts deleted", 200

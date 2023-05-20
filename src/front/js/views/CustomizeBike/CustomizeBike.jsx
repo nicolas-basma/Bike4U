@@ -15,7 +15,6 @@ import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecifi
 
 const CustomizeBike = () => {
   const { store } = useStore();
-  const params = useParams();
   const [bikeMtb, setBikeMtb] = useState({});
   const [bikeUrban, setBikeUrban] = useState({});
   const [bikeRoad, setBikeRoad] = useState({});
@@ -113,7 +112,7 @@ const CustomizeBike = () => {
                   ? bikeMtb.map((element, index) => {
                       return (
                         <BikesCards
-                        key={element.id + element.title}
+                          key={element.id + '-' + element.title + index}
                           id={element.id}
                           image={element.image}
                           title={element.title}
@@ -137,7 +136,7 @@ const CustomizeBike = () => {
                   ? bikeRoad.map((element, index) => {
                     return (
                           <BikesCards
-                            key={element.id + element.title}
+                            key={element.id + '-' + element.title + index}
                             id={element.id}
                             image={element.image}
                             title={element.title}
@@ -161,7 +160,7 @@ const CustomizeBike = () => {
                   ? bikeUrban.map((element, index) => {
                       return (
                         <BikesCards
-                          key={element.id + element.title}
+                          key={element.id + '-' + element.title + index}
                           id={element.id}
                           image={element.image}
                           title={element.title}
@@ -181,7 +180,7 @@ const CustomizeBike = () => {
                 ? parts.map((element, index) => {
                     return (
                       <PartsCards
-                      key={element.id + element.title}
+                      key={element.id + '-' + element.title + index}
                         id={element.id}
                         image={element.image}
                         title={element.title}

@@ -12,8 +12,10 @@ function Product({ title, image, terrain, id }) {
   
   return (
     <div onClick={handleNavigate}>
+      <div className="product">
       <img className="productImage" src={image} alt={title} />
       <h3>{title}</h3>
+    </div>
     </div>
   );
 }

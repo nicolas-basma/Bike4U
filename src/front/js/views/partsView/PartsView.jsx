@@ -33,9 +33,9 @@ const PartsView = () => {
 
     }, []);
 
-    const myrandom = () => {
-        return Math.floor(Math.random() * 10000);
-    };
+    // const myrandom = () => {
+    //     return Math.floor(Math.random() * 10000);
+    // };
 
 
 
@@ -60,21 +60,21 @@ const PartsView = () => {
                         </div>
                     </div>
                     <div className="col-8">
-                        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" className="scrollspy-example" tabindex="0">
+                        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" className="scrollspy-example" tabIndex="0">
                             <h4 id="list-item-1">
                                 <a className="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="RoadBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
                                     {road.length
-                                        ? road.map((element) => {
+                                        ? road.map((element, index) => {
                                             return (
-                                                
-                                                
+                                                <React.Fragment key={element.id + '-' + element.title + index}>
                                                 <PartsCards
-                                                    key={myrandom()}
+                                                    key={element.id + '-' + element.title}
                                                     image={element.image}
                                                     title={element.title}
                                                     description={element.description}
                                                     link={element.link}
                                                 />
+                                                </React.Fragment>
                                                 
                                             );
                                         })
@@ -86,17 +86,19 @@ const PartsView = () => {
                             <h4 id="list-item-2">
                                 <a className="list-group-item list-group-item-action" href="#list-item-1"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="UrbanBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
                                     {urban.length
-                                        ? urban.map((element) => {
+                                        ? urban.map((element, index) => {
                                             return (
                                                 <>
                                                 <BackToTopButton />
+                                                <React.Fragment key={element.id + '-' + element.title + index}>
                                                 <PartsCards
-                                                    key={myrandom()}
+                                                    key={element.id + '-' + element.title}
                                                     image={element.image}
                                                     title={element.title}
                                                     description={element.description}
                                                     link={element.link}
                                                 />
+                                                </React.Fragment>
                                                 </>
                                             );
                                         })
@@ -107,17 +109,17 @@ const PartsView = () => {
                             <h4 id="list-item-3">
                                 <a className="list-group-item list-group-item-action" href="#list-item-3"><h1 className="BikeTerrainMainTitle">     <FormattedMessage id="MtbBikes"></FormattedMessage></h1></a><div className="wrapperBikesCards">
                                     {mtb.length
-                                        ? mtb.map((element) => {
-                                            return (
-                                                
-                                                
+                                        ? mtb.map((element, index) => {
+                                            return ( 
+                                                <React.Fragment key={element.id + '-' + element.title + index}>
                                                 <PartsCards
-                                                    key={myrandom()}
+                                                    key={element.id + '-' + element.title}
                                                     image={element.image}
                                                     title={element.title}
                                                     description={element.description}
                                                     link={element.link}
                                                 />
+                                                </React.Fragment>
                                              
                                             );
                                         })
