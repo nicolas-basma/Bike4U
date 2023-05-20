@@ -15,7 +15,7 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
 
     const handleFavoriteBike = async (id) => {
         addFavoriteBike(userInfo.id, id);
-        setFavorite(true);
+        // setFavorite(true);
     }
 
 

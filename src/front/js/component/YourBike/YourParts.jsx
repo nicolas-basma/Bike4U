@@ -15,7 +15,7 @@ const YourParts = ({ image, link, title, next, back, part, id }) => {
 
     const handleFavoritePart = async (id) => {
         addFavoritePart(userInfo.id, id);
-        setFavorite(true);
+        // setFavorite(true);
     }
 
 
