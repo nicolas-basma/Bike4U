@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import AlertModal from "../AlertModal/AlertModal.jsx";
 
 import useStore from "../../store/AppContext.jsx";
 
@@ -13,7 +14,7 @@ import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, handleLogout, setInvited } = action;
+  const { handleShow, handleLogout, setInvited, handleShowAlert } = action;
   const { logo, isUserLogged, userInfo } = store;
 
   const navbarTogglerRef = useRef(null);
@@ -23,6 +24,18 @@ const MyNavbar = () => {
       navbarTogglerRef.current.click();
 
     };
+
+  const handleGoFav = () => {
+    if (isUserLogged) {
+      handleLinkClick();
+      handleShow();
+    }
+    else {
+      // handleShowAlert();
+      alert("You must be logged in to see your favorites");
+
+    }
+  }
 
   const handleLogoutClick  = () => {
     setInvited(true)
@@ -59,12 +72,12 @@ const MyNavbar = () => {
                     </Nav.Item>
                   </Link>          
                 : null}
-              <Link to="/customizebike" onClick={handleLinkClick}>
+              <Link to={ isUserLogged ? "/customizebike" : "/"} onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
                 </Nav.Item>
               </Link>
-              <Link to="/favorites" onClick={handleLinkClick}>
+              <Link to={isUserLogged ? "/favorites" : "/"} onClick={handleGoFav}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
                 </Nav.Item>
