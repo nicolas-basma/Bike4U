@@ -105,10 +105,10 @@ const ModalForm = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button className="customizeBikeBtn2" onClick={handleClose}>
             <FormattedMessage id="buttonCancel"></FormattedMessage>
           </Button>
-          <Button variant="success" onClick={handleSendMessage}>
+          <Button className="customizeBikeBtn2" onClick={handleSendMessage}>
             <FormattedMessage id="buttonSendMessage"></FormattedMessage>
           </Button>
         </Modal.Footer>

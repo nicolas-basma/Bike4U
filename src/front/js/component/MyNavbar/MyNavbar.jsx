@@ -4,17 +4,15 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import AlertModal from "../AlertModal/AlertModal.jsx";
 
 import useStore from "../../store/AppContext.jsx";
-
 import "./MyNavbar.css";
 import MyUserLoginDropdown from "../MyUserLoginDropdown/MyUserLoginDropdown.jsx";
 import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, handleLogout, setIsInvited, handleShowAlert } = action;
+  const { handleShow, handleLogout, setIsInvited} = action;
   const { logo, isUserLogged, userInfo } = store;
 
   const navbarTogglerRef = useRef(null);

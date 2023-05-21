@@ -9,7 +9,7 @@
 .about {
   background-color: black;
   color: white;
-  width: 75%;
+  width: 100%;
   padding: 20px;
   margin-bottom: 40px;
   margin-top: 30px;
@@ -23,6 +23,11 @@
 }
 .about p {
   font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 35px;
+  text-decoration: none;
+}
+p{
+  text-decoration: none;
 }
 .contactButton{
   background-color: rgb(0, 0, 0);

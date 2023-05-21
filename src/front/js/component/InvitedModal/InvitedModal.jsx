@@ -91,11 +91,11 @@ const invitedModal = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button className="customizeBikeBtn2" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success" onClick={handleisIvitedUser}>
-            Save Changes
+          <Button className="customizeBikeBtn2" onClick={handleisIvitedUser}>
+            Save
           </Button>
         </Modal.Footer>
       </Modal>

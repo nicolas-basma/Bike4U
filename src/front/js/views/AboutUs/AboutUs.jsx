@@ -17,7 +17,7 @@ const AboutUs = () => {
         <h1>
           <FormattedMessage id="aboutUsTittle"></FormattedMessage>
         </h1>
-        <p>
+        <p className="about">
           <FormattedMessage id="aboutUsDescription"></FormattedMessage>
         </p>
       </div>
