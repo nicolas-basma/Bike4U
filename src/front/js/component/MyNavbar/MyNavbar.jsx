@@ -14,7 +14,7 @@ import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, handleLogout, setInvited, handleShowAlert } = action;
+  const { handleShow, handleLogout, setIsInvited, handleShowAlert } = action;
   const { logo, isUserLogged, userInfo } = store;
 
   const navbarTogglerRef = useRef(null);
@@ -27,6 +27,7 @@ const MyNavbar = () => {
 
   const handleGoFav = () => {
     if (isUserLogged) {
+      setIsInvited(false)
       handleLinkClick();
       handleShow();
     }
@@ -38,7 +39,7 @@ const MyNavbar = () => {
   }
 
   const handleLogoutClick  = () => {
-    setInvited(true)
+    setIsInvited(true)
     handleLinkClick();
     handleLogout();
   }
@@ -68,7 +69,7 @@ const MyNavbar = () => {
               {isUserLogged
                 ? <Link to="/Profile" onClick={handleLinkClick}>
                     <Nav.Item className="btn button user-name">
-                      {userInfo?.name.toUpperCase()}
+                      {userInfo?.name?.toUpperCase()}
                     </Nav.Item>
                   </Link>          
                 : null}

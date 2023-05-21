@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import useStore from "../../store/AppContext.jsx";
 
-const InvitedModal = () => {
+const invitedModal = () => {
     const navigate = useNavigate();
     const { store, action } = useStore();
     const {useForms,setUserInfo, utils}=action;
@@ -18,7 +18,7 @@ const InvitedModal = () => {
     const handleClose = () => setAskInfo(false);
     const go = () => navigate('/customizeBike');
     
-    const handleInvitedUser = async () => {
+    const handleisIvitedUser = async () => {
         const body = {
             size : height,
             bike_type,
@@ -94,7 +94,7 @@ const InvitedModal = () => {
           <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success" onClick={handleInvitedUser}>
+          <Button variant="success" onClick={handleisIvitedUser}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -103,4 +103,4 @@ const InvitedModal = () => {
   );
 };
 
-export default InvitedModal;
+export default invitedModal;

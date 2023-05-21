@@ -7,7 +7,7 @@ import useStore from "../../store/AppContext.jsx";
 
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action, store } = useStore();
-  const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid, setInvited } = action;
+  const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid, setIsInvited } = action;
   const { formInput, myHandleInput, handleInput } = useForms({
     userEmail : "",
     password : "",
@@ -26,7 +26,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
     
 
     event.preventDefault();
-    setInvited(false);
+    setIsInvited(false);
 
     const { userEmail, password, rememberMe } = formInput;
 

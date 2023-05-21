@@ -8,7 +8,7 @@ import {
 } from "../../utils/fetchFavorites.js";
 
 const  FavoritesView = () => {
-  const { store, action } = useStore();
+  const { store } = useStore();
   const { userInfo } = store;
   const [favUser, setFavUser] = useState({});
   const [changeB, setChangeB] = useState(false);
@@ -17,7 +17,7 @@ const  FavoritesView = () => {
   const bikes = favorites ? favorites.bikes : null;
   const parts = favorites ? favorites.parts : null;
 
-
+  
 
 const getFav = async () =>{
    const list = await getFavorites(userInfo.id);
@@ -26,7 +26,9 @@ const getFav = async () =>{
 
   useEffect(() => {
     getFav();
-  }, [changeB, changeP])
+    console.log("changeB", changeB);
+    console.log("changeP", changeP);
+  }, [!changeB, !changeP])
 
   const handleDeleteFavBike = async (id) => {
     deleteFavoriteBike(userInfo.id, id);
