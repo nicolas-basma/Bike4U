@@ -7,7 +7,7 @@ const LegalPolicy = () => {
   const intl = useIntl();
 
   return (
-    <>
+    <div className="my-container">
       <div className="accordion accordion-flush" id="accordionFlushExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
@@ -88,7 +88,7 @@ const LegalPolicy = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

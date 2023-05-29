@@ -7,6 +7,8 @@ import {
   getFavorites,
 } from "../../utils/fetchFavorites.js";
 
+import "./FavoritesView.css";
+
 const  FavoritesView = () => {
   const { store } = useStore();
   const { userInfo } = store;
@@ -42,7 +44,7 @@ const getFav = async () =>{
 
   return (
     <>
-      <div className="container your-bike">
+      <div className="container my-container your-bike">
         <div className="titleCards mt-5 text-center">Your Favorites Bikes</div>
         <div className="d-flex row">
           {bikes ? (

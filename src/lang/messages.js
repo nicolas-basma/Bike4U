@@ -353,7 +353,7 @@ const allMessages = {
     UrbanBikes: "Urban Bikes",
     RoadBikes: "Road Bikes",
     goToTop: "Go to menu",
-    Before: "Before",
+    Before: "Previous",
     LearnMore: "Learn More",
     Next: "Next",
     GoBackToBikes: "Go back to Bikes",
