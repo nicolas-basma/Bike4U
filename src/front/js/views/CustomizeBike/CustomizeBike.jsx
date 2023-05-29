@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import useStore from "../../store/AppContext.jsx";
+import { useParams, Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+
+import useStore from "../../store/AppContext.jsx";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
 import fetchGetPartByTypeTerrainAndSize from "../../utils/fetchGetPartByTypeTerrainAndSize.js";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-
 import YourBike from "../../component/YourBike/YourBike.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
 import PartsCards from "../../component/PartsCards/partsCards.jsx";
@@ -62,7 +61,7 @@ const CustomizeBike = () => {
       <YourBike key={myRandom()} list={listOfPart} bikes={userBike} />
       <div className="d-flex justify-content-center">
       <div className="titleCards mt-5 text-center p-3">
-        <FormattedMessage id="myBikesFavouriteView"></FormattedMessage>
+        <FormattedMessage id="myBikesFavouriteView"/>
       </div>
         </div>
       <div className="row">
@@ -72,22 +71,22 @@ const CustomizeBike = () => {
               className="list-group-item list-group-item-action menuBikes"
               href="#list-item-1"
             >
-              <h1 className="BikeTerrainTitle">MTB Bikes</h1>
+              <h1 className="BikeTerrainTitle"><FormattedMessage id="customMTB" defaultMessage="MTB Bikes"/></h1>
             </a>
             <a
               className="list-group-item list-group-item-action menuBikes"
               href="#list-item-2"
             >
-              <h1 className="BikeTerrainTitle">Road Bikes</h1>
+              <h1 className="BikeTerrainTitle"><FormattedMessage id="customRoad" defaultMessage="Road Bikes"/></h1>
             </a>
             <a
               className="list-group-item list-group-item-action menuBikes"
               href="#list-item-3"
             >
-              <h1 className="BikeTerrainTitle">Urban Bikes</h1>
+              <h1 className="BikeTerrainTitle"><FormattedMessage id="customUrban" defaultMessage="Urban Bikes"/></h1>
             </a>
             <Link to="/partsView">
-        <button className="backToBikes m-5">Go to parts</button>
+        <button className="backToBikes m-5"><FormattedMessage id="customGoToParts"/></button>
         </Link>
          <BackToTopButton />
           </div>
@@ -105,7 +104,7 @@ const CustomizeBike = () => {
                 className="list-group-item list-group-item-action"
                 href="#list-item-1"
               >
-                <h1 className="BikeTerrainMainTitle">MTB Bikes</h1>
+                <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customMTB" defaultMessage="MTB Bikes"/></h1>
               </a>
               <div className="wrapperBikesCards">
                 {bikeMtb.length
@@ -129,7 +128,7 @@ const CustomizeBike = () => {
                 className="list-group-item list-group-item-action"
                 href="#list-item-2"
               >
-                <h1 className="BikeTerrainMainTitle">Road Bikes</h1>
+                <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customRoad" defaultMessage="Road Bikes"/></h1>
               </a>
               <div className="wrapperBikesCards">
                 {bikeRoad.length
@@ -153,7 +152,7 @@ const CustomizeBike = () => {
                 className="list-group-item list-group-item-action"
                 href="#list-item-2"
               >
-                <h1 className="BikeTerrainMainTitle">Urban Bikes</h1>
+                <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customUrban" defaultMessage="Urban Bikes"/></h1>
               </a>
               <div className="wrapperBikesCards">
                 {bikeUrban.length

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+
 import useStore from "../../store/AppContext.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
 import {
@@ -45,7 +47,7 @@ const getFav = async () =>{
   return (
     <>
       <div className="container my-container your-bike">
-        <div className="titleCards mt-5 text-center">Your Favorites Bikes</div>
+        <div className="titleCards mt-5 text-center"><FormattedMessage id="favoritesBikes" defaultMessage="Your Favorite Bikes"/></div>
         <div className="d-flex row">
           {bikes ? (
             bikes.map((bike, index) => {
@@ -65,7 +67,7 @@ const getFav = async () =>{
                       // key={bike.id + bike.title + myRandom()}
                       onClick={() => handleDeleteFavBike(bike.id)}
                     >
-                      Quitar
+                      <FormattedMessage id="favoritesQuitar" defaultMessage="Quitar"/>
                     </button>
                   </div>
                 </React.Fragment>
@@ -73,11 +75,11 @@ const getFav = async () =>{
             })
           ) : (
             <div className="container">
-              <h1>No tienes favoritos</h1>
+              <h1><FormattedMessage id="favoritesNofavs" defaultMessage="No tienes favoritos"/></h1>
             </div>
           )}
         </div>
-        <div className="titleCards mt-3 mb-2 text-center">Your Favorites Parts</div>
+        <div className="titleCards mt-3 mb-2 text-center"><FormattedMessage id="favoritesParts" defaultMessage="Your Favorite Parts"/></div>
         <div className="d-flex row">
           {parts ? (
             parts.map((part, index) => {
@@ -97,7 +99,7 @@ const getFav = async () =>{
                       // key={part.id + part.title + myRandom()}
                       onClick={() => handleDeleteFavPart(part.id)}
                     >
-                      Quitar
+                      <FormattedMessage id="favoritesQuitar" defaultMessage="Quitar"/>
                     </button>
                   </div>
                 </React.Fragment>
@@ -105,7 +107,7 @@ const getFav = async () =>{
             })
           ) : (
             <div className="container">
-              <h1>No tienes favoritos</h1>
+              <h1><FormattedMessage id="favoritesNofavs" defaultMessage="No tienes favoritos"/></h1>
             </div>
           )}
         </div>
