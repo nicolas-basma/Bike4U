@@ -12,10 +12,7 @@ import instagram from "react-useanimations/lib/instagram";
 import mail from "react-useanimations/lib/mail";
 
 const MyFooter = () => {
-  //const { store } = useContext(Context);
-  //const { languages, envParameters } = store;
 
-  //console.log(store);
   const { store, action } = useStore();
   const { logo } = store;
   return (

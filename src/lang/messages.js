@@ -177,6 +177,21 @@ const allMessages = {
     Next: "Siguiente",
     GoBackToBikes: "Volver a Bicicletas",
     favorito:"Favorito",
+    FAQs1: "¿Debería comprar estas bicicletas?",
+    FAQs1a:"La verdad es que estas bicicletas molan mucho. Sin embargo, se muestran aquí con un propósito meramente educativo. No tenemos ninguna vinculación con los vendedores y pueden no ser la mejor opción de compra para tí.",
+    FAQs2: "¿Os ha costado mucho trabajo hacer este desarrollo?",
+    FAQs2a:"El tiempo de desarrollo de la web ha sido de 6 semanas. Ha sido bastante limitado porque también hemos dedicado nuestro tiempo a nuestros otros menesteres vitales. Sabemos que se pueden añadir muchas funcionalidades al producto, y sabemos como hacerlo, pero hay que priorizar tareas en el tiemmpo de trabajo.",
+    FAQs3: "¿Puedo contactar a los desarrolladores?",
+    FAQs3a:"Obviamente. El formulario de contacto es funcional y nos llegarán tus correos. También es posible que hayas accedido a esta web desde una web ´Portfolio´ de alguno de ellos.",
+    FAQs4: "Preguna Mock",
+    FAQs4a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+    FAQs5: "Preguna Mock",
+    FAQs5a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+    FAQs6: "Preguna Mock",
+    FAQs6a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+    FAQs7: "Preguna Mock",
+    FAQs7a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+
   },
 
 
@@ -341,7 +356,22 @@ const allMessages = {
     Before: "Before",
     LearnMore: "Learn More",
     Next: "Next",
-    GoBackToBikes: "Go back to Bikes"
+    GoBackToBikes: "Go back to Bikes",
+    FAQs1: "Should I buy any of these bikes?",
+    FAQs1a:"We do think that this bikes look very cozy. However, our purpose is merely educational and it is possible that these bikes are not the best fit for you.",
+    FAQs2: "Did you require a lot of time for this development?",
+    FAQs2a:"The scheduled development time for this project has been 6 weeks. This has been very limited because we participate part-time only, and we have to do our daily chores. We know that awesome functionalities can be added to this project, and we know how to implement them, but, given the limited time of development, we needed to prioritize value and functionalities. We hope you can understand this.",
+    FAQs3: "Can I contact any of the developers?",
+    FAQs3a:"Of course. The contact form is perfectly functional and we will receive your email. It is also possible that you have accesed this website through a ´Portfolio´ one, so you could come back to that portfolio and contact that specific developer from there.",
+    FAQs4: "Question placeholder",
+    FAQs4a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+    FAQs5: "Question placeholder",
+    FAQs5a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+    FAQs6: "Question placeholder",
+    FAQs6a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+    FAQs7: "Question placeholder",
+    FAQs7a:`Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the placeholder item's accordion body. Let's imagine this being filled with some actual content.`,
+
   },
 };
 
