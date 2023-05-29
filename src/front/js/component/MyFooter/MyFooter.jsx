@@ -19,7 +19,7 @@ const MyFooter = () => {
   const { store, action } = useStore();
   const { logo } = store;
   return (
-    <footer className="footer  py-1 text-center d-block">
+    <footer className="footer mt-1 py-1 text-center d-block">
       <div className=" container-fluid">
         <div className="row">
           <div className="col-3">
@@ -31,27 +31,27 @@ const MyFooter = () => {
           </div>
           <div className="col-3">
             <Link to="/aboutus">
-              <p>About Us</p>
+              <p><FormattedMessage id="footerAboutUs" defaultMessage="About Us"/></p>
             </Link>
             <Link to="/faqs">
-              <p>Frequent Questions</p>
+              <p><FormattedMessage id="footerFAQ" defaultMessage="Frequent Questions"/></p>
             </Link>
             <p></p>
           </div>
           <div className="col-3">
             <p>
               <Link to="/legalpolicy">
-                <FormattedMessage id="footerLegalAdvisory"></FormattedMessage>
+                <FormattedMessage id="footerLegalAdvisory"/>
               </Link>
             </p>
             <p>
               <Link to="/legalpolicy">
-                <FormattedMessage id="footerPrivacyPolicy"></FormattedMessage>
+                <FormattedMessage id="footerPrivacyPolicy"/>
               </Link>
             </p>
             <p>
               <Link to="/legalpolicy">
-                <FormattedMessage id="footerCookiesPolicy"></FormattedMessage>
+                <FormattedMessage id="footerCookiesPolicy"/>
               </Link>
             </p>
           </div>
@@ -80,13 +80,15 @@ const MyFooter = () => {
                   strokeColor={"white"}
                 />{" "}
               </a>
-
-              <UseAnimations animation={mail} size={60} strokeColor={"white"} />
+              <a href="">
+                <UseAnimations animation={mail} size={60} strokeColor={"white"} />
+              </a>
+              
             </div>
             <div>
               <p>
                 <strong>
-                  <FormattedMessage id="footerContactBySocials"></FormattedMessage>
+                  <FormattedMessage id="footerContactBySocials"/>
                 </strong>
               </p>
             </div>
@@ -95,7 +97,7 @@ const MyFooter = () => {
 
         <div className="copyright row">
           <div className="col-12">
-            <FormattedMessage id="footerCopyright"></FormattedMessage>
+            <FormattedMessage id="footerCopyright"/>
           </div>
         </div>
       </div>

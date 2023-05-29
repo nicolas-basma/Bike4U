@@ -134,6 +134,8 @@ const allMessages = {
     footerPrivacyPolicy: "Polícita de privacidad",
     footerCookiesPolicy: "Política de cookies",
     footerContractingConditions: "Condiciones de contratación",
+    footerAboutUs: "Sobre nosotros",
+    footerFAQ: "Preguntas frecuentes",
     contactModalTittle: "Formulario de contacto",
     contactModalName: "Su nombre",
     contactModalEmail: "Su dirección Email",
@@ -149,7 +151,7 @@ const allMessages = {
     userLoginDropdownNewUser: "¿Nuevo por aquí?¡Regístrate!",
     userLoginDropdownForgotPassword: " ¿Has olvidado tu contraseña?",
     aboutUsTittle: "¿Quienes somos?",
-    aboutUsDescription: `Nosotros cuatro, Ignacio Muñoz, Luis Carlos Bellido, Nicolas Basma y Cleito Medeiros,
+    aboutUsDescription: `Nosotros cuatro: Ignacio Muñoz, Luis C. Loredo, Nicolas Basma y Cleito Medeiros;
     somos full-stack developers altamente motivados. Esta pagina web es nuestro primer proyecto expuesto al público,
     en el cualhemos creado una herramienta para personalizar bicicletas. El objetivo principal de esta página es
     ofrecer a los usuarios la posibilidad de diseñar su propia bicicleta basándose en sus medidas y preferencias.
@@ -299,6 +301,8 @@ const allMessages = {
     footerPrivacyPolicy: "Privacy policy",
     footerCookiesPolicy: "Cookies policy",
     footerContractingConditions: "Contracting conditions",
+    footerAboutUs: "About us",
+    footerFAQ: "Frequent asked questions",
     contactModalTittle: "Contact Form",
     contactModalName: "Your name",
     contactModalEmail: "Your Email address",
@@ -314,7 +318,7 @@ const allMessages = {
     userLoginDropdownNewUser: "New around here? Sign up!",
     userLoginDropdownForgotPassword: "Forgot password?",
     aboutUsTittle: "Who are we?",
-    aboutUsDescription: `We four, Ignacio Muñoz, Luis Carlos Bellido, Nicolas Basma, and Cleito Medeiros, are highly motivated 
+    aboutUsDescription: `We four: Ignacio Muñoz, Luis C. Loredo, Nicolas Basma, and Cleito Medeiros; are highly motivated 
     full-stack developers. This website is our first project exposed to the public, in which we have created a tool for
     customizing bicycles. The main objective of this page is to offer users the possibility of designing their own bicycle
     based on their measurements and preferences. The team has been working hard on the development of this website so that
