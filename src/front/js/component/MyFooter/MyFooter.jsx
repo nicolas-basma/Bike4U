@@ -20,16 +20,16 @@ const MyFooter = () => {
   const { logo } = store;
   return (
     <footer className="footer mt-1 py-1 text-center d-block">
-      <div className=" container-fluid">
+      <div className=" container">
         <div className="row">
-          <div className="col-3">
+          <div className="col-12 col-md-4 col-lg-3 d-flex justify-content-center">
             <div className="company">
               <strong>BIKE4U</strong>
               <br></br>
               <img className="footer-logo" src={logo} />
             </div>
           </div>
-          <div className="col-3">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <Link to="/aboutus">
               <p><FormattedMessage id="footerAboutUs" defaultMessage="About Us"/></p>
             </Link>
@@ -38,7 +38,7 @@ const MyFooter = () => {
             </Link>
             <p></p>
           </div>
-          <div className="col-3">
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <p>
               <Link to="/legalpolicy">
                 <FormattedMessage id="footerLegalAdvisory"/>
@@ -56,8 +56,8 @@ const MyFooter = () => {
             </p>
           </div>
 
-          <div className="col-3">
-            <div className="contact">
+          <div className="col-12 col-md-12 col-lg-3 mx-auto">
+            <div className="contact d-flex justify-content-center">
               <a href="https://twitter.com/" target="_blank">
                 {" "}
                 <UseAnimations
