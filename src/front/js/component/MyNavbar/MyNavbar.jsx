@@ -76,11 +76,14 @@ const MyNavbar = () => {
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
                 </Nav.Item>
               </Link>
-              <Link to={isUserLogged ? "/favorites" : "/"} onClick={handleGoFav}>
-                <Nav.Item className="btn button">
-                  <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
-                </Nav.Item>
-              </Link>
+              {isUserLogged
+              ?
+                <Link to={isUserLogged ? "/favorites" : "/"} onClick={handleGoFav}>
+                  <Nav.Item className="btn button">
+                    <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
+                  </Nav.Item>
+                </Link>
+              : null}  
               <Link to="/aboutus" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomContact"></FormattedMessage>
