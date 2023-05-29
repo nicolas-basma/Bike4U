@@ -1,4 +1,6 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
+
 import YourPersonalParts from "./YourPersonalParts.jsx";
 import useParts from "../../utils/useParts.jsx";
 import YourPersonalBike from "./YourPersonalBike.jsx";
@@ -17,7 +19,7 @@ const YourBike = ({list, bikes}) => {
             <div className="container your-bike">
                 <div className="row justify-content-center">
                 <div className="titleCards mt-3 mb-2 ">
-                    <h1>Your bike</h1>
+                    <h1><FormattedMessage id="YourBike" defaultMessage="Your bike"/></h1>
                 </div>
                 </div>
                 <div className="row">
