@@ -221,7 +221,9 @@ const allMessages = {
     customGoToParts: "Mostrar piezas",
     customMTB: "Bicis de Montaña",
     customUrban: "Bicis Urbanas",
-    customRoad: "Bicis de Carretera"
+    customRoad: "Bicis de Carretera",
+    btnClose: "Cerrar",
+    btnSave: "Consultar",
 
 
   },
@@ -434,7 +436,9 @@ const allMessages = {
     customMTB: "MTB Bikes",
     customUrban: "Urban Bikes",
     customRoad: "Road Bikes",
-    passRecovery: "Enter your name"
+    passRecovery: "Enter your name",
+    btnClose: "Close",
+    btnSave: "Check",
    
   },
 };
