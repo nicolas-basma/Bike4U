@@ -4,7 +4,6 @@
 .container {
   text-align: center;
   margin-top:30px;
- 
 }
 .about {
   background-color: black;
@@ -16,18 +15,15 @@
   border-radius: 10px;
   box-shadow: 0px 0px 25px #222;
   margin: 0px auto;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 35px;
 }
 .about h1 {
   font-family: "Racing Sans One", cursive;
   align-items: center;
 }
-.about p {
-  font-family: "Sofia Sans Condensed", sans-serif;
-  font-size: 35px;
-  text-decoration: none;
-}
-p{
-  text-decoration: none;
+.btnContactUs{
+  min-height: 500px
 }
 .contactButton{
   background-color: rgb(0, 0, 0);
@@ -38,6 +34,7 @@ p{
   margin: 30px auto;
   font-family: "Racing Sans One", cursive;
   border:5px solid black;
+  font-size: 40px;
 }
 .contactButton:hover {
   cursor: pointer;

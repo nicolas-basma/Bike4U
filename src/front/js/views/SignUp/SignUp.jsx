@@ -5,6 +5,7 @@ import { FormattedMessage } from "react-intl";
 import useStore from "../../store/AppContext.jsx";
 
 import "./SignUp.css";
+import swal from "sweetalert2";
 
 
 
@@ -38,14 +39,33 @@ const SignUp = () => {
             bike_type
       }
       
-      if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
+      if (password !== confirmPassword) return (
+        swal.fire({
+          confirmButtonColor: '#ffd102',
+          icon: 'error',
+          title: 'Bike4U',
+          text: 'Las contraseñas no coinciden',
+          
+        })
+      )
       
       const isUserCreated = await fetchSingup(body);
       //console.log(isUserCreated);
       
-      if (!isUserCreated) return alert("Ha habido un problema con la creación del usuario")
-
-      alert("Usuario creado correctamente, proceda a logearse");
+      if (!isUserCreated) return ( swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Ha habido un problema con la creación del usuario',
+        
+      }))
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'success',
+        title: 'Bike4U',
+        text: 'Usuario creado correctamente, proceda a logearse',
+        
+      })
       navigate("/");
         
     }

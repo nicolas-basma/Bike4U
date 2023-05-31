@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useStore from "../../store/AppContext.jsx";
 import useForms from "../../utils/useForms.jsx";
 import "./EditUserData.css";
+import swal from "sweetalert2";
 
 const EditUserData = () => {
   const navigate = useNavigate();
@@ -60,21 +61,45 @@ const handleUpdateUser=async()=>{
   if (!editedUser) return alert("Ha habido un problema actualizando la información")
 
   setUserInfo(editedUser);
-  alert("Información de usuario actualizada");
+  swal.fire({
+    confirmButtonColor: '#ffd102',
+    icon: 'success',
+    title: 'Bike4U',
+    text: 'Información de usuario actualizada',
+    
+  })
   navigate("/");
 }
 const handleChangePassword=async()=>{
 
   //console.log(formInput.newPassword);
-  if (!formInput.newPassword) return alert("Debe indicar una contraseña");
-  if (formInput.newPassword !==formInput.newPasswordValidation) return alert("Debe indicar una contraseña");
+  if (!formInput.newPassword) return ( swal.fire({
+    confirmButtonColor: '#ffd102',
+    icon: 'error',
+    title: 'Bike4U',
+    text: 'Debe indicar una contraseña',
+    
+  }))
+  if (formInput.newPassword !==formInput.newPasswordValidation) return ( swal.fire({
+    confirmButtonColor: '#ffd102',
+    icon: 'error',
+    title: 'Bike4U',
+    text: 'Las contraseñas no coinciden',
+    
+  }))
 
   const body = {
     password : formInput.newPassword
   }
   const editedUser = await fetchEditUserPassword(userInfo?.id, body);
   
-  if (!editedUser) return alert("Ha habido un problema con el cambio de contraseña")
+  if (!editedUser) return ( swal.fire({
+    confirmButtonColor: '#ffd102',
+    icon: 'error',
+    title: 'Bike4U',
+    text: 'Ha habido un problema con el cambio de contraseña',
+    
+  }))
 
   alert(editedUser);
 
@@ -88,12 +113,23 @@ const handleDeleteUser =  async()=>{
   const isUserDeleted = await fetchDeleteUser(userInfo?.id);
   if (isUserDeleted) {
     handleLogout();
-    alert("Usuario eliminado correctamente");
+    swal.fire({
+      confirmButtonColor: '#ffd102',
+      icon: 'success',
+      title: 'Bike4U',
+      text: 'Usuario eliminado correctamente',
+      
+    })
     navigate("/");
     return
   }
-  alert("Ha habido un problema eliminando la cuenta");
-
+  swal.fire({
+    confirmButtonColor: '#ffd102',
+    icon: 'error',
+    title: 'Bike4U',
+    text: 'Ha habido un problema eliminando la cuenta',
+    
+  })
 }
 const myButtonColorBoolean = ()=>{
   return (formInput?.newPassword === formInput?.newPasswordValidation) && formInput?.newPassword?.length

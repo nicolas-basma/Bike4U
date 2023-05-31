@@ -17,17 +17,13 @@ const AboutUs = () => {
         <h1>
           <FormattedMessage id="aboutUsTittle"/>
         </h1>
-        <p className="about">
           <FormattedMessage id="aboutUsDescription"/>
-        </p>
       </div>
-      <div>
-        <h1>
+      <div className="btnContactUs">
           <button className="contactButton" onClick={handleShow}>
             <FormattedMessage id="buttonContact"/>
           </button>
           <ModalForm />
-        </h1>
       </div>
     </div>
   );

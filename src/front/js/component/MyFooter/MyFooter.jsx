@@ -10,11 +10,13 @@ import twitter from "react-useanimations/lib/twitter";
 import facebook from "react-useanimations/lib/facebook";
 import instagram from "react-useanimations/lib/instagram";
 import mail from "react-useanimations/lib/mail";
+import ModalForm from "../ModalForm/ModalForm.jsx";
 
 const MyFooter = () => {
 
   const { store, action } = useStore();
   const { logo } = store;
+  const { handleShow } = action;
   return (
     <footer className="footer mt-1 py-1 text-center d-block">
       <div className=" container">
@@ -77,8 +79,9 @@ const MyFooter = () => {
                   strokeColor={"white"}
                 />{" "}
               </a>
-              <a href="">
+              <a onClick={handleShow}>
                 <UseAnimations animation={mail} size={60} strokeColor={"white"} />
+              <ModalForm />
               </a>
               
             </div>
