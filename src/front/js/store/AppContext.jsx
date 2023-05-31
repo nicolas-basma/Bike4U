@@ -13,6 +13,7 @@ import carouselHomePhotos from "../img/arrayPhotos.js";
 import utils from "../utils";
 
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert2";
 
 const Context = createContext();
 
@@ -80,7 +81,13 @@ export const AppContext = ({ children }) => {
       setIsUserLogged(false)
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
-      alert("Su sesión ha expirado");
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Su sesión ha expirado',
+        
+      })
       console.log(token);
       navigate('/');
       return;

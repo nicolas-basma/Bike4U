@@ -9,6 +9,7 @@ import useStore from "../../store/AppContext.jsx";
 import "./MyNavbar.css";
 import MyUserLoginDropdown from "../MyUserLoginDropdown/MyUserLoginDropdown.jsx";
 import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
+import swal from "sweetalert2";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
@@ -31,8 +32,13 @@ const MyNavbar = () => {
     }
     else {
       // handleShowAlert();
-      alert("You must be logged in to see your favorites");
-
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: '"You must be logged in to see your favorites"',
+        
+      })
     }
   }
 

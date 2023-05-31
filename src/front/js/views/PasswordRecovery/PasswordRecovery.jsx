@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
 import useStore from "../../store/AppContext.jsx";
+import swal from "sweetalert2";
 
 const PasswordRecovery =()=>{
 
@@ -19,7 +20,13 @@ const PasswordRecovery =()=>{
     const handleRecoverPassword = (()=>{
         
         fetchRestorePassword(formInput["email"]);
-        alert("Revise su correo electrónico")
+        swal.fire({
+          confirmButtonColor: '#ffd102',
+          icon: 'info',
+          title: 'Bike4U',
+          text: 'Revise su correo electrónico',
+          
+        })
         navigate("/");
         return
     })

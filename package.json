@@ -84,6 +84,7 @@
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.10.0",
 		"react-scroll": "^1.8.9",
-		"react-useanimations": "^2.10.0"
+		"react-useanimations": "^2.10.0",
+		"sweetalert2": "^11.7.10"
 	}
 }
