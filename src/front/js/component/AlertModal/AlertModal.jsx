@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import useStore  from '../../store/AppContext.jsx';
 
-const AlertModal = () => {
+const AlertModal = (message) => {
     const { store, action } = useStore();
     const { handleCloseAlert,} = action;
     const {showAlert} = store;
@@ -12,15 +12,12 @@ const AlertModal = () => {
     <>
       <Modal show={showAlert} onHide={handleCloseAlert}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Bike4U</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseAlert}>
+          <Button className="customizeBikeBtn" onClick={handleCloseAlert}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseAlert}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
