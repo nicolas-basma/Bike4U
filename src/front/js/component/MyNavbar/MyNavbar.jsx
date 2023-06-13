@@ -28,7 +28,7 @@ const MyNavbar = () => {
     if (isUserLogged) {
       setIsInvited(false)
       handleLinkClick();
-      handleShow();
+      // handleShow();
     }
     else {
       // handleShowAlert();

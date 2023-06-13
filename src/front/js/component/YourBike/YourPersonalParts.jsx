@@ -8,7 +8,7 @@ import useStore from "../../store/AppContext.jsx";
 
 const YourPersonalParts = ({ image, link, title, next, back, part, id }) => {
     const { store } = useStore();
-    const { userInfo, isInvited} = store;
+    const { userInfo, isInvited, isUserLogged} = store;
 
     const handleFavoritePart = async (id) => {
         addFavoritePart(userInfo.id, id);
@@ -25,8 +25,8 @@ const YourPersonalParts = ({ image, link, title, next, back, part, id }) => {
                         <button className="customizeBikeBtn2" onClick={() => back(part)}>  <FormattedMessage id="Before"></FormattedMessage></button>
                         <a href={link} target="_blank" rel="noopener noreferrer"><button className="customizeBikeBtn2">  <FormattedMessage id="LearnMore"></FormattedMessage></button></a>
                         <button className="customizeBikeBtn2" onClick={() => next(part)}>  <FormattedMessage id="Next"></FormattedMessage></button>
-                        { isInvited ? null 
-                        : <button className="customizeBikeBtn2" onClick={() => handleFavoritePart(id)}>  <FormattedMessage id="favorito"></FormattedMessage></button>}
+                        { isUserLogged ? <button className="customizeBikeBtn2" onClick={() => handleFavoritePart(id)}>  <FormattedMessage id="favorito"></FormattedMessage></button>
+                        : null }
                     </div>
                 </div>
             </div>

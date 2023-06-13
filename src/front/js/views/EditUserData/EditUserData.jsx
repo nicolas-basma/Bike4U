@@ -58,7 +58,17 @@ const handleUpdateUser=async()=>{
     
   const editedUser = await fetchEditUser(userInfo?.id, body);
   
-  if (!editedUser) return alert("Ha habido un problema actualizando la información")
+  if (!editedUser){
+    return(
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Ha habido un problema actualizando la información',
+        
+      })
+    )
+  }
 
   setUserInfo(editedUser);
   swal.fire({

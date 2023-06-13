@@ -79,7 +79,7 @@ const MyFooter = () => {
                   strokeColor={"white"}
                 />{" "}
               </a>
-              <a onClick={handleShow}>
+              <a>
                 <UseAnimations animation={mail} size={60} strokeColor={"white"} />
               <ModalForm />
               </a>

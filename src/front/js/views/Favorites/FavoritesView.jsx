@@ -30,8 +30,6 @@ const getFav = async () =>{
 
   useEffect(() => {
     getFav();
-    console.log("changeB", changeB);
-    console.log("changeP", changeP);
   }, [!changeB, !changeP])
 
   const handleDeleteFavBike = async (id) => {
