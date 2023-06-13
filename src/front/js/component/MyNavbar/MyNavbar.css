@@ -14,6 +14,16 @@
 
   margin-bottom: 10px;
 }
+.myshow {
+  display:none;
+}
+
+@media (min-width: 380px){
+    .myshow{
+      display: inline;
+    }
+
+}
 .branding:hover {
   color: rgb(255, 255, 255);
   text-align: center;

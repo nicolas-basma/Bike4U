@@ -27,7 +27,7 @@ const Home = () => {
         <Button
           onClick={handleNavigator}
           label={
-            <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
+            <FormattedMessage id="myNavbarButtomCustomizeBike"/>
           }
         />
         <ModalForm />
