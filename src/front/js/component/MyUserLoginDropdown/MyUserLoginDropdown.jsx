@@ -7,7 +7,7 @@ import useStore from "../../store/AppContext.jsx";
 
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action, store } = useStore();
-  const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid, setInvited } = action;
+  const { useForms, utils, setUserAsLogged, handleGetUserInfo, handleIsTokenValid, setIsInvited } = action;
   const { formInput, myHandleInput, handleInput } = useForms({
     userEmail : "",
     password : "",
@@ -26,7 +26,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
     
 
     event.preventDefault();
-    setInvited(false);
+    setIsInvited(false);
 
     const { userEmail, password, rememberMe } = formInput;
 
@@ -36,7 +36,6 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       rememberMe,
     };     
     
-    //console.log(data);
     closeNavbar();
 
     const loginProcess = await fetchLogin(data);
@@ -44,7 +43,6 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
     if (loginProcess === true) {
       setUserAsLogged();
       handleGetUserInfo();
-      //handleIsTokenValid();
       return;
     }
 
@@ -55,10 +53,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
 
   const handleCheckChange = (e) => {
     handleInput(e.target.checked, e.target.name);
-    //console.log(formInput);
   };
-
-  //console.log(formInput);
 
   return (
     <div className="dropdown onTop
@@ -70,7 +65,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
         data-bs-auto-close="outside"
         aria-expanded="false"
       >
-        <FormattedMessage id="userLoginDropdownMainButton"></FormattedMessage>
+        <FormattedMessage id="userLoginDropdownMainButton"/>
       </button>
       <div className="dropdown-menu dropdown-menu-end wrapper">
         <form className="px-4 py-3 px-4 py-3 d-flex flex-column justify-content-center">
@@ -79,7 +74,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
               htmlFor="MyUserLoginDropdown-input__email"
               className="form-label"
             >
-              <FormattedMessage id="userLoginDropdownEmail"></FormattedMessage>
+              <FormattedMessage id="userLoginDropdownEmail"/>
             </label>
             <input
               type="email"
@@ -97,7 +92,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
               htmlFor="MyUserLoginDropdown-input__password"
               className="form-label"
             >
-              <FormattedMessage id="userLoginDropdownPassword"></FormattedMessage>
+              <FormattedMessage id="userLoginDropdownPassword"/>
             </label>
             <input
               type={showPassword ? "text" : "password"}
@@ -128,7 +123,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
                 onChange={handleCheckChange}
               />
               <label className="form-label" htmlFor="dropdownCheck">
-                <FormattedMessage id="userLoginDropdownRemember"></FormattedMessage>
+                <FormattedMessage id="userLoginDropdownRemember"/>
               </label>
             </div>
           </div>
@@ -136,15 +131,15 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
             className="btn sendBtn w-100 mx-auto dropdown-btn mt-1"
             onClick={handleLogin}
           >
-            <FormattedMessage id="buttonSignIn"></FormattedMessage>
+            <FormattedMessage id="buttonSignIn"/>
           </button>
         </form>
         <div className="dropdown-divider"></div>
         <Link onClick={closeNavbar} className="btn dropdown-item button nav-item form-label" to="/SignUp">
-          <FormattedMessage id="userLoginDropdownNewUser"></FormattedMessage>
+          <FormattedMessage id="userLoginDropdownNewUser"/>
         </Link>
         <Link onClick={closeNavbar} className="btn dropdown-item button nav-item form-label" to="/PasswordRecovery">
-          <FormattedMessage id="userLoginDropdownForgotPassword"></FormattedMessage>
+          <FormattedMessage id="userLoginDropdownForgotPassword"/>
         </Link>
       </div>
     </div>

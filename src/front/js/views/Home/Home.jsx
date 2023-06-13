@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import AlertModal from "../../component/AlertModal/AlertModal.jsx";
-
 import useStore from "../../store/AppContext.jsx";
 import Button from "../../component/Button/Button.jsx";
 import ModalForm from "../../component/ModalForm/ModalForm.jsx";
@@ -34,7 +32,6 @@ const Home = () => {
         />
         <ModalForm />
         <InvitedModal />
-        <AlertModal />
       </div>
 
       <div className="container">

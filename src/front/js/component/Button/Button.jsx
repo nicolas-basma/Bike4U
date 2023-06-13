@@ -9,12 +9,12 @@ import "./Button.css"
 const CustomizeBikeButton = () => {
   const navigate = useNavigate();
   const { store, action } = useStore();
-  const { askInfo, invited } = store;
-  const { setAskInfo, setInvited } = action;
+  const { askInfo, isInvited } = store;
+  const { setAskInfo } = action;
  
 
-  const handleInvited = () => {
-    if (invited) {
+  const handleisIvited = () => {
+    if (isInvited) {
     setAskInfo(true);
     }
     else {
@@ -28,7 +28,7 @@ const CustomizeBikeButton = () => {
   return (
 
     // <Link to="/customizeBike">
-      <button className="customizeBikeBtn" onClick={handleInvited}>
+      <button className="customizeBikeBtn" onClick={handleisIvited}>
       <FormattedMessage id="customizeBikeButton"></FormattedMessage>
       </button>
     // </Link>

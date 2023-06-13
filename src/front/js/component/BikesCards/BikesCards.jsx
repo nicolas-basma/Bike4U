@@ -1,7 +1,7 @@
 import React from "react";
-
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
+
 import "./bikesCards.css";
 
 const BikesCards = ({ image, title, description, link }) => {
@@ -16,7 +16,7 @@ const BikesCards = ({ image, title, description, link }) => {
           </div>
           <div className="btn">
             <a href={link} target="_blank" rel="noopener noreferrer">
-              <button className="customizeBikeBtn2">Learn More</button>
+              <button className="customizeBikeBtn2"><FormattedMessage id="LearnMore" defaultMessage="Learn More"/></button>
             </a>
           </div>
         </div>

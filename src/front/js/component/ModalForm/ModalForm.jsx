@@ -8,12 +8,13 @@ import { FormattedMessage } from "react-intl";
 
 import useStore from "../../store/AppContext.jsx";
 import "./ModalForm.css";
+import swal from "sweetalert2";
 
 const ModalForm = () => {
   const intl = useIntl();
   const { store, action } = useStore();
   const { show } = store;
-  const { handleClose, setShow, useForms } = action;
+  const { handleClose, setShow, useForms, setShowAlert } = action;
   const { formInput, myHandleInput } = useForms();
   const url = process.env.REACT_APP_API + "send-email";
 
@@ -28,14 +29,32 @@ const ModalForm = () => {
     const { email, message, name } = formInput;
 
     if (!validateEmail(email)) {
-      alert("Por favor ingrese un email valido");
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Por favor ingrese un email valido',
+        
+      })
       return;
     }
     if (email === undefined || message === undefined || name === undefined) {
-      alert("Por favor rellene todos los campos");
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Por favor rellene todos los campos',
+        
+      })
       return; // si los campos no estan definidos, no se envia el email
     } else if (email === "" || message === "" || name === "") {
-      alert("Por favor rellene todos los campos");
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Por favor rellene todos los campos',
+        
+      })
       return; // si los campos estan vacios, no se envia el email
     }
     fetch(url, {
@@ -105,10 +124,10 @@ const ModalForm = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button className="customizeBikeBtn2" onClick={handleClose}>
             <FormattedMessage id="buttonCancel"></FormattedMessage>
           </Button>
-          <Button variant="success" onClick={handleSendMessage}>
+          <Button className="customizeBikeBtn2" onClick={handleSendMessage}>
             <FormattedMessage id="buttonSendMessage"></FormattedMessage>
           </Button>
         </Modal.Footer>

@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 import useStore from "../../store/AppContext.jsx";
 
 import "./SignUp.css";
+import swal from "sweetalert2";
 
 
 
@@ -12,6 +14,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const {store, action}=useStore();
+  const {lang, allMessages} = store;
   const {useForms, utils}=action;
   const {formInput, myHandleInput}=useForms();
   const {fetchSingup} = utils;
@@ -36,36 +39,56 @@ const SignUp = () => {
             bike_type
       }
       
-      if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
+      if (password !== confirmPassword) return (
+        swal.fire({
+          confirmButtonColor: '#ffd102',
+          icon: 'error',
+          title: 'Bike4U',
+          text: 'Las contraseñas no coinciden',
+          
+        })
+      )
       
       const isUserCreated = await fetchSingup(body);
       //console.log(isUserCreated);
       
-      if (!isUserCreated) return alert("Ha habido un problema con la creación del usuario")
-
-      alert("Usuario creado correctamente, proceda a logearse");
+      if (!isUserCreated) return ( swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Ha habido un problema con la creación del usuario',
+        
+      }))
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'success',
+        title: 'Bike4U',
+        text: 'Usuario creado correctamente, proceda a logearse',
+        
+      })
       navigate("/");
         
     }
-    
-  return (
+    let text = 'texto'// <FormattedMessage id="signInNameInputPlaceholder" defaultMessage="Nombre"/>
+  return (  
     <form>
       <div className="wrapper">
         <div className="signUpFirstTitle">
-          <h1> INTRODUZCA SUS DATOS</h1>
+          <h1> <FormattedMessage id="signInTitle" defaultMessage="INTRODUZCA SUS DATOS"/></h1>
         </div>
 
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="inputName" className="form-label">
-              Nombre
+            <FormattedMessage id="signInName" defaultMessage="Nombre"/>
             </label>
             <input
               type="text"
               className="form-control"
               id="inputName"
               aria-describedby="inputName"
-              placeholder="Introduzca su nombre"
+              // placeholder={<FormattedMessage id="signInNameInputPlaceholder" defaultMessage="Nombre"/>}
+              placeholder={allMessages[lang].signInNameInputPlaceholder}
               onChange={myHandleInput}
               name="name"
             />
@@ -75,14 +98,14 @@ const SignUp = () => {
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="inputLastname" className="form-label">
-              Apellidos
+            <FormattedMessage id="signInLastName" defaultMessage="Apellidos"/>
             </label>
             <input
               type="text"
               className="form-control"
               id="inputLastname"
               aria-describedby="inputLastname"
-              placeholder="Introduzca sus apellidos"
+              placeholder={allMessages[lang].signInLastNamePlaceholder}
               onChange={myHandleInput}
               name="lastname"
             />
@@ -92,14 +115,14 @@ const SignUp = () => {
         <div className="row mb-3 center">
           <div className="col-12">
             <label htmlFor="inputEmail" className="form-label">
-              Email
+            <FormattedMessage id="signInEmail" defaultMessage="Email"/>
             </label>
             <input
               type="email"
               className="form-control"
               id="inputEmail"
               aria-describedby="inputEmail"
-              placeholder="Ej. juan@perez.com"
+              placeholder={allMessages[lang].signInEmailPlaceholder}
               name="email"
               onChange={myHandleInput}
             />
@@ -109,7 +132,7 @@ const SignUp = () => {
         <div className="row mb-3 center">
           <div className="col-6 position-relative">
             <label htmlFor="inputPassword1" className="form-label">
-              Contraseña
+            <FormattedMessage id="signInPassword" defaultMessage="Contraseña"/>
             </label>
             <div>
               <input
@@ -117,7 +140,7 @@ const SignUp = () => {
                 className="form-control"
                 id="inputPassword1"
                 aria-describedby="inputPassword1"
-                placeholder="Introduzca su contraseña"
+                placeholder={allMessages[lang].signInPasswordPlaceholder}
                 name="password"
                 onChange={myHandleInput}
               />
@@ -134,7 +157,7 @@ const SignUp = () => {
 
           <div className="col-6 position-relative">
             <label htmlFor="inputPassword2" className="form-label">
-              Confirme su contraseña
+            <FormattedMessage id="signInConfirmPassword" defaultMessage="Confirme su contraseña"/>
             </label>
             <div>
               <input
@@ -142,7 +165,7 @@ const SignUp = () => {
                 className="form-control"
                 id="inputPassword2"
                 aria-describedby="inputPassword2"
-                placeholder="Confirme su Contraseña"
+                placeholder={allMessages[lang].signInConfirmPasswordPlaceholder}
                 name="confirmPassword"
                 onChange={myHandleInput}
               />
@@ -157,29 +180,31 @@ const SignUp = () => {
           </div>
         </div>
           <div className="signUpSecondTitle">
-            <h1>INTRODUZCA SUS CARACTERÍSTICAS</h1>
+            <h1><FormattedMessage id="signInSecondTitle" defaultMessage="INTRODUZCA SUS CARACTERÍSTICAS"/></h1>
           </div>
-        <div className="mb-3">
-          <div className="row">
+        <div className="row mb-3">
+
+          <div className="col-12">
+            <label htmlFor="disabledSelect" className="form-label">
+            <FormattedMessage id="signInHeight" defaultMessage="Seleccione su altura"/>
+            </label>
+            <select  onChange={myHandleInput} name="height" className="form-select" aria-describedby="selectSize">
+              <option >{allMessages[lang].signInOptionHeight}</option>
+              <option value={"s"}>150-160 cm</option>
+              <option value={"s"}>161-170 cm</option>
+              <option value={"m"}>171-180 cm</option>
+              <option value={"l"}>181-190 cm</option>
+              <option value={"l"}>+ 190 cm</option>
+            </select>
+          </div>
+        </div>
+        <div className="row mb-3">
             <div className="col-12">
               <label htmlFor="disabledSelect" className="form-label">
-                Seleccione su altura
-              </label>
-              <select  onChange={myHandleInput} name="height" className="form-select" aria-describedby="selectSize">
-                <option >Elige tu altura</option>
-                <option value={"s"}>150-160 cm</option>
-                <option value={"s"}>161-170 cm</option>
-                <option value={"m"}>171-180 cm</option>
-                <option value={"l"}>181-190 cm</option>
-                <option value={"l"}>+ 190 cm</option>
-              </select>
-            </div>
-            <div className="col-12">
-              <label htmlFor="disabledSelect" className="form-label">
-                Seleccione su peso
+              <FormattedMessage id="signInWeight" defaultMessage="Seleccione su peso"/>
               </label>
               <select onChange={myHandleInput} className="form-select" name="weight" aria-describedby="selectWeight">
-                <option>Elige tu peso</option>
+                <option>{allMessages[lang].signInOptionWeight}</option>
                 <option>30-40 kg</option>
                 <option>41-50 kg</option>
                 <option>51-60 kg</option>
@@ -190,26 +215,25 @@ const SignUp = () => {
                 <option>+100 kg</option>
               </select>
             </div>
-          </div>
-          <div className="row" id="center">
-            <div className="col-12">
-              <div className="mb-3">
-                <label className="form-label" id="typeOfBike">
-                  Tipo de bicicleta
-                </label>
-                <select onChange={myHandleInput} className="form-select" name="bike_type" aria-describedby="typeOfBike">
-                  <option>Elige tu tipo de bicicleta</option>
-                  <option value={"road"}>Carretera</option>
-                  <option value={"mtb"}>Montaña</option>
-                  <option value={"urban"}>Urban</option>
-                </select>
-              </div>
+        </div>
+        <div className="row mb-3 center">
+          <div className="col-12">
+            <div className="mb-3">
+              <label className="form-label" id="typeOfBike">
+              <FormattedMessage id="signInBikeType" defaultMessage="Tipo de bicicleta"/>
+              </label>
+              <select onChange={myHandleInput} className="form-select" name="bike_type" aria-describedby="typeOfBike">
+                <option>{allMessages[lang].signInOptionBikeType}</option>
+                <option value={"road"}>{allMessages[lang].signInOptionBikeRoad}</option>
+                <option value={"mtb"}>{allMessages[lang].signInOptionBikeMTB}</option>
+                <option value={"urban"}>{allMessages[lang].signInOptionBikeUrban}</option>
+              </select>
             </div>
           </div>
         </div>
 
         <button type="button" className="sendBtn" onClick={handleCreateUser} aria-describedby="regiserButton">
-          Enviar
+        <FormattedMessage id="signInSend" defaultMessage="Enviar"/>
         </button>
       </div>
     </form>

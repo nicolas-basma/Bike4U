@@ -15,19 +15,15 @@ const AboutUs = () => {
     <div className="container">
       <div className="about">
         <h1>
-          <FormattedMessage id="aboutUsTittle"></FormattedMessage>
+          <FormattedMessage id="aboutUsTittle"/>
         </h1>
-        <p>
-          <FormattedMessage id="aboutUsDescription"></FormattedMessage>
-        </p>
+          <FormattedMessage id="aboutUsDescription"/>
       </div>
-      <div>
-        <h1>
+      <div className="btnContactUs">
           <button className="contactButton" onClick={handleShow}>
-            <FormattedMessage id="buttonContact"></FormattedMessage>
+            <FormattedMessage id="buttonContact"/>
           </button>
           <ModalForm />
-        </h1>
       </div>
     </div>
   );

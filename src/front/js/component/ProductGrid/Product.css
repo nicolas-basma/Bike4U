@@ -1,11 +1,12 @@
 .productImage {
-    width: auto;
+    /* width: 200px; */
     height: 250px;
     text-align: center;    
 }
 
 .product{
     margin: 10px;
+    padding: 10px;
 }
 
 .productImage:hover {

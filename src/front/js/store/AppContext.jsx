@@ -13,6 +13,7 @@ import carouselHomePhotos from "../img/arrayPhotos.js";
 import utils from "../utils";
 
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert2";
 
 const Context = createContext();
 
@@ -27,7 +28,7 @@ export const AppContext = ({ children }) => {
   const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("userSessionToken")!==null);
   const [userInfo, setUserInfo] = useState();
   const [favorite, setFavorite] = useState(false);
-  const [invited, setInvited] = useState(true);
+  const [isInvited, setIsInvited] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const handleCloseAlert = () => setShowAlert(false);
 
@@ -80,7 +81,13 @@ export const AppContext = ({ children }) => {
       setIsUserLogged(false)
       localStorage.removeItem("userSessionToken");
       localStorage.removeItem("loggedUser");
-      alert("Su sesión ha expirado");
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'Su sesión ha expirado',
+        
+      })
       console.log(token);
       navigate('/');
       return;
@@ -117,7 +124,7 @@ export const AppContext = ({ children }) => {
     userInfo,
     favorite,
     askInfo,
-    invited,
+    isInvited,
     showAlert,
   };
   const action = {
@@ -135,7 +142,7 @@ export const AppContext = ({ children }) => {
     handleIsTokenValid,
     setFavorite,
     setAskInfo,
-    setInvited,
+    setIsInvited,
     setShowAlert,
     handleCloseAlert,
   };

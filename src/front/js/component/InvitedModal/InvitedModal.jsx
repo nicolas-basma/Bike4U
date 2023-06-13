@@ -1,13 +1,17 @@
 import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+
 import useStore from "../../store/AppContext.jsx";
 
-const InvitedModal = () => {
+const invitedModal = () => {
     const navigate = useNavigate();
     const { store, action } = useStore();
+    const {lang, allMessages} = store;
     const {useForms,setUserInfo, utils}=action;
     const {formInput, myHandleInput}=useForms();
     const {height, bike_type}=formInput;
@@ -18,7 +22,7 @@ const InvitedModal = () => {
     const handleClose = () => setAskInfo(false);
     const go = () => navigate('/customizeBike');
     
-    const handleInvitedUser = async () => {
+    const handleisIvitedUser = async () => {
         const body = {
             size : height,
             bike_type,
@@ -33,13 +37,13 @@ const InvitedModal = () => {
     <>
       <Modal show={askInfo} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Introduzca sus Caracteristicas</Modal.Title>
+          <Modal.Title><FormattedMessage id="signInSecondTitle" defaultMessage="INTRODUZCA SUS CARACTERÍSTICAS"/></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label htmlFor="disabledSelect" className="form-label">
-                Seleccione su altura
+              <FormattedMessage id="signInHeight" defaultMessage="Seleccione su altura"/>
               </Form.Label>
               <select
                 onChange={myHandleInput}
@@ -47,7 +51,7 @@ const InvitedModal = () => {
                 className="form-select"
                 aria-describedby="selectSize"
               >
-                <option>Elige tu altura</option>
+                <option>{allMessages[lang].signInOptionHeight}</option>
                 <option value={"s"}>150-160 cm</option>
                 <option value={"s"}>161-170 cm</option>
                 <option value={"m"}>171-180 cm</option>
@@ -55,7 +59,7 @@ const InvitedModal = () => {
                 <option value={"l"}>+ 190 cm</option>
               </select>
               <Form.Label htmlFor="disabledSelect" className="form-label">
-                Seleccione su peso
+              <FormattedMessage id="signInWeight" defaultMessage="Seleccione su peso"/>
               </Form.Label>
               <select
                 onChange={myHandleInput}
@@ -63,7 +67,7 @@ const InvitedModal = () => {
                 name="weight"
                 aria-describedby="selectWeight"
               >
-                <option>Elige tu peso</option>
+                <option>{allMessages[lang].signInOptionWeight}</option>
                 <option>30-40 kg</option>
                 <option>41-50 kg</option>
                 <option>51-60 kg</option>
@@ -74,7 +78,7 @@ const InvitedModal = () => {
                 <option>+100 kg</option>
               </select>
               <Form.Label className="form-label" id="typeOfBike">
-                Tipo de bicicleta
+              <FormattedMessage id="signInBikeType" defaultMessage="Tipo de bicicleta"/>
               </Form.Label>
               <select
                 onChange={myHandleInput}
@@ -82,20 +86,20 @@ const InvitedModal = () => {
                 name="bike_type"
                 aria-describedby="typeOfBike"
               >
-                <option>Elige tu tipo de bicicleta</option>
-                <option value={"road"}>Carretera</option>
-                <option value={"mtb"}>Montaña</option>
-                <option value={"urban"}>Urban</option>
+                <option>{allMessages[lang].signInOptionBikeType}</option>
+                <option value={"road"}>{allMessages[lang].signInOptionBikeRoad}</option>
+                <option value={"mtb"}>{allMessages[lang].signInOptionBikeMTB}</option>
+                <option value={"urban"}>{allMessages[lang].signInOptionBikeUrban}</option>
               </select>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Close
+          <Button className="customizeBikeBtn2" onClick={handleClose}>
+          <FormattedMessage id="btnClose" defaultMessage="Close"/>
           </Button>
-          <Button variant="success" onClick={handleInvitedUser}>
-            Save Changes
+          <Button className="customizeBikeBtn2" onClick={handleisIvitedUser}>
+          <FormattedMessage id="btnSave" defaultMessage="Save"/>
           </Button>
         </Modal.Footer>
       </Modal>
@@ -103,4 +107,4 @@ const InvitedModal = () => {
   );
 };
 
-export default InvitedModal;
+export default invitedModal;

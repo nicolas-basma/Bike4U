@@ -4,17 +4,16 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import AlertModal from "../AlertModal/AlertModal.jsx";
 
 import useStore from "../../store/AppContext.jsx";
-
 import "./MyNavbar.css";
 import MyUserLoginDropdown from "../MyUserLoginDropdown/MyUserLoginDropdown.jsx";
 import MyLanguageDropdown from "../MyLanguageDropdown/MyLanguageDropdown.jsx";
+import swal from "sweetalert2";
 
 const MyNavbar = () => {
   const { store, action } = useStore();
-  const { handleShow, handleLogout, setInvited, handleShowAlert } = action;
+  const { handleShow, handleLogout, setIsInvited} = action;
   const { logo, isUserLogged, userInfo } = store;
 
   const navbarTogglerRef = useRef(null);
@@ -27,18 +26,24 @@ const MyNavbar = () => {
 
   const handleGoFav = () => {
     if (isUserLogged) {
+      setIsInvited(false)
       handleLinkClick();
-      handleShow();
+      // handleShow();
     }
     else {
       // handleShowAlert();
-      alert("You must be logged in to see your favorites");
-
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: '"You must be logged in to see your favorites"',
+        
+      })
     }
   }
 
   const handleLogoutClick  = () => {
-    setInvited(true)
+    setIsInvited(true)
     handleLinkClick();
     handleLogout();
   }
@@ -55,7 +60,7 @@ const MyNavbar = () => {
             <Link to="/" className="branding"  onClick={handleLinkClick}>
               <img src={logo} width={100} />
             </Link>
-            <Link to="/" className="branding"  onClick={handleLinkClick}>
+            <Link to="/" className="branding d-none d-sm-inline"  onClick={handleLinkClick}>
               bike4u
             </Link>
           </Navbar.Brand>
@@ -68,7 +73,7 @@ const MyNavbar = () => {
               {isUserLogged
                 ? <Link to="/Profile" onClick={handleLinkClick}>
                     <Nav.Item className="btn button user-name">
-                      {userInfo?.name.toUpperCase()}
+                      {userInfo?.name?.toUpperCase()}
                     </Nav.Item>
                   </Link>          
                 : null}
@@ -77,11 +82,14 @@ const MyNavbar = () => {
                   <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
                 </Nav.Item>
               </Link>
-              <Link to={isUserLogged ? "/favorites" : "/"} onClick={handleGoFav}>
-                <Nav.Item className="btn button">
-                  <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
-                </Nav.Item>
-              </Link>
+              {isUserLogged
+              ?
+                <Link to={isUserLogged ? "/favorites" : "/"} onClick={handleGoFav}>
+                  <Nav.Item className="btn button">
+                    <FormattedMessage id="myNavbarButtomFavourites"></FormattedMessage>
+                  </Nav.Item>
+                </Link>
+              : null}  
               <Link to="/aboutus" onClick={handleLinkClick}>
                 <Nav.Item className="btn button">
                   <FormattedMessage id="myNavbarButtomContact"></FormattedMessage>
