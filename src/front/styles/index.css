@@ -19,7 +19,8 @@
     color: rgb(255, 209, 2);
     background-Color: black;
     font-family: "Racing Sans One", cursive;
-    border-radius:10px    
+    border-radius:10px;
+    z-index: 5;    
 }
 .backToTopButton:hover{
 
