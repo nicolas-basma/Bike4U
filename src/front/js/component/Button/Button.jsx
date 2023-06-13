@@ -22,14 +22,14 @@ const CustomizeBikeButton = () => {
     }
   };
 
-
-
-
+//col-12 col-s-4 col-md-8 col-lg-6
   return (
 
     // <Link to="/customizeBike">
-      <button className="customizeBikeBtn" onClick={handleisIvited}>
-      <FormattedMessage id="customizeBikeButton"></FormattedMessage>
+      <button className="my-5 mx-auto mx-s-2 mx-md-3 mx-l-4 mx-xl-5 p-4 customizeBikeBtn" onClick={handleisIvited}>
+        <h1>
+          <FormattedMessage id="customizeBikeButton"></FormattedMessage>
+        </h1>
       </button>
     // </Link>
 
