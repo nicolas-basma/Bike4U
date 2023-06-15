@@ -33,7 +33,7 @@ const getFavorites = async (userID) => {
             title: 'Bike4U',
             text: `Error: ${res?.data?.msg}`,
   
-          })
+          }) 
         }
         return res.json()
     }
@@ -50,7 +50,13 @@ const addFavoritePart = async (userID, partID) => {
     {method: 'POST' })
     .then((res)=>{
         if (res.status != 200) {
-          // new Error(`Error: ${res?.data?.msg}`);
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: `Error: ${res?.data?.msg}`,
+
+          })
         }
         return res.json()
     })
