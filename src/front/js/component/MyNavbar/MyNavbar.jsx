@@ -60,7 +60,7 @@ const MyNavbar = () => {
             <Link to="/" className="branding"  onClick={handleLinkClick}>
               <img src={logo} width={100} />
             </Link>
-            <Link to="/" className="branding d-none d-sm-inline"  onClick={handleLinkClick}>
+            <Link to="/" className="branding myshow d-sm-inline"  onClick={handleLinkClick}>
               bike4u
             </Link>
           </Navbar.Brand>

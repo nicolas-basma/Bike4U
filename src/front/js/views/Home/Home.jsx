@@ -23,11 +23,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="text-center m-5">
+      <div className="text-center"> 
         <Button
           onClick={handleNavigator}
           label={
-            <FormattedMessage id="myNavbarButtomCustomizeBike"></FormattedMessage>
+            <FormattedMessage id="myNavbarButtomCustomizeBike"/>
           }
         />
         <ModalForm />

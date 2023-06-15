@@ -17,7 +17,8 @@ const AboutUs = () => {
         <h1>
           <FormattedMessage id="aboutUsTittle"/>
         </h1>
-          <FormattedMessage id="aboutUsDescription"/>
+        <FormattedMessage id="aboutUsDescription"/>
+        
       </div>
       <div className="btnContactUs">
           <button className="contactButton" onClick={handleShow}>

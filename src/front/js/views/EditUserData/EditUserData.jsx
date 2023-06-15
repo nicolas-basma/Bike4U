@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+import { useIntl } from 'react-intl';
 
 import useStore from "../../store/AppContext.jsx";
 import useForms from "../../utils/useForms.jsx";
@@ -8,6 +10,7 @@ import swal from "sweetalert2";
 
 const EditUserData = () => {
   const navigate = useNavigate();
+  const intl = useIntl();
   const {store, action}=useStore();
   const {userInfo} = store;
   const {utils, handleLogout, setUserInfo}=action;
@@ -156,13 +159,13 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
     <form>
       <div className="wrapper">
         <div className="signUpFirstTitle">
-          <h1> DATOS PERSONALES </h1>
+          <h1> <FormattedMessage id="modifyTitle" defaultMessage="DATOS PERSONALES"/> </h1>
         </div>
 
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formName" className="form-label">
-              Nombre
+              <FormattedMessage id="signInName" defaultMessage="Nombre"/>
             </label>
             <input
               type="text"
@@ -180,7 +183,7 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formLastName" className="form-label">
-              Apellidos
+            <FormattedMessage id="signInLastName" defaultMessage="Apellidos"/>
             </label>
             <input
               type="text"
@@ -198,7 +201,7 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formEmail" className="form-label">
-              Email
+            <FormattedMessage id="signInEmail" defaultMessage="Email"/>
             </label>
             <input
               type="email"
@@ -215,10 +218,10 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formSizeSelect" className="form-label">
-              Altura
+            <FormattedMessage id="modifyHeight" defaultMessage="Altura"/>
             </label>
             <select id="formSizeSelect" onChange={myHandleInput} name="height" className="form-select" value={formInput["height"]}>
-              <option >Elige tu altura</option>
+              <option >{intl.formatMessage({ id: 'signInOptionHeight' })}</option>
               <option value={"xs"}>150-160 cm</option>
               <option value={"s"}>161-170 cm</option>
               <option value={"m"}>171-180 cm</option>
@@ -231,10 +234,10 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formWeightSelect" className="form-label">
-              Peso
+              <FormattedMessage id="modifyWeight" defaultMessage="Peso"/>
             </label>
             <select id="formWeightSelect" onChange={myHandleInput} className="form-select" name="weight" value={formInput["weight"]}>
-              <option>Elige tu peso</option>
+              <option>{intl.formatMessage({ id: 'signInOptionWeight' })}</option>
               <option>30-40 kg</option>
               <option>41-50 kg</option>
               <option>51-60 kg</option>
@@ -250,35 +253,35 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         <div className="row mb-3">
           <div className="col-12">
             <label htmlFor="formBikeSelect" className="form-label" >
-              Tipo de bicicleta
+              <FormattedMessage id="signInBikeType" defaultMessage="Tipo de bicicleta"/>
             </label>
             <select id="formBikeSelect" onChange={myHandleInput} className="form-select" name="bike_type" value={formInput["bike_type"]}>
-              <option>Elige tu tipo de bicicleta</option>
-              <option value={"road"}>Carretera</option>
-              <option value={"mtb"}>Montaña</option>
-              <option value={"urban"}>Urban</option>
+              <option>{intl.formatMessage({ id: 'signInOptionBikeType' })}</option>
+              <option value={"road"}>{intl.formatMessage({ id: 'signInOptionBikeRoad' })}</option>
+              <option value={"mtb"}>{intl.formatMessage({ id: 'signInOptionBikeMTB' })}</option>
+              <option value={"urban"}>{intl.formatMessage({ id: 'signInOptionBikeUrban' })}</option>
             </select>
           </div>
         </div>
 
         <button type="button" className="databtn sendBtn" onClick={handleUpdateUser}>
-          Actualizar
+          <FormattedMessage id="modifyData" defaultMessage="Actualizar"/>
         </button>
         <hr />
 
         <div className="row mb-3">
-          <div className="col-6 position-relative">
+          <div className="col-12 col-sm-6 position-relative">
             <label htmlFor="newPassword" className="form-label">
-              Nueva contraseña
+              <FormattedMessage id="modifyPass" defaultMessage="Nueva contraseña"/>             
             </label>
             <input
               type={showPassword ? "text" : "password"}
               className="form-control"
               id="newPassword"
               aria-describedby="newPassword"
-              placeholder="Nueva contraseña"
+              placeholder={intl.formatMessage({ id: 'modifyNewPassPlaceholder' })}
               name="newPassword"
-              value={formInput[name]}
+              value={formInput["newPassword"]}
               onChange={myHandleInput}
             />
             <button
@@ -291,18 +294,18 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
           </div>
         
 
-          <div className="col-6 position-relative">
+          <div className="col-12 col-sm-6 position-relative">
             <label htmlFor="newPasswordValidation" className="form-label">
-              Verifique la contraseña
+              <FormattedMessage id="modifyVerifyPass" defaultMessage="Verifique la contraseña"/>
             </label>
             <input
               type={showPassword ? "text" : "password"}
               className="form-control"
               id="newPasswordValidation"
               aria-describedby="newPasswordValidation"
-              placeholder="Valide su contraseña"
+              placeholder={intl.formatMessage({ id: 'modifyPassPlaceholder' })}
               name="newPasswordValidation"
-              value={formInput[name]}
+              value={formInput["newPasswordValidation"]}
               onChange={myHandleInput}
             />
             <button
@@ -316,11 +319,11 @@ const buttonState = myButtonColorBoolean() ? "sendBtn" : "deleteBtn";
         </div>
 
         <button type="button" className={"databtn "+ buttonState} onClick={handleChangePassword}>
-          Modificar contraseña
+          <FormattedMessage id="modifyPassBtn" defaultMessage="Modificar contraseña"/>
         </button>
         <hr />
         <button type="button" className="databtn deleteBtn" onClick={handleDeleteUser}>
-          Eliminar cuenta
+          <FormattedMessage id="modifyDeleteBtn" defaultMessage="Eliminar cuenta"/>
         </button>
       </div>
     </form>
