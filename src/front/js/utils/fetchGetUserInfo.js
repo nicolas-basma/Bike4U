@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchGetUserInfo =(userID,userInfoSetter)=>{
 
     fetch(process.env.REACT_APP_API + "user"+userID,

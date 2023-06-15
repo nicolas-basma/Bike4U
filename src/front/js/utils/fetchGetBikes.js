@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchGetBikes =(terrain,bikeSetter)=>{
     fetch(process.env.REACT_APP_API + "bikes/"+terrain,
     {method: 'GET' })

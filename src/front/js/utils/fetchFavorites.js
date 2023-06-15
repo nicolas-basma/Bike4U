@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const getFavorites = async (userID) => {
     return fetch(process.env.REACT_APP_API  + "user/" + userID + '/favorites',
     {method: 'GET' })

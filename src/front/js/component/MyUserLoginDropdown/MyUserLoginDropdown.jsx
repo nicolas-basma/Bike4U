@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 
 import "./MyUserLoginDropdown.css";
 import useStore from "../../store/AppContext.jsx";
+import swal from "sweetalert2";
 
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action, store } = useStore();

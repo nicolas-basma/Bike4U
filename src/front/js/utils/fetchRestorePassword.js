@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchRestorePassword = (userEmail)=>{
 
     return fetch(process.env.REACT_APP_API + "recover-user-password/"+userEmail,

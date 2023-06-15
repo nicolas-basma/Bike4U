@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchEditUser =(userID,data)=>{
     
     return fetch(process.env.REACT_APP_API  + "edit-user/" + userID,
