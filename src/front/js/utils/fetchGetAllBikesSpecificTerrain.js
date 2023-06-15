@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchGetAllBikesSpecificTerrain = async(terrain, bikeSetter)=>{
   return fetch(process.env.REACT_APP_API + "bikes/"+terrain,
   {method: 'GET' })

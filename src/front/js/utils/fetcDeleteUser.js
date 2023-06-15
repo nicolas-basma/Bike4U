@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchDeleteUser = async (userID)=>{
 
     return await fetch(process.env.REACT_APP_API + "delete-user/"+userID,

@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchGetImages =(imageSetter)=>{
     fetch(process.env.REACT_APP_API + "images",
     {method: 'GET' })

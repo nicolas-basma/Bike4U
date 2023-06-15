@@ -1,3 +1,5 @@
+import swal from 'sweetalert2';
+
 const fetchGetPartByTypeTerrainAndSize = async (terrain, size)=>{
 
     return fetch(process.env.REACT_APP_API + "parts/"+terrain+"/"+size,
