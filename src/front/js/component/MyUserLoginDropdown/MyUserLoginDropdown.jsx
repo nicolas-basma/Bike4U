@@ -45,8 +45,12 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       handleGetUserInfo();
       return;
     }
-
-    alert(loginProcess);
+    swal.fire({
+      title: "Error!",
+      text: loginProcess,
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
     return ;
     
   }
