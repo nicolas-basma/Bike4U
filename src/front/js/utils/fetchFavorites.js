@@ -3,7 +3,12 @@ const getFavorites = async (userID) => {
     {method: 'GET' })
     .then((res)=>{
         if (res.status != 200) {
-          throw new Error(`Error: ${res?.data?.msg}`);
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: `Error: ${res?.data?.msg}`,
+          })
         }
         return res.json()
     }
@@ -20,7 +25,13 @@ const getFavorites = async (userID) => {
     {method: 'POST' })
     .then((res)=>{
         if (res.status != 200) {
-          throw new Error(`Error: ${res?.data?.msg}`);
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: `Error: ${res?.data?.msg}`,
+  
+          })
         }
         return res.json()
     }
@@ -37,7 +48,7 @@ const addFavoritePart = async (userID, partID) => {
     {method: 'POST' })
     .then((res)=>{
         if (res.status != 200) {
-          throw new Error(`Error: ${res?.data?.msg}`);
+          // new Error(`Error: ${res?.data?.msg}`);
         }
         return res.json()
     })
@@ -53,7 +64,12 @@ const deleteFavoriteBike = async (userID,bikeID) => {
     {method: 'DELETE' })
     .then((res)=>{
         if (res.status != 200) {
-          throw new Error(`Error: ${res?.data?.msg}`);
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: `Error: ${res?.data?.msg}`,
+          })
         }
         return res.json()
     }
@@ -70,7 +86,12 @@ const deleteFavoritePart = async (userID,partID) => {
     {method: 'DELETE' })
     .then((res)=>{
         if (res.status != 200) {
-          throw new Error(`Error: ${res?.data?.msg}`);
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: `Error: ${res?.data?.msg}`,
+          })
         }
         return res.json()
     }

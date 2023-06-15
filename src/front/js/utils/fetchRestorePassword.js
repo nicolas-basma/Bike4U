@@ -4,7 +4,12 @@ const fetchRestorePassword = (userEmail)=>{
                         {method: 'GET' })
                 .then((res)=>{
                     if (res.status != 200) {
-                        throw new Error(`Error: ${res?.msg}`);
+                        swal.fire({
+                            confirmButtonColor: '#ffd102',
+                            icon: 'error',
+                            title: 'Bike4U',
+                            text: `Error: ${res?.msg}`,
+                        })
                     }
                     return true;
                 })

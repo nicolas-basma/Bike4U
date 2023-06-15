@@ -1,3 +1,5 @@
+import swal from "sweetalert2";
+
 const fetchEditUserPassword =(userID,data)=>{
     
     return fetch(process.env.REACT_APP_API  + "edit-user-password/" + userID,
@@ -6,7 +8,13 @@ const fetchEditUserPassword =(userID,data)=>{
     body: JSON.stringify(data)})
     .then((res)=>{
       if (res.status != 200) {
-        throw new Error(`Error: ${res?.msg}`);
+        swal.fire({
+          confirmButtonColor: '#ffd102',
+          icon: 'error',
+          title: 'Bike4U',
+          text: `Error: ${res?.msg}`,
+
+        })
       } 
       return res.json();
     })

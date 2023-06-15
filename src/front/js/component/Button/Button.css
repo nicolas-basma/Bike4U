@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
 
 .customizeBikeBtn{
-    margin-top:20px;
+    /* margin-top:20px;
     height:100px;
-    width: 400px;
-    border-radius: 10px;
+    width: 400px;*/
+    border-radius: 10px; 
     background-color: black;
     color:white;
     font-family: "Racing Sans One", cursive;

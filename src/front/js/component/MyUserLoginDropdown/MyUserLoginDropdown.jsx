@@ -45,8 +45,12 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       handleGetUserInfo();
       return;
     }
-
-    alert(loginProcess);
+    swal.fire({
+      title: "Error!",
+      text: loginProcess,
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
     return ;
     
   }
@@ -67,8 +71,8 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       >
         <FormattedMessage id="userLoginDropdownMainButton"/>
       </button>
-      <div className="dropdown-menu dropdown-menu-end wrapper">
-        <form className="px-4 py-3 px-4 py-3 d-flex flex-column justify-content-center">
+      <div className="dropdown-menu dropdown-menu-end wrapper myDropDownMediaQuery">
+        <form className="p-0 m-0 px-sm-4 py-sm-3 d-flex flex-column justify-content-center">
           <div className="mb-3">
             <label
               htmlFor="MyUserLoginDropdown-input__email"
@@ -128,7 +132,7 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
             </div>
           </div>
           <button
-            className="btn sendBtn w-100 mx-auto dropdown-btn mt-1"
+            className="loginBtn w-100 mx-auto dropdown-btn mt-1"
             onClick={handleLogin}
           >
             <FormattedMessage id="buttonSignIn"/>

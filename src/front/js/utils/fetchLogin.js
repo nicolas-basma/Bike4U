@@ -1,3 +1,5 @@
+import swal from "sweetalert2";
+
 const fetchLogin = async (data)=>{
     
     return fetch(process.env.REACT_APP_API + "login",
@@ -8,7 +10,12 @@ const fetchLogin = async (data)=>{
         if (res.status !== 200) {
           return res.json().then((response) => {
             const errorMessage = response?.msg;
-            throw new Error(`${errorMessage}`);
+            swal.fire({
+              confirmButtonColor: '#ffd102',
+              icon: 'error',
+              title: 'Bike4U',
+              text: errorMessage,
+            })
           });
         }
         return res.json();
@@ -19,7 +26,15 @@ const fetchLogin = async (data)=>{
         return true
       })
       .catch((err)=>{
-        return err;
+        return (
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: 'Usuario o contraseña incorrectos',
+            
+          })
+        )
       })
 }
 export default fetchLogin;

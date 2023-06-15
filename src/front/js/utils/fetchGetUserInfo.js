@@ -5,8 +5,12 @@ const fetchGetUserInfo =(userID,userInfoSetter)=>{
     .then((res)=>{
         
         if (res.status != 200) {
-
-          throw new Error(`Error: ${res?.data?.msg}`);
+          swal.fire({
+            confirmButtonColor: '#ffd102',
+            icon: 'error',
+            title: 'Bike4U',
+            text: `Error: ${res?.data?.msg}`,
+          })
         }
         return res.json()
     })

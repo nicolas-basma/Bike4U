@@ -72,7 +72,13 @@ export const AppContext = ({ children }) => {
       setIsUserLogged(false)
       // localStorage.removeItem("userSessionToken");
       // localStorage.removeItem("loggedUser");
-      //alert("No tiene sesión iniciada");
+      swal.fire({
+        confirmButtonColor: '#ffd102',
+        icon: 'error',
+        title: 'Bike4U',
+        text: 'No tiene sesión iniciada',
+
+      })
       navigate('/');
       return;
     }
@@ -88,7 +94,6 @@ export const AppContext = ({ children }) => {
         text: 'Su sesión ha expirado',
         
       })
-      console.log(token);
       navigate('/');
       return;
     }
