@@ -13,7 +13,7 @@ const CustomizeBikeButton = () => {
   const { setAskInfo } = action;
  
 
-  const handleisIvited = () => {
+  const handleisInvited = () => {
     if (isInvited) {
     setAskInfo(true);
     }
@@ -28,7 +28,7 @@ const CustomizeBikeButton = () => {
   return (
 
     // <Link to="/customizeBike">
-      <button className="customizeBikeBtn" onClick={handleisIvited}>
+      <button className="customizeBikeBtn" onClick={handleisInvited}>
       <FormattedMessage id="customizeBikeButton"></FormattedMessage>
       </button>
     // </Link>

@@ -10,9 +10,6 @@ const YourPersonalBike = ({image, link, title, next, back, id, bike}) => {
 
     const {store} = useStore();
     const {userInfo, isInvited, isUserLogged} = store;
-
-    console.log('isUserLogged', isUserLogged)
-
     const handleFavoriteBike = async (id) => {
         addFavoriteBike(userInfo.id, id);
         // setFavorite(true);

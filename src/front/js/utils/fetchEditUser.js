@@ -6,7 +6,13 @@ const fetchEditUser =(userID,data)=>{
     body: JSON.stringify(data)})
     .then((res)=>{
       if (res.status != 200) {
-        throw new Error(`Error: ${res?.msg}`);
+        swal.fire({
+          confirmButtonColor: '#ffd102',
+          icon: 'error',
+          title: 'Bike4U',
+          text: `Error: ${res?.msg}`,
+
+        })
       } 
       //console.log(res);
       return res.json();

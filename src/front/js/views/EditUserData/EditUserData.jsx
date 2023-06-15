@@ -110,8 +110,14 @@ const handleChangePassword=async()=>{
     text: 'Ha habido un problema con el cambio de contraseña',
     
   }))
+  swal.fire({
+    confirmButtonColor: '#ffd102',
+    icon: 'error',
+    title: 'Bike4U',
+    text: editedUser,
 
-  alert(editedUser);
+  })
+
 
   navigate("/");
 }
