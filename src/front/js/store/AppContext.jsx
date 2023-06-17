@@ -72,13 +72,6 @@ export const AppContext = ({ children }) => {
       setIsUserLogged(false)
       // localStorage.removeItem("userSessionToken");
       // localStorage.removeItem("loggedUser");
-      swal.fire({
-        confirmButtonColor: '#ffd102',
-        icon: 'error',
-        title: 'Bike4U',
-        text: 'No tiene sesión iniciada',
-
-      })
       navigate('/');
       return;
     }

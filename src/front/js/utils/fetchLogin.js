@@ -8,15 +8,17 @@ const fetchLogin = async (data)=>{
       body: JSON.stringify(data)})
       .then( async (res) => {
         if (res.status !== 200) {
-          return res.json().then((response) => {
-            const errorMessage = response?.msg;
-            swal.fire({
-              confirmButtonColor: '#ffd102',
-              icon: 'error',
-              title: 'Bike4U',
-              text: errorMessage,
-            })
-          });
+          //return res.json().then((response) => {
+            //const errorMessage = response?.msg;
+            // swal.fire({
+            //   confirmButtonColor: '#ffd102',
+            //   icon: 'error',
+            //   title: 'Bike4U',
+            //   text: errorMessage,
+            // })
+            //throw new Error(errorMessage);
+          //});
+          throw new Error("Error en la petición");
         }
         return res.json();
       })
