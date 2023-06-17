@@ -8,12 +8,13 @@ const fetchSingup = (data)=>{
         body: JSON.stringify(data)})
         .then((res)=>{
           if (res.status != 200) {
-            swal.fire({
-              confirmButtonColor: '#ffd102',
-              icon: 'error',
-              title: 'Bike4U',
-              text: `Error: ${res?.data?.msg}`,
-            })
+            // swal.fire({
+            //   confirmButtonColor: '#ffd102',
+            //   icon: 'error',
+            //   title: 'Bike4U',
+            //   text: `Error: ${res?.data?.msg}`,
+            // })
+            throw new Error("Error en la petición");
           } 
           //console.log(res);
           return true;

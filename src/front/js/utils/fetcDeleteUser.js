@@ -6,13 +6,14 @@ const fetchDeleteUser = async (userID)=>{
                         {method: 'DELETE' })
                 .then((res)=>{
                     if (res.status != 200) {
-                        swal.fire({
-                            confirmButtonColor: '#ffd102',
-                            icon: 'error',
-                            title: 'Bike4U',
-                            text: `Error: ${res?.data?.msg}`,
+                        // swal.fire({
+                        //     confirmButtonColor: '#ffd102',
+                        //     icon: 'error',
+                        //     title: 'Bike4U',
+                        //     text: `Error: ${res?.data?.msg}`,
 
-                        })
+                        // })
+                        throw new Error("Error en la petición");
                     }
                     return true;
                 })

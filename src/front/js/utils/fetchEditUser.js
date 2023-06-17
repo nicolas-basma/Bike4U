@@ -8,13 +8,14 @@ const fetchEditUser =(userID,data)=>{
     body: JSON.stringify(data)})
     .then((res)=>{
       if (res.status != 200) {
-        swal.fire({
-          confirmButtonColor: '#ffd102',
-          icon: 'error',
-          title: 'Bike4U',
-          text: `Error: ${res?.msg}`,
+        // swal.fire({
+        //   confirmButtonColor: '#ffd102',
+        //   icon: 'error',
+        //   title: 'Bike4U',
+        //   text: `Error: ${res?.msg}`,
 
-        })
+        // })
+        throw new Error("Error en la petición");
       } 
       //console.log(res);
       return res.json();

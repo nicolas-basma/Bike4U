@@ -4,7 +4,6 @@ import { FormattedMessage } from "react-intl";
 
 import "./MyUserLoginDropdown.css";
 import useStore from "../../store/AppContext.jsx";
-import swal from "sweetalert2";
 
 const MyUserLoginDropdown = ({closeNavbar}) => {
   const { action, store } = useStore();
@@ -46,12 +45,6 @@ const MyUserLoginDropdown = ({closeNavbar}) => {
       handleGetUserInfo();
       return;
     }
-    swal.fire({
-      title: "Error!",
-      text: loginProcess,
-      icon: "error",
-      confirmButtonText: "Ok",
-    });
     return ;
     
   }
