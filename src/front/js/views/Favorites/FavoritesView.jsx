@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { Tabs, Tab } from "react-bootstrap";
 
 import useStore from "../../store/AppContext.jsx";
 import BikesCards from "../../component/BikesCards/BikesCards.jsx";
@@ -30,11 +31,12 @@ const getFav = async () =>{
 
   useEffect(() => {
     getFav();
-  }, [!changeB, !changeP])
+  }, [changeB, changeP])
 
   const handleDeleteFavBike = async (id) => {
     deleteFavoriteBike(userInfo.id, id);
     setChangeB(!changeB)
+    getFav();
   };
   const handleDeleteFavPart = async (id) => {
     deleteFavoritePart(userInfo.id, id);
@@ -45,6 +47,8 @@ const getFav = async () =>{
   return (
     <>
       <div className="container my-container your-bike">
+    <Tabs defaultActiveKey="bikes" id="uncontrolled-tab-example">
+      <Tab eventKey="bikes" title="Bikes">
         <div className="titleCards mt-5 text-center"><FormattedMessage id="favoritesBikes" defaultMessage="Your Favorite Bikes"/></div>
         <div className="d-flex row">
           {bikes ? (
@@ -71,12 +75,16 @@ const getFav = async () =>{
                 </React.Fragment>
               );
             })
-          ) : (
+          ) : null } 
+          {/* (
             <div className="container">
               <h1><FormattedMessage id="favoritesNofavs" defaultMessage="No tienes favoritos"/></h1>
             </div>
-          )}
+          )} */}
         </div>
+      </Tab>
+      {/* </div> */}
+      <Tab eventKey="parts" title="Parts">
         <div className="titleCards mt-3 mb-2 text-center"><FormattedMessage id="favoritesParts" defaultMessage="Your Favorite Parts"/></div>
         <div className="d-flex row">
           {parts ? (
@@ -85,7 +93,7 @@ const getFav = async () =>{
                     <React.Fragment key={part.id + '-' + index}>
                 <div className="col-4">
                     <BikesCards
-                      // key={part.id + part.title + myRandom()}
+                      //key={part.id + '-' + part.title + myRandom()}
                       id={part.id}
                       image={part.image}
                       title={part.title}
@@ -103,13 +111,16 @@ const getFav = async () =>{
                 </React.Fragment>
               );
             })
-          ) : (
+          ) : null }
+           {/* (
             <div className="container">
               <h1><FormattedMessage id="favoritesNofavs" defaultMessage="No tienes favoritos"/></h1>
             </div>
-          )}
+          )} */}
         </div>
-      </div>
+      </Tab>
+    </Tabs>
+    </div>
     </>
   );
 }

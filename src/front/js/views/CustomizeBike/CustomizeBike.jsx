@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import Nav from "react-bootstrap/Nav";
 
 import useStore from "../../store/AppContext.jsx";
 import fetchGetBikes from "../../utils/fetchGetBikes.js";
@@ -11,6 +12,7 @@ import PartsCards from "../../component/PartsCards/partsCards.jsx";
 import "./CustomizeBike.css";
 import BackToTopButton from "../../component/BackToTopButton.jsx";
 import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecificTerrain.js";
+import { Tabs, Tab } from "react-bootstrap";
 
 const CustomizeBike = () => {
   const { store } = useStore();
@@ -55,60 +57,31 @@ const CustomizeBike = () => {
   const myRandom = () => {
     return Math.floor(Math.random() * 10000);
   };
-
   return (
     <>
       <YourBike key={myRandom()} list={listOfPart} bikes={userBike} />
-      <div className="d-flex justify-content-center">
-      <div className="titleCards mt-5 text-center p-3">
-        <FormattedMessage id="myBikesFavouriteView"/>
-      </div>
-        </div>
+      <Tabs defaultActiveKey={userInfo?.bike_type} id="uncontrolled-tab-example" className="m-3 justify-content-center">
+        <Tab eventKey="mtb" title="MTB">
       <div className="row">
-        <div className="col-4">
-          <div id="list-example" className="list-group">
-            <a
-              className="list-group-item list-group-item-action menuBikes"
-              href="#list-item-1"
-            >
-              <h1 className="BikeTerrainTitle"><FormattedMessage id="customMTB" defaultMessage="MTB Bikes"/></h1>
-            </a>
-            <a
-              className="list-group-item list-group-item-action menuBikes"
-              href="#list-item-2"
-            >
-              <h1 className="BikeTerrainTitle"><FormattedMessage id="customRoad" defaultMessage="Road Bikes"/></h1>
-            </a>
-            <a
-              className="list-group-item list-group-item-action menuBikes"
-              href="#list-item-3"
-            >
-              <h1 className="BikeTerrainTitle"><FormattedMessage id="customUrban" defaultMessage="Urban Bikes"/></h1>
-            </a>
-            <Link to="/partsView">
-        <button className="backToBikes m-5"><FormattedMessage id="customGoToParts"/></button>
-        </Link>
-         <BackToTopButton />
-          </div>
-        </div>
         <div className="col">
-          <div
+          {/* <div
             data-bs-spy="scroll"
             data-bs-target="#list-example"
             data-bs-smooth-scroll="true"
             className="scrollspy-example"
             tabIndex="0"
-          >
-            <h4 id="list-item-1">
+          > */}
+            {/* <h4 id="list-item-1">
               <a
                 className="list-group-item list-group-item-action"
                 href="#list-item-1"
               >
                 <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customMTB" defaultMessage="MTB Bikes"/></h1>
-              </a>
+              </a> */}
               <div className="wrapperBikesCards">
                 {bikeMtb.length
                   ? bikeMtb.map((element, index) => {
+                    if (index < 8) {
                       return (
                         <BikesCards
                           key={element.id + '-' + element.title + index}
@@ -118,21 +91,28 @@ const CustomizeBike = () => {
                           description={element.description}
                           link={element.link}
                         />
-                      );
+                      );}
                     })
                   : null}
               </div>
-            </h4>
-            <h4 id="list-item-2">
+              {/* </h4> */}
+              </div>
+              </div>
+              {/* </div> */}
+              </Tab>
+              <Tab eventKey="road" title="Road">
+            {/* <h4 id="list-item-2">
               <a
                 className="list-group-item list-group-item-action"
                 href="#list-item-2"
               >
                 <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customRoad" defaultMessage="Road Bikes"/></h1>
-              </a>
+              </a> */}
               <div className="wrapperBikesCards">
                 {bikeRoad.length
                   ? bikeRoad.map((element, index) => {
+                    if (index < 8) {
+                      
                     return (
                           <BikesCards
                             key={element.id + '-' + element.title + index}
@@ -142,21 +122,24 @@ const CustomizeBike = () => {
                             description={element.description}
                             link={element.link}
                           />
-                          );
+                          );}
                         })
                         : null}
               </div>
-            </h4>
-            <h4 id="list-item-3">
+            {/* </h4> */}
+            </Tab>
+            <Tab eventKey="urban" title="Urban">
+            {/* <h4 id="list-item-3">
               <a
                 className="list-group-item list-group-item-action"
                 href="#list-item-2"
               >
                 <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customUrban" defaultMessage="Urban Bikes"/></h1>
-              </a>
+              </a> */}
               <div className="wrapperBikesCards">
                 {bikeUrban.length
                   ? bikeUrban.map((element, index) => {
+                    if (index < 8) {
                       return (
                         <BikesCards
                           key={element.id + '-' + element.title + index}
@@ -166,14 +149,18 @@ const CustomizeBike = () => {
                           description={element.description}
                           link={element.link}
                         />
-                      );
+                      );}
                     })
                   : null}
               </div>
-            </h4>
-            <div className="titleCards mt-5 text-center">
+            {/* </h4> */}
+            </Tab>
+            </Tabs>
+            {/* <div className="titleCards mt-5 text-center">
               <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
-            </div>
+            </div> */}
+            {/* <Tabs id="uncontrolled-tab-example">
+            <Tab eventKey="part" title="Parts">
             <div className="wrapperBikesCards">
               {parts.length
                 ? parts.map((element, index) => {
@@ -190,9 +177,17 @@ const CustomizeBike = () => {
                   })
                 : null}
             </div>
-          </div>
-        </div>
+            </Tab>
+          </Tabs> */}
+          {/* </div> */}
+        {/* </div> */}
+      {/* // </div> */}
+      {/* // </Tab> */}
+      {/* <div className="d-flex justify-content-center">
+      <div className="titleCards mt-5 text-center p-3">
+        <FormattedMessage id="myBikesFavouriteView"/>
       </div>
+        </div> */}
     </>
   );
 };
