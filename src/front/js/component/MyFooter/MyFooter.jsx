@@ -18,7 +18,7 @@ const MyFooter = () => {
   const { logo } = store;
   const { handleShow } = action;
   return (
-    <footer className="footer mt-1 py-1 text-center d-block">
+    <footer className="footer mt-3 py-1 text-center d-block">
       <div className=" container">
         <div className="row">
           <div className="col-12 col-md-4 col-lg-3 d-flex justify-content-center">

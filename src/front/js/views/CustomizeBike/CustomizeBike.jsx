@@ -60,7 +60,7 @@ const CustomizeBike = () => {
   return (
     <>
       <YourBike key={myRandom()} list={listOfPart} bikes={userBike} />
-      <Tabs defaultActiveKey={userInfo?.bike_type} id="uncontrolled-tab-example" className="m-3 justify-content-center">
+      <Tabs defaultActiveKey={userInfo?.bike_type} id="uncontrolled-tab-example" className="m-3 justify-content-center titleTabs">
         <Tab eventKey="mtb" title="MTB">
       <div className="row">
         <div className="col">

@@ -5,7 +5,7 @@ footer {
   display: flex;
   justify-content: center;
   font-family: "Sofia Sans Condensed", sans-serif;
-  /* margin-top:20vh; */
+  margin-top:10px;
   left: 0px;
   bottom: 0px;
   width: 100%;

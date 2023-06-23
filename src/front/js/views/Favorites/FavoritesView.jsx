@@ -41,15 +41,16 @@ const getFav = async () =>{
   const handleDeleteFavPart = async (id) => {
     deleteFavoritePart(userInfo.id, id);
     setChangeP(!changeP)
+    getFav();
   };
 
 
   return (
     <>
       <div className="container my-container your-bike">
-    <Tabs defaultActiveKey="bikes" id="uncontrolled-tab-example">
+    <Tabs defaultActiveKey="bikes" id="uncontrolled-tab-example" className="m-3 justify-content-center titleTabs">
       <Tab eventKey="bikes" title="Bikes">
-        <div className="titleCards mt-5 text-center"><FormattedMessage id="favoritesBikes" defaultMessage="Your Favorite Bikes"/></div>
+        <div className="titleCards mt-3 mb-2 text-center"><FormattedMessage id="favoritesBikes" defaultMessage="Your Favorite Bikes"/></div>
         <div className="d-flex row">
           {bikes ? (
             bikes.map((bike, index) => {
@@ -83,7 +84,6 @@ const getFav = async () =>{
           )} */}
         </div>
       </Tab>
-      {/* </div> */}
       <Tab eventKey="parts" title="Parts">
         <div className="titleCards mt-3 mb-2 text-center"><FormattedMessage id="favoritesParts" defaultMessage="Your Favorite Parts"/></div>
         <div className="d-flex row">

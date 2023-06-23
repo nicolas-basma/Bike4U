@@ -4,3 +4,12 @@
     min-height: 65vh;
 
 }
+
+.nav-link{
+    color: black
+}
+
+.nav-link:hover{
+    color: black;
+    text-decoration: none;
+}
