@@ -57,6 +57,6 @@ def get_bikes_photos():
 
 def delete_parts_and_bikes():
     BikePart.query.delete()
-    # Bike.query.delete()
+    #Bike.query.delete()
     db.session.commit()
     return "All parts deleted", 200

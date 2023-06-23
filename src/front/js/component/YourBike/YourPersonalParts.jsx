@@ -1,14 +1,14 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import "./YourPersonalParts.css";
 import { FormattedMessage } from "react-intl";
-import { addFavoritePart, deleteFavoritePart } from "../../utils/fetchFavorites.js";
+import { addFavoritePart } from "../../utils/fetchFavorites.js";
 import useStore from "../../store/AppContext.jsx";
 
 
 
 const YourPersonalParts = ({ image, link, title, next, back, part, id }) => {
     const { store } = useStore();
-    const { userInfo, isInvited, isUserLogged} = store;
+    const { userInfo, isUserLogged} = store;
 
     const handleFavoritePart = async (id) => {
         addFavoritePart(userInfo.id, id);
