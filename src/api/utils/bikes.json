@@ -1,17 +1,10 @@
 [
     {
-        "title": "FOCUS Bici de Trekking eléctrica AVENTURA² 6.8 29\" Modelo 2023",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/FOCUS/Bici-de-Trekking-electrica-AVENTURA-6-8-29-Modelo-2023-p89610/?v=132029-toronto-grey",
-        "terrain": "urban",
-        "description": "Bici E-Trekking FOCUS AVENTURA² 6.8 - la bici adecuada para el uso diario y de ocio"
-    },
-    {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Vado SL 4.0 Step-Through EQ 28\"",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Vado SL 4.0 Step-Through EQ 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/405824.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Vado-SL-4-0-Step-Through-EQ-28-p84671/?v=123822-white-sage-black-reflective",
         "terrain": "urban",
-        "description": "Specialized Turbo Vado SL 4.0 Step-Through EQ 28\" - la bicicleta eléctrica como heroína del trajín diario"
+        "description": "Specialized Turbo Vado SL 4.0 Step-Through EQ 28 - la bicicleta eléctrica como heroína del trajín diario"
     },
     {
         "title": "Vortrieb Bicicleta para hombres Modell 1 Campus Edition",
@@ -21,11 +14,11 @@
         "description": "La bicicleta Modell 1 Campus Edition de Vortrieb - con cambios de buje de 8 velocidades"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Vado SL 4.0 EQ 28\"",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Vado SL 4.0 EQ 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/456707.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Vado-SL-4-0-EQ-28-p84670/?v=125279-white-sage-black-reflective",
         "terrain": "urban",
-        "description": "La Specialized Turbo Vado SL 4.0 EQ 28\" - la bicicleta eléctrica como heroína del trajín diario"
+        "description": "La Specialized Turbo Vado SL 4.0 EQ 28 - la bicicleta eléctrica como heroína del trajín diario"
     },
     {
         "title": "Vortrieb Bicicleta para hombres Modell 1",
@@ -35,77 +28,49 @@
         "description": "La bicicleta Modell 1 de Vortrieb - orientada al futuro y al mismo tiempo adecuada para el uso diario"
     },
     {
-        "title": "FOCUS Bici de Trekking eléctrica PLANET² 6.9 ABS 29\"",
+        "title": "FOCUS Bici de Trekking eléctrica PLANET² 6.9 ABS 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/505528.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-de-Trekking-electrica-PLANET-6-9-ABS-29-p89839/?v=132303-heritage-blue-stone-blue",
         "terrain": "urban",
         "description": "Bici eléctrica FOCUS PLANET² 6.9 - un potente apoyo en la ciudad y en vueltas"
     },
     {
-        "title": "FOCUS Bici de Trekking eléctrica AVENTURA² 6.8 29\" Modelo 2023",
+        "title": "FOCUS Bici de Trekking eléctrica AVENTURA² 6.8 29 Modelo 2023",
         "image": "https://www.bike-components.de/assets/p/i/640x480/471009.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-de-Trekking-electrica-AVENTURA-6-8-29-Modelo-2023-p89610/?v=132027-gold-brown",
         "terrain": "urban",
         "description": "Bici E-Trekking FOCUS AVENTURA² 6.8 - la bici adecuada para el uso diario y de ocio"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Tero 4.0 Step-Through EQ 29\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Tero-4-0-Step-Through-EQ-29-p84667/?v=125285-redwood-black",
-        "terrain": "urban",
-        "description": "La Turbo Tero 4.0 Step-Through EQ 29\" de Specialized - E-Bike para aventuras off-road y paseos en carretera"
-    },
-    {
-        "title": "Vortrieb Bicicleta para hombres Modell 1",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Vortrieb/Bicicleta-para-hombres-Modell-1-p82999/?v=121929-azul-grisaceo",
-        "terrain": "urban",
-        "description": "La bicicleta Modell 1 de Vortrieb - orientada al futuro y al mismo tiempo adecuada para el uso diario"
-    },
-    {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 4.0 27,5\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Como-SL-4-0-27-5-p89678/?v=131911-cast-umber-transparent",
-        "terrain": "urban",
-        "description": "La E-Bike Specialized Turbo Como SL 4.0 demuestra su eficacia en el uso diario"
-    },
-    {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 5.0 27,5\" - Mod. f de prod.",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Como-SL-5-0-27-5-Mod-f-de-prod-p82179/?v=121734-brassy-yellow-transparent",
-        "terrain": "urban",
-        "description": "La Turbo Como SL 5.0 de Specialized - fuerte y fiable ayudante para el día a día"
-    },
-    {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Vado SL 5.0 Step-Through EQ 28\"",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Vado SL 5.0 Step-Through EQ 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/474209.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Vado-SL-5-0-Step-Through-EQ-28-p89687/?v=131910-brushed-aluminium-black-reflective",
         "terrain": "urban",
         "description": "La bici deTrekking eléctrica Specialized Turbo Vado SL 5.0 con entrada escalonada, equipamiento ligero y portaequipajes"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 4.0 27,5\"",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 4.0 27,5",
         "image": "https://www.bike-components.de/assets/p/i/640x480/473864.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Como-SL-4-0-27-5-p89678/?v=131930-dove-grey-transparent",
         "terrain": "urban",
         "description": "La E-Bike Specialized Turbo Como SL 4.0 demuestra su eficacia en el uso diario"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 5.0 27,5\"",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 5.0 27,5",
         "image": "https://www.bike-components.de/assets/p/i/640x480/483709.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Como-SL-5-0-27-5-p89679/?v=131924-brassy-yellow-transparent",
         "terrain": "urban",
         "description": "La Turbo Como SL 5.0 de Specialized es una E-Bike adecuada para el uso diario con una transmisión por correa de bajo mantenimiento"
     },
     {
-        "title": "FOCUS Bici de Trekking eléctrica AVENTURA² 6.9 29\" Modelo 2023",
+        "title": "FOCUS Bici de Trekking eléctrica AVENTURA² 6.9 29 Modelo 2023",
         "image": "https://www.bike-components.de/assets/p/i/640x480/483652.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-de-Trekking-electrica-AVENTURA-6-9-29-Modelo-2023-p89611/?v=132028-diamond-black",
         "terrain": "urban",
         "description": "Bici E-Trekking FOCUS AVENTURA² 6.9 - para todos los días en y fuera de la ciudad"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 5.0 27,5\" - Mod. f de prod.",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 5.0 27,5 - Mod. f de prod.",
         "image": "https://www.bike-components.de/assets/p/i/640x480/400597.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Como-SL-5-0-27-5-Mod-f-de-prod-p82179/?v=121737-brushed-silver-transparent",
         "terrain": "urban",
@@ -126,13 +91,6 @@
         "description": "La Commuter Bike Modell 1 de Vortrieb en la edición especial limitada"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Como SL 5.0 27,5\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Como-SL-5-0-27-5-p89679/?v=131919-smoke-transparent",
-        "terrain": "urban",
-        "description": "La Turbo Como SL 5.0 de Specialized es una E-Bike adecuada para el uso diario con una transmisión por correa de bajo mantenimiento"
-    },
-    {
         "title": "COMMENCAL Bici de Trekking FCB Maxxis",
         "image": "https://www.bike-components.de/assets/p/i/640x480/428501.jpg",
         "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-Trekking-FCB-Maxxis-p87365/?v=127148-heritage-green",
@@ -147,18 +105,11 @@
         "description": "No description"
     },
     {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Vado 4.0 27,5\"",
+        "title": "Specialized Bici de Trekking eléctrica Turbo Vado 4.0 27,5",
         "image": "https://www.bike-components.de/assets/p/i/640x480/438565.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Vado-4-0-27-5-p84668/?v=125274-white-mountains-black-reflective",
         "terrain": "urban",
         "description": "La Turbo Vado 4.0 de Specialized - una bicicleta eléctrica para toda la vida"
-    },
-    {
-        "title": "Specialized Bici de Trekking eléctrica Turbo Tero 4.0 EQ 29\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-Trekking-electrica-Turbo-Tero-4-0-EQ-29-p84666/?v=125275-black-black",
-        "terrain": "urban",
-        "description": "La Turbo Tero 4.0 EQ 29\" de Specialized - E-Bike para aventuras off-road y paseos en carretera"
     },
     {
         "title": "Vortrieb Bicicleta para damas Modell 1 Campus Edition",
@@ -168,88 +119,74 @@
         "description": "La bicicleta para damas Modell 1 Campus Edition de Vortrieb - con transmisión de cadena"
     },
     {
-        "title": "Specialized Bici de montaña Epic World Cup Pro Carbon 29\"",
+        "title": "Specialized Bici de montaña Epic World Cup Pro Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/505274.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Epic-World-Cup-Pro-Carbon-29-p91690/?v=135222-gloss-deep-lake-metallic-chrome",
         "terrain": "mtb",
-        "description": "La bici de montaña de carbono Specialized Epic World Cup Pro 29\" es rápida y refinada"
+        "description": "La bici de montaña de carbono Specialized Epic World Cup Pro 29 es rápida y refinada"
     },
     {
-        "title": "Yeti Cycles Bici de montaña SB150 T1 TURQ Carbon 29\"",
+        "title": "Yeti Cycles Bici de montaña SB150 T1 TURQ Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/458710.jpg",
         "link": "https://www.bike-components.de/es/Yeti-Cycles/Bici-de-montana-SB150-T1-TURQ-Carbon-29-p84829/?v=125044-turquoise",
         "terrain": "mtb",
-        "description": "La bici de Enduro Yeti Cycles SB150 T1 29\" de TURQ - Carbon con componentes Shimano y Fox"
+        "description": "La bici de Enduro Yeti Cycles SB150 T1 29 de TURQ - Carbon con componentes Shimano y Fox"
     },
     {
-        "title": "Yeti Cycles Bici de montaña SB130 T1 TURQ Carbon 29\"",
+        "title": "Yeti Cycles Bici de montaña SB130 T1 TURQ Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/473268.jpg",
         "link": "https://www.bike-components.de/es/Yeti-Cycles/Bici-de-montana-SB130-T1-TURQ-Carbon-29-p84826/?v=125043-turquoise",
         "terrain": "mtb",
-        "description": "La bici de montaña Yeti Cycles SB130 T1 de 29\" fabricada de carbono TURQ es una bici hambrienta de senderos"
+        "description": "La bici de montaña Yeti Cycles SB130 T1 de 29 fabricada de carbono TURQ es una bici hambrienta de senderos"
     },
     {
-        "title": "Yeti Cycles Bici de montaña SB130 T2 TURQ Carbon 29\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Yeti-Cycles/Bici-de-montana-SB130-T2-TURQ-Carbon-29-p90435/?v=133167-rhino",
-        "terrain": "mtb",
-        "description": "La bici de montaña Yeti Cycles SB130 T2 de 29\" fabricada de carbono TURQ es una bici hambrienta de senderos"
-    },
-    {
-        "title": "Yeti Cycles Bici de montaña SB130 Lunchride TLR TURQ Carbon 29\"",
+        "title": "Yeti Cycles Bici de montaña SB130 Lunchride TLR TURQ Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/485936.jpg",
         "link": "https://www.bike-components.de/es/Yeti-Cycles/Bici-de-montana-SB130-Lunchride-TLR-TURQ-Carbon-29-p90434/?v=133174-turquoise",
         "terrain": "mtb",
         "description": "No description"
     },
     {
-        "title": "Specialized Bici de montaña Stumpjumper EVO Elite Alloy 29\"",
+        "title": "Specialized Bici de montaña Stumpjumper EVO Elite Alloy 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/414012.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Stumpjumper-EVO-Elite-Alloy-29-p85093/?v=125398-satin-aluminium-gunmetal",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña Stumpjumper EVO Elite 29\" de Specialized - potente, personalizable y de aluminio"
+        "description": "La bicicleta de montaña Stumpjumper EVO Elite 29 de Specialized - potente, personalizable y de aluminio"
     },
     {
-        "title": "COMMENCAL Bici de montaña a HT AM Ride 29\" / 27,5\"",
+        "title": "COMMENCAL Bici de montaña a HT AM Ride 29 / 27,5",
         "image": "https://www.bike-components.de/assets/p/i/640x480/436515.jpg",
         "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-montana-a-HT-AM-Ride-29-27-5-p87487/?v=128397-dirt",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña COMMENCAL Meta HT AM Ride con cubiertas de 29\" /27.5\" para paseos de Enduro"
+        "description": "La bicicleta de montaña COMMENCAL Meta HT AM Ride con cubiertas de 29 /27.5 para paseos de Enduro"
     },
     {
-        "title": "Yeti Cycles Bici de montaña SB115 C2 C/Series Carbon 29\"",
+        "title": "Yeti Cycles Bici de montaña SB115 C2 C/Series Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/485384.jpg",
         "link": "https://www.bike-components.de/es/Yeti-Cycles/Bici-de-montana-SB115-C2-C-Series-Carbon-29-p84821/?v=125051-turquoise",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña Yeti Cycles SB115 C2 29\" de carbono es una bicicleta de Cross Country de suspensión total con transmisión SRAM GX Eagle"
+        "description": "La bicicleta de montaña Yeti Cycles SB115 C2 29 de carbono es una bicicleta de Cross Country de suspensión total con transmisión SRAM GX Eagle"
     },
     {
-        "title": "Specialized Bici de montaña Epic EVO Carbon 29\"",
+        "title": "Specialized Bici de montaña Epic EVO Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/441551.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Epic-EVO-Carbon-29-p84629/?v=123980-gloss-cool-grey-dove-grey",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña Specialized Epic EVO 29\" para divertirse sin la presión de la competición"
+        "description": "La bicicleta de montaña Specialized Epic EVO 29 para divertirse sin la presión de la competición"
     },
     {
-        "title": "Specialized Bici de montaña Chisel Comp 29\"",
+        "title": "Specialized Bici de montaña Chisel Comp 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/441487.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Chisel-Comp-29-p84613/?v=123983-satin-light-silver-gloss-spectraflair",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña Chisel Comp de 29\" de Specialized - una bici sólida para empezar a un precio justo"
+        "description": "La bicicleta de montaña Chisel Comp de 29 de Specialized - una bici sólida para empezar a un precio justo"
     },
     {
-        "title": "FOCUS Bici de montaña THRON 6.8 29\"",
+        "title": "FOCUS Bici de montaña THRON 6.8 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/391597.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-de-montana-THRON-6-8-29-p82679/?v=121839-slate-grey",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña THRON 6.8 de 29\" de FOCUS - suspensión completa de Trai para recorridos cortos y largos"
-    },
-    {
-        "title": "COMMENCAL Bici de montaña Meta SX Essential 29\" / 27,5\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-montana-Meta-SX-Essential-29-27-5-p89363/?v=131482-dark-slate",
-        "terrain": "mtb",
-        "description": "La bici de montaña Meta SX Essential 29\" /27.5\" de COMMENCAL con componentes Fox y Shimano"
+        "description": "La bicicleta de montaña THRON 6.8 de 29 de FOCUS - suspensión completa de Trai para recorridos cortos y largos"
     },
     {
         "title": "Scott Bici de montaña Sale RC Team Carbon",
@@ -266,102 +203,81 @@
         "description": "No description"
     },
     {
-        "title": "COMMENCAL Bici de montaña Clash Essential 27,5\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-montana-Clash-Essential-27-5-p87484/?v=127536-ash-grey",
-        "terrain": "mtb",
-        "description": "La bicicleta de montaña COMMENCAL Clash Essential - bicicleta de montaña de Enduro con cubiertas de 27,5\""
-    },
-    {
-        "title": "COMMENCAL Bici de montaña T.E.M.P.O. ÖHLINS Edition 29\"",
+        "title": "COMMENCAL Bici de montaña T.E.M.P.O. ÖHLINS Edition 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/499483.jpg",
         "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-montana-T-E-M-P-O-OeHLINS-Edition-29-p90929/?v=133721-metallic-green",
         "terrain": "mtb",
-        "description": "La bici de montaña COMMENCAL T.E.M.P.O. 29\" en la edición ÖHLINS realmente hace honor a su nombre"
+        "description": "La bici de montaña COMMENCAL T.E.M.P.O. 29 en la edición ÖHLINS realmente hace honor a su nombre"
     },
     {
-        "title": "FOCUS Bici de montaña JAM 8.8 Carbon 29\"",
+        "title": "FOCUS Bici de montaña JAM 8.8 Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/439404.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-de-montana-JAM-8-8-Carbon-29-p84942/?v=125499-carbon-raw-silk",
         "terrain": "mtb",
         "description": "No description"
     },
     {
-        "title": "Specialized Bici de montaña Enduro Comp Carbon 29\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Enduro-Comp-Carbon-29-p84628/?v=123978-gloss-redwood-smoke",
-        "terrain": "mtb",
-        "description": "La bicicleta de montaña Enduro Comp 29\" de Specialized - más potente y rápida que nunca"
-    },
-    {
-        "title": "Specialized Bici de montaña Rockhopper Expert 29\" - Modelo fuera de producción",
+        "title": "Specialized Bici de montaña Rockhopper Expert 29 - Modelo fuera de producción",
         "image": "https://www.bike-components.de/assets/p/i/640x480/345451.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Rockhopper-Expert-29-Modelo-fuera-de-produccion-p78792/?v=121687-satin-silver-dust-black-holographic",
         "terrain": "mtb",
         "description": "La Rockhopper Expert de Specialized - All-Mountain-Bike altamente equipada"
     },
     {
-        "title": "FOCUS Bici de montaña Raven 8.8 Carbon 29\" Modelo 2023",
+        "title": "FOCUS Bici de montaña Raven 8.8 Carbon 29 Modelo 2023",
         "image": "https://www.bike-components.de/assets/p/i/640x480/496632.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-de-montana-Raven-8-8-Carbon-29-Modelo-2023-p89841/?v=132302-light-grey-carbon-raw",
         "terrain": "mtb",
-        "description": "Bici de montaña FOCUS Raven 8.8 29\" - más velocidad y más diversión en Down Country"
+        "description": "Bici de montaña FOCUS Raven 8.8 29 - más velocidad y más diversión en Down Country"
     },
     {
-        "title": "COMMENCAL Bici de montaña Meta TR ÖHLINS Edition 29\"",
+        "title": "COMMENCAL Bici de montaña Meta TR ÖHLINS Edition 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/478788.jpg",
         "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-montana-Meta-TR-OeHLINS-Edition-29-p89365/?v=131452-ash-grey",
         "terrain": "mtb",
-        "description": "La bici de montaña COMMENCAL Meta TR 29\" en la ÖHLINS Edition"
+        "description": "La bici de montaña COMMENCAL Meta TR 29 en la ÖHLINS Edition"
     },
     {
-        "title": "COMMENCAL Bici de montaña Meta TR Race 29\"",
+        "title": "COMMENCAL Bici de montaña Meta TR Race 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/349649.jpg",
         "link": "https://www.bike-components.de/es/COMMENCAL/Bici-de-montana-Meta-TR-Race-29-p78093/?v=121854-matte-graphite",
         "terrain": "mtb",
-        "description": "La bicicleta de montaña Meta TR Race 29\" de COMMENCAL ofrece un rendimiento constante"
+        "description": "La bicicleta de montaña Meta TR Race 29 de COMMENCAL ofrece un rendimiento constante"
     },
     {
-        "title": "Specialized Bici de montaña Chisel Comp 29\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Chisel-Comp-29-p84613/?v=123988-red-tint-fade-over-silver-tarmac-black-white-gold",
-        "terrain": "mtb",
-        "description": "La bicicleta de montaña Chisel Comp de 29\" de Specialized - una bici sólida para empezar a un precio justo"
-    },
-    {
-        "title": "Specialized Bici de montaña Epic Expert Carbon 29\"",
+        "title": "Specialized Bici de montaña Epic Expert Carbon 29",
         "image": "https://www.bike-components.de/assets/p/i/640x480/483657.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-de-montana-Epic-Expert-Carbon-29-p84632/?v=125221-satin-carbon-smoke-gravity-fade-white",
         "terrain": "mtb",
         "description": "La bicicleta de montaña Epic Expert Carbon de Specialized con tecnología Brain"
     },
     {
-        "title": "FOCUS Bici Gravel ATLAS 6.7 28\" Modelo 2023",
+        "title": "FOCUS Bici Gravel ATLAS 6.7 28 Modelo 2023",
         "image": "https://www.bike-components.de/assets/p/i/640x480/493613.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-Gravel-ATLAS-6-7-28-Modelo-2023-p89607/?v=132149-rust-orange-rust-brown",
         "terrain": "road",
-        "description": "La bici Gravel FOCUS ATLAS 6.7 28\" para aventuras sin límites en gravilla"
+        "description": "La bici Gravel FOCUS ATLAS 6.7 28 para aventuras sin límites en gravilla"
     },
     {
-        "title": "Specialized Bici Gravel Diverge Sport Carbon 28\"",
+        "title": "Specialized Bici Gravel Diverge Sport Carbon 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/441527.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-Gravel-Diverge-Sport-Carbon-28-p84627/?v=123982-gloss-ca-white-sage-oak-black-chrome-clean",
         "terrain": "road",
         "description": "La Diverge Sport de Specialized - más diversión y control cuando con tu bici de Gravel"
     },
     {
-        "title": "FOCUS Bici Gravel ATLAS 6.8 28\"",
+        "title": "FOCUS Bici Gravel ATLAS 6.8 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/495560.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-Gravel-ATLAS-6-8-28-p79666/?v=121758-mineral-green",
         "terrain": "road",
         "description": "La bici Gravel ATLAS 6.8 de FOCUS te lleva hasta fin del mundo"
     },
     {
-        "title": "FOCUS Bici Gravel ATLAS 6.7 EQP 28\" Modelo 2023",
+        "title": "FOCUS Bici Gravel ATLAS 6.7 EQP 28 Modelo 2023",
         "image": "https://www.bike-components.de/assets/p/i/640x480/493081.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-Gravel-ATLAS-6-7-EQP-28-Modelo-2023-p89608/?v=132150-rust-orange-rust-brown",
         "terrain": "road",
-        "description": "Bici Gravel FOCUS ATLAS 6.7 EQP 28\" - totalmente equipada para Bikepacking"
+        "description": "Bici Gravel FOCUS ATLAS 6.7 EQP 28 - totalmente equipada para Bikepacking"
     },
     {
         "title": "tout terrain Bici Gravel Vasco GT 28 Select 22.3 - bc edition",
@@ -371,32 +287,18 @@
         "description": "La bc Edition de la bici Gravel Vasco GT 28 Select 22.3 de tout terrain - lista para cualquier camino"
     },
     {
-        "title": "FOCUS Bici Gravel ATLAS 8.9 Carbon 28\"",
+        "title": "FOCUS Bici Gravel ATLAS 8.9 Carbon 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/501805.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-Gravel-ATLAS-8-9-Carbon-28-p84937/?v=126639-gold-brown",
         "terrain": "road",
         "description": "No description"
     },
     {
-        "title": "Specialized Bici Gravel Diverge STR Pro Carbon 28\"",
+        "title": "Specialized Bici Gravel Diverge STR Pro Carbon 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/473171.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-Gravel-Diverge-STR-Pro-Carbon-28-p89755/?v=132137-blaze-violet-ghost-pearl",
         "terrain": "road",
         "description": "La Diverge STR Pro de Specialized es una bici Gravel con una innovadora suspensión integral"
-    },
-    {
-        "title": "Specialized Bici Gravel Diverge Sport Carbon 28\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-Gravel-Diverge-Sport-Carbon-28-p84627/?v=123970-gloss-limestone-black-chrome-clean",
-        "terrain": "road",
-        "description": "La Diverge Sport de Specialized - más diversión y control cuando con tu bici de Gravel"
-    },
-    {
-        "title": "Specialized Bici Gravel Diverge Sport Carbon 28\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-Gravel-Diverge-Sport-Carbon-28-p84627/?v=123984-gloss-smoke-black-transparent-chrome-wild",
-        "terrain": "road",
-        "description": "La Diverge Sport de Specialized - más diversión y control cuando con tu bici de Gravel"
     },
     {
         "title": "3T Bici Gravel Exploro Ultra Rival 1x Carbon",
@@ -413,7 +315,7 @@
         "description": "La bici Gravel NEW U.P. GRX Limited Edition de OPEN con un aspecto clásico para grandes aventuras"
     },
     {
-        "title": "Specialized Bici Gravel Diverge Comp Carbon 28\"",
+        "title": "Specialized Bici Gravel Diverge Comp Carbon 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/504688.jpg",
         "link": "https://www.bike-components.de/es/Specialized/Bici-Gravel-Diverge-Comp-Carbon-28-p84621/?v=123979-satin-olive-oak-chrome-wild",
         "terrain": "road",
@@ -425,20 +327,6 @@
         "link": "https://www.bike-components.de/es/Cannondale/Bici-de-ruta-SuperSix-EVO-Hi-MOD-2-Carbon-p90927/?v=133718-sonic-blue",
         "terrain": "road",
         "description": "La bici de ruta Cannondale SuperSix EVO Hi-MOD 2 de carbono de alta calidad para todos los que quieren ir rápido"
-    },
-    {
-        "title": "Specialized Bici de ruta Tarmac SL7 Comp SRAM Rival eTap AXS Disc Carbon",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-de-ruta-Tarmac-SL7-Comp-SRAM-Rival-eTap-AXS-Disc-Carbon-p82177/?v=121733-gloss-metallic-white-silver-smoke",
-        "terrain": "road",
-        "description": "No description"
-    },
-    {
-        "title": "Liteville Bici Gravel 4-ONE Mk2 Force AXS",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Liteville/Bici-Gravel-4-ONE-Mk2-Force-AXS-p89849/?v=132197-works-finish",
-        "terrain": "road",
-        "description": "No description"
     },
     {
         "title": "Cannondale Bici de ruta CAAD13 Disc 105",
@@ -455,32 +343,25 @@
         "description": "La bicicleta de carretera Tarmac Pro Expert de Specialized: aerodinámica, ligera, cómoda y rápida"
     },
     {
-        "title": "FOCUS Bici Gravel ATLAS 6.7 EQP 28\"",
+        "title": "FOCUS Bici Gravel ATLAS 6.7 EQP 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/368116.jpg",
         "link": "https://www.bike-components.de/es/FOCUS/Bici-Gravel-ATLAS-6-7-EQP-28-p79665/?v=121838-slate-grey",
         "terrain": "road",
         "description": "La bici Gravel ATLAS 6.7 EQP de FOCUS - para viajes en bicicleta y para ir al trabajo"
     },
     {
-        "title": "Specialized Bici Gravel Diverge Comp Carbon 28\"",
-        "image": "https://cdn.pixabay.com/photo/2017/09/19/19/09/bicycle-2766238_1280.png",
-        "link": "https://www.bike-components.de/es/Specialized/Bici-Gravel-Diverge-Comp-Carbon-28-p84621/?v=123973-satin-gunmetal-white-chrome-clean",
-        "terrain": "road",
-        "description": "La bici Gravel Diverge Comp de Specialized - mucha diversión en campo abierto"
-    },
-    {
-        "title": "Cannondale Bici Gravel Topstone Carbon 3 28\"",
+        "title": "Cannondale Bici Gravel Topstone Carbon 3 28",
         "image": "https://www.bike-components.de/assets/p/i/640x480/492554.jpg",
         "link": "https://www.bike-components.de/es/Cannondale/Bici-Gravel-Topstone-Carbon-3-28-p86923/?v=128992-carbono",
         "terrain": "road",
-        "description": "La bici Gravel Topstone Carbon 3 28\" de Cannondale con suspensión trasera sin amortiguador"
+        "description": "La bici Gravel Topstone Carbon 3 28 de Cannondale con suspensión trasera sin amortiguador"
     },
     {
-        "title": "Factor Bici Gravel LS Carbon 28\" - Ekar bc Edition",
+        "title": "Factor Bici Gravel LS Carbon 28 - Ekar bc Edition",
         "image": "https://www.bike-components.de/assets/p/i/640x480/376928.jpg",
         "link": "https://www.bike-components.de/es/Factor/Bici-Gravel-LS-Carbon-28-Ekar-bc-Edition-p82021/?v=121857-UD-grey",
         "terrain": "road",
-        "description": "La bici Gravel LS Carbon 28\" de Factor en la Ekar bc Edition - máquina de carreras Gravel británica con transmisión italiana"
+        "description": "La bici Gravel LS Carbon 28 de Factor en la Ekar bc Edition - máquina de carreras Gravel británica con transmisión italiana"
     },
     {
         "title": "Scott Bici Gravel Speedster Gravel 30",
