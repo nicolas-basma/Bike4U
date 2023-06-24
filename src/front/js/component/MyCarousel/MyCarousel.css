@@ -1,6 +1,6 @@
 .carousel {
   /* background-color: rgb(0, 0, 0); */
-  height: 500px;
+  /* height: 500px; */
   width: 100%;
   margin-bottom: 130px;
   box-shadow: 0px 0px 25px #faf8f8;
@@ -11,7 +11,7 @@
 }
 
 .image {
-  height: 480px;
+  /* height: 480px; */
   width: auto;
   padding: 1rem;
   max-width: 100%;
