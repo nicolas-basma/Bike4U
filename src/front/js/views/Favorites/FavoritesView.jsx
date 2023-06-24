@@ -25,12 +25,6 @@ const FavoritesView = () => {
   const bikes = favorites?.bikes;
   //const parts = favorites ? favorites.parts : null;
   const parts = favorites?.parts;
-
-  console.log("0", userInfo);
-  console.log("1", favUser);
-  console.log("2", favorites);
-  console.log("3", bikes);
-  console.log("4", parts);
   const getFav = async () => {
     const list = await getFavorites(userInfo.id);
     setFavUser(list);
