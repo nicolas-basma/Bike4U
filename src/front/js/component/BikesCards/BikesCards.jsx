@@ -1,14 +1,13 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
-
 import "./bikesCards.css";
 
 const BikesCards = ({ image, title, description, link }) => {
+
   return (
     <>
       <div className="wrapperBikeCard bike-card">
-        <div className="card mt-3 ms-5 ">
+        <div className="card mt-3">
           <img src={image} className="card-img-top" alt="..." />
           <div className="card-body">
             <h4 className="card-title mb-4">{title}</h4>
