@@ -105,7 +105,7 @@ const MyNavbar = () => {
                   </Nav.Item>
                 </Link> 
               : <MyUserLoginDropdown closeNavbar={handleLinkClick} onClick={handleLinkClick}/>}
-              <MyLanguageDropdown onClick={handleLinkClick} />
+              <MyLanguageDropdown  closeNavbar={handleLinkClick} onClick={handleLinkClick}/>
 
             </Nav>
           </Navbar.Collapse>
