@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import YourPersonalParts from "./YourPersonalParts.jsx";
 import useParts from "../../utils/useParts.jsx";
@@ -10,6 +10,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import './Tabs.css'
 
 const YourBike = ({ list, bikes }) => {
+  const intl = useIntl();
   const {
     targetWheels,
     targetFrame,
@@ -43,7 +44,7 @@ const YourBike = ({ list, bikes }) => {
           id="uncontrolled-tab-example"
           className="titleTabs"
         >
-          <Tab eventKey="yourBike" title="Your Bike">
+          <Tab eventKey="yourBike" title={intl.formatMessage({ id: 'CustomTabBike', defaultMessage: "Your Bike" })}>
             <YourPersonalBike
               key={targetBikes?.id}
               id={targetBikes?.id}
@@ -55,7 +56,7 @@ const YourBike = ({ list, bikes }) => {
               bike={bikes}
             />
           </Tab>
-          <Tab eventKey="yourParts" title="Your Parts">
+          <Tab eventKey="yourParts" title={intl.formatMessage({ id: 'CustomTabParts', defaultMessage: "Your Parts" })}>
             <div className="row">
               <YourPersonalParts
                 key={targetHandlebar?.id}

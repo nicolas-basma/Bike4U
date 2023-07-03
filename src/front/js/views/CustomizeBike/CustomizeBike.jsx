@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl  } from "react-intl";
 import Nav from "react-bootstrap/Nav";
 
 import useStore from "../../store/AppContext.jsx";
@@ -15,6 +15,7 @@ import fetchGetAllBikesSpecificTerrain from "../../utils/fetchGetAllBikesSpecifi
 import { Tabs, Tab } from "react-bootstrap";
 
 const CustomizeBike = () => {
+  const intl = useIntl();
   const { store } = useStore();
   const [bikeMtb, setBikeMtb] = useState({});
   const [bikeUrban, setBikeUrban] = useState({});
@@ -61,7 +62,7 @@ const CustomizeBike = () => {
     <>
       <YourBike key={myRandom()} list={listOfPart} bikes={userBike} />
       <Tabs defaultActiveKey={userInfo?.bike_type} id="uncontrolled-tab-example" className="m-3 justify-content-center titleTabs">
-        <Tab eventKey="mtb" title="MTB">
+        <Tab eventKey="mtb" title={intl.formatMessage({ id: 'signInOptionBikeMTB', defaultMessage: "MTB" })}>
       <div className="row">
         <div className="col">
           {/* <div
@@ -99,8 +100,8 @@ const CustomizeBike = () => {
               </div>
               </div>
               {/* </div> */}
-              </Tab>
-              <Tab eventKey="road" title="Road">
+        </Tab>
+        <Tab eventKey="road" title={intl.formatMessage({ id: 'signInOptionBikeRoad', defaultMessage: "Road" })}>
             {/* <h4 id="list-item-2">
               <a
                 className="list-group-item list-group-item-action"
@@ -127,35 +128,35 @@ const CustomizeBike = () => {
                         : null}
               </div>
             {/* </h4> */}
-            </Tab>
-            <Tab eventKey="urban" title="Urban">
-            {/* <h4 id="list-item-3">
-              <a
-                className="list-group-item list-group-item-action"
-                href="#list-item-2"
-              >
-                <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customUrban" defaultMessage="Urban Bikes"/></h1>
-              </a> */}
-              <div className="wrapperBikesCards">
-                {bikeUrban.length
-                  ? bikeUrban.map((element, index) => {
-                    if (index < 8) {
-                      return (
-                        <BikesCards
-                          key={element.id + '-' + element.title + index}
-                          id={element.id}
-                          image={element.image}
-                          title={element.title}
-                          description={element.description}
-                          link={element.link}
-                        />
-                      );}
-                    })
-                  : null}
-              </div>
-            {/* </h4> */}
-            </Tab>
-            </Tabs>
+        </Tab>
+        <Tab eventKey="urban" title={intl.formatMessage({ id: 'signInOptionBikeUrban', defaultMessage: "Urban" })}>
+        {/* <h4 id="list-item-3">
+          <a
+            className="list-group-item list-group-item-action"
+            href="#list-item-2"
+          >
+            <h1 className="BikeTerrainMainTitle"><FormattedMessage id="customUrban" defaultMessage="Urban Bikes"/></h1>
+          </a> */}
+          <div className="wrapperBikesCards">
+            {bikeUrban.length
+              ? bikeUrban.map((element, index) => {
+                if (index < 8) {
+                  return (
+                    <BikesCards
+                      key={element.id + '-' + element.title + index}
+                      id={element.id}
+                      image={element.image}
+                      title={element.title}
+                      description={element.description}
+                      link={element.link}
+                    />
+                  );}
+                })
+              : null}
+          </div>
+        {/* </h4> */}
+        </Tab>
+      </Tabs>
             {/* <div className="titleCards mt-5 text-center">
               <FormattedMessage id="myPartsFavouriteView"></FormattedMessage>
             </div> */}
