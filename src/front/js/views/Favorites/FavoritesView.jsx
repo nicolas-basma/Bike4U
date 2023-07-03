@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl  } from "react-intl";
 import { Tabs, Tab } from "react-bootstrap";
 import infinity from "react-useanimations/lib/infinity";
 
@@ -15,6 +15,7 @@ import "./FavoritesView.css";
 import UseAnimations from "react-useanimations";
 
 const FavoritesView = () => {
+  const intl = useIntl();
   const { store } = useStore();
   const { userInfo } = store;
   const [favUser, setFavUser] = useState({});
@@ -53,7 +54,7 @@ const FavoritesView = () => {
           id="uncontrolled-tab-example"
           className="m-3 justify-content-center titleTabs"
         >
-          <Tab eventKey="bikes" title="Bikes">
+          <Tab eventKey="bikes" title={intl.formatMessage({ id: 'favoritesTabBikes', defaultMessage: "Bikes" })}>
             <div className="titleCards mt-3 mb-2 text-center">
               <FormattedMessage
                 id="favoritesBikes"
@@ -97,7 +98,7 @@ const FavoritesView = () => {
               )}
             </div>
           </Tab>
-          <Tab eventKey="parts" title="Parts">
+          <Tab eventKey="parts" title={intl.formatMessage({ id: 'favoritesTabParts', defaultMessage: "Parts" })}>
             <div className="titleCards mt-3 mb-2 text-center">
               <FormattedMessage
                 id="favoritesParts"

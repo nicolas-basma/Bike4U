@@ -6,13 +6,14 @@ import MyFlag from "./MyFlag.jsx";
 
 import "./MyLanguageDropdown.css";
 
-const MyLanguageDropdown = () => {
+const MyLanguageDropdown = ({closeNavbar}) => {
   const { store, action } = useStore();
   const { lang, flagEEUU, flagEspana } = store;
   const {setLang} = action;
 
   const handleLanguageChange = (e)=>{
     setLang(e.target.name);
+    closeNavbar();
   }
 
   let capitalLang = lang.toUpperCase();

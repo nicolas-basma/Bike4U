@@ -220,7 +220,7 @@ const allMessages = {
     favoritesBikes: "Tus bicis favoritas",
     favoritesQuitar: "Quitar",
     favoritesNofavs: "No tienes favoritos",
-    favoritesParts: "Tus partes favoritas",
+    favoritesParts: "Tus piezas favoritas",
     YourBike: "Tu bicicleta",
     customGoToParts: "Mostrar piezas",
     customMTB: "Bicis de Montaña",
@@ -234,6 +234,10 @@ const allMessages = {
     modifyDeleteBtn: "Eliminar cuenta",
     modifyNewPassPlaceholder: "Nueva contraseña",
     modifyPassPlaceholder: "Valide su contraseña",
+    CustomTabBike: "Tu Bicicleta",
+    CustomTabParts: "Tus Piezas",
+    favoritesTabBikes: "Bicicletas",
+    favoritesTabParts: "Piezas",
 
 
   },
@@ -459,6 +463,10 @@ const allMessages = {
     passRecovery: "Enter your name",
     btnClose: "Close",
     btnSave: "Check",
+    CustomTabBike: "Your Bike",
+    CustomTabParts: "Your Parts",
+    favoritesTabBikes: "Bikes",
+    favoritesTabParts: "Parts",
    
   },
 };
