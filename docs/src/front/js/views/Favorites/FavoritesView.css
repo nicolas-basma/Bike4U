@@ -1,0 +1,20 @@
+.my-container{
+    /* margin: 10px; */
+    margin-bottom: 10px;
+    min-height: 65vh;
+
+}
+
+.nav-link{
+    color: black
+}
+
+.nav-link:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.fav{
+    display: grid;
+    justify-content: center;
+}

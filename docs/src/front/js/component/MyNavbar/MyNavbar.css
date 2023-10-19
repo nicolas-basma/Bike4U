@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+
+.navbar {
+  background-color: black;
+  box-shadow: 0px 0px 25px #222;
+  height: 100px;
+  padding: 0px;
+}
+
+.branding {
+  color: white;
+  font-family: "Notable", sans-serif;
+  font-size: 40px;
+
+  margin-bottom: 10px;
+}
+.myshow {
+  display:none;
+}
+
+@media (min-width: 380px){
+    .myshow{
+      display: inline;
+    }
+
+}
+.branding:hover {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  -webkit-animation: glow 3s ease-in-out infinite alternate;
+  -moz-animation: glow 3s ease-in-out infinite alternate;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgb(255, 209, 2), 0 0 10px rgb(255, 209, 2),
+      0 0 15px rgb(255, 209, 2), 0 0 20px rgb(255, 209, 2),
+      0 0 25px rgb(255, 209, 2), 0 0 30px rgb(255, 209, 2),
+      0 0 35px rgb(255, 209, 2);
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 15px #51484c, 0 0 20px #c3babe,
+      0 0 25px #686165, 0 0 30px #8f858a, 0 0 35px #7b7075, 0 0 40px #867a80;
+  }
+}
+
+.button {
+  color: white;
+  font-family: "Racing Sans One", cursive;
+  margin-inline: 2px;
+  border-bottom: 2px;
+}
+.button:hover {
+  color: white;
+  background-color: grey;
+  border-radius: 10px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: white;
+}
+.onTop {
+  z-index: 4;
+}
+
+.navbar-box {
+  margin: 0 10px;
+  border: 7px solid transparent;
+  border-image: linear-gradient(to right, #43c6ac, #e5fe00) 1;
+}
+
+/* Hacemos que el borde desaparezca a partir del breakpoint 'lg' */
+@media (min-width: 992px) {
+  .navbar-box {
+    border: none;
+  }
+}
+
+.rise {
+  z-index: 4;
+}
+.user-name {
+  color:rgb(255, 209, 2);
+}

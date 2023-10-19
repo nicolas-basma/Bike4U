@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+
+.part-img{
+    height: 200px;
+    object-fit: cover;
+}
+
+.liked{
+    background-color: rgb(255, 209, 2);
+    color: rgb(0, 0, 0);
+    
+    box-shadow: 0px 0px 25px #222;
+    margin:1rem;
+    height: 2rem;
+    width: 6rem;
+    border-radius: 10px;
+    font-family: "Racing Sans One", cursive;
+    font-size: 0.8rem;
+    border:3px solid black;
+}
+
+
+.customizeBikeBtn2{
+    margin:1rem;
+    height: 2rem;
+    width: 6rem;
+    border-radius: 10px;
+    background-color: black;
+    color:white;
+    font-family: "Racing Sans One", cursive;
+    font-size: 0.8rem;
+    border:3px solid black;
+   
+}
+
+.customizeBikeBtn2:hover{
+    cursor: pointer;
+    background-color: rgb(255, 209, 2);
+    color: rgb(0, 0, 0);
+    
+    box-shadow: 0px 0px 25px #222;
+}
+
+.bike{
+        height: 500px;
+        object-fit: cover;
+    }
+
+@media (max-width:800px){
+    .bike{
+        height: auto;
+        width: 100%;
+    }
+}
+

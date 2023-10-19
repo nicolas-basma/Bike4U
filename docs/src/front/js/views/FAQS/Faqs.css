@@ -1,0 +1,17 @@
+#accordionFlushExample {
+  width: 75%;
+  margin: 30px auto;
+  border: 2px solid black;
+}
+
+.accordion-item {
+  border: 1px solid black;
+}
+
+#accordionButtonCollapsed {
+  background-color: rgb(179, 176, 176);
+}
+#accordionButtonCollapsed:hover {
+  background-color: black;
+  color: white;
+}

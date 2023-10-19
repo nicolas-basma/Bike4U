@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Notable&display=swap");
+
+.wrapper {
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  /* margin: 2rem; */
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin-top: 100px;
+  box-shadow: 0px 0px 25px #222;
+  /* min-width: fit-content; */
+}
+
+.signUpSecondTitle {
+  margin: 60px auto;
+  justify-content: center;
+}
+.form-label {
+  font-family: "Racing Sans One", cursive;
+  font-size: 20px;
+}
+.signUpFirstTitle {
+  font-family: "Racing Sans One", cursive;
+  color: rgb(240, 185, 5);
+  margin: 60px auto;
+  font-size:2em
+}
+.signUpSecondTitle {
+  font-family: "Racing Sans One", cursive;
+  color: rgb(240, 185, 5);
+}
+.sendBtn {
+  background-color: rgb(240, 185, 5);
+  width: 50%;
+  height: 50px;
+  font-family: "Racing Sans One", cursive;
+  font-size: 2rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+.sendBtn:hover {
+  border: 1px solid rgb(240, 185, 5);
+  border-radius: 10px;
+  background-color: black;
+  color: rgb(240, 185, 5);
+}
+.center {
+  justify-content: center;
+}
+
+.typeOfBike {
+  margin-top: 50px;
+}

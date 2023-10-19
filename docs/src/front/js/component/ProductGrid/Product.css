@@ -1,0 +1,26 @@
+.productImage {
+    /* width: 200px; */
+    height: 250px;
+    text-align: center;    
+}
+
+.product{
+    margin: 10px;
+    padding: 10px;
+}
+
+.productImage:hover {
+    cursor:pointer
+}
+
+h2 {
+    font-size: 50px;
+    font-family: "Notable", sans-serif;
+    text-transform: uppercase;
+    
+}
+
+h3 {
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif
+}

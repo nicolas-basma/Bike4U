@@ -1,0 +1,31 @@
+#accordionFlushExample {
+  width: 75%;
+  margin: 100px auto;
+  border: 2px solid black;
+}
+
+.accordion-item {
+  border: 1px solid black;
+}
+
+#accordionButtonCollapsed {
+  background-color: rgb(179, 176, 176);
+}
+#accordionButtonCollapsed:hover {
+  background-color: black;
+  color: white;
+}
+.enlaceCookie{
+  color:blue
+}
+.enlaceCookie:hover{
+  color:blue;
+  text-decoration: underline;
+}
+
+.my-container{
+
+  margin-bottom: 10px;
+  min-height: 65vh;
+
+}

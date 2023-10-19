@@ -1,0 +1,23 @@
+.patata {
+    margin-top:20px;
+    height:100px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: black;
+    color:white;
+    font-family: "Racing Sans One", cursive;
+    font-size: 2rem;
+    border:5px solid black;
+}
+
+.patata:hover {
+    cursor: pointer;
+    background-color: rgb(255, 209, 2);
+    color: rgb(0, 0, 0);
+    
+    box-shadow: 0px 0px 25px #222;
+}
+
+h5 {
+    font-size: 2rem;
+}

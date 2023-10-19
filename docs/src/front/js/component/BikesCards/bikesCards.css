@@ -1,0 +1,32 @@
+.wrapperBikeCard {
+  max-width :23rem;
+  border: 1px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.description{
+  font-size: 1rem;
+  font-style: italic;
+  text-decoration: none;
+}
+p.description{
+  text-decoration: none;
+}
+  
+
+
+/* .card:hover {
+
+  border: 2px solid rgb(253, 252, 252);
+  padding: 10px;
+    
+} */
+
+
+.bike-card {
+  height: 600px;
+  /* overflow: hidden; */
+  }

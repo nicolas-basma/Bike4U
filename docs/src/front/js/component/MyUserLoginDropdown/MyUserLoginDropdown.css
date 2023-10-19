@@ -1,0 +1,29 @@
+.dropdown-btn {
+    height: fit-content;
+    width: fit-content;
+    font-size: 3rem;
+}
+
+.loginBtn {
+    background-color: rgb(240, 185, 5);
+    width: 50%;
+    height: 50px;
+    font-family: "Racing Sans One", cursive;
+    font-size: 2rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 50px;
+  }
+  .loginBtn:hover {
+    border: 1px solid rgb(240, 185, 5);
+    border-radius: 10px;
+    background-color: black;
+    color: rgb(240, 185, 5);
+  }
+
+  @media (max-width:400px){
+    .myDropDownMediaQuery{
+        margin: 0px !important; 
+        padding: 5px !important;
+    }
+  }
