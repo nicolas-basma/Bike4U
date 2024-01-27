@@ -33,9 +33,7 @@ db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
 else:
-    #app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL##url render base de datos
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://febasma:40GHWaUmv0YEv08Cwbl39iV6p5vZfk7q@dpg-cmqgc22cn0vc73dnrio0-a/bike4u_gle1'
-
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL##url render base de datos
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
 db.init_app(app)
@@ -84,5 +82,5 @@ def serve_any_other_file(path):
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 3001))
+    PORT = int(os.environ.get('PORT', 5432))
     app.run(host='0.0.0.0', port=PORT, debug=True)
