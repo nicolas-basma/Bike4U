@@ -188,13 +188,13 @@ def handle_add_part():
         db.session.commit()
     return jsonify({"msg": "json cargado"}), 200
 
-# @api.route('/steal-bikes', methods=['POST'])
-# def handle_steal_bikes():
-#     response = steal_bikes("urban")
-#     steal_bikes("mtb")
-#     steal_bikes("road")
-#     print(response)
-#     return 'ok' , 200
+@api.route('/steal-bikes', methods=['POST'])
+def handle_steal_bikes():
+    response = steal_bikes("urban")
+    steal_bikes("mtb")
+    steal_bikes("road")
+    print(response)
+    return 'ok' , 200
 
 @api.route('/steal-frame', methods=['POST'])
 def handle_steal_frame():
