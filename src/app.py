@@ -29,11 +29,11 @@ jwt = JWTManager(app)
 
 
 # database condiguration0
-# db_url = os.getenv("DATABASE_URL")
-# if db_url is not None:
-#     app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
-# else:
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL##url render base de datos
+db_url = os.getenv("DATABASE_URL")
+if db_url is not None:
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL##url render base de datos
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
