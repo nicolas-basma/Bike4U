@@ -171,3 +171,4 @@ def get_user_favorites(user_id):
     user_favorites = user.serialize_favorites()
     return jsonify(user_favorites), 200
 
+    
