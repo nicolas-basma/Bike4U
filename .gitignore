@@ -80,8 +80,8 @@ diagram.png
 __pycache__/
 
 # ignore project install files
-*.lock
-package-lock.json
+# *.lock
+# package-lock.json
 
 # a lo bruto
 # ./Pipfile.lock
