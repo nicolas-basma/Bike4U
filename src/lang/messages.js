@@ -151,13 +151,7 @@ const allMessages = {
     userLoginDropdownNewUser: "¿Nuevo por aquí?¡Regístrate!",
     userLoginDropdownForgotPassword: " ¿Has olvidado tu contraseña?",
     aboutUsTittle: "¿Quiénes somos?",
-    aboutUsDescription: `Nosotros cuatro: Ignacio Muñoz, Luis C. Loredo, Nicolas Basma y Cleito Medeiros;
-    somos full-stack developers altamente motivados. Esta pagina web es nuestro primer proyecto expuesto al público,
-    en el cualhemos creado una herramienta para personalizar bicicletas. El objetivo principal de esta página es
-    ofrecer a los usuarios la posibilidad de diseñar su propia bicicleta basándose en sus medidas y preferencias.
-    El equipo ha estado trabajando arduamente en el desarrollo de esta página web para que los usuarios tengan una experiencia única 
-    y personalizada al momento de diseñar su bicicleta. Además, se ha incorporado un sistema de recomendaciones que ayuda a los usuarios a
-    tomar decisiones basadas en sus necesidades y gustos.`,
+    aboutUsDescription: `Aplicacion web desarrollada con Python, HTML5, CSS, Boostrap, React, JS. Trabajo final realizado por desarrolladores fullstack juniors. La aplicacion solo es una muestra de lo que podra ser una solucion para elegir la bicicleta ideal basado en tus caracteristicas! Es una aplicacion solo de demostracion!`,
     buttonContact: "Contáctanos",
     myNavbarButtomLangEsp: `ES`,
     myNavbarButtomLangEng: `EN`,
@@ -391,12 +385,7 @@ const allMessages = {
     userLoginDropdownNewUser: "New around here? Sign up!",
     userLoginDropdownForgotPassword: "Forgot password?",
     aboutUsTittle: "Who are we?",
-    aboutUsDescription: `We four: Ignacio Muñoz, Luis C. Loredo, Nicolas Basma, and Cleito Medeiros; are highly motivated 
-    full-stack developers. This website is our first project exposed to the public, in which we have created a tool for
-    customizing bicycles. The main objective of this page is to offer users the possibility of designing their own bicycle
-    based on their measurements and preferences. The team has been working hard on the development of this website so that
-    users have a unique and personalized experience when designing their bike. In addition, a recommendation system has been
-    incorporated to help users make decisions based on their needs and preferences.`,
+    aboutUsDescription: `Web application developed with Python, HTML5, CSS, Boostrap, React, JS. Final work done by junior fullstack developers. The application is only a sample of what could be a solution to choose the ideal bicycle based on your characteristics! It is a demo application only!`,
     buttonContact: "Contact us",
     myNavbarButtomLangEsp: `ES`,
     myNavbarButtomLangEng: `EN`,
